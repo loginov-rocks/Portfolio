@@ -2,12 +2,19 @@
 
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({ diff }) => ({
+import { setBrokerageAccount } from '../../actions';
+
+const mapStateToProps = ({ brokerageAccountId, diff }) => ({
   accounts: (diff && diff.account
     ? diff.account.filter(account => (
       account.archive === false && account.type !== 'debt'
     ))
     : []),
+  brokerageAccountId,
 });
 
-export default connect(mapStateToProps);
+const mapDispatchToProps = {
+  setBrokerageAccount,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps);

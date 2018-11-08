@@ -50,3 +50,7 @@ export const setAuthorizationToken = token => dispatch => {
   zenMoney.setToken(token);
   dispatch({ type: T.AUTHORIZATION_TOKEN_SET });
 };
+
+export const setBrokerageAccount = id => dispatch => {
+  dispatch({ payload: id, type: T.BROKERAGE_ACCOUNT_SET });
+};

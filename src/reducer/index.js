@@ -6,6 +6,7 @@ import * as T from '../actions/types';
 
 const initialState = {
   accessToken: '',
+  brokerageAccountId: '',
   diff: null,
   diffServerTimestamp: 0,
   isAuthorized: false,
@@ -20,6 +21,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isAuthorized: true,
+      };
+
+    case T.BROKERAGE_ACCOUNT_SET:
+      return {
+        ...state,
+        brokerageAccountId: action.payload,
       };
 
     case T.DIFF_RECEIVED:
