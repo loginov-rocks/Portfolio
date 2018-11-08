@@ -2,6 +2,8 @@
 
 import * as React from 'react';
 
+import Stock from '../Stock';
+
 const Portfolio = ({
   addAmount, addSymbol, handleAddAmountChange, handleAddSymbolChange,
   handleSubmit, portfolio, removeStock,
@@ -17,7 +19,7 @@ const Portfolio = ({
     <ul>
       {portfolio.map(({ amount, symbol }, index) => (
         <li key={index}>
-          {symbol} {amount}
+          <Stock amount={amount} symbol={symbol} />
           <button onClick={() => removeStock(symbol)}>Remove</button>
         </li>
       ))}

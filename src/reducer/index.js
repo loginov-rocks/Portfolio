@@ -10,6 +10,7 @@ const initialState = {
   diffServerTimestamp: 0,
   isAuthorized: false,
   portfolio: [],
+  prices: {},
   refreshToken: '',
 };
 
@@ -36,6 +37,15 @@ export default (state = initialState, action) => {
       return {
         ...state,
         portfolio: state.portfolio.concat([action.payload]),
+      };
+
+    case T.STOCK_PRICE_RECEIVED:
+      return {
+        ...state,
+        prices: {
+          ...state.prices,
+          [action.payload.symbol]: action.payload.price,
+        },
       };
 
     case T.STOCK_REMOVED:

@@ -1,5 +1,6 @@
 /* @flow */
 
+import iex from '../lib/IEX/instance';
 import zenMoney from '../lib/ZenMoney/instance';
 import * as T from './types';
 
@@ -14,14 +15,27 @@ export const fetchDiff = () => (dispatch, getState) => {
   const serverTimestamp = getState().diffServerTimestamp;
 
   zenMoney.getDiff(currentClientTimestamp, serverTimestamp)
-    .then(tokens => dispatch({ payload: tokens, type: T.DIFF_RECEIVED }));
+    .then(tokens => {
+      dispatch({ payload: tokens, type: T.DIFF_RECEIVED });
+    });
+};
+
+export const fetchStockPrice = symbol => dispatch => {
+  dispatch({ type: T.STOCK_PRICE_REQUESTED });
+
+  iex.getStockPrice(symbol)
+    .then(price => {
+      dispatch({ payload: { price, symbol }, type: T.STOCK_PRICE_RECEIVED });
+    });
 };
 
 export const fetchTokens = code => dispatch => {
   dispatch({ type: T.TOKENS_REQUESTED });
 
   zenMoney.getTokens(code)
-    .then(tokens => dispatch({ payload: tokens, type: T.TOKENS_RECEIVED }));
+    .then(tokens => {
+      dispatch({ payload: tokens, type: T.TOKENS_RECEIVED });
+    });
 };
 
 export const logout = () => dispatch => {
