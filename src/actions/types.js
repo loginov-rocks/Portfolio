@@ -1,0 +1,4 @@
+/* @flow */
+
+export const TOKENS_RECEIVED = 'TOKENS_RECEIVED';
+export const TOKENS_REQUESTED = 'TOKENS_REQUESTED';

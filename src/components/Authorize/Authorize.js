@@ -2,9 +2,11 @@
 
 import * as React from 'react';
 
-const Authorize = ({ handleAuthorize }) => (
+const Authorize = ({ handleAuthorize, progress }) => (
   <div>
-    <button onClick={handleAuthorize}>Sign in</button>
+    {progress
+      ? <span>Progress...</span>
+      : <button onClick={handleAuthorize}>Sign in</button>}
   </div>
 );
 
