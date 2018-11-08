@@ -4,12 +4,14 @@ import * as React from 'react';
 
 import Amount from '../Amount';
 
-const Stock = ({ amount, quote, quoteProgress, symbol }) => (
+const Stock = ({
+  amount, logo, logoProgress, quote, quoteProgress, symbol,
+}) => (
   <span>
 
     {symbol}
 
-    {quoteProgress && 'Progress...'}
+    {(logoProgress || quoteProgress) && 'Progress...'}
 
     {quote && (
       <React.Fragment>
@@ -19,6 +21,10 @@ const Stock = ({ amount, quote, quoteProgress, symbol }) => (
         =
         <Amount instrumentId={1} value={amount * quote.iexRealtimePrice} />
       </React.Fragment>
+    )}
+
+    {logo && (
+      <img alt="" src={logo} />
     )}
 
   </span>

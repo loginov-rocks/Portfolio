@@ -7,6 +7,11 @@ export default class IEX {
     this.url = url;
   }
 
+  getStockLogo(symbol) {
+    return axios.get(`${this.url}/stock/${symbol}/logo`)
+      .then(({ data }) => data.url);
+  }
+
   getStockQuote(symbol) {
     return axios.get(`${this.url}/stock/${symbol}/quote`)
       .then(({ data }) => data);

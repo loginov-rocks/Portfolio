@@ -2,7 +2,7 @@
 
 import { createFetchResource } from 'redux-repository/lib/actions';
 
-import { STOCK_QUOTE_RESOURCE_NAME, STOCK_QUOTE_TTL } from '../constants';
+import * as C from '../constants';
 import iex from '../lib/IEX/instance';
 import zenMoney from '../lib/ZenMoney/instance';
 import * as T from './types';
@@ -23,8 +23,20 @@ export const fetchDiff = () => (dispatch, getState) => {
     });
 };
 
+export const fetchStockLogo = symbol => createFetchResource(
+  C.STOCK_LOGO_RESOURCE_NAME,
+  symbol,
+  ({ stockLogos }) => stockLogos,
+  (dispatchReceived, dispatchFailed) => {
+    iex.getStockLogo(symbol)
+      .then(data => dispatchReceived(data))
+      .catch(error => dispatchFailed(error.toString()));
+  },
+  { ttl: C.STOCK_LOGO_TTL },
+);
+
 export const fetchStockQuote = symbol => createFetchResource(
-  STOCK_QUOTE_RESOURCE_NAME,
+  C.STOCK_QUOTE_RESOURCE_NAME,
   symbol,
   ({ stockQuotes }) => stockQuotes,
   (dispatchReceived, dispatchFailed) => {
@@ -32,7 +44,7 @@ export const fetchStockQuote = symbol => createFetchResource(
       .then(data => dispatchReceived(data))
       .catch(error => dispatchFailed(error.toString()));
   },
-  { ttl: STOCK_QUOTE_TTL },
+  { ttl: C.STOCK_QUOTE_TTL },
 );
 
 export const fetchTokens = code => dispatch => {

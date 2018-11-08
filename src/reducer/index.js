@@ -7,7 +7,7 @@ import {
 import { createInitialState } from 'redux-repository/lib/repository';
 
 import * as T from '../actions/types';
-import { STOCK_QUOTE_RESOURCE_NAME } from '../constants';
+import * as C from '../constants';
 
 const initialState = {
   accessToken: '',
@@ -17,11 +17,19 @@ const initialState = {
   isAuthorized: false,
   portfolio: [],
   refreshToken: '',
+  stockLogos: createInitialState(),
   stockQuotes: createInitialState(),
 };
 
 export default (state = initialState, action) => {
-  if (isResourceAction(STOCK_QUOTE_RESOURCE_NAME, action)) {
+  if (isResourceAction(C.STOCK_LOGO_RESOURCE_NAME, action)) {
+    return {
+      ...state,
+      stockLogos: repositoryReducer(state.stockLogos, action),
+    };
+  }
+
+  if (isResourceAction(C.STOCK_QUOTE_RESOURCE_NAME, action)) {
     return {
       ...state,
       stockQuotes: repositoryReducer(state.stockQuotes, action),
