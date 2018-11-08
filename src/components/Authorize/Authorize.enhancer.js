@@ -3,24 +3,45 @@
 import { connect } from 'react-redux';
 import { compose, lifecycle, withState, withHandlers } from 'recompose';
 
-import { fetchTokens } from '../../actions';
+import { fetchTokens, setAuthorizationToken } from '../../actions';
 import zenMoney from '../../lib/ZenMoney/instance';
+
+const mapStateToProps = ({ accessToken }) => ({ accessToken });
 
 const mapDispatchToProps = {
   fetchTokens,
+  setAuthorizationToken,
 };
 
 export default compose(
   withState('progress', 'updateProgress', false),
-  connect(null, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   lifecycle({
 
     componentDidMount() {
+      const {
+        accessToken, fetchTokens, setAuthorizationToken, updateProgress,
+      } = this.props;
+
       const code = zenMoney.extractAuthorizeCode(window.location);
 
-      if (code) {
-        this.props.updateProgress(true);
-        this.props.fetchTokens(code);
+      if (accessToken || code) {
+        updateProgress(true);
+
+        if (accessToken) {
+          setAuthorizationToken(accessToken);
+        } else {
+          fetchTokens(code);
+        }
+      }
+    },
+
+    componentDidUpdate(prevProps) {
+      const { accessToken, setAuthorizationToken, updateProgress } = this.props;
+
+      if (accessToken && accessToken !== prevProps.accessToken) {
+        updateProgress(true);
+        setAuthorizationToken(accessToken);
       }
     },
 

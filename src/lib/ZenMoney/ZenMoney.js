@@ -9,6 +9,12 @@ export default class ZenMoney {
     this.redirectUrl = redirectUrl;
   }
 
+  setToken(token) {
+    this.token = token;
+
+    return this;
+  }
+
   getAuthorizeUrl() {
     return `https://api.zenmoney.ru/oauth2/authorize?client_id=${this.consumerKey}&redirect_uri=${this.redirectUrl}&response_type=code`;
   }
@@ -30,6 +36,26 @@ export default class ZenMoney {
     params.append('redirect_uri', this.redirectUrl);
 
     return axios.post('https://api.zenmoney.ru/oauth2/token', params)
+      .then(({ data }) => data);
+  }
+
+  getAuthorizationHeaders() {
+    return { Authorization: `Bearer ${this.token}` };
+  }
+
+  getDiff(currentClientTimestamp = Date.now() / 1000, serverTimestamp = 0,
+          payload = {}) {
+    return axios.post(
+      'https://api.zenmoney.ru/v8/diff',
+      {
+        currentClientTimestamp,
+        serverTimestamp,
+        ...payload,
+      },
+      {
+        headers: this.getAuthorizationHeaders(),
+      },
+    )
       .then(({ data }) => data);
   }
 }

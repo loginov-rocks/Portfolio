@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
 
+import { fetchDiff } from './actions';
 import './App.css';
 import Authorize from './components/Authorize';
 import withAuth from './enhancers/withAuth';
 import logo from './logo.svg';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchDiff();
+  }
+
   render() {
     return (
       <div className="App">
@@ -28,4 +35,13 @@ class App extends Component {
   }
 }
 
-export default withAuth(Authorize)(App);
+const mapStateToProps = ({ diff }) => ({ diff });
+
+const mapDispatchToProps = {
+  fetchDiff,
+};
+
+export default compose(
+  withAuth(Authorize),
+  connect(mapStateToProps, mapDispatchToProps),
+)(App);
