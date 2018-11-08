@@ -13,8 +13,6 @@ const mapStateToProps = ({ brokerageAccountId, diff }) => ({
   brokerageAccountId,
 });
 
-const mapDispatchToProps = {
-  setBrokerageAccount,
-};
+const mapDispatchToProps = { setBrokerageAccount };
 
 export default connect(mapStateToProps, mapDispatchToProps);

@@ -6,13 +6,13 @@ import {
 } from 'recompose';
 
 import { addStock, removeStock } from '../../actions';
+import { calculatePortfolioBalance } from '../../lib/stocks';
 
-const mapStateToProps = ({ portfolio, prices }) => ({ portfolio, prices });
+const mapStateToProps = ({ portfolio, stockQuotes }) => ({
+  portfolio, stockQuotes,
+});
 
-const mapDispatchToProps = {
-  addStock,
-  removeStock,
-};
+const mapDispatchToProps = { addStock, removeStock };
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
@@ -40,9 +40,7 @@ export default compose(
     },
 
   }),
-  withProps(({ portfolio, prices }) => ({
-    balance: portfolio
-      .map(({ amount, symbol }) => prices[symbol] ? amount * prices[symbol] : 0)
-      .reduce((a, b) => a + b, 0),
+  withProps(({ portfolio, stockQuotes }) => ({
+    balance: calculatePortfolioBalance(portfolio, stockQuotes),
   })),
 );

@@ -1,8 +1,13 @@
 /* @flow */
 
 import _ from 'lodash';
+import {
+  isResourceAction, repositoryReducer,
+} from 'redux-repository/lib/reducer';
+import { createInitialState } from 'redux-repository/lib/repository';
 
 import * as T from '../actions/types';
+import { STOCK_QUOTE_RESOURCE_NAME } from '../constants';
 
 const initialState = {
   accessToken: '',
@@ -11,11 +16,18 @@ const initialState = {
   diffServerTimestamp: 0,
   isAuthorized: false,
   portfolio: [],
-  prices: {},
   refreshToken: '',
+  stockQuotes: createInitialState(),
 };
 
 export default (state = initialState, action) => {
+  if (isResourceAction(STOCK_QUOTE_RESOURCE_NAME, action)) {
+    return {
+      ...state,
+      stockQuotes: repositoryReducer(state.stockQuotes, action),
+    };
+  }
+
   switch (action.type) {
     case T.AUTHORIZATION_TOKEN_SET:
       return {
@@ -44,15 +56,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         portfolio: state.portfolio.concat([action.payload]),
-      };
-
-    case T.STOCK_PRICE_RECEIVED:
-      return {
-        ...state,
-        prices: {
-          ...state.prices,
-          [action.payload.symbol]: action.payload.price,
-        },
       };
 
     case T.STOCK_REMOVED:

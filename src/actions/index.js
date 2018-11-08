@@ -1,5 +1,8 @@
 /* @flow */
 
+import { createFetchResource } from 'redux-repository/lib/actions';
+
+import { STOCK_QUOTE_RESOURCE_NAME, STOCK_QUOTE_TTL } from '../constants';
 import iex from '../lib/IEX/instance';
 import zenMoney from '../lib/ZenMoney/instance';
 import * as T from './types';
@@ -20,14 +23,17 @@ export const fetchDiff = () => (dispatch, getState) => {
     });
 };
 
-export const fetchStockPrice = symbol => dispatch => {
-  dispatch({ type: T.STOCK_PRICE_REQUESTED });
-
-  iex.getStockPrice(symbol)
-    .then(price => {
-      dispatch({ payload: { price, symbol }, type: T.STOCK_PRICE_RECEIVED });
-    });
-};
+export const fetchStockQuote = symbol => createFetchResource(
+  STOCK_QUOTE_RESOURCE_NAME,
+  symbol,
+  ({ stockQuotes }) => stockQuotes,
+  (dispatchReceived, dispatchFailed) => {
+    iex.getStockQuote(symbol)
+      .then(data => dispatchReceived(data))
+      .catch(error => dispatchFailed(error.toString()));
+  },
+  { ttl: STOCK_QUOTE_TTL },
+);
 
 export const fetchTokens = code => dispatch => {
   dispatch({ type: T.TOKENS_REQUESTED });

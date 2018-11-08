@@ -43,9 +43,7 @@ class App extends Component {
 
 const mapStateToProps = ({ diff }) => ({ diff });
 
-const mapDispatchToProps = {
-  fetchDiff,
-};
+const mapDispatchToProps = { fetchDiff };
 
 export default compose(
   withAuth(Authorize),

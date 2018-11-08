@@ -8,10 +8,7 @@ import zenMoney from '../../lib/ZenMoney/instance';
 
 const mapStateToProps = ({ accessToken }) => ({ accessToken });
 
-const mapDispatchToProps = {
-  fetchTokens,
-  setAuthorizationToken,
-};
+const mapDispatchToProps = { fetchTokens, setAuthorizationToken };
 
 export default compose(
   withState('progress', 'updateProgress', false),
