@@ -6,6 +6,7 @@ import { fetchDiff } from './actions';
 import './App.css';
 import AccountsList from './components/AccountsList';
 import Authorize from './components/Authorize';
+import LogoutButton from './components/LogoutButton';
 import withAuth from './enhancers/withAuth';
 import logo from './logo.svg';
 
@@ -18,6 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <AccountsList />
+        <LogoutButton />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>

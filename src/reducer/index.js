@@ -23,6 +23,9 @@ export default (state = initialState, action) => {
         diff: action.payload,
       };
 
+    case T.LOGGED_OUT:
+      return initialState;
+
     case T.TOKENS_RECEIVED:
       return {
         ...state,
