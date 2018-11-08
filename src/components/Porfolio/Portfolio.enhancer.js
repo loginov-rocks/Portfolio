@@ -1,11 +1,13 @@
 /* @flow */
 
 import { connect } from 'react-redux';
-import { compose, withHandlers, withStateHandlers } from 'recompose';
+import {
+  compose, withHandlers, withProps, withStateHandlers,
+} from 'recompose';
 
 import { addStock, removeStock } from '../../actions';
 
-const mapStateToProps = ({ portfolio }) => ({ portfolio });
+const mapStateToProps = ({ portfolio, prices }) => ({ portfolio, prices });
 
 const mapDispatchToProps = {
   addStock,
@@ -38,4 +40,9 @@ export default compose(
     },
 
   }),
+  withProps(({ portfolio, prices }) => ({
+    balance: portfolio
+      .map(({ amount, symbol }) => prices[symbol] ? amount * prices[symbol] : 0)
+      .reduce((a, b) => a + b, 0),
+  })),
 );

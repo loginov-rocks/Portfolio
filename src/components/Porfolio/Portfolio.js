@@ -2,10 +2,11 @@
 
 import * as React from 'react';
 
+import Amount from '../Amount';
 import Stock from '../Stock';
 
 const Portfolio = ({
-  addAmount, addSymbol, handleAddAmountChange, handleAddSymbolChange,
+  addAmount, addSymbol, balance, handleAddAmountChange, handleAddSymbolChange,
   handleSubmit, portfolio, removeStock,
 }) => (
   <div>
@@ -15,6 +16,10 @@ const Portfolio = ({
       <input onChange={handleAddAmountChange} type="number" value={addAmount} />
       <button type="submit">Add</button>
     </form>
+
+    <div>
+      Total: <Amount instrumentId={1} value={balance} />
+    </div>
 
     <ul>
       {portfolio.map(({ amount, symbol }, index) => (
