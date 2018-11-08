@@ -7,7 +7,11 @@ import thunk from 'redux-thunk';
 
 export default (rootReducer) => {
   const reducer = compose(
-    mergePersistedState(),
+    mergePersistedState((initialState, persistedState) => {
+      persistedState.isAuthorized = false;
+
+      return persistedState;
+    }),
   )(rootReducer);
 
   const middleware = [thunk];
