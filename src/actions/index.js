@@ -3,6 +3,10 @@
 import zenMoney from '../lib/ZenMoney/instance';
 import * as T from './types';
 
+export const addStock = (symbol, amount) => dispatch => {
+  dispatch({ payload: { amount, symbol }, type: T.STOCK_ADDED });
+};
+
 export const fetchDiff = () => (dispatch, getState) => {
   dispatch({ type: T.DIFF_REQUESTED });
 
@@ -22,6 +26,10 @@ export const fetchTokens = code => dispatch => {
 
 export const logout = () => dispatch => {
   dispatch({ type: T.LOGGED_OUT });
+};
+
+export const removeStock = (symbol) => dispatch => {
+  dispatch({ payload: symbol, type: T.STOCK_REMOVED });
 };
 
 export const setAuthorizationToken = token => dispatch => {

@@ -7,6 +7,7 @@ import './App.css';
 import AccountsList from './components/AccountsList';
 import Authorize from './components/Authorize';
 import LogoutButton from './components/LogoutButton';
+import Portfolio from './components/Porfolio';
 import withAuth from './enhancers/withAuth';
 import logo from './logo.svg';
 
@@ -19,6 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <AccountsList />
+        <Portfolio />
         <LogoutButton />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />

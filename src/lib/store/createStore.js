@@ -1,5 +1,6 @@
 /* @flow */
 
+import _ from 'lodash';
 import { applyMiddleware, compose, createStore } from 'redux';
 import persistState, { mergePersistedState } from 'redux-localstorage';
 import adapter from 'redux-localstorage/lib/adapters/localStorage';
@@ -7,11 +8,9 @@ import thunk from 'redux-thunk';
 
 export default (rootReducer) => {
   const reducer = compose(
-    mergePersistedState((initialState, persistedState) => {
-      persistedState.isAuthorized = false;
-
-      return persistedState;
-    }),
+    mergePersistedState((initialState, persistedState) => (
+      _.assign({}, initialState, persistedState, { isAuthorized: false })
+    )),
   )(rootReducer);
 
   const middleware = [thunk];
