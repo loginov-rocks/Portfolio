@@ -1,10 +1,13 @@
 /* @flow */
 
+import _ from 'lodash';
+
 import * as T from '../actions/types';
 
 const initialState = {
   accessToken: '',
   diff: null,
+  diffServerTimestamp: 0,
   isAuthorized: false,
   refreshToken: '',
 };
@@ -20,7 +23,9 @@ export default (state = initialState, action) => {
     case T.DIFF_RECEIVED:
       return {
         ...state,
-        diff: action.payload,
+        // TODO: Keep only needed data.
+        diff: _.assign({}, state.diff, action.payload),
+        diffServerTimestamp: action.payload.serverTimestamp,
       };
 
     case T.LOGGED_OUT:

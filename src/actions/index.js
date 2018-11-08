@@ -3,13 +3,15 @@
 import zenMoney from '../lib/ZenMoney/instance';
 import * as T from './types';
 
-export const fetchDiff = (currentClientTimestamp, serverTimestamp) =>
-  dispatch => {
-    dispatch({ type: T.DIFF_REQUESTED });
+export const fetchDiff = () => (dispatch, getState) => {
+  dispatch({ type: T.DIFF_REQUESTED });
 
-    zenMoney.getDiff(currentClientTimestamp, serverTimestamp)
-      .then(tokens => dispatch({ payload: tokens, type: T.DIFF_RECEIVED }));
-  };
+  const currentClientTimestamp = Math.round(Date.now() / 1000);
+  const serverTimestamp = getState().diffServerTimestamp;
+
+  zenMoney.getDiff(currentClientTimestamp, serverTimestamp)
+    .then(tokens => dispatch({ payload: tokens, type: T.DIFF_RECEIVED }));
+};
 
 export const fetchTokens = code => dispatch => {
   dispatch({ type: T.TOKENS_REQUESTED });

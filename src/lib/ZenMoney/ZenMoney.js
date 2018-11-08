@@ -43,8 +43,7 @@ export default class ZenMoney {
     return { Authorization: `Bearer ${this.token}` };
   }
 
-  getDiff(currentClientTimestamp = Date.now() / 1000, serverTimestamp = 0,
-          payload = {}) {
+  getDiff(currentClientTimestamp, serverTimestamp, payload = {}) {
     return axios.post(
       'https://api.zenmoney.ru/v8/diff',
       {
