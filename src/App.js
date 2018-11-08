@@ -4,6 +4,7 @@ import { compose } from 'recompose';
 
 import { fetchDiff } from './actions';
 import './App.css';
+import AccountsList from './components/AccountsList';
 import Authorize from './components/Authorize';
 import withAuth from './enhancers/withAuth';
 import logo from './logo.svg';
@@ -16,6 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <AccountsList />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
