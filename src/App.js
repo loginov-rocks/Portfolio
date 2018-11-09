@@ -9,6 +9,7 @@ import Authorize from './components/Authorize';
 import LogoutButton from './components/LogoutButton';
 import Portfolio from './components/Porfolio';
 import withAuth from './enhancers/withAuth';
+import withStockQuotesUpdater from './enhancers/withStockQuotesUpdater';
 import logo from './logo.svg';
 
 class App extends Component {
@@ -47,5 +48,6 @@ const mapDispatchToProps = { fetchDiff };
 
 export default compose(
   withAuth(Authorize),
+  withStockQuotesUpdater,
   connect(mapStateToProps, mapDispatchToProps),
 )(App);
