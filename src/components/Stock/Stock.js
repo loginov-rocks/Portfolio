@@ -15,11 +15,17 @@ const Stock = ({
 
     {quote && (
       <React.Fragment>
-        <Amount instrumentId={1} value={quote.iexRealtimePrice} />
-        x
-        {amount}
-        =
-        <Amount instrumentId={1} value={amount * quote.iexRealtimePrice} />
+        <div>
+          <Amount instrumentId={1} value={quote.iexRealtimePrice} />
+          x
+          {amount}
+          =
+          <Amount instrumentId={1} value={amount * quote.iexRealtimePrice} />
+        </div>
+        <div style={{ color: quote.change >= 0 ? 'green' : 'red' }}>
+          <Amount instrumentId={1} value={amount * quote.change} />
+          {(quote.changePercent * 100).toFixed(2)}%
+        </div>
       </React.Fragment>
     )}
 
