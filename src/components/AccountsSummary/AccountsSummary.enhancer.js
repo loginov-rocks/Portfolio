@@ -23,18 +23,19 @@ export default compose(
     const instrument = instruments.find(({ id }) => id === instrumentId);
 
     const balanceByAccounts = accounts.map((account) => {
-      let { balance } = account;
+      let { balance, instrument: accountInstrumentId } = account;
 
       if (account.id === brokerageAccountId) {
         balance = calculatePortfolioBalance(portfolio, stockQuotes);
+        accountInstrumentId = 1; // Hardcode dollar for brokerage account.
       }
 
-      if (account.instrument === instrumentId) {
+      if (accountInstrumentId === instrumentId) {
         return balance;
       }
 
       const accountInstrument = instruments
-        .find(({ id }) => id === account.instrument);
+        .find(({ id }) => id === accountInstrumentId);
 
       return balance / instrument.rate * accountInstrument.rate;
     });
