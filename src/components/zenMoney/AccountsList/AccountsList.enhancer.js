@@ -2,9 +2,9 @@
 
 import { connect } from 'react-redux';
 
-import { setBrokerageAccount } from '../../actions';
+import { setBrokerageAccount } from '../../../actions/zenMoney';
 
-const mapStateToProps = ({ brokerageAccountId, diff }) => ({
+const mapStateToProps = ({ zenMoney: { brokerageAccountId, diff } }) => ({
   accounts: (diff && diff.account
     ? diff.account.filter(account => (
       account.archive === false && account.type !== 'debt'

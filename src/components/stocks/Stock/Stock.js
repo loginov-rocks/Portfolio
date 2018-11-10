@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import Amount from '../Amount';
+import Amount from '../../zenMoney/Amount';
 
 const Stock = ({
   amount, logo, logoProgress, quote, quoteProgress, symbol,

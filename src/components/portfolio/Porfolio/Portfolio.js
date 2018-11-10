@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 
-import Amount from '../Amount';
-import Stock from '../Stock';
+import Stock from '../../stocks/Stock';
+import Amount from '../../zenMoney/Amount';
 
 const Portfolio = ({
   addAmount, addSymbol, balance, handleAddAmountChange, handleAddSymbolChange,

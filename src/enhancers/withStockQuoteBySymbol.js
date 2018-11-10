@@ -1,43 +1,45 @@
 /* @flow */
 
 import { connect } from 'react-redux';
-import { compose, lifecycle, withProps } from 'recompose';
+import { compose, lifecycle, mapProps } from 'recompose';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
 
-import { fetchStockQuote } from '../actions';
+import { fetchQuote } from '../actions/stocks';
 
-const mapStateToProps = ({ stockQuotes }) => ({ stockQuotes });
+const mapStateToProps = ({ stocks: { quotes } }) => ({ quotes });
 
-const mapDispatchToProps = { fetchStockQuote };
+const mapDispatchToProps = { fetchQuote };
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   lifecycle({
 
     componentDidMount() {
-      const { fetchStockQuote, symbol } = this.props;
+      const { fetchQuote, symbol } = this.props;
 
       if (symbol) {
-        fetchStockQuote(symbol);
+        fetchQuote(symbol);
       }
     },
 
     componentDidUpdate(prevProps) {
-      const { fetchStockQuote, symbol } = this.props;
+      const { fetchQuote, symbol } = this.props;
 
       if (symbol && symbol !== prevProps.symbol) {
-        fetchStockQuote(symbol);
+        fetchQuote(symbol);
       }
     },
 
   }),
-  withProps(({ stockQuotes, symbol }) => {
-    const quote = getResourceById(stockQuotes, symbol);
+  mapProps(({ fetchQuote, quotes, symbol, ...props }) => {
+    const quote = getResourceById(quotes, symbol);
 
     return {
       quote: extractData(quote),
       quoteProgress: isRequested(quote),
+      symbol,
+      ...props,
     };
   }),
 );

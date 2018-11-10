@@ -3,10 +3,10 @@
 import { connect } from 'react-redux';
 import { compose, lifecycle, withState, withHandlers } from 'recompose';
 
-import { fetchTokens, setAuthorizationToken } from '../../actions';
-import zenMoney from '../../lib/ZenMoney/instance';
+import { fetchTokens, setAuthorizationToken } from '../../../actions/zenMoney';
+import zenMoney from '../../../lib/ZenMoney/instance';
 
-const mapStateToProps = ({ accessToken }) => ({ accessToken });
+const mapStateToProps = ({ zenMoney: { accessToken } }) => ({ accessToken });
 
 const mapDispatchToProps = { fetchTokens, setAuthorizationToken };
 

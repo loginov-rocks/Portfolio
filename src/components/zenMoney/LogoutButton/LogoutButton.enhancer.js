@@ -3,7 +3,7 @@
 import { connect } from 'react-redux';
 import { compose, withHandlers } from 'recompose';
 
-import { logout } from '../../actions';
+import { logout } from '../../../actions/zenMoney';
 
 const mapDispatchToProps = { logout };
 

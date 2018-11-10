@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 
-import AccountsList from '../AccountsList';
-import LogoutButton from '../LogoutButton';
-import Portfolio from '../Porfolio';
+import Portfolio from '../../portfolio/Porfolio';
+import AccountsList from '../../zenMoney/AccountsList';
+import LogoutButton from '../../zenMoney/LogoutButton';
 
 const App = () => (
   <React.Fragment>

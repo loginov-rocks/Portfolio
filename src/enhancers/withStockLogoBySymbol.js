@@ -1,43 +1,45 @@
 /* @flow */
 
 import { connect } from 'react-redux';
-import { compose, lifecycle, withProps } from 'recompose';
+import { compose, lifecycle, mapProps } from 'recompose';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
 
-import { fetchStockLogo } from '../actions';
+import { fetchLogo } from '../actions/stocks';
 
-const mapStateToProps = ({ stockLogos }) => ({ stockLogos });
+const mapStateToProps = ({ stocks: { logos } }) => ({ logos });
 
-const mapDispatchToProps = { fetchStockLogo };
+const mapDispatchToProps = { fetchLogo };
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   lifecycle({
 
     componentDidMount() {
-      const { fetchStockLogo, symbol } = this.props;
+      const { fetchLogo, symbol } = this.props;
 
       if (symbol) {
-        fetchStockLogo(symbol);
+        fetchLogo(symbol);
       }
     },
 
     componentDidUpdate(prevProps) {
-      const { fetchStockLogo, symbol } = this.props;
+      const { fetchLogo, symbol } = this.props;
 
       if (symbol && symbol !== prevProps.symbol) {
-        fetchStockLogo(symbol);
+        fetchLogo(symbol);
       }
     },
 
   }),
-  withProps(({ stockLogos, symbol }) => {
-    const logo = getResourceById(stockLogos, symbol);
+  mapProps(({ fetchLogo, logos, symbol, ...props }) => {
+    const logo = getResourceById(logos, symbol);
 
     return {
       logo: extractData(logo),
       logoProgress: isRequested(logo),
+      symbol,
+      ...props,
     };
   }),
 );

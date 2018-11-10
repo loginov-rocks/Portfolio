@@ -3,22 +3,23 @@
 import { connect } from 'react-redux';
 import { compose, withProps } from 'recompose';
 
-import { calculatePortfolioBalance } from '../../lib/stocks';
+import { calculatePortfolioBalance } from '../../../lib/stocks';
 
 const mapStateToProps = ({
-  brokerageAccountId, diff, portfolio, stockQuotes,
+  portfolio: { portfolio },
+  stocks: { quotes },
+  zenMoney: { brokerageAccountId, diff },
 }) => ({
   brokerageAccountId,
   instruments: diff && diff.instrument ? diff.instrument : [],
   portfolio,
-  stockQuotes,
+  quotes,
 });
 
 export default compose(
   connect(mapStateToProps),
   withProps(({
-    accounts, brokerageAccountId, instrumentId, instruments, portfolio,
-    stockQuotes,
+    accounts, brokerageAccountId, instrumentId, instruments, portfolio, quotes,
   }) => {
     const instrument = instruments.find(({ id }) => id === instrumentId);
 
@@ -26,7 +27,7 @@ export default compose(
       let { balance, instrument: accountInstrumentId } = account;
 
       if (account.id === brokerageAccountId) {
-        balance = calculatePortfolioBalance(portfolio, stockQuotes);
+        balance = calculatePortfolioBalance(portfolio, quotes);
         accountInstrumentId = 1; // Hardcode dollar for brokerage account.
       }
 

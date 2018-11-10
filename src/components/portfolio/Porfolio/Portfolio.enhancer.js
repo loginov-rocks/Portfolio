@@ -5,11 +5,11 @@ import {
   compose, withHandlers, withProps, withStateHandlers,
 } from 'recompose';
 
-import { addStock, removeStock } from '../../actions';
-import { calculatePortfolioBalance } from '../../lib/stocks';
+import { addStock, removeStock } from '../../../actions/portfolio';
+import { calculatePortfolioBalance } from '../../../lib/stocks';
 
-const mapStateToProps = ({ portfolio, stockQuotes }) => ({
-  portfolio, stockQuotes,
+const mapStateToProps = ({ portfolio: { portfolio }, stocks: { quotes } }) => ({
+  portfolio, quotes,
 });
 
 const mapDispatchToProps = { addStock, removeStock };
@@ -40,7 +40,7 @@ export default compose(
     },
 
   }),
-  withProps(({ portfolio, stockQuotes }) => ({
-    balance: calculatePortfolioBalance(portfolio, stockQuotes),
+  withProps(({ portfolio, quotes }) => ({
+    balance: calculatePortfolioBalance(portfolio, quotes),
   })),
 );
