@@ -1,16 +1,16 @@
 /* @flow */
 
 import { connect } from 'react-redux';
-import { compose, lifecycle } from 'recompose';
+import { compose, lifecycle, mapProps } from 'recompose';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { isExpired } from 'redux-repository/lib/resource';
 
-import { fetchStockQuote } from '../actions';
+import { fetchQuote } from '../actions/stocks';
 import * as C from '../constants';
 
-const mapStateToProps = ({ stockQuotes }) => ({ stockQuotes });
+const mapStateToProps = ({ stocks: { quotes } }) => ({ quotes });
 
-const mapDispatchToProps = { fetchStockQuote };
+const mapDispatchToProps = { fetchQuote };
 
 let digest;
 
@@ -20,20 +20,20 @@ export default compose(
 
     componentDidMount() {
       digest = setInterval(() => {
-        const { fetchStockQuote, stockQuotes } = this.props;
+        const { fetchQuote, quotes } = this.props;
         const expired = [];
 
-        stockQuotes.allIds.forEach((symbol) => {
-          const quote = getResourceById(stockQuotes, symbol);
+        quotes.allIds.forEach((symbol) => {
+          const quote = getResourceById(quotes, symbol);
 
-          if (isExpired(quote, C.STOCK_QUOTE_TTL)) {
+          if (isExpired(quote, C.STOCKS_QUOTES_TTL)) {
             expired.push(symbol);
-            fetchStockQuote(symbol);
+            fetchQuote(symbol);
           }
         });
 
         console.log('Stock quotes updater working, expired:', expired);
-      }, C.STOCK_QUOTES_UPDATER_INTERVAL);
+      }, C.STOCKS_QUOTES_UPDATER_INTERVAL);
     },
 
     componentWillUnmount() {
@@ -41,4 +41,5 @@ export default compose(
     },
 
   }),
+  mapProps(({ fetchQuote, quotes, ...props }) => props),
 );
