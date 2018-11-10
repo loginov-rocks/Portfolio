@@ -36,7 +36,7 @@ export const fetchDiff = () => (dispatch, getState) => {
   dispatch({ type: T.DIFF_REQUESTED });
 
   const currentClientTimestamp = Math.round(Date.now() / 1000);
-  const serverTimestamp = getState().diffServerTimestamp;
+  const serverTimestamp = getState().zenMoney.diffServerTimestamp;
 
   zenMoney.getDiff(currentClientTimestamp, serverTimestamp)
     .then(tokens => {

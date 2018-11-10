@@ -8,7 +8,7 @@ import iex from '../../lib/IEX/instance';
 export const fetchLogo = symbol => createFetchResource(
   C.STOCKS_LOGOS_RESOURCE_NAME,
   symbol,
-  ({ stockLogos }) => stockLogos,
+  ({ stocks: { logos } }) => logos,
   (dispatchReceived, dispatchFailed) => {
     iex.getStockLogo(symbol)
       .then(data => dispatchReceived(data))
@@ -20,7 +20,7 @@ export const fetchLogo = symbol => createFetchResource(
 export const fetchQuote = symbol => createFetchResource(
   C.STOCKS_QUOTES_RESOURCE_NAME,
   symbol,
-  ({ stockQuotes }) => stockQuotes,
+  ({ stocks: { quotes } }) => quotes,
   (dispatchReceived, dispatchFailed) => {
     iex.getStockQuote(symbol)
       .then(data => dispatchReceived(data))
