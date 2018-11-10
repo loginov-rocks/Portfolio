@@ -3,24 +3,23 @@
 import * as T from '../../actions/portfolio/types';
 
 const initialState = {
-  portfolio: [],
+  positions: [],
 };
 
 export default (state = initialState, action) => {
+  const { payload } = action;
+
   switch (action.type) {
-    case T.STOCK_ADDED:
+    case T.POSITION_CLOSED:
       return {
         ...state,
-        // TODO: Merge if stock has already been in portfolio.
-        portfolio: state.portfolio.concat([action.payload]),
+        positions: state.positions.slice().filter(({ id }) => (id !== payload)),
       };
 
-    case T.STOCK_REMOVED:
+    case T.POSITION_OPENED:
       return {
         ...state,
-        portfolio: state.portfolio.filter(({ symbol }) => (
-          symbol !== action.payload
-        )),
+        positions: state.positions.slice().concat([payload]),
       };
 
     default:

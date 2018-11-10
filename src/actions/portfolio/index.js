@@ -1,11 +1,22 @@
 /* @flow */
 
+import uuid from 'uuid/v1';
+
 import * as T from './types';
 
-export const addStock = (symbol, amount) => dispatch => {
-  dispatch({ payload: { amount, symbol }, type: T.STOCK_ADDED });
+export const closePosition = id => dispatch => {
+  dispatch({ payload: id, type: T.POSITION_CLOSED });
 };
 
-export const removeStock = (symbol) => dispatch => {
-  dispatch({ payload: symbol, type: T.STOCK_REMOVED });
+export const openPosition = (symbol, price, amount, date) => dispatch => {
+  dispatch({
+    payload: {
+      amount,
+      date,
+      id: uuid(),
+      price,
+      symbol,
+    },
+    type: T.POSITION_OPENED,
+  });
 };

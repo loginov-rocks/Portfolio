@@ -1,46 +1,20 @@
 /* @flow */
 
 import { connect } from 'react-redux';
-import {
-  compose, withHandlers, withProps, withStateHandlers,
-} from 'recompose';
+import { compose, withProps } from 'recompose';
 
-import { addStock, removeStock } from '../../../actions/portfolio';
-import { calculatePortfolioBalance } from '../../../lib/stocks';
+import { closePosition } from '../../../actions/portfolio';
+import { calculatePositionsValue } from '../../../lib/stocks';
 
-const mapStateToProps = ({ portfolio: { portfolio }, stocks: { quotes } }) => ({
-  portfolio, quotes,
+const mapStateToProps = ({ portfolio: { positions }, stocks: { quotes } }) => ({
+  positions, quotes,
 });
 
-const mapDispatchToProps = { addStock, removeStock };
+const mapDispatchToProps = { closePosition };
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withStateHandlers(
-    {
-      addAmount: 1,
-      addSymbol: '',
-    },
-    {
-      handleAddAmountChange: () => (event) => ({
-        addAmount: (parseInt(event.target.value) > 0
-          ? parseInt(event.target.value)
-          : 1),
-      }),
-      handleAddSymbolChange: () => (event) => ({
-        addSymbol: event.target.value.toUpperCase(),
-      }),
-    },
-  ),
-  withHandlers({
-
-    handleSubmit: ({ addAmount, addStock, addSymbol }) => (event) => {
-      event.preventDefault();
-      addStock(addSymbol, addAmount);
-    },
-
-  }),
-  withProps(({ portfolio, quotes }) => ({
-    balance: calculatePortfolioBalance(portfolio, quotes),
+  withProps(({ positions, quotes }) => ({
+    balance: calculatePositionsValue(positions, quotes),
   })),
 );

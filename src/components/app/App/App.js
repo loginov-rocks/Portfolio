@@ -3,14 +3,12 @@
 import * as React from 'react';
 
 import Portfolio from '../../portfolio/Porfolio';
-import AccountsList from '../../zenMoney/AccountsList';
-import LogoutButton from '../../zenMoney/LogoutButton';
+import View from '../../zenMoney/View';
 
 const App = () => (
   <React.Fragment>
-    <AccountsList />
+    <View />
     <Portfolio />
-    <LogoutButton />
   </React.Fragment>
 );
 

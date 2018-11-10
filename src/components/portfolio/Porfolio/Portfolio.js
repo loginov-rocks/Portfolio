@@ -2,30 +2,21 @@
 
 import * as React from 'react';
 
+import AddPosition from '../AddPositionForm';
 import Stock from '../../stocks/Stock';
-import Amount from '../../zenMoney/Amount';
 
-const Portfolio = ({
-  addAmount, addSymbol, balance, handleAddAmountChange, handleAddSymbolChange,
-  handleSubmit, portfolio, removeStock,
-}) => (
+const Portfolio = ({ balance, closePosition, positions }) => (
   <div>
 
-    <form onSubmit={handleSubmit}>
-      <input onChange={handleAddSymbolChange} type="text" value={addSymbol} />
-      <input onChange={handleAddAmountChange} type="number" value={addAmount} />
-      <button type="submit">Add</button>
-    </form>
+    <AddPosition />
 
-    <div>
-      Total: <Amount instrumentId={1} value={balance} />
-    </div>
+    <div>Total: {balance}</div>
 
     <ul>
-      {portfolio.map(({ amount, symbol }, index) => (
+      {positions.map(({ amount, id, symbol }, index) => (
         <li key={index}>
           <Stock amount={amount} symbol={symbol} />
-          <button onClick={() => removeStock(symbol)}>Remove</button>
+          <button onClick={() => closePosition(id)}>Remove</button>
         </li>
       ))}
     </ul>
