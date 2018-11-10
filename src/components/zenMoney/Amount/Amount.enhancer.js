@@ -2,10 +2,8 @@
 
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({ zenMoney: { diff } }, { instrumentId }) => ({
-  instrument: (diff && diff.instrument
-    ? diff.instrument.find(({ id }) => id === instrumentId)
-    : undefined),
+const mapStateToProps = ({ zenMoney: { instruments } }, { instrumentId }) => ({
+  instrument: instruments.find(({ id }) => id === instrumentId),
 });
 
 export default connect(mapStateToProps);

@@ -8,12 +8,9 @@ import { calculatePortfolioBalance } from '../../../lib/stocks';
 const mapStateToProps = ({
   portfolio: { portfolio },
   stocks: { quotes },
-  zenMoney: { brokerageAccountId, diff },
+  zenMoney: { brokerageAccountId, instruments },
 }) => ({
-  brokerageAccountId,
-  instruments: diff && diff.instrument ? diff.instrument : [],
-  portfolio,
-  quotes,
+  brokerageAccountId, instruments, portfolio, quotes,
 });
 
 export default compose(

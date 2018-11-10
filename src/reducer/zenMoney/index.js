@@ -1,48 +1,95 @@
 /* @flow */
 
-import _ from 'lodash';
-
 import * as T from '../../actions/zenMoney/types';
+import mergeEntities from './mergeEntities';
 
 const initialState = {
-  accessToken: '',
+  // Accounts.
   brokerageAccountId: '',
-  diff: null,
-  diffServerTimestamp: 0,
+
+  // Authorization.
+  accessToken: '',
+  areTokensRequested: false,
   isAuthorized: false,
   refreshToken: '',
+  tokensError: '',
+
+  // Diff.
+  accounts: [],
+  diffError: '',
+  diffServerTimestamp: 0,
+  instruments: [],
+  isDiffRequested: false,
 };
 
 export default (state = initialState, action) => {
+  const { payload } = action;
+
   switch (action.type) {
-    case T.AUTHORIZATION_TOKEN_SET:
+    // Accounts.
+    case T.BROKERAGE_ACCOUNT_SET:
+      return {
+        ...state,
+        brokerageAccountId: payload,
+      };
+
+    // Authorization.
+    case T.ACCESS_TOKEN_SET:
       return {
         ...state,
         isAuthorized: true,
       };
 
-    case T.BROKERAGE_ACCOUNT_SET:
+    case T.TOKENS_FAILED:
       return {
         ...state,
-        brokerageAccountId: action.payload,
+        accessToken: '',
+        areTokensRequested: false,
+        isAuthorized: false,
+        refreshToken: '',
+        tokensError: payload,
       };
 
-    case T.DIFF_RECEIVED:
+    case T.TOKENS_RECEIVED:
       return {
         ...state,
-        // TODO: Keep only needed data.
-        diff: _.assign({}, state.diff, action.payload),
-        diffServerTimestamp: action.payload.serverTimestamp,
+        accessToken: payload.access_token,
+        areTokensRequested: false,
+        refreshToken: payload.refresh_token,
+        tokensError: '',
+      };
+
+    case T.TOKENS_REQUESTED:
+      return {
+        ...state,
+        areTokensRequested: true,
       };
 
     case T.LOGGED_OUT:
       return initialState;
 
-    case T.TOKENS_RECEIVED:
+    // Diff.
+    case T.DIFF_FAILED:
       return {
         ...state,
-        accessToken: action.payload.access_token,
-        refreshToken: action.payload.refresh_token,
+        diffError: payload,
+        isDiffRequested: false,
+      };
+
+    case T.DIFF_RECEIVED:
+      return {
+        ...state,
+        accounts: mergeEntities(state.accounts, payload.account),
+        diffError: '',
+        diffServerTimestamp: payload.serverTimestamp,
+        instruments: mergeEntities(state.instruments, payload.instrument),
+        isDiffRequested: false,
+      };
+
+    case T.DIFF_REQUESTED:
+      return {
+        ...state,
+        isDiffRequested: true,
       };
 
     default:

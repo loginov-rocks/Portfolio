@@ -26,9 +26,9 @@ export const logout = () => dispatch => {
   dispatch({ type: T.LOGGED_OUT });
 };
 
-export const setAuthorizationToken = token => dispatch => {
-  zenMoney.setToken(token);
-  dispatch({ type: T.AUTHORIZATION_TOKEN_SET });
+export const setAccessToken = token => dispatch => {
+  zenMoney.setAccessToken(token);
+  dispatch({ type: T.ACCESS_TOKEN_SET });
 };
 
 // Diff.

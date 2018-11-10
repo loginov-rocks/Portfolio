@@ -8,14 +8,12 @@ import withAuth from '../../../enhancers/withAuth';
 import withStockQuotesUpdater from '../../../enhancers/withStockQuotesUpdater';
 import Authorize from '../../zenMoney/Authorize';
 
-const mapStateToProps = ({ diff }) => ({ diff });
-
 const mapDispatchToProps = { fetchDiff };
 
 export default compose(
   withAuth(Authorize),
   withStockQuotesUpdater,
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(null, mapDispatchToProps),
   lifecycle({
 
     componentDidMount() {

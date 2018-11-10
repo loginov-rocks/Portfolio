@@ -3,20 +3,22 @@
 import axios from 'axios';
 
 export default class ZenMoney {
+  url = 'https://api.zenmoney.ru';
+
   constructor(consumerKey, consumerSecret, redirectUrl) {
     this.consumerKey = consumerKey;
     this.consumerSecret = consumerSecret;
     this.redirectUrl = redirectUrl;
   }
 
-  setToken(token) {
-    this.token = token;
+  setAccessToken(token) {
+    this.accessToken = token;
 
     return this;
   }
 
   getAuthorizeUrl() {
-    return `https://api.zenmoney.ru/oauth2/authorize?client_id=${this.consumerKey}&redirect_uri=${this.redirectUrl}&response_type=code`;
+    return `${this.url}/oauth2/authorize?client_id=${this.consumerKey}&redirect_uri=${this.redirectUrl}&response_type=code`;
   }
 
   extractAuthorizeCode(location) {
@@ -35,26 +37,26 @@ export default class ZenMoney {
     params.append('grant_type', 'authorization_code');
     params.append('redirect_uri', this.redirectUrl);
 
-    return axios.post('https://api.zenmoney.ru/oauth2/token', params)
+    return axios.post(`${this.url}/oauth2/token`, params)
       .then(({ data }) => data);
   }
 
-  getAuthorizationHeaders() {
-    return { Authorization: `Bearer ${this.token}` };
+  getAuthorizationHeader() {
+    return { Authorization: `Bearer ${this.accessToken}` };
   }
 
   getDiff(currentClientTimestamp, serverTimestamp, payload = {}) {
     return axios.post(
-      'https://api.zenmoney.ru/v8/diff',
+      `${this.url}/v8/diff`,
       {
         currentClientTimestamp,
         serverTimestamp,
         ...payload,
       },
       {
-        headers: this.getAuthorizationHeaders(),
+        headers: { ...this.getAuthorizationHeader() },
       },
     )
       .then(({ data }) => data);
   }
-}
+};
