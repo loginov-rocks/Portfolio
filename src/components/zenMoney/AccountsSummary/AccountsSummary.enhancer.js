@@ -3,7 +3,7 @@
 import { connect } from 'react-redux';
 import { compose, withProps } from 'recompose';
 
-import { calculatePositionsValue } from '../../../lib/stocks';
+import { calculatePositionsValue } from '../../../lib/portfolio';
 
 const mapStateToProps = ({
   portfolio: { positions },

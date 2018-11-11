@@ -3,23 +3,28 @@
 import * as React from 'react';
 
 import AddPosition from '../AddPositionForm';
+import Sectors from '../Sectors';
 import Stock from '../../stocks/Stock';
 
-const Portfolio = ({ balance, closePosition, positions }) => (
+const Portfolio = ({ closePosition, symbols, value }) => (
   <div>
+
+    <h2>Portfolio</h2>
 
     <AddPosition />
 
-    <div>Total: {balance}</div>
+    <div>Total: {value}</div>
 
     <ul>
-      {positions.map(({ amount, id, symbol }, index) => (
+      {symbols.map(({ amount, id, symbol }, index) => (
         <li key={index}>
           <Stock amount={amount} symbol={symbol} />
           <button onClick={() => closePosition(id)}>Remove</button>
         </li>
       ))}
     </ul>
+
+    <Sectors />
 
   </div>
 );

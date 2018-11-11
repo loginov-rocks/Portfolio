@@ -3,36 +3,32 @@
 import { connect } from 'react-redux';
 import { compose, mapProps } from 'recompose';
 
-import { closePosition } from '../../../actions/portfolio';
 import {
-  calculatePositionsValue, mergePositionsBySymbols,
+  mergePositionsBySymbols, mergeSymbolsBySectors,
 } from '../../../lib/portfolio';
 
 const mapStateToProps = ({ portfolio: { positions }, stocks: { quotes } }) => ({
   positions, quotes,
 });
 
-const mapDispatchToProps = { closePosition };
-
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  mapProps(({ positions, quotes, ...props }) => {
+  connect(mapStateToProps),
+  mapProps(({ positions, quotes }) => {
     const symbols = mergePositionsBySymbols(positions);
+    const sectors = mergeSymbolsBySectors(symbols, quotes);
 
     return {
-      ...props,
-      symbols: symbols.sort(({ symbol: a }, { symbol: b }) => {
-        if (a < b) {
+      sectors: sectors.sort(({ share: a }, { share: b }) => {
+        if (a > b) {
           return -1;
         }
 
-        if (a > b) {
+        if (a < b) {
           return 1;
         }
 
         return 0;
       }),
-      value: calculatePositionsValue(positions, quotes),
     };
   }),
 );
