@@ -3,9 +3,9 @@
 import { connect } from 'react-redux';
 import { compose, withHandlers, withStateHandlers } from 'recompose';
 
-import { openPosition } from '../../actions';
+import { createPosition } from '../../actions';
 
-const mapDispatchToProps = { openPosition };
+const mapDispatchToProps = { createPosition };
 
 const formatDate = date => date.toISOString().slice(0, 10);
 
@@ -48,10 +48,10 @@ export default compose(
   withHandlers({
 
     handleSubmit: ({
-      amount, date, openPosition, price, symbol,
+      amount, createPosition, date, price, symbol,
     }) => (event) => {
       event.preventDefault();
-      openPosition(symbol, price, amount, date);
+      createPosition(symbol, price, amount, date);
     },
 
   }),

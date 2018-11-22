@@ -3,24 +3,16 @@
 import * as T from '../actions/types';
 
 const initialState = {
-  positions: [],
+  //
 };
 
 export default (state = initialState, action) => {
-  const { payload } = action;
-
   switch (action.type) {
-    case T.POSITION_CLOSED:
-      return {
-        ...state,
-        positions: state.positions.slice().filter(({ id }) => (id !== payload)),
-      };
+    case T.POSITION_CREATED:
+      return state;
 
-    case T.POSITION_OPENED:
-      return {
-        ...state,
-        positions: state.positions.slice().concat([payload]),
-      };
+    case T.POSITION_DELETED:
+      return state;
 
     default:
       return state;

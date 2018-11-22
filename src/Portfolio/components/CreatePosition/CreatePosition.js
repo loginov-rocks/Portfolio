@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-const AddPositionForm = ({
+const CreatePosition = ({
   amount, date, handleAmountChange, handleDateChange, handlePriceChange,
   handleSymbolChange, handleSubmit, price, symbol,
 }) => (
@@ -22,9 +22,9 @@ const AddPositionForm = ({
 
     <input onChange={handleDateChange} type="date" value={date} />
 
-    <button type="submit">Add</button>
+    <button type="submit">Create</button>
 
   </form>
 );
 
-export default AddPositionForm;
+export default CreatePosition;
