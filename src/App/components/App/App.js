@@ -2,14 +2,21 @@
 
 import * as React from 'react';
 
-import Portfolio from 'Portfolio/components/Porfolio';
-import View from 'ZenMoney/components/View';
+import Progress from 'Shared/components/Progress';
 
-const App = () => (
-  <React.Fragment>
-    <View />
-    <Portfolio />
-  </React.Fragment>
-);
+import Navigation from '../Navigation';
+import Guest from '../../views/Guest';
+
+const App = ({ isAuthenticated, progress }) => {
+  if (progress) {
+    return <Progress />;
+  }
+
+  if (!isAuthenticated) {
+    return <Guest />;
+  }
+
+  return <Navigation />;
+};
 
 export default App;
