@@ -2,9 +2,10 @@
 
 import * as React from 'react';
 
-import PositionsList from 'Portfolio/components/PositionsList';
 import type { Position } from 'Portfolio/lib/flow';
 import Progress from 'Shared/components/Progress';
+
+import StockPositionsList from '../../components/StockPositionsList';
 
 type Props = {
   handleCreatePositionClick: () => void,
@@ -30,7 +31,12 @@ const Home = ({
     <div>
       {positionsLoading
         ? <Progress />
-        : <PositionsList onClick={handlePositionClick} positions={positions} />}
+        : (
+          <StockPositionsList
+            onClick={handlePositionClick}
+            positions={positions}
+          />
+        )}
     </div>
 
   </React.Fragment>

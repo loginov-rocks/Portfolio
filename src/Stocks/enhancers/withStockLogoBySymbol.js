@@ -1,17 +1,23 @@
 /* @flow */
 
 import { connect } from 'react-redux';
-import { compose, lifecycle, mapProps } from 'recompose';
+import {
+  compose, lifecycle, mapProps, type HOC,
+} from 'recompose';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
 
 import { fetchLogo } from '../actions';
 
+type EnhancedComponentProps = {
+  symbol: string,
+};
+
 const mapStateToProps = ({ stocks: { logos } }) => ({ logos });
 
 const mapDispatchToProps = { fetchLogo };
 
-export default compose(
+const withStockLogoBySymbol: HOC<*, EnhancedComponentProps> = compose(
   connect(mapStateToProps, mapDispatchToProps),
   lifecycle({
 
@@ -43,3 +49,5 @@ export default compose(
     };
   }),
 );
+
+export default withStockLogoBySymbol;

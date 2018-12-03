@@ -2,42 +2,22 @@
 
 import * as React from 'react';
 
-import { getQuotePrice } from '../../lib/stocks';
+import type { Quote } from '../../lib/IEX/IEX';
+
+type Props = {
+  children: React.Node,
+  logo: ?string,
+  logoProgress: boolean,
+  price: number,
+  quote: ?Quote,
+  quoteProgress: boolean,
+  symbol: string,
+};
 
 const Stock = ({
-  amount, logo, logoProgress, quote, quoteProgress, symbol,
-}) => (
-  <span>
-
-    {symbol}
-
-    {(logoProgress || quoteProgress) && 'Progress...'}
-
-    {quote && (
-      <React.Fragment>
-
-        <div>
-          {getQuotePrice(quote).toFixed(2)}
-          {' x '}
-          {amount}
-          {' = '}
-          {(amount * getQuotePrice(quote)).toFixed(2)}
-        </div>
-
-        <div style={{ color: quote.change >= 0 ? 'green' : 'red' }}>
-          {(quote.changePercent * 100).toFixed(2)}%
-          {' '}
-          ({(amount * quote.change).toFixed(2)})
-        </div>
-
-      </React.Fragment>
-    )}
-
-    {logo && (
-      <img alt="" src={logo} />
-    )}
-
-  </span>
-);
+  children, logo, logoProgress, price, quote, quoteProgress, symbol,
+}: Props) => children({
+  logo, logoProgress, price, quote, quoteProgress, symbol,
+});
 
 export default Stock;
