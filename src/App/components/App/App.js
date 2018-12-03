@@ -2,14 +2,13 @@
 
 import * as React from 'react';
 
-import Progress from 'Shared/components/Progress';
-
 import Navigation from '../Navigation';
 import Guest from '../../views/Guest';
+import Loading from '../../views/Loading';
 
 const App = ({ isAuthenticated, progress }) => {
   if (progress) {
-    return <Progress />;
+    return <Loading />;
   }
 
   if (!isAuthenticated) {

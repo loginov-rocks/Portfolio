@@ -1,15 +1,22 @@
 /* @flow */
 
 import { connect } from 'react-redux';
-import { compose, withHandlers, withStateHandlers } from 'recompose';
+import {
+  compose, withHandlers, withStateHandlers, type HOC,
+} from 'recompose';
 
 import { createPosition } from '../../actions';
+import type { Position } from '../../lib/flow';
+
+type EnhancedComponentProps = {
+  onCreate?: (Position) => void,
+};
 
 const mapDispatchToProps = { createPosition };
 
 const formatDate = date => date.toISOString().slice(0, 10);
 
-export default compose(
+const enhancer: HOC<*, EnhancedComponentProps> = compose(
   connect(null, mapDispatchToProps),
   withStateHandlers(
     {
@@ -48,11 +55,19 @@ export default compose(
   withHandlers({
 
     handleSubmit: ({
-      amount, createPosition, date, price, symbol,
+      amount, createPosition, date, onCreate, price, symbol,
     }) => (event) => {
       event.preventDefault();
-      createPosition(symbol, price, amount, date);
+
+      createPosition(symbol, price, amount, date)
+        .then((position) => {
+          if (onCreate) {
+            onCreate(position);
+          }
+        });
     },
 
   }),
 );
+
+export default enhancer;

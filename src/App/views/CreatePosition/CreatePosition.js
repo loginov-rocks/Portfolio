@@ -2,7 +2,9 @@
 
 import * as React from 'react';
 
-const CreatePosition = ({ handleHomeClick }) => (
+import CreatePositionForm from 'Portfolio/components/CreatePositionForm';
+
+const CreatePosition = ({ handleHomeClick, handleOnCreate }) => (
   <React.Fragment>
 
     <div>
@@ -10,6 +12,8 @@ const CreatePosition = ({ handleHomeClick }) => (
     </div>
 
     <h1>Create position</h1>
+
+    <CreatePositionForm onCreate={handleOnCreate} />
 
   </React.Fragment>
 );

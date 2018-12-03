@@ -15,10 +15,16 @@ export const createPosition = (
     throw new Error('Trying to create position when unauthorized');
   }
 
-  const position = { amount, date, price, symbol };
+  const positionData = { amount, date, price, symbol };
 
-  firebase.push(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}`, position)
-    .then(() => dispatch({ payload: position, type: T.POSITION_CREATED }));
+  return firebase.push(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}`, positionData)
+    .then(({ key }) => {
+      const position = Object.assign({ id: key }, positionData);
+
+      dispatch({ payload: position, type: T.POSITION_CREATED });
+
+      return position;
+    });
 };
 
 export const deletePosition = (
