@@ -1,10 +1,9 @@
 /* @flow */
 
+import { firebaseCollectionToArray } from 'Shared/lib/transform';
+
 import withPositions from './withPositions';
 
-export default withPositions(object => {
-  return Object.keys(object).map(id => ({
-    ...object[id],
-    id,
-  }));
-});
+const withPositionsArray = withPositions(firebaseCollectionToArray);
+
+export default withPositionsArray;

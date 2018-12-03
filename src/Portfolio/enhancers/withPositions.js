@@ -2,17 +2,18 @@
 
 import { connect } from 'react-redux';
 import { firebaseConnect, isLoaded } from 'react-redux-firebase';
-import { compose } from 'recompose';
+import { compose, type HOC } from 'recompose';
+
+import withAuth from 'User/enhancers/withAuth';
 
 import * as C from '../../constants';
-import withAuth from '../../User/enhancers/withAuth';
 
-const mapStateToProps = transform => ({ firebase: { data } }) => ({
+const mapStateToProps = (transform: Function) => ({ firebase: { data } }) => ({
   positions: transform(data[C.FIREBASE_POSITIONS_PATH] || {}),
   positionsLoading: !isLoaded(data[C.FIREBASE_POSITIONS_PATH]),
 });
 
-export default (transform = x => x) => compose(
+const withPositions: HOC<*, *> = (transform: Function = x => x) => compose(
   withAuth,
   firebaseConnect(({ auth }) => [
     {
@@ -22,3 +23,5 @@ export default (transform = x => x) => compose(
   ]),
   connect(mapStateToProps(transform)),
 );
+
+export default withPositions;

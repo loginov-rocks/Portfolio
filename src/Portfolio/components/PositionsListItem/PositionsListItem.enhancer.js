@@ -1,19 +1,27 @@
 /* @flow */
 
-import { connect } from 'react-redux';
-import { compose, withHandlers } from 'recompose';
+import {
+  compose, withHandlers, withProps, type HOC,
+} from 'recompose';
 
-import { deletePosition } from '../../actions';
+type EnhancedComponentProps = {
+  onClick?: (Position) => void,
+  position: Position,
+};
 
-const mapDispatchToProps = { deletePosition };
-
-export default compose(
-  connect(null, mapDispatchToProps),
+const enhancer: HOC<*, EnhancedComponentProps> = compose(
   withHandlers({
 
-    handleDelete: ({ deletePosition, position }) => () => {
-      deletePosition(position.id);
+    handleClick: ({ onClick, position }) => () => {
+      if (onClick) {
+        onClick(position);
+      }
     },
 
   }),
+  withProps(({ onClick }) => ({
+    isClickable: !!onClick,
+  })),
 );
+
+export default enhancer;
