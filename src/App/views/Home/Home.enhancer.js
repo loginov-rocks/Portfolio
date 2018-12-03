@@ -10,6 +10,10 @@ import * as R from '../../routes';
 const enhancer: HOC<*, *> = compose(
   withNavigationHandlers({
     handleCreatePositionClick: R.CREATE_POSITION,
+    handlePositionClick: (props, position) => ({
+      params: { position: position.id },
+      route: R.POSITION,
+    }),
     handleProfileClick: R.PROFILE,
   }),
   withPositionsArray,

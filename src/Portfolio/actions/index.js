@@ -43,6 +43,8 @@ export const deletePosition = (
     throw new Error('Trying to delete position when unauthorized');
   }
 
-  firebase.remove(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}/${id}`)
-    .then(() => dispatch({ payload: id, type: T.POSITION_DELETED }));
+  return firebase.remove(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}/${id}`)
+    .then(() => {
+      dispatch({ payload: id, type: T.POSITION_DELETED });
+    });
 };

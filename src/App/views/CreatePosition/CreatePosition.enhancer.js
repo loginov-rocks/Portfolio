@@ -8,11 +8,15 @@ import * as R from '../../routes';
 const enhancer: HOC<*, *> = compose(
   withNavigationHandlers({
     handleHomeClick: R.HOME,
+    handlePositionClick: (props, position) => ({
+      params: { position: position.id },
+      route: R.POSITION,
+    }),
   }),
   withHandlers({
 
-    handleOnCreate: ({ handleHomeClick }) => () => {
-      handleHomeClick();
+    handleOnCreate: ({ handlePositionClick }) => (position) => {
+      handlePositionClick(position);
     },
 
   }),

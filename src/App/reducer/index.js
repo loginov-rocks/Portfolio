@@ -3,16 +3,25 @@
 import * as T from '../actions/types';
 import * as R from '../routes';
 
-const initialState = {
-  route: R.HOME,
+export type State = {
+  route: string,
+  routeParams: {},
 };
 
-export default (state = initialState, action) => {
+const initialState: State = {
+  route: R.HOME,
+  routeParams: {},
+};
+
+export default (state: State = initialState, action): State => {
+  const { payload } = action;
+
   switch (action.type) {
     case T.NAVIGATE:
       return {
         ...state,
-        route: action.payload,
+        route: payload.route,
+        routeParams: payload.params ? payload.params : {},
       };
 
     default:
