@@ -6,6 +6,7 @@ import type { Position } from 'Portfolio/lib/flow';
 import Progress from 'Shared/components/Progress';
 
 import StockPositionsList from '../../components/StockPositionsList';
+import StockPositionsValue from '../../components/StockPositionsValue';
 
 type Props = {
   handleCreatePositionClick: () => void,
@@ -26,6 +27,16 @@ const Home = ({
     <div>
       <button onClick={handleCreatePositionClick}>Create position</button>
       <button onClick={handleProfileClick}>Profile</button>
+    </div>
+
+    <div>
+      {positionsLoading
+        ? <Progress />
+        : (
+          <StockPositionsValue positions={positions}>
+            {({ value }) => value.toFixed(2)}
+          </StockPositionsValue>
+        )}
     </div>
 
     <div>

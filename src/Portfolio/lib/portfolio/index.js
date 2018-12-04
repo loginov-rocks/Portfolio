@@ -2,6 +2,8 @@
 
 import { findQuoteBySymbol, getQuotePrice } from 'Stocks/lib/stocks';
 
+import type { Position } from '../flow';
+
 export const calculatePositionsValue = (positions, quotesRepository) => (
   positions
     .map(position => {
@@ -13,6 +15,10 @@ export const calculatePositionsValue = (positions, quotesRepository) => (
     })
     .reduce((a, b) => a + b, 0)
 );
+
+export const getUniqueSymbolsFromPositions = (positions: Array<Position>) => [
+  ...new Set(positions.map(position => position.symbol)),
+];
 
 export const mergePositionsBySymbols = (positions) => {
   const symbols = {};
