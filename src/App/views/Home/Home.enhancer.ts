@@ -1,13 +1,11 @@
-/* @flow */
-
-import { compose, type HOC } from 'recompose';
+import { compose } from 'recompose';
 
 import withPositionsArray from 'Portfolio/enhancers/withPositionsArray';
 
 import withNavigationHandlers from '../../enhancers/withNavigationHandlers';
 import * as R from '../../routes';
 
-const enhancer: HOC<*, *> = compose(
+export default compose(
   withNavigationHandlers({
     handleCreatePositionClick: R.CREATE_POSITION,
     handlePositionClick: (props, position) => ({
@@ -18,5 +16,3 @@ const enhancer: HOC<*, *> = compose(
   }),
   withPositionsArray,
 );
-
-export default enhancer;

@@ -1,5 +1,3 @@
-/* @flow */
-
 import AccountItem from './AccountItem';
 import enhance from './AccountItem.enhancer';
 

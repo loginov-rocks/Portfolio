@@ -1,5 +1,3 @@
-/* @flow */
-
 import { createFetchResource } from 'redux-repository/lib/actions';
 
 import * as C from '../../constants';

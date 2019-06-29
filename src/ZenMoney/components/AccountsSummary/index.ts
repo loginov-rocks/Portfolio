@@ -1,5 +1,3 @@
-/* @flow */
-
 import AccountsSummary from './AccountsSummary';
 import enhance from './AccountsSummary.enhancer';
 

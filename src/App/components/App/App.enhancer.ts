@@ -1,5 +1,3 @@
-/* @flow */
-
 import { connect } from 'react-redux';
 import { isEmpty, isLoaded } from 'react-redux-firebase';
 import { branch, compose, withProps } from 'recompose';

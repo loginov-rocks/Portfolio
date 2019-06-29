@@ -1,5 +1,3 @@
-/* @flow */
-
 import View from './View';
 import enhance from './View.enhancer';
 

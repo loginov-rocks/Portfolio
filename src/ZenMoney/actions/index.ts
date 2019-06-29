@@ -1,5 +1,3 @@
-/* @flow */
-
 import zenMoney from '../lib/ZenMoney/instance';
 import * as T from './types';
 

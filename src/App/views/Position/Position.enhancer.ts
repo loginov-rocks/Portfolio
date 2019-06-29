@@ -1,7 +1,5 @@
-/* @flow */
-
 import { connect } from 'react-redux';
-import { compose, withHandlers, type HOC } from 'recompose';
+import { compose, withHandlers } from 'recompose';
 
 import { deletePosition } from 'Portfolio/actions';
 import withPositionById from 'Portfolio/enhancers/withPositionById';
@@ -12,7 +10,7 @@ import * as R from '../../routes';
 
 const mapDispatchToProps = { deletePosition };
 
-const enhancer: HOC<*, *> = compose(
+export default compose(
   withNavigationHandlers({
     handleHomeClick: R.HOME,
   }),
@@ -30,5 +28,3 @@ const enhancer: HOC<*, *> = compose(
 
   }),
 );
-
-export default enhancer;

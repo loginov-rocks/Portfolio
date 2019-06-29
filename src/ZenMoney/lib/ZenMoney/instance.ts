@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as C from '../../../constants';
 import ZenMoney from './ZenMoney';
 

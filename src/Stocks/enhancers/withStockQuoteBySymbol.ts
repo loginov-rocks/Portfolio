@@ -1,25 +1,22 @@
-/* @flow */
-
 import { connect } from 'react-redux';
-import {
-  compose, lifecycle, mapProps, type HOC,
-} from 'recompose';
+import { compose, lifecycle, mapProps } from 'recompose';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
 
-import { fetchQuote } from '../actions';
+import { fetchQuote as fetchQuoteAction } from '../actions';
 
-type EnhancedComponentProps = {
-  symbol: string,
-};
+interface Props {
+  fetchQuote: (symbol: string) => void,
+  symbol: string;
+}
 
 const mapStateToProps = ({ stocks: { quotes } }) => ({ quotes });
 
-const mapDispatchToProps = { fetchQuote };
+const mapDispatchToProps = { fetchQuote: fetchQuoteAction };
 
-const withStockQuoteBySymbol: HOC<*, EnhancedComponentProps> = compose(
+export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle({
+  lifecycle<Props, {}>({
 
     componentDidMount() {
       const { fetchQuote, symbol } = this.props;
@@ -38,7 +35,9 @@ const withStockQuoteBySymbol: HOC<*, EnhancedComponentProps> = compose(
     },
 
   }),
-  mapProps(({ fetchQuote, quotes, symbol, ...props }) => {
+  mapProps(({
+    fetchQuote, quotes, symbol, ...props
+  }) => {
     const quote = getResourceById(quotes, symbol);
 
     return {
@@ -49,5 +48,3 @@ const withStockQuoteBySymbol: HOC<*, EnhancedComponentProps> = compose(
     };
   }),
 );
-
-export default withStockQuoteBySymbol;

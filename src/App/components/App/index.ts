@@ -1,5 +1,3 @@
-/* @flow */
-
 import App from './App';
 import enhance from './App.enhancer';
 

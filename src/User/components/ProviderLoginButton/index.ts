@@ -1,5 +1,3 @@
-/* @flow */
-
 import ProviderLoginButton from './ProviderLoginButton';
 import enhance from './ProviderLoginButton.enhancer';
 

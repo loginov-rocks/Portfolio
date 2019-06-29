@@ -1,22 +1,13 @@
-/* @flow */
-
 import { connect } from 'react-redux';
-import {
-  compose, withHandlers, withStateHandlers, type HOC,
-} from 'recompose';
+import { compose, withHandlers, withStateHandlers } from 'recompose';
 
-import { createPosition } from '../../actions';
-import type { Position } from '../../lib/flow';
+import { createPosition as createPositionAction } from '../../actions';
 
-type EnhancedComponentProps = {
-  onCreate?: (Position) => void,
-};
-
-const mapDispatchToProps = { createPosition };
+const mapDispatchToProps = { createPosition: createPositionAction };
 
 const formatDate = date => date.toISOString().slice(0, 10);
 
-const enhancer: HOC<*, EnhancedComponentProps> = compose(
+export default compose(
   connect(null, mapDispatchToProps),
   withStateHandlers(
     {
@@ -26,28 +17,28 @@ const enhancer: HOC<*, EnhancedComponentProps> = compose(
       symbol: '',
     },
     {
-      handleAmountChange: () => (event) => {
-        const amount = parseInt(event.target.value);
+      handleAmountChange: () => event => {
+        const amount = parseInt(event.target.value, 10);
 
         return {
           amount: amount > 0 ? amount : 1,
         };
       },
-      handleDateChange: () => (event) => {
+      handleDateChange: () => event => {
         const date = new Date(event.target.value);
 
         return {
-          date: formatDate(date ? date : new Date()),
+          date: formatDate(date || new Date()),
         };
       },
-      handlePriceChange: () => (event) => {
+      handlePriceChange: () => event => {
         const price = parseFloat(event.target.value);
 
         return {
           price: price >= 0 ? price : 0,
         };
       },
-      handleSymbolChange: () => (event) => ({
+      handleSymbolChange: () => event => ({
         symbol: event.target.value.toUpperCase(),
       }),
     },
@@ -56,11 +47,11 @@ const enhancer: HOC<*, EnhancedComponentProps> = compose(
 
     handleSubmit: ({
       amount, createPosition, date, onCreate, price, symbol,
-    }) => (event) => {
+    }) => event => {
       event.preventDefault();
 
       createPosition(symbol, price, amount, date)
-        .then((position) => {
+        .then(position => {
           if (onCreate) {
             onCreate(position);
           }
@@ -69,5 +60,3 @@ const enhancer: HOC<*, EnhancedComponentProps> = compose(
 
   }),
 );
-
-export default enhancer;

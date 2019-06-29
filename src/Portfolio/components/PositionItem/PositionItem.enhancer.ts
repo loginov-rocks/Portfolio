@@ -1,15 +1,6 @@
-/* @flow */
+import { compose, withHandlers, withProps } from 'recompose';
 
-import {
-  compose, withHandlers, withProps, type HOC,
-} from 'recompose';
-
-type EnhancedComponentProps = {
-  onClick?: (Position) => void,
-  position: Position,
-};
-
-const enhancer: HOC<*, EnhancedComponentProps> = compose(
+export default compose(
   withHandlers({
 
     handleClick: ({ onClick, position }) => () => {
@@ -23,5 +14,3 @@ const enhancer: HOC<*, EnhancedComponentProps> = compose(
     isClickable: !!onClick,
   })),
 );
-
-export default enhancer;

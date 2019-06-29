@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from 'react';
 
 import AccountItem from '../AccountItem';

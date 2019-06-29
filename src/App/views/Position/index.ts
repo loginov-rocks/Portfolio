@@ -1,5 +1,3 @@
-/* @flow */
-
 import Position from './Position';
 import enhance from './Position.enhancer';
 

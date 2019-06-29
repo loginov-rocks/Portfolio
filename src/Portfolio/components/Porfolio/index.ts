@@ -1,5 +1,3 @@
-/* @flow */
-
 import Portfolio from './Portfolio';
 import enhance from './Portfolio.enhancer';
 

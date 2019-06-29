@@ -1,8 +1,6 @@
-/* @flow */
-
 import { connect } from 'react-redux';
 import { firebaseConnect, isLoaded } from 'react-redux-firebase';
-import { compose, type HOC } from 'recompose';
+import { compose } from 'recompose';
 
 import withAuth from 'User/enhancers/withAuth';
 
@@ -13,7 +11,7 @@ const mapStateToProps = (transform: Function) => ({ firebase: { data } }) => ({
   positionsLoading: !isLoaded(data[C.FIREBASE_POSITIONS_PATH]),
 });
 
-const withPositions: HOC<*, *> = (transform: Function = x => x) => compose(
+export default (transform: Function = x => x) => compose(
   withAuth,
   firebaseConnect(({ auth }) => [
     {
@@ -23,5 +21,3 @@ const withPositions: HOC<*, *> = (transform: Function = x => x) => compose(
   ]),
   connect(mapStateToProps(transform)),
 );
-
-export default withPositions;

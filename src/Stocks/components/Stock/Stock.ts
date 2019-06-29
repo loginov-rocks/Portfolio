@@ -1,18 +1,17 @@
-/* @flow */
+import { Quote } from '../../lib/IEX/IEX';
 
-import * as React from 'react';
+interface RenderProps {
+  logo: string | undefined;
+  logoProgress: boolean;
+  price: number;
+  quote: Quote | undefined;
+  quoteProgress: boolean;
+  symbol: string;
+}
 
-import type { Quote } from '../../lib/IEX/IEX';
-
-type Props = {
-  children: React.Node,
-  logo: ?string,
-  logoProgress: boolean,
-  price: number,
-  quote: ?Quote,
-  quoteProgress: boolean,
-  symbol: string,
-};
+interface Props extends RenderProps {
+  children: (renderProps: RenderProps) => JSX.Element;
+}
 
 const Stock = ({
   children, logo, logoProgress, price, quote, quoteProgress, symbol,

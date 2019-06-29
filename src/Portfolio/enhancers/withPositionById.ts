@@ -1,22 +1,18 @@
-/* @flow */
-
 import { connect } from 'react-redux';
 import { firebaseConnect, isLoaded } from 'react-redux-firebase';
-import { compose, type HOC } from 'recompose';
+import { compose } from 'recompose';
 
 import withAuth from 'User/enhancers/withAuth';
 
 import * as C from '../../constants';
 
-type ExtractPositionId = ({}) => string;
+interface ExtractPositionId {
+  (ownProps: {}): string
+}
 
-const mapStateToProps = (extractPositionId: ExtractPositionId) => (
-  { firebase: { data } },
-  ownProps,
-) => {
+const mapStateToProps = (extractPositionId: ExtractPositionId) => ({ firebase: { data } }, ownProps) => {
   const positionId = extractPositionId(ownProps);
-  const positionData = data[C.FIREBASE_POSITIONS_PATH]
-    && data[C.FIREBASE_POSITIONS_PATH][positionId];
+  const positionData = data[C.FIREBASE_POSITIONS_PATH] && data[C.FIREBASE_POSITIONS_PATH][positionId];
 
   return {
     position: Object.assign({ id: positionId }, positionData),
@@ -24,11 +20,9 @@ const mapStateToProps = (extractPositionId: ExtractPositionId) => (
   };
 };
 
-const withPositionById: HOC<*, *> = (
-  extractPositionId: ExtractPositionId,
-) => compose(
+export default (extractPositionId: ExtractPositionId) => compose(
   withAuth,
-  firebaseConnect((props) => {
+  firebaseConnect(props => {
     const { auth } = props;
     const positionId = extractPositionId(props);
 
@@ -41,5 +35,3 @@ const withPositionById: HOC<*, *> = (
   }),
   connect(mapStateToProps(extractPositionId)),
 );
-
-export default withPositionById;

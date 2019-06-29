@@ -1,9 +1,15 @@
-/* @flow */
-
 import axios from 'axios';
 
 export default class ZenMoney {
   url = 'https://api.zenmoney.ru';
+
+  consumerKey: string;
+
+  consumerSecret: string;
+
+  redirectUrl: string;
+
+  accessToken: string | undefined;
 
   constructor(consumerKey, consumerSecret, redirectUrl) {
     this.consumerKey = consumerKey;
@@ -21,7 +27,7 @@ export default class ZenMoney {
     return `${this.url}/oauth2/authorize?client_id=${this.consumerKey}&redirect_uri=${this.redirectUrl}&response_type=code`;
   }
 
-  extractAuthorizeCode(location) {
+  static extractAuthorizeCode(location) {
     const url = new URL(location);
     const params = new URLSearchParams(url.search);
 
@@ -59,4 +65,4 @@ export default class ZenMoney {
     )
       .then(({ data }) => data);
   }
-};
+}

@@ -1,27 +1,24 @@
-/* @flow */
-
 import { connect } from 'react-redux';
-import {
-  compose, lifecycle, mapProps, type HOC,
-} from 'recompose';
+import { compose, lifecycle, mapProps } from 'recompose';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
 
 import { areArraysEqual } from 'Shared/lib/utils';
 
-import { fetchQuote } from '../actions';
+import { fetchQuote as fetchQuoteAction } from '../actions';
 
-type EnhancedComponentProps = {
-  symbols: Array<string>,
-};
+interface Props {
+  fetchQuote: (symbol: string) => void,
+  symbols: string[];
+}
 
 const mapStateToProps = ({ stocks: { quotes } }) => ({ quotes });
 
-const mapDispatchToProps = { fetchQuote };
+const mapDispatchToProps = { fetchQuote: fetchQuoteAction };
 
-const withStockQuotesBySymbols: HOC<*, EnhancedComponentProps> = compose(
+export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle({
+  lifecycle<Props, {}>({
 
     componentDidMount() {
       const { fetchQuote, symbols } = this.props;
@@ -38,11 +35,13 @@ const withStockQuotesBySymbols: HOC<*, EnhancedComponentProps> = compose(
     },
 
   }),
-  mapProps(({ fetchQuote, quotes, symbols, ...props }) => {
+  mapProps(({
+    fetchQuote, quotes, symbols, ...props
+  }) => {
     let quotesProgress = false;
 
     const quotesArray = symbols
-      .map((symbol) => {
+      .map(symbol => {
         const resource = getResourceById(quotes, symbol);
 
         if (isRequested(resource)) {
@@ -61,5 +60,3 @@ const withStockQuotesBySymbols: HOC<*, EnhancedComponentProps> = compose(
     };
   }),
 );
-
-export default withStockQuotesBySymbols;

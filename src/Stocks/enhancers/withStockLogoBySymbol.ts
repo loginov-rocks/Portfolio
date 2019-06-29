@@ -1,25 +1,22 @@
-/* @flow */
-
 import { connect } from 'react-redux';
-import {
-  compose, lifecycle, mapProps, type HOC,
-} from 'recompose';
+import { compose, lifecycle, mapProps } from 'recompose';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
 
-import { fetchLogo } from '../actions';
+import { fetchLogo as fetchLogoAction } from '../actions';
 
-type EnhancedComponentProps = {
-  symbol: string,
-};
+interface Props {
+  fetchLogo: (symbol: string) => void;
+  symbol: string;
+}
 
 const mapStateToProps = ({ stocks: { logos } }) => ({ logos });
 
-const mapDispatchToProps = { fetchLogo };
+const mapDispatchToProps = { fetchLogo: fetchLogoAction };
 
-const withStockLogoBySymbol: HOC<*, EnhancedComponentProps> = compose(
+export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle({
+  lifecycle<Props, {}>({
 
     componentDidMount() {
       const { fetchLogo, symbol } = this.props;
@@ -38,7 +35,9 @@ const withStockLogoBySymbol: HOC<*, EnhancedComponentProps> = compose(
     },
 
   }),
-  mapProps(({ fetchLogo, logos, symbol, ...props }) => {
+  mapProps(({
+    fetchLogo, logos, symbol, ...props
+  }) => {
     const logo = getResourceById(logos, symbol);
 
     return {
@@ -49,5 +48,3 @@ const withStockLogoBySymbol: HOC<*, EnhancedComponentProps> = compose(
     };
   }),
 );
-
-export default withStockLogoBySymbol;

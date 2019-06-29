@@ -1,8 +1,6 @@
-/* @flow */
-
 import { findQuoteBySymbol, getQuotePrice } from 'Stocks/lib/stocks';
 
-import type { Position } from '../flow';
+import { Position } from '../flow';
 
 export const calculatePositionsValue = (positions, quotesRepository) => (
   positions
@@ -20,10 +18,10 @@ export const getUniqueSymbolsFromPositions = (positions: Array<Position>) => [
   ...new Set(positions.map(position => position.symbol)),
 ];
 
-export const mergePositionsBySymbols = (positions) => {
+export const mergePositionsBySymbols = positions => {
   const symbols = {};
 
-  positions.forEach((position) => {
+  positions.forEach(position => {
     const { amount, price, symbol } = position;
 
     if (!symbols[symbol]) {
@@ -49,7 +47,7 @@ export const mergeSymbolsBySectors = (symbols, quotesRepository) => {
   const sectors = {};
   let currentTotalPrice = 0;
 
-  symbols.forEach((symbolObject) => {
+  symbols.forEach(symbolObject => {
     const { amount, price, symbol } = symbolObject;
     const quote = findQuoteBySymbol(quotesRepository, symbol);
 

@@ -1,13 +1,11 @@
-/* @flow */
-
-import firebase from 'firebase';
+import * as firebase from 'firebase';
 import { getFirebase, reactReduxFirebase } from 'react-redux-firebase';
 import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
 import * as C from '../../../constants';
 
-export default (reducer) => {
+export default reducer => {
   firebase.initializeApp({
     apiKey: C.FIREBASE_API_KEY,
     authDomain: C.FIREBASE_AUTH_DOMAIN,
@@ -21,10 +19,11 @@ export default (reducer) => {
     thunk.withExtraArgument(getFirebase),
   ];
 
-  const composeEnhancers = (typeof window === 'object'
-  && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  /* eslint-disable no-underscore-dangle */
+  const composeEnhancers = (typeof window === 'object' && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     : compose);
+  /* eslint-enable no-underscore-dangle */
 
   const enhancer = composeEnhancers(
     reactReduxFirebase(firebase, { userProfile: C.FIREBASE_USERS_PATH }),

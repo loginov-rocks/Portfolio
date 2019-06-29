@@ -1,18 +1,14 @@
-/* @flow */
-
 import { connect } from 'react-redux';
 import { compose, mapProps } from 'recompose';
 
-import { closePosition } from '../../actions';
-import {
-  calculatePositionsValue, mergePositionsBySymbols,
-} from '../../lib/portfolio';
+import { deletePosition } from '../../actions';
+import { calculatePositionsValue, mergePositionsBySymbols } from '../../lib/portfolio';
 
 const mapStateToProps = ({ portfolio: { positions }, stocks: { quotes } }) => ({
   positions, quotes,
 });
 
-const mapDispatchToProps = { closePosition };
+const mapDispatchToProps = { closePosition: deletePosition };
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

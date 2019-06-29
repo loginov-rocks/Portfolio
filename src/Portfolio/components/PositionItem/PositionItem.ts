@@ -1,15 +1,14 @@
-/* @flow */
+import { Position } from '../../lib/flow';
 
-import * as React from 'react';
-
-import type { Position } from '../../lib/flow';
-
-type Props = {
-  children: React.Node,
+interface RenderProps {
   handleClick: () => void,
   isClickable: boolean,
   position: Position,
-};
+}
+
+interface Props extends RenderProps {
+  children: (renderProps: RenderProps) => JSX.Element,
+}
 
 const PositionItem = ({
   children, handleClick, isClickable, position,

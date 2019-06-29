@@ -1,16 +1,14 @@
-/* @flow */
-
 import * as React from 'react';
 
-import type { Position } from 'Portfolio/lib/flow';
+import { Position } from 'Portfolio/lib/flow';
 import Progress from 'Shared/components/Progress';
 
 import StockPositionItem from '../StockPositionItem';
 
-type Props = {
-  onClick?: (Position) => void,
+interface Props {
+  onClick?: (position: Position) => void,
   positions: Array<Position>,
-};
+}
 
 const StockPositionsList = ({ onClick, positions }: Props) => (
   <div>

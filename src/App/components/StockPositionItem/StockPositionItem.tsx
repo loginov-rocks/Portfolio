@@ -1,16 +1,14 @@
-/* @flow */
-
 import * as React from 'react';
 
-import type { Position } from 'Portfolio/lib/flow';
+import { Position } from 'Portfolio/lib/flow';
 import PositionItem from 'Portfolio/components/PositionItem';
 import Stock from 'Stocks/components/Stock';
 
-type Props = {
-  children: React.Node,
-  onClick?: (Position) => void,
+interface Props {
+  children: () => JSX.Element,
+  onClick?: (position: Position) => void,
   position: Position,
-};
+}
 
 const StockPositionItem = ({ children, onClick, position }: Props) => (
   <PositionItem onClick={onClick} position={position}>

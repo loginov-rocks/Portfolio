@@ -1,11 +1,7 @@
-/* @flow */
-
-import * as React from 'react';
-
-type Props = {
-  children: React.Node,
+interface Props {
+  children: () => JSX.Element,
   value: number,
-};
+}
 
 const StockPositionsValue = ({ children, value }: Props) => children({ value });
 

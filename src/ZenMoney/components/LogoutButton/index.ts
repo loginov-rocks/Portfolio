@@ -1,5 +1,3 @@
-/* @flow */
-
 import LogoutButton from './LogoutButton';
 import enhance from './LogoutButton.enhancer';
 

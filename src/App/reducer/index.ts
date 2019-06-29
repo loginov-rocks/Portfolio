@@ -1,12 +1,10 @@
-/* @flow */
-
 import * as T from '../actions/types';
 import * as R from '../routes';
 
-export type State = {
+export interface State {
   route: string,
   routeParams: {},
-};
+}
 
 const initialState: State = {
   route: R.HOME,

@@ -1,26 +1,34 @@
-/* @flow */
-
 import * as React from 'react';
 
 import Stock from 'Stocks/components/Stock';
 
-import AddPosition from '../AddPositionForm';
+// import AddPosition from '../AddPositionForm';
 import Sectors from '../Sectors';
 
-const Portfolio = ({ closePosition, symbols, value }) => (
+interface Props {
+  children: JSX.Element;
+  closePosition: (string) => void;
+  symbols: { amount: number, id: string, symbol: string }[]
+  value: number;
+}
+
+const Portfolio = ({ closePosition, symbols, value }: Props) => (
   <div>
 
     <h2>Portfolio</h2>
 
-    <AddPosition />
+    {/* <AddPosition /> */}
 
-    <div>Total: {value}</div>
+    <div>
+      Total:
+      {value}
+    </div>
 
     <ul>
       {symbols.map(({ amount, id, symbol }, index) => (
         <li key={index}>
           <Stock amount={amount} symbol={symbol} />
-          <button onClick={() => closePosition(id)}>Remove</button>
+          <button onClick={() => closePosition(id)} type="button">Remove</button>
         </li>
       ))}
     </ul>

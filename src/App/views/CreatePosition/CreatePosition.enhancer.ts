@@ -1,11 +1,9 @@
-/* @flow */
-
-import { compose, withHandlers, type HOC } from 'recompose';
+import { compose, withHandlers } from 'recompose';
 
 import withNavigationHandlers from '../../enhancers/withNavigationHandlers';
 import * as R from '../../routes';
 
-const enhancer: HOC<*, *> = compose(
+export default compose(
   withNavigationHandlers({
     handleHomeClick: R.HOME,
     handlePositionClick: (props, position) => ({
@@ -21,5 +19,3 @@ const enhancer: HOC<*, *> = compose(
 
   }),
 );
-
-export default enhancer;

@@ -1,20 +1,33 @@
-/* @flow */
-
 import * as React from 'react';
 
+interface Props {
+  amount: number,
+  children: JSX.Element,
+  date: string,
+  handleAmountChange: () => void,
+  handleDateChange: () => void,
+  handlePriceChange: () => void,
+  handleSymbolChange: () => void,
+  handleSubmit: () => void,
+  price: number,
+  symbol: string,
+}
+
 const CreatePositionForm = ({
-  amount, date, handleAmountChange, handleDateChange, handlePriceChange,
-  handleSymbolChange, handleSubmit, price, symbol,
-}) => (
+  amount, date, handleAmountChange, handleDateChange, handlePriceChange, handleSymbolChange, handleSubmit, price,
+  symbol,
+}: Props) => (
   <form onSubmit={handleSubmit}>
 
     <div>
-      Symbol<br />
+      Symbol
+      <br />
       <input onChange={handleSymbolChange} type="text" value={symbol} />
     </div>
 
     <div>
-      Price<br />
+      Price
+      <br />
       <input
         min="0"
         onChange={handlePriceChange}
@@ -25,7 +38,8 @@ const CreatePositionForm = ({
     </div>
 
     <div>
-      Amount<br />
+      Amount
+      <br />
       <input
         min="1"
         onChange={handleAmountChange}
@@ -35,7 +49,8 @@ const CreatePositionForm = ({
     </div>
 
     <div>
-      Date<br />
+      Date
+      <br />
       <input onChange={handleDateChange} type="date" value={date} />
     </div>
 

@@ -1,5 +1,3 @@
-/* @flow */
-
 // Accounts.
 export const BROKERAGE_ACCOUNT_SET = 'BROKERAGE_ACCOUNT_SET';
 

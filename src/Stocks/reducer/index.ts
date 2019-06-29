@@ -1,8 +1,4 @@
-/* @flow */
-
-import {
-  isResourceAction, repositoryReducer,
-} from 'redux-repository/lib/reducer';
+import { isResourceAction, repositoryReducer } from 'redux-repository/lib/reducer';
 import { createInitialState } from 'redux-repository/lib/repository';
 
 import * as C from '../../constants';

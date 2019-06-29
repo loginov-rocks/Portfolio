@@ -1,13 +1,7 @@
-/* @flow */
-
 import * as C from '../../constants';
 import * as T from './types';
 
-export const createPosition = (
-  symbol, price, amount, date,
-) => (
-  dispatch, getState, getFirebase,
-) => {
+export const createPosition = (symbol, price, amount, date) => (dispatch, getState, getFirebase) => {
   const firebase = getFirebase();
   const user = firebase.auth().currentUser;
 
@@ -15,7 +9,9 @@ export const createPosition = (
     throw new Error('Trying to create position when unauthorized');
   }
 
-  const positionData = { amount, date, price, symbol };
+  const positionData = {
+    amount, date, price, symbol,
+  };
 
   return firebase.push(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}`, positionData)
     .then(({ key }) => {
@@ -27,11 +23,7 @@ export const createPosition = (
     });
 };
 
-export const deletePosition = (
-  id,
-) => (
-  dispatch, getState, getFirebase,
-) => {
+export const deletePosition = id => (dispatch, getState, getFirebase) => {
   if (!id) {
     throw new Error('Trying to delete position without ID');
   }

@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as T from './types';
 
 export const navigate = (route: string, params?: {}) => dispatch => {

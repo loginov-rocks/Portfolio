@@ -1,5 +1,3 @@
-/* @flow */
-
 export const FIREBASE_POSITIONS_PATH = 'positions';
 export const FIREBASE_USERS_PATH = 'users';
 

@@ -1,20 +1,18 @@
-/* @flow */
-
 import * as React from 'react';
 
-import type { Position } from 'Portfolio/lib/flow';
+import { Position } from 'Portfolio/lib/flow';
 import Progress from 'Shared/components/Progress';
 
 import StockPositionsList from '../../components/StockPositionsList';
 import StockPositionsValue from '../../components/StockPositionsValue';
 
-type Props = {
+interface Props {
   handleCreatePositionClick: () => void,
   handlePositionClick: () => void,
   handleProfileClick: () => void,
   positions: Array<Position>,
   positionsLoading: boolean,
-};
+}
 
 const Home = ({
   handleCreatePositionClick, handlePositionClick, handleProfileClick, positions,

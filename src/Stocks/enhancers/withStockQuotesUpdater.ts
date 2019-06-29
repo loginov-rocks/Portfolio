@@ -1,29 +1,34 @@
-/* @flow */
-
 import { connect } from 'react-redux';
 import { compose, lifecycle, mapProps } from 'recompose';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { isExpired } from 'redux-repository/lib/resource';
 
-import { fetchQuote } from '../actions';
+import { fetchQuote as fetchQuoteAction } from '../actions';
 import * as C from '../../constants';
+
+interface Props {
+  fetchQuote: (symbol: string) => void,
+  quotes: {
+    allIds: string[],
+  },
+}
 
 const mapStateToProps = ({ stocks: { quotes } }) => ({ quotes });
 
-const mapDispatchToProps = { fetchQuote };
+const mapDispatchToProps = { fetchQuote: fetchQuoteAction };
 
 let digest;
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle({
+  lifecycle<Props, {}>({
 
     componentDidMount() {
       digest = setInterval(() => {
         const { fetchQuote, quotes } = this.props;
         const expired = [];
 
-        quotes.allIds.forEach((symbol) => {
+        quotes.allIds.forEach(symbol => {
           const quote = getResourceById(quotes, symbol);
 
           if (isExpired(quote, C.STOCKS_QUOTES_TTL)) {

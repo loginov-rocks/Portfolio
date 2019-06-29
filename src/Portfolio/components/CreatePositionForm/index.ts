@@ -1,5 +1,3 @@
-/* @flow */
-
 import CreatePositionForm from './CreatePositionForm';
 import enhance from './CreatePositionForm.enhancer';
 

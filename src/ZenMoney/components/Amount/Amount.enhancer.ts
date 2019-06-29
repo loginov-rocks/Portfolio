@@ -1,5 +1,3 @@
-/* @flow */
-
 import { connect } from 'react-redux';
 
 const mapStateToProps = ({ zenMoney: { instruments } }, { instrumentId }) => ({

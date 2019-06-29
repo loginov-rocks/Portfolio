@@ -1,9 +1,12 @@
-/* @flow */
-
 import * as React from 'react';
 
-const ProviderLoginButton = ({ children, handleClick }) => (
-  <button onClick={handleClick}>{children}</button>
+interface Props {
+  children: JSX.Element;
+  handleClick: () => void;
+}
+
+const ProviderLoginButton = ({ children, handleClick }: Props) => (
+  <button onClick={handleClick} type="button">{children}</button>
 );
 
 export default ProviderLoginButton;

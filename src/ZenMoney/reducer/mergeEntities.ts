@@ -1,5 +1,3 @@
-/* @flow */
-
 export default (oldArray, newArray) => {
   if (!oldArray && !newArray) {
     return [];

@@ -1,27 +1,27 @@
-/* @flow */
-
 import { connect } from 'react-redux';
-import { compose, withHandlers, type HOC } from 'recompose';
+import { compose, withHandlers } from 'recompose';
 
 import { navigate } from '../actions';
 
-type HandlersMapper = {
-  [string]: string | ({}, any) => { params: {}, route: string },
-};
+interface Handler {
+  (props: {}, event: any): { params: {}, route: string }
+}
+
+interface HandlersMapper {
+  [key: string]: Handler | string,
+}
 
 const mapDispatchToProps = { navigate };
 
-const withNavigationHandlers: HOC<*, *> = (
-  handlersMapper: HandlersMapper,
-) => compose(
+export default (handlersMapper: HandlersMapper) => compose(
   connect(null, mapDispatchToProps),
   withHandlers(() => {
     const handlers = {};
 
-    Object.keys(handlersMapper).forEach((key) => {
-      handlers[key] = ({ navigate: dispatchNavigate, ...props }) => (event) => {
+    Object.keys(handlersMapper).forEach(key => {
+      handlers[key] = ({ navigate: dispatchNavigate, ...props }) => event => {
         if (typeof handlersMapper[key] === 'function') {
-          const { params, route } = handlersMapper[key](props, event);
+          const { params, route } = (handlersMapper[key] as Handler)(props, event);
           dispatchNavigate(route, params);
         } else {
           const route = handlersMapper[key];
@@ -33,5 +33,3 @@ const withNavigationHandlers: HOC<*, *> = (
     return handlers;
   }),
 );
-
-export default withNavigationHandlers;

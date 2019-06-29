@@ -1,5 +1,3 @@
-/* @flow */
-
 import { connect } from 'react-redux';
 import { branch, compose, mapProps, renderComponent } from 'recompose';
 

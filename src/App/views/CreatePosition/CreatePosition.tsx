@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from 'react';
 
 import CreatePositionForm from 'Portfolio/components/CreatePositionForm';

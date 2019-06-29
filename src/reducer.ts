@@ -1,5 +1,3 @@
-/* @flow */
-
 import { firebaseReducer as firebase } from 'react-redux-firebase';
 import { combineReducers } from 'redux';
 

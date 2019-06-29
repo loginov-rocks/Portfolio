@@ -1,18 +1,10 @@
-/* @flow */
+import { compose, withProps } from 'recompose';
 
-import { compose, withProps, type HOC } from 'recompose';
-
-import type { Position } from 'Portfolio/lib/flow';
 import { getUniqueSymbolsFromPositions } from 'Portfolio/lib/portfolio';
-import withStockQuotesBySymbols
-  from 'Stocks/enhancers/withStockQuotesBySymbols';
+import withStockQuotesBySymbols from 'Stocks/enhancers/withStockQuotesBySymbols';
 import { getQuotePrice } from 'Stocks/lib/stocks';
 
-type EnhancedComponentProps = {
-  positions: Array<Position>,
-}
-
-const enhancer: HOC<*, EnhancedComponentProps> = compose(
+export default compose(
   withProps(({ positions }) => ({
     symbols: getUniqueSymbolsFromPositions(positions),
   })),
@@ -22,7 +14,7 @@ const enhancer: HOC<*, EnhancedComponentProps> = compose(
 
     if (!quotesProgress) {
       value = positions
-        .map((position) => {
+        .map(position => {
           const { amount, symbol } = position;
           const quote = quotes.find(q => q.symbol === symbol);
 
@@ -34,5 +26,3 @@ const enhancer: HOC<*, EnhancedComponentProps> = compose(
     return { value };
   }),
 );
-
-export default enhancer;

@@ -1,16 +1,14 @@
-/* @flow */
-
 import * as React from 'react';
 
-import type { Position as PositionType } from 'Portfolio/lib/flow';
+import { Position as PositionType } from 'Portfolio/lib/flow';
 import Progress from 'Shared/components/Progress';
 
-type Props = {
+interface Props {
   handleDeleteClick: () => void,
   handleHomeClick: () => void,
   position: PositionType,
   positionLoading: boolean,
-};
+}
 
 const Position = ({
   handleDeleteClick, handleHomeClick, position, positionLoading,

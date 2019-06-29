@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as T from '../actions/types';
 
 const initialState = {
