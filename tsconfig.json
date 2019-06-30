@@ -3,6 +3,6 @@
     "baseUrl": "src",
     "jsx": "react",
     "noEmit": true,
-    "strict": false
+    "strict": true
   }
 }
