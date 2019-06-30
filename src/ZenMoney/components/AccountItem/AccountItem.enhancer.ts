@@ -1,0 +1,1 @@
+export default BaseComponent => BaseComponent;

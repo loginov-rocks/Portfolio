@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "8"
+  - "10"
+script: npm run ci
+after_script: npm run coveralls
+deploy:
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  local_dir: dist
+  on:
+    branch: master
+  provider: pages
+  skip_cleanup: true
