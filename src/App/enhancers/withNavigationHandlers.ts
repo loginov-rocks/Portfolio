@@ -4,11 +4,11 @@ import { compose, withHandlers } from 'recompose';
 import { navigate } from '../actions';
 
 interface Handler {
-  (props: {}, event: any): { params: {}, route: string }
+  (props: {}, event: any): { params: {}; route: string };
 }
 
 interface HandlersMapper {
-  [key: string]: Handler | string,
+  [key: string]: Handler | string;
 }
 
 const mapDispatchToProps = { navigate };

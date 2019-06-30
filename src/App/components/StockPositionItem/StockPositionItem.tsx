@@ -7,9 +7,9 @@ import Stock from 'Stocks/components/Stock';
 import { RenderProps as StockRenderProps } from 'Stocks/components/Stock/Stock';
 
 interface Props {
-  children: (props: PositionItemRenderProps & StockRenderProps) => JSX.Element,
-  onClick?: (position: Position) => void,
-  position: Position,
+  children: (props: PositionItemRenderProps & StockRenderProps) => JSX.Element;
+  onClick?: (position: Position) => void;
+  position: Position;
 }
 
 const StockPositionItem = ({ children, onClick, position }: Props) => (

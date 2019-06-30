@@ -8,7 +8,7 @@ import Sectors from '../Sectors';
 interface Props {
   children: JSX.Element;
   closePosition: (string) => void;
-  symbols: { amount: number, id: string, symbol: string }[]
+  symbols: { amount: number; id: string; symbol: string }[];
   value: number;
 }
 

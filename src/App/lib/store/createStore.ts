@@ -10,9 +10,9 @@ export default reducer => {
     apiKey: C.FIREBASE_API_KEY,
     authDomain: C.FIREBASE_AUTH_DOMAIN,
     databaseURL: C.FIREBASE_DATABASE_URL,
+    messagingSenderId: C.FIREBASE_MESSAGING_SENDER_ID,
     projectId: C.FIREBASE_PROJECT_ID,
     storageBucket: C.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: C.FIREBASE_MESSAGING_SENDER_ID,
   });
 
   const middleware = [

@@ -1,13 +1,13 @@
 import { Position } from '../../lib/flow';
 
 export interface RenderProps {
-  handleClick: () => void,
-  isClickable: boolean,
-  position: Position,
+  handleClick: () => void;
+  isClickable: boolean;
+  position: Position;
 }
 
 interface Props extends RenderProps {
-  children: (renderProps: RenderProps) => JSX.Element,
+  children: (renderProps: RenderProps) => JSX.Element;
 }
 
 const PositionItem = ({

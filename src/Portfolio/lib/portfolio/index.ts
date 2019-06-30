@@ -14,7 +14,7 @@ export const calculatePositionsValue = (positions, quotesRepository) => (
     .reduce((a, b) => a + b, 0)
 );
 
-export const getUniqueSymbolsFromPositions = (positions: Array<Position>) => [
+export const getUniqueSymbolsFromPositions = (positions: Position[]) => [
   ...new Set(positions.map(position => position.symbol)),
 ];
 

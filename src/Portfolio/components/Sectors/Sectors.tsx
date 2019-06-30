@@ -1,17 +1,17 @@
 import * as React from 'react';
 
 interface Sector {
-  amount: number,
-  currentPrice: number,
-  initialPrice: number,
-  sector: string,
-  share: number,
-  symbols: { symbol: string }[],
+  amount: number;
+  currentPrice: number;
+  initialPrice: number;
+  sector: string;
+  share: number;
+  symbols: { symbol: string }[];
 }
 
 interface Props {
-  children: JSX.Element,
-  sectors: Sector[],
+  children: JSX.Element;
+  sectors: Sector[];
 }
 
 const Sectors = ({ sectors }: Props) => (

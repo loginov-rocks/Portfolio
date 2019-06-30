@@ -7,7 +7,7 @@ import withAuth from 'User/enhancers/withAuth';
 import * as C from '../../constants';
 
 interface ExtractPositionId {
-  (ownProps: { routeParams }): string
+  (ownProps: { routeParams }): string;
 }
 
 const mapStateToProps = (extractPositionId: ExtractPositionId) => ({ firebase: { data } }, ownProps) => {

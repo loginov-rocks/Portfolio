@@ -7,7 +7,7 @@ interface Props {
     balance: number;
     instrument: string;
     title: string;
-  }
+  };
 }
 
 const AccountItem = ({ account }: Props) => (

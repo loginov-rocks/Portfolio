@@ -7,10 +7,10 @@ import { fetchQuote as fetchQuoteAction } from '../actions';
 import * as C from '../../constants';
 
 interface Props {
-  fetchQuote: (symbol: string) => void,
+  fetchQuote: (symbol: string) => void;
   quotes: {
-    allIds: string[],
-  },
+    allIds: string[];
+  };
 }
 
 const mapStateToProps = ({ stocks: { quotes } }) => ({ quotes });

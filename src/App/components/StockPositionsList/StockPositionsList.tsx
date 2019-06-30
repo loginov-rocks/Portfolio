@@ -6,8 +6,8 @@ import Progress from 'Shared/components/Progress';
 import StockPositionItem from '../StockPositionItem';
 
 interface Props {
-  onClick?: (position: Position) => void,
-  positions: Array<Position>,
+  onClick?: (position: Position) => void;
+  positions: Position[];
 }
 
 const StockPositionsList = ({ onClick, positions }: Props) => (

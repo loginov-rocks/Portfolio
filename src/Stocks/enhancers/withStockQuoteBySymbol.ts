@@ -6,7 +6,7 @@ import { extractData, isRequested } from 'redux-repository/lib/resource';
 import { fetchQuote as fetchQuoteAction } from '../actions';
 
 interface Props {
-  fetchQuote: (symbol: string) => void,
+  fetchQuote: (symbol: string) => void;
   symbol: string;
 }
 

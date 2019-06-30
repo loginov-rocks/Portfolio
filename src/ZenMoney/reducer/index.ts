@@ -2,6 +2,7 @@ import * as T from '../actions/types';
 import mergeEntities from './mergeEntities';
 
 const initialState = {
+  /* eslint-disable sort-keys */
   // Accounts.
   brokerageAccountId: '',
 
@@ -18,6 +19,7 @@ const initialState = {
   diffServerTimestamp: 0,
   instruments: [],
   isDiffRequested: false,
+  /* eslint-enable sort-keys */
 };
 
 export default (state = initialState, action) => {

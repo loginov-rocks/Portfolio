@@ -1,40 +1,40 @@
 import axios from 'axios';
 
 export default class ZenMoney {
-  url = 'https://api.zenmoney.ru';
+  protected url = 'https://api.zenmoney.ru';
 
-  consumerKey: string;
+  protected consumerKey: string;
 
-  consumerSecret: string;
+  protected consumerSecret: string;
 
-  redirectUrl: string;
+  protected redirectUrl: string;
 
-  accessToken: string | undefined;
+  protected accessToken: string | undefined;
 
-  constructor(consumerKey, consumerSecret, redirectUrl) {
-    this.consumerKey = consumerKey;
-    this.consumerSecret = consumerSecret;
-    this.redirectUrl = redirectUrl;
-  }
-
-  setAccessToken(token) {
-    this.accessToken = token;
-
-    return this;
-  }
-
-  getAuthorizeUrl() {
-    return `${this.url}/oauth2/authorize?client_id=${this.consumerKey}&redirect_uri=${this.redirectUrl}&response_type=code`;
-  }
-
-  static extractAuthorizeCode(location) {
+  public static extractAuthorizeCode(location) {
     const url = new URL(location);
     const params = new URLSearchParams(url.search);
 
     return params.get('code');
   }
 
-  getTokens(code) {
+  public constructor(consumerKey, consumerSecret, redirectUrl) {
+    this.consumerKey = consumerKey;
+    this.consumerSecret = consumerSecret;
+    this.redirectUrl = redirectUrl;
+  }
+
+  public setAccessToken(token) {
+    this.accessToken = token;
+
+    return this;
+  }
+
+  public getAuthorizeUrl() {
+    return `${this.url}/oauth2/authorize?client_id=${this.consumerKey}&redirect_uri=${this.redirectUrl}&response_type=code`;
+  }
+
+  public getTokens(code) {
     const params = new URLSearchParams();
 
     params.append('client_id', this.consumerKey);
@@ -47,11 +47,11 @@ export default class ZenMoney {
       .then(({ data }) => data);
   }
 
-  getAuthorizationHeader() {
+  public getAuthorizationHeader() {
     return { Authorization: `Bearer ${this.accessToken}` };
   }
 
-  getDiff(currentClientTimestamp, serverTimestamp, payload = {}) {
+  public getDiff(currentClientTimestamp, serverTimestamp, payload = {}) {
     return axios.post(
       `${this.url}/v8/diff`,
       {

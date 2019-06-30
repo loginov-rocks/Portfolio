@@ -1,16 +1,16 @@
 import * as React from 'react';
 
 interface Props {
-  amount: number,
-  children: JSX.Element,
-  date: string,
-  handleAmountChange: () => void,
-  handleDateChange: () => void,
-  handlePriceChange: () => void,
-  handleSymbolChange: () => void,
-  handleSubmit: () => void,
-  price: number,
-  symbol: string,
+  amount: number;
+  children: JSX.Element;
+  date: string;
+  handleAmountChange: () => void;
+  handleDateChange: () => void;
+  handlePriceChange: () => void;
+  handleSymbolChange: () => void;
+  handleSubmit: () => void;
+  price: number;
+  symbol: string;
 }
 
 const CreatePositionForm = ({

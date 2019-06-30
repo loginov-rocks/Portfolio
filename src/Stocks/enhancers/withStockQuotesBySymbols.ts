@@ -8,7 +8,7 @@ import { areArraysEqual } from 'Shared/lib/utils';
 import { fetchQuote as fetchQuoteAction } from '../actions';
 
 interface Props {
-  fetchQuote: (symbol: string) => void,
+  fetchQuote: (symbol: string) => void;
   symbols: string[];
 }
 

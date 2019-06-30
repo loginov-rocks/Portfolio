@@ -4,7 +4,7 @@ import AccountItem from '../AccountItem';
 import AccountsSummary from '../AccountsSummary';
 
 interface Props {
-  accounts: Array<{ id: string }>;
+  accounts: { id: string }[];
   brokerageAccountId: string;
   setBrokerageAccount: (id: string) => void;
 }

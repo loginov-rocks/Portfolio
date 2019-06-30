@@ -3,7 +3,7 @@ import * as React from 'react';
 interface Props {
   instrument: {
     symbol: string;
-  },
+  };
   value: number;
 }
 
