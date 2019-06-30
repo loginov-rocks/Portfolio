@@ -3,6 +3,7 @@ import * as React from 'react';
 import CreatePositionForm from 'Portfolio/components/CreatePositionForm';
 
 interface Props {
+  children: JSX.Element;
   handleHomeClick: () => void;
   handleOnCreate: () => void;
 }

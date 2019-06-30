@@ -4,6 +4,7 @@ import { Position as PositionType } from 'Portfolio/lib/flow';
 import Progress from 'Shared/components/Progress';
 
 interface Props {
+  children: JSX.Element,
   handleDeleteClick: () => void,
   handleHomeClick: () => void,
   position: PositionType,

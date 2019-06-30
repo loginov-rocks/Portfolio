@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 interface Props {
+  children: JSX.Element;
   handleClick: () => void;
 }
 

@@ -1,5 +1,5 @@
 interface Props {
-  children: () => JSX.Element,
+  children: (props: { value: number }) => JSX.Element,
   value: number,
 }
 

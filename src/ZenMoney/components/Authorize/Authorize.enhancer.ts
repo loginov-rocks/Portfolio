@@ -55,7 +55,7 @@ export default compose(
 
     handleAuthorize: ({ updateProgress }) => () => {
       updateProgress(true);
-      window.location = zenMoney.getAuthorizeUrl();
+      (window as any).location = zenMoney.getAuthorizeUrl();
     },
 
   }),

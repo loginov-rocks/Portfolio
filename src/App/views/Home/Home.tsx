@@ -7,6 +7,7 @@ import StockPositionsList from '../../components/StockPositionsList';
 import StockPositionsValue from '../../components/StockPositionsValue';
 
 interface Props {
+  children: JSX.Element,
   handleCreatePositionClick: () => void,
   handlePositionClick: () => void,
   handleProfileClick: () => void,

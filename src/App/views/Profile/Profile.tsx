@@ -3,6 +3,7 @@ import * as React from 'react';
 import LogoutButton from 'User/components/LogoutButton';
 
 interface Props {
+  children: JSX.Element;
   handleHomeClick: () => void;
   profile: {
     avatarUrl: string;
@@ -23,7 +24,7 @@ const Profile = ({ handleHomeClick, profile }: Props) => (
     <div>
 
       {profile.avatarUrl && (
-        <img align="right" alt="Avatar" src={profile.avatarUrl} />
+        <img alt="Avatar" src={profile.avatarUrl} />
       )}
 
       {profile.displayName && (

@@ -5,6 +5,7 @@ import Guest from '../../views/Guest';
 import Loading from '../../views/Loading';
 
 interface Props {
+  children?: JSX.Element;
   isAuthenticated: boolean;
   progress: boolean;
 }

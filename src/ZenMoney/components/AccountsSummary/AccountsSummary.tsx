@@ -3,6 +3,7 @@ import * as React from 'react';
 import Amount from '../Amount';
 
 interface Props {
+  children: JSX.Element;
   balance: number;
   instrumentId: string;
 }
