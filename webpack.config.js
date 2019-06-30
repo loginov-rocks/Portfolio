@@ -1,10 +1,16 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
+const CopyPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
 
-const aliases = ['App', 'Portfolio', 'Shared', 'Stocks', 'User', 'ZenMoney'];
-
 module.exports = {
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    historyApiFallback: true,
+    port: 3000,
+  },
   entry: './src/index.tsx',
   module: {
     rules: [
@@ -19,8 +25,26 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  plugins: [
+    new CopyPlugin([
+      {
+        from: 'public',
+        ignore: 'index.html',
+      },
+    ]),
+    new Dotenv({
+      safe: false,
+    }),
+    new HtmlPlugin({
+      inject: false,
+      template: 'public/index.html',
+    }),
+  ],
   resolve: {
-    alias: Object.assign({}, ...aliases.map(dir => ({ [dir]: path.resolve(__dirname, `src/${dir}`) }))),
     extensions: ['.js', '.ts', '.tsx'],
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, 'src'),
+    ],
   },
 };
