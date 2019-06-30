@@ -3,9 +3,17 @@
   "version": "0.3.0",
   "license": "MIT",
   "scripts": {
-    "ci": "npm run lint && npm run tsc",
-    "lint": "eslint --ext ts,tsx src",
-    "tsc": "tsc"
+    "build": "npm run clean:build && webpack --mode production",
+    "build:dev": "npm run build -- --mode development",
+    "ci": "npm run lint && npm run typecheck && npm run coverage && npm run build",
+    "clean:build": "rm -rf dist",
+    "clean:coverage": "rm -rf coverage",
+    "coverage": "npm run clean:coverage && npm run test:coverage",
+    "lint": "eslint --ext js,ts,tsx src webpack.config.js",
+    "test": "jest",
+    "test:coverage": "npm test -- --coverage",
+    "test:update": "npm test -- --updateSnapshot",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -23,6 +31,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@types/jest": "^24.0.15",
     "@types/react": "^16.8.22",
@@ -33,6 +42,9 @@
     "@typescript-eslint/parser": "^1.11.0",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-typescript": "^4.0.0",
     "eslint-plugin-import": "^2.18.0",
@@ -44,14 +56,15 @@
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "homepage": "./"
+  "jest": {
+    "modulePaths": [
+      "src"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>src/setupTests.ts"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  }
 }

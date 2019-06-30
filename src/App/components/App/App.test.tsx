@@ -1,10 +1,10 @@
+import { shallow } from 'enzyme';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App isAuthenticated={false} progress={false} />, div);
-  ReactDOM.unmountComponentAtNode(div);
+it('renders without crashing and matches snapshot', () => {
+  const wrapper = shallow(<App isAuthenticated={false} progress={false} />);
+
+  expect(wrapper).toMatchSnapshot();
 });
