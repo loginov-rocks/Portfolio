@@ -11,7 +11,7 @@ export default class ZenMoney {
 
   protected accessToken: string | undefined;
 
-  public static extractAuthorizeCode(location) {
+  public static extractAuthorizeCode(location): string {
     const url = new URL(location);
     const params = new URLSearchParams(url.search);
 
@@ -24,17 +24,17 @@ export default class ZenMoney {
     this.redirectUrl = redirectUrl;
   }
 
-  public setAccessToken(token) {
+  public setAccessToken(token): this {
     this.accessToken = token;
 
     return this;
   }
 
-  public getAuthorizeUrl() {
+  public getAuthorizeUrl(): string {
     return `${this.url}/oauth2/authorize?client_id=${this.consumerKey}&redirect_uri=${this.redirectUrl}&response_type=code`;
   }
 
-  public getTokens(code) {
+  public getTokens(code): Promise<{ access_token: string; refresh_token: string }> {
     const params = new URLSearchParams();
 
     params.append('client_id', this.consumerKey);
@@ -47,11 +47,11 @@ export default class ZenMoney {
       .then(({ data }) => data);
   }
 
-  public getAuthorizationHeader() {
+  public getAuthorizationHeader(): { Authorization: string } {
     return { Authorization: `Bearer ${this.accessToken}` };
   }
 
-  public getDiff(currentClientTimestamp, serverTimestamp, payload = {}) {
+  public getDiff(currentClientTimestamp, serverTimestamp, payload = {}): Promise<{}> {
     return axios.post(
       `${this.url}/v8/diff`,
       {

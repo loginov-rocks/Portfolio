@@ -10,7 +10,7 @@ interface Props {
   };
 }
 
-const AccountItem = ({ account }: Props) => (
+const AccountItem: React.FunctionComponent<Props> = ({ account }: Props) => (
   <div>
     <div>
       {account.title}

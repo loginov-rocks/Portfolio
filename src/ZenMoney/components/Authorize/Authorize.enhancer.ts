@@ -14,7 +14,7 @@ interface Props {
   updateProgress: (progress: boolean) => void;
 }
 
-const mapStateToProps = ({ zenMoney: { accessToken } }) => ({ accessToken });
+const mapStateToProps = ({ zenMoney: { accessToken } }): { accessToken: string } => ({ accessToken });
 
 const mapDispatchToProps = { fetchTokens: fetchTokensAction, setAccessToken: setAccessTokenAction };
 

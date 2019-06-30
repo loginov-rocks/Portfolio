@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { Position } from '../../lib/flow';
 
 export interface RenderProps {
@@ -7,11 +9,11 @@ export interface RenderProps {
 }
 
 interface Props extends RenderProps {
-  children: (renderProps: RenderProps) => JSX.Element;
+  children: React.FunctionComponent<RenderProps>;
 }
 
-const PositionItem = ({
+const PositionItem: React.FunctionComponent<Props> = ({
   children, handleClick, isClickable, position,
-}: Props) => children({ handleClick, isClickable, position });
+}) => children({ handleClick, isClickable, position });
 
 export default PositionItem;

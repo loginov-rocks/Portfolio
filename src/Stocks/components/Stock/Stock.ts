@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { Quote } from '../../lib/IEX/IEX';
 
 export interface RenderProps {
@@ -10,12 +12,12 @@ export interface RenderProps {
 }
 
 interface Props extends RenderProps {
-  children: (renderProps: RenderProps) => JSX.Element;
+  children: React.FunctionComponent<RenderProps>;
 }
 
-const Stock = ({
+const Stock: React.FunctionComponent<Props> = ({
   children, logo, logoProgress, price, quote, quoteProgress, symbol,
-}: Props) => children({
+}) => children({
   logo, logoProgress, price, quote, quoteProgress, symbol,
 });
 

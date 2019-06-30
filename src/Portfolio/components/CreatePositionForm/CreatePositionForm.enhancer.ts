@@ -5,7 +5,7 @@ import { createPosition as createPositionAction } from '../../actions';
 
 const mapDispatchToProps = { createPosition: createPositionAction };
 
-const formatDate = date => date.toISOString().slice(0, 10);
+const formatDate = (date: Date): string => date.toISOString().slice(0, 10);
 
 export default compose(
   connect(null, mapDispatchToProps),

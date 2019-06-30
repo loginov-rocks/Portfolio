@@ -4,7 +4,7 @@ import { compose, mapProps } from 'recompose';
 import { deletePosition } from '../../actions';
 import { calculatePositionsValue, mergePositionsBySymbols } from '../../lib/portfolio';
 
-const mapStateToProps = ({ portfolio: { positions }, stocks: { quotes } }) => ({
+const mapStateToProps = ({ portfolio: { positions }, stocks: { quotes } }): { positions: []; quotes: [] } => ({
   positions, quotes,
 });
 

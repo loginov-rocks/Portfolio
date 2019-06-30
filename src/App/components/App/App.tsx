@@ -5,12 +5,11 @@ import Guest from '../../views/Guest';
 import Loading from '../../views/Loading';
 
 interface Props {
-  children?: JSX.Element;
   isAuthenticated: boolean;
   progress: boolean;
 }
 
-const App = ({ isAuthenticated, progress }: Props) => {
+const App: React.FunctionComponent<Props> = ({ isAuthenticated, progress }: Props) => {
   if (progress) {
     return <Loading />;
   }

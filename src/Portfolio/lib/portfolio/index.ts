@@ -2,7 +2,7 @@ import { findQuoteBySymbol, getQuotePrice } from 'Stocks/lib/stocks';
 
 import { Position } from '../flow';
 
-export const calculatePositionsValue = (positions, quotesRepository) => (
+export const calculatePositionsValue = (positions, quotesRepository): number => (
   positions
     .map(position => {
       const { amount, symbol } = position;
@@ -14,11 +14,11 @@ export const calculatePositionsValue = (positions, quotesRepository) => (
     .reduce((a, b) => a + b, 0)
 );
 
-export const getUniqueSymbolsFromPositions = (positions: Position[]) => [
-  ...new Set(positions.map(position => position.symbol)),
-];
+export const getUniqueSymbolsFromPositions = (positions: Position[]): string[] => Array.from(
+  new Set(positions.map(position => position.symbol)),
+);
 
-export const mergePositionsBySymbols = positions => {
+export const mergePositionsBySymbols = (positions: Position[]): {}[] => {
   const symbols = {};
 
   positions.forEach(position => {
@@ -43,7 +43,7 @@ export const mergePositionsBySymbols = positions => {
   }));
 };
 
-export const mergeSymbolsBySectors = (symbols, quotesRepository) => {
+export const mergeSymbolsBySectors = (symbols, quotesRepository): {}[] => {
   const sectors = {};
   let currentTotalPrice = 0;
 

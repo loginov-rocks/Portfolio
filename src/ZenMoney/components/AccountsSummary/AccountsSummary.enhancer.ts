@@ -7,7 +7,12 @@ const mapStateToProps = ({
   portfolio: { positions },
   stocks: { quotes },
   zenMoney: { brokerageAccountId, instruments },
-}) => ({
+}): {
+  brokerageAccountId: string;
+  instruments: [];
+  positions: [];
+  quotes: [];
+} => ({
   brokerageAccountId, instruments, positions, quotes,
 });
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Progress = () => (
+const Progress: React.FunctionComponent = () => (
   <div>Progress...</div>
 );
 

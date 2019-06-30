@@ -3,7 +3,6 @@ import * as React from 'react';
 import LogoutButton from 'User/components/LogoutButton';
 
 interface Props {
-  children: JSX.Element;
   handleHomeClick: () => void;
   profile: {
     avatarUrl: string;
@@ -12,7 +11,7 @@ interface Props {
   };
 }
 
-const Profile = ({ handleHomeClick, profile }: Props) => (
+const Profile: React.FunctionComponent<Props> = ({ handleHomeClick, profile }: Props) => (
   <React.Fragment>
 
     <div>

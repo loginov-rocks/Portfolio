@@ -13,7 +13,7 @@ interface Props {
   };
 }
 
-const mapStateToProps = ({ stocks: { quotes } }) => ({ quotes });
+const mapStateToProps = ({ stocks: { quotes } }): { quotes: [] } => ({ quotes });
 
 const mapDispatchToProps = { fetchQuote: fetchQuoteAction };
 

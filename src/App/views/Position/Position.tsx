@@ -4,14 +4,13 @@ import { Position as PositionType } from 'Portfolio/lib/flow';
 import Progress from 'Shared/components/Progress';
 
 interface Props {
-  children: JSX.Element;
   handleDeleteClick: () => void;
   handleHomeClick: () => void;
   position: PositionType;
   positionLoading: boolean;
 }
 
-const Position = ({
+const Position: React.FunctionComponent<Props> = ({
   handleDeleteClick, handleHomeClick, position, positionLoading,
 }: Props) => (
   <React.Fragment>

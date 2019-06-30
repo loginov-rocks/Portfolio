@@ -15,13 +15,13 @@ export default class IEX {
     this.url = url;
   }
 
-  public getStockLogo(symbol: string) {
+  public getStockLogo(symbol: string): Promise<string> {
     return axios.get(`${this.url}/stock/${symbol}/logo`)
-      .then(({ data }) => (data.url as string));
+      .then(({ data }) => data.url);
   }
 
-  public getStockQuote(symbol: string) {
+  public getStockQuote(symbol: string): Promise<Quote> {
     return axios.get(`${this.url}/stock/${symbol}/quote`)
-      .then(({ data }) => (data as Quote));
+      .then(({ data }) => data);
   }
 }

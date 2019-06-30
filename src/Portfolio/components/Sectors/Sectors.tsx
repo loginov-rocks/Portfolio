@@ -10,11 +10,10 @@ interface Sector {
 }
 
 interface Props {
-  children: JSX.Element;
   sectors: Sector[];
 }
 
-const Sectors = ({ sectors }: Props) => (
+const Sectors: React.FunctionComponent<Props> = ({ sectors }: Props) => (
   <div>
 
     <h3>Sectors</h3>

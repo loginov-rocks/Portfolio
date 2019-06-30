@@ -3,7 +3,7 @@ import {
   branch, compose, mapProps, renderComponent,
 } from 'recompose';
 
-const mapStateToProps = ({ zenMoney: { isAuthorized } }) => ({ isAuthorized });
+const mapStateToProps = ({ zenMoney: { isAuthorized } }): { isAuthorized: boolean } => ({ isAuthorized });
 
 export default notAuthorizedComponent => compose(
   connect(mapStateToProps),

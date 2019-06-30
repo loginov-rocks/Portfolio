@@ -1,12 +1,11 @@
 import * as React from 'react';
 
 interface Props {
-  children: JSX.Element;
   handleAuthorize: () => void;
   progress: boolean;
 }
 
-const Authorize = ({ handleAuthorize, progress }: Props) => (
+const Authorize: React.FunctionComponent<Props> = ({ handleAuthorize, progress }: Props) => (
   <div>
     {progress
       ? <span>Progress...</span>

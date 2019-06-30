@@ -3,7 +3,10 @@ import { compose, mapProps } from 'recompose';
 
 import { mergePositionsBySymbols, mergeSymbolsBySectors } from '../../lib/portfolio';
 
-const mapStateToProps = ({ portfolio: { positions }, stocks: { quotes } }) => ({ positions, quotes });
+const mapStateToProps = ({ portfolio: { positions }, stocks: { quotes } }): { positions: []; quotes: [] } => ({
+  positions,
+  quotes,
+});
 
 export default compose(
   connect(mapStateToProps),

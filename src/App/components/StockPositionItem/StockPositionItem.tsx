@@ -7,12 +7,12 @@ import Stock from 'Stocks/components/Stock';
 import { RenderProps as StockRenderProps } from 'Stocks/components/Stock/Stock';
 
 interface Props {
-  children: (props: PositionItemRenderProps & StockRenderProps) => JSX.Element;
+  children: React.FunctionComponent<PositionItemRenderProps & StockRenderProps>;
   onClick?: (position: Position) => void;
   position: Position;
 }
 
-const StockPositionItem = ({ children, onClick, position }: Props) => (
+const StockPositionItem: React.FunctionComponent<Props> = ({ children, onClick, position }: Props) => (
   <PositionItem onClick={onClick} position={position}>
     {({ handleClick, isClickable }) => (
       <Stock symbol={position.symbol}>

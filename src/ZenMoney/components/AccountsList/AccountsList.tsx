@@ -9,7 +9,7 @@ interface Props {
   setBrokerageAccount: (id: string) => void;
 }
 
-const AccountsList = ({ accounts, brokerageAccountId, setBrokerageAccount }: Props) => (
+const AccountsList: React.FunctionComponent<Props> = ({ accounts, brokerageAccountId, setBrokerageAccount }: Props) => (
   <div>
     <div>
       Total:

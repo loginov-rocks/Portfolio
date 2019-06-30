@@ -1,4 +1,4 @@
-export const areArraysEqual = (a, b) => {
+export const areArraysEqual = (a, b): boolean => {
   if (a.length === b.length) {
     return true;
   }

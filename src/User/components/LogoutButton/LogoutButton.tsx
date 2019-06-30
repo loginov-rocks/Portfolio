@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 interface Props {
-  children: JSX.Element;
+  children: React.ReactNode;
   handleClick: () => void;
 }
 
-const LogoutButton = ({ children, handleClick }: Props) => (
+const LogoutButton: React.FunctionComponent<Props> = ({ children, handleClick }: Props) => (
   <button onClick={handleClick} type="button">{children}</button>
 );
 

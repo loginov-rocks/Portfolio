@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import GoogleLoginButton from 'User/components/GoogleLoginButton';
 
-const Guest = () => (
+const Guest: React.FunctionComponent = () => (
   <React.Fragment>
 
     <h1>Welcome!</h1>

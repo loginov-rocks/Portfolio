@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import Progress from 'Shared/components/Progress';
 
-const Loading = () => (
+const Loading: React.FunctionComponent = () => (
   <React.Fragment>
 
     <h1>Loading</h1>

@@ -10,7 +10,7 @@ interface Props {
   route: string;
 }
 
-const Navigation = ({ route }: Props) => {
+const Navigation: React.FunctionComponent<Props> = ({ route }: Props) => {
   switch (route) {
     case R.CREATE_POSITION:
       return <CreatePosition />;

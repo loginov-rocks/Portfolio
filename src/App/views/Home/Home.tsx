@@ -7,7 +7,6 @@ import StockPositionsList from '../../components/StockPositionsList';
 import StockPositionsValue from '../../components/StockPositionsValue';
 
 interface Props {
-  children: JSX.Element;
   handleCreatePositionClick: () => void;
   handlePositionClick: () => void;
   handleProfileClick: () => void;
@@ -15,7 +14,7 @@ interface Props {
   positionsLoading: boolean;
 }
 
-const Home = ({
+const Home: React.FunctionComponent<Props> = ({
   handleCreatePositionClick, handlePositionClick, handleProfileClick, positions, positionsLoading,
 }: Props) => (
   <React.Fragment>

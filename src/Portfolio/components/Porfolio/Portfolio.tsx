@@ -6,13 +6,12 @@ import Stock from 'Stocks/components/Stock';
 import Sectors from '../Sectors';
 
 interface Props {
-  children: JSX.Element;
   closePosition: (string) => void;
   symbols: { amount: number; id: string; symbol: string }[];
   value: number;
 }
 
-const Portfolio = ({ closePosition, symbols, value }: Props) => (
+const Portfolio: React.FunctionComponent<Props> = ({ closePosition, symbols, value }: Props) => (
   <div>
 
     <h2>Portfolio</h2>

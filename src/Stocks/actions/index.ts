@@ -3,7 +3,7 @@ import { createFetchResource } from 'redux-repository/lib/actions';
 import * as C from '../../constants';
 import iex from '../lib/IEX/instance';
 
-export const fetchLogo = symbol => createFetchResource(
+export const fetchLogo = (symbol: string): void => createFetchResource(
   C.STOCKS_LOGOS_RESOURCE_NAME,
   symbol,
   ({ stocks: { logos } }) => logos,
@@ -15,7 +15,7 @@ export const fetchLogo = symbol => createFetchResource(
   { ttl: C.STOCKS_LOGOS_TTL },
 );
 
-export const fetchQuote = symbol => createFetchResource(
+export const fetchQuote = (symbol: string): void => createFetchResource(
   C.STOCKS_QUOTES_RESOURCE_NAME,
   symbol,
   ({ stocks: { quotes } }) => quotes,

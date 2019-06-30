@@ -3,12 +3,11 @@ import * as React from 'react';
 import CreatePositionForm from 'Portfolio/components/CreatePositionForm';
 
 interface Props {
-  children: JSX.Element;
   handleHomeClick: () => void;
   handleOnCreate: () => void;
 }
 
-const CreatePosition = ({ handleHomeClick, handleOnCreate }: Props) => (
+const CreatePosition: React.FunctionComponent<Props> = ({ handleHomeClick, handleOnCreate }: Props) => (
   <React.Fragment>
 
     <div>

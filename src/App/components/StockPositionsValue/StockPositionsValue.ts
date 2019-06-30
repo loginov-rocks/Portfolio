@@ -1,8 +1,10 @@
+import * as React from 'react';
+
 interface Props {
-  children: (props: { value: number }) => JSX.Element;
+  children: React.FunctionComponent<{ value: number }>;
   value: number;
 }
 
-const StockPositionsValue = ({ children, value }: Props) => children({ value });
+const StockPositionsValue: React.FunctionComponent<Props> = ({ children, value }: Props) => children({ value });
 
 export default StockPositionsValue;

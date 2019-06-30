@@ -4,7 +4,7 @@ import { branch, compose, withProps } from 'recompose';
 
 import withStockQuotesUpdater from 'Stocks/enhancers/withStockQuotesUpdater';
 
-const mapStateToProps = ({ firebase: { auth } }) => ({ auth });
+const mapStateToProps = ({ firebase: { auth } }): { auth: {} } => ({ auth });
 
 export default compose(
   connect(mapStateToProps),

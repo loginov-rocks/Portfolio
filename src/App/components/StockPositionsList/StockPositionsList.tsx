@@ -10,7 +10,7 @@ interface Props {
   positions: Position[];
 }
 
-const StockPositionsList = ({ onClick, positions }: Props) => (
+const StockPositionsList: React.FunctionComponent<Props> = ({ onClick, positions }: Props) => (
   <div>
     {positions.map(position => (
       <StockPositionItem

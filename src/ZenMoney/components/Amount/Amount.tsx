@@ -7,7 +7,7 @@ interface Props {
   value: number;
 }
 
-const Amount = ({ instrument, value }: Props) => (
+const Amount: React.FunctionComponent<Props> = ({ instrument, value }: Props) => (
   instrument && value
     ? (
       <span>

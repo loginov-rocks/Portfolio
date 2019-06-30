@@ -2,7 +2,6 @@ import * as React from 'react';
 
 interface Props {
   amount: number;
-  children: JSX.Element;
   date: string;
   handleAmountChange: () => void;
   handleDateChange: () => void;
@@ -13,7 +12,7 @@ interface Props {
   symbol: string;
 }
 
-const CreatePositionForm = ({
+const CreatePositionForm: React.FunctionComponent<Props> = ({
   amount, date, handleAmountChange, handleDateChange, handlePriceChange, handleSymbolChange, handleSubmit, price,
   symbol,
 }: Props) => (
