@@ -2,11 +2,20 @@ import * as React from 'react';
 
 import LogoutButton from 'User/components/LogoutButton';
 
-const Profile = ({ handleHomeClick, profile }) => (
+interface Props {
+  handleHomeClick: () => void;
+  profile: {
+    avatarUrl: string;
+    displayName: string;
+    email: string;
+  };
+}
+
+const Profile = ({ handleHomeClick, profile }: Props) => (
   <React.Fragment>
 
     <div>
-      <button onClick={handleHomeClick}>Home</button>
+      <button onClick={handleHomeClick} type="button">Home</button>
     </div>
 
     <h1>Profile</h1>

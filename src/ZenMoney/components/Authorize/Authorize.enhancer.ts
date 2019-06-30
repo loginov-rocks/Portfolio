@@ -1,18 +1,27 @@
 import { connect } from 'react-redux';
-import { compose, lifecycle, withState, withHandlers } from 'recompose';
+import {
+  compose, lifecycle, withState, withHandlers,
+} from 'recompose';
 
-import { fetchTokens, setAccessToken } from '../../actions';
+import { fetchTokens as fetchTokensAction, setAccessToken as setAccessTokenAction } from '../../actions';
 import zenMoney from '../../lib/ZenMoney/instance';
 import ZenMoney from '../../lib/ZenMoney/ZenMoney';
 
+interface Props {
+  accessToken: string;
+  fetchTokens: (code: string) => void;
+  setAccessToken: (accessToken: string) => void;
+  updateProgress: (progress: boolean) => void;
+}
+
 const mapStateToProps = ({ zenMoney: { accessToken } }) => ({ accessToken });
 
-const mapDispatchToProps = { fetchTokens, setAccessToken };
+const mapDispatchToProps = { fetchTokens: fetchTokensAction, setAccessToken: setAccessTokenAction };
 
 export default compose(
   withState('progress', 'updateProgress', false),
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle({
+  lifecycle<Props, {}>({
 
     componentDidMount() {
       const {

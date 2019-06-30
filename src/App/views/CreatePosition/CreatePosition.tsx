@@ -2,11 +2,16 @@ import * as React from 'react';
 
 import CreatePositionForm from 'Portfolio/components/CreatePositionForm';
 
-const CreatePosition = ({ handleHomeClick, handleOnCreate }) => (
+interface Props {
+  handleHomeClick: () => void;
+  handleOnCreate: () => void;
+}
+
+const CreatePosition = ({ handleHomeClick, handleOnCreate }: Props) => (
   <React.Fragment>
 
     <div>
-      <button onClick={handleHomeClick}>Home</button>
+      <button onClick={handleHomeClick} type="button">Home</button>
     </div>
 
     <h1>Create position</h1>

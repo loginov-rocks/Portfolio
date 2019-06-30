@@ -1,10 +1,15 @@
 import * as React from 'react';
 
-const Authorize = ({ handleAuthorize, progress }) => (
+interface Props {
+  handleAuthorize: () => void;
+  progress: boolean;
+}
+
+const Authorize = ({ handleAuthorize, progress }: Props) => (
   <div>
     {progress
       ? <span>Progress...</span>
-      : <button onClick={handleAuthorize}>Sign in</button>}
+      : <button onClick={handleAuthorize} type="button">Sign in</button>}
   </div>
 );
 

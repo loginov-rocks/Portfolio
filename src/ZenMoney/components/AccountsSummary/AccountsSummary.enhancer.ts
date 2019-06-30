@@ -18,7 +18,7 @@ export default compose(
   }) => {
     const instrument = instruments.find(({ id }) => id === instrumentId);
 
-    const balanceByAccounts = accounts.map((account) => {
+    const balanceByAccounts = accounts.map(account => {
       let { balance, instrument: accountInstrumentId } = account;
 
       if (account.id === brokerageAccountId) {

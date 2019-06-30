@@ -13,7 +13,7 @@ export default compose(
   }),
   withHandlers({
 
-    handleOnCreate: ({ handlePositionClick }) => (position) => {
+    handleOnCreate: ({ handlePositionClick }) => position => {
       handlePositionClick(position);
     },
 

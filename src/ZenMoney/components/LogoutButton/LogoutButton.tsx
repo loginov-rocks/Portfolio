@@ -1,7 +1,11 @@
 import * as React from 'react';
 
-const LogoutButton = ({ handleClick }) => (
-  <button onClick={handleClick}>Logout</button>
+interface Props {
+  handleClick: () => void;
+}
+
+const LogoutButton = ({ handleClick }: Props) => (
+  <button onClick={handleClick} type="button">Logout</button>
 );
 
 export default LogoutButton;

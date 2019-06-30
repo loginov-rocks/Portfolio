@@ -1,6 +1,6 @@
 import { Quote } from '../../lib/IEX/IEX';
 
-interface RenderProps {
+export interface RenderProps {
   logo: string | undefined;
   logoProgress: boolean;
   price: number;

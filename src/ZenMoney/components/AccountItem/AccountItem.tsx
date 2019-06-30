@@ -2,7 +2,15 @@ import * as React from 'react';
 
 import Amount from '../Amount';
 
-const AccountItem = ({ account }) => (
+interface Props {
+  account: {
+    balance: number;
+    instrument: string;
+    title: string;
+  }
+}
+
+const AccountItem = ({ account }: Props) => (
   <div>
     <div>
       {account.title}

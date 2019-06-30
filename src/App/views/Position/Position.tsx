@@ -16,7 +16,7 @@ const Position = ({
   <React.Fragment>
 
     <div>
-      <button onClick={handleHomeClick}>Home</button>
+      <button onClick={handleHomeClick} type="button">Home</button>
     </div>
 
     <h1>Position</h1>
@@ -28,7 +28,7 @@ const Position = ({
     </div>
 
     <div>
-      <button onClick={handleDeleteClick}>Delete</button>
+      <button onClick={handleDeleteClick} type="button">Delete</button>
     </div>
 
   </React.Fragment>

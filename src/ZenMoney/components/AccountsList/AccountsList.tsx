@@ -3,12 +3,17 @@ import * as React from 'react';
 import AccountItem from '../AccountItem';
 import AccountsSummary from '../AccountsSummary';
 
-const AccountsList = ({
-  accounts, brokerageAccountId, setBrokerageAccount,
-}) => (
+interface Props {
+  accounts: Array<{ id: string }>;
+  brokerageAccountId: string;
+  setBrokerageAccount: (id: string) => void;
+}
+
+const AccountsList = ({ accounts, brokerageAccountId, setBrokerageAccount }: Props) => (
   <div>
     <div>
-      Total: <AccountsSummary accounts={accounts} instrumentId={2} />
+      Total:
+      <AccountsSummary accounts={accounts} instrumentId={2} />
     </div>
     <ul>
       {accounts.map(account => (
@@ -18,9 +23,10 @@ const AccountsList = ({
 
           <AccountItem account={account} />
 
-          <button onClick={() => setBrokerageAccount(
-            account.id !== brokerageAccountId ? account.id : '',
-          )}>
+          <button
+            onClick={() => setBrokerageAccount(account.id !== brokerageAccountId ? account.id : '')}
+            type="button"
+          >
             {account.id !== brokerageAccountId ? 'Brokerage' : 'Not brokerage'}
           </button>
 

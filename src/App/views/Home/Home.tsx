@@ -15,16 +15,15 @@ interface Props {
 }
 
 const Home = ({
-  handleCreatePositionClick, handlePositionClick, handleProfileClick, positions,
-  positionsLoading,
+  handleCreatePositionClick, handlePositionClick, handleProfileClick, positions, positionsLoading,
 }: Props) => (
   <React.Fragment>
 
     <h1>Home</h1>
 
     <div>
-      <button onClick={handleCreatePositionClick}>Create position</button>
-      <button onClick={handleProfileClick}>Profile</button>
+      <button onClick={handleCreatePositionClick} type="button">Create position</button>
+      <button onClick={handleProfileClick} type="button">Profile</button>
     </div>
 
     <div>

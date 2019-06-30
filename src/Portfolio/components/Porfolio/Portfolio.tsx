@@ -26,6 +26,7 @@ const Portfolio = ({ closePosition, symbols, value }: Props) => (
 
     <ul>
       {symbols.map(({ amount, id, symbol }, index) => (
+        /* eslint-disable-next-line react/no-array-index-key */
         <li key={index}>
           <Stock amount={amount} symbol={symbol} />
           <button onClick={() => closePosition(id)} type="button">Remove</button>

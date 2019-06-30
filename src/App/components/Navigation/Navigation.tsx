@@ -6,7 +6,11 @@ import Home from '../../views/Home';
 import Position from '../../views/Position';
 import Profile from '../../views/Profile';
 
-const Navigation = ({ route }) => {
+interface Props {
+  route: string;
+}
+
+const Navigation = ({ route }: Props) => {
   switch (route) {
     case R.CREATE_POSITION:
       return <CreatePosition />;

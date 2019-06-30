@@ -18,10 +18,15 @@ const StockPositionsList = ({ onClick, positions }: Props) => (
         onClick={onClick}
         position={position}
       >
-        {({ handleClick, isClickable, logo, logoProgress, price, quote, quoteProgress }) => (
+        {({
+          handleClick, isClickable, logo, logoProgress, price, quote, quoteProgress,
+        }) => (
           <div
             onClick={handleClick}
+            onKeyPress={handleClick}
             style={isClickable ? { cursor: 'pointer' } : {}}
+            role="button"
+            tabIndex={0}
           >
 
             <div>
@@ -31,33 +36,37 @@ const StockPositionsList = ({ onClick, positions }: Props) => (
             <div>
               {quoteProgress
                 ? <Progress />
-                : quote && (
-                <React.Fragment>
+                : quote
+                && (
+                  <React.Fragment>
 
-                  <div>
-                    {price.toFixed(2)}
-                    {' x '}
-                    {position.amount}
-                    {' = '}
-                    {(position.amount * price).toFixed(2)}
-                  </div>
+                    <div>
+                      {price.toFixed(2)}
+                      {' x '}
+                      {position.amount}
+                      {' = '}
+                      {(position.amount * price).toFixed(2)}
+                    </div>
 
-                  <div style={{ color: quote.change >= 0 ? 'green' : 'red' }}>
-                    {(quote.changePercent * 100).toFixed(2)}%
-                    {' '}
-                    ({(position.amount * quote.change).toFixed(2)})
-                  </div>
+                    <div style={{ color: quote.change >= 0 ? 'green' : 'red' }}>
+                      {(quote.changePercent * 100).toFixed(2)}
+                      %
+                      (
+                      {(position.amount * quote.change).toFixed(2)}
+                      )
+                    </div>
 
-                </React.Fragment>
-              )}
+                  </React.Fragment>
+                )}
             </div>
 
             <div>
               {logoProgress
                 ? <Progress />
-                : logo && (
-                <img alt="" src={logo} />
-              )}
+                : logo
+                && (
+                  <img alt="" src={logo} />
+                )}
             </div>
 
           </div>

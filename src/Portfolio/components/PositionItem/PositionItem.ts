@@ -1,6 +1,6 @@
 import { Position } from '../../lib/flow';
 
-interface RenderProps {
+export interface RenderProps {
   handleClick: () => void,
   isClickable: boolean,
   position: Position,

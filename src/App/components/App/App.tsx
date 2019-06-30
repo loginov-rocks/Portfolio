@@ -4,7 +4,12 @@ import Navigation from '../Navigation';
 import Guest from '../../views/Guest';
 import Loading from '../../views/Loading';
 
-const App = ({ isAuthenticated, progress }) => {
+interface Props {
+  isAuthenticated: boolean;
+  progress: boolean;
+}
+
+const App = ({ isAuthenticated, progress }: Props) => {
   if (progress) {
     return <Loading />;
   }

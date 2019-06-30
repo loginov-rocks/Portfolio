@@ -2,7 +2,12 @@ import * as React from 'react';
 
 import Amount from '../Amount';
 
-const AccountsSummary = ({ balance, instrumentId }) => (
+interface Props {
+  balance: number;
+  instrumentId: string;
+}
+
+const AccountsSummary = ({ balance, instrumentId }: Props) => (
   <Amount instrumentId={instrumentId} value={balance} />
 );
 
