@@ -1,8 +1,9 @@
 import * as React from 'react';
 
-interface Props {
-  children: React.ReactNode;
-  handleClick: () => void;
+import { HandlersProps } from './ProviderLoginButton.enhancer';
+
+interface Props extends HandlersProps {
+  children?: React.ReactNode;
 }
 
 const ProviderLoginButton: React.FunctionComponent<Props> = ({ children, handleClick }: Props) => (

@@ -1,6 +1,6 @@
-export const areArraysEqual = (a, b): boolean => {
-  if (a.length === b.length) {
-    return true;
+export const areArraysEqual = <T>(a: T[], b: T[]): boolean => {
+  if (a.length !== b.length) {
+    return false;
   }
 
   const sortedA = a.sort();
