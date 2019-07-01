@@ -1,26 +1,23 @@
-import * as firebase from 'firebase';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
+
+import { GetFirebaseExtraArgument } from 'Shared/lib/firebase';
 
 import * as C from '../../constants';
 import { positionCreated, positionDeleted } from './creators';
 import { State } from '../../reducer';
 
-interface GetFirebase {
-  (): firebase.app.App;
-}
-
 export const createPosition = (
   symbol: string, price: number, amount: number, date: string,
-): ThunkAction<void, State, GetFirebase, Action> => (dispatch, getState, getFirebase) => {
-  const app = getFirebase();
+): ThunkAction<void, State, GetFirebaseExtraArgument, Action> => (dispatch, getState, getFirebase) => {
+  const firebase = getFirebase();
   const user = firebase.auth().currentUser;
 
   if (!user) {
     throw new Error('Trying to create position when unauthorized');
   }
 
-  app.database().ref(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}`).push({
+  firebase.database().ref(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}`).push({
     amount, date, price, symbol,
   })
     .then(({ key }) => {
@@ -32,17 +29,17 @@ export const createPosition = (
     });
 };
 
-export const deletePosition = (id: string): ThunkAction<void, State, GetFirebase, Action> => (
+export const deletePosition = (id: string): ThunkAction<void, State, GetFirebaseExtraArgument, Action> => (
   dispatch, getState, getFirebase,
 ) => {
-  const app = getFirebase();
+  const firebase = getFirebase();
   const user = firebase.auth().currentUser;
 
   if (!user) {
     throw new Error('Trying to delete position when unauthorized');
   }
 
-  app.database().ref(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}/${id}`).remove()
+  firebase.database().ref(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}/${id}`).remove()
     .then(() => {
       dispatch(positionDeleted(id));
     });

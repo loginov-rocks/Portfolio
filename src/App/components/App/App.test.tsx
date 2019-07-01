@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import App from './App';
 
-it('renders without crashing and matches snapshot', () => {
+it('matches snapshot', () => {
   const wrapper = shallow(<App isAuthenticated={false} progress={false} />);
 
   expect(wrapper).toMatchSnapshot();
