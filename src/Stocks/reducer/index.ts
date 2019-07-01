@@ -3,7 +3,12 @@ import { createInitialState } from 'redux-repository/lib/repository';
 
 import * as C from '../../constants';
 
-const initialState = {
+export interface State {
+  logos: {};
+  quotes: {};
+}
+
+const initialState: State = {
   logos: createInitialState(),
   quotes: createInitialState(),
 };

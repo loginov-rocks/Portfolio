@@ -1,42 +1,49 @@
-import * as C from '../../constants';
-import * as T from './types';
+import * as firebase from 'firebase';
+import { Action } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 
-export const createPosition = (symbol, price, amount, date) => (dispatch, getState, getFirebase) => {
-  const firebase = getFirebase();
+import * as C from '../../constants';
+import { positionCreated, positionDeleted } from './creators';
+import { State } from '../../reducer';
+
+interface GetFirebase {
+  (): firebase.app.App;
+}
+
+export const createPosition = (
+  symbol: string, price: number, amount: number, date: string,
+): ThunkAction<void, State, GetFirebase, Action> => (dispatch, getState, getFirebase) => {
+  const app = getFirebase();
   const user = firebase.auth().currentUser;
 
   if (!user) {
     throw new Error('Trying to create position when unauthorized');
   }
 
-  const positionData = {
+  app.database().ref(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}`).push({
     amount, date, price, symbol,
-  };
-
-  return firebase.push(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}`, positionData)
+  })
     .then(({ key }) => {
-      const position = Object.assign({ id: key }, positionData);
+      if (!key) {
+        throw new Error('Reference key is null');
+      }
 
-      dispatch({ payload: position, type: T.POSITION_CREATED });
-
-      return position;
+      dispatch(positionCreated(key, symbol, price, amount, date));
     });
 };
 
-export const deletePosition = id => (dispatch, getState, getFirebase) => {
-  if (!id) {
-    throw new Error('Trying to delete position without ID');
-  }
-
-  const firebase = getFirebase();
+export const deletePosition = (id: string): ThunkAction<void, State, GetFirebase, Action> => (
+  dispatch, getState, getFirebase,
+) => {
+  const app = getFirebase();
   const user = firebase.auth().currentUser;
 
   if (!user) {
     throw new Error('Trying to delete position when unauthorized');
   }
 
-  return firebase.remove(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}/${id}`)
+  app.database().ref(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}/${id}`).remove()
     .then(() => {
-      dispatch({ payload: id, type: T.POSITION_DELETED });
+      dispatch(positionDeleted(id));
     });
 };

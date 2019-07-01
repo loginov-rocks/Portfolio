@@ -11,11 +11,11 @@ const initialState: State = {
   routeParams: {},
 };
 
-export default (state: State = initialState, action): State => {
+export default (state = initialState, action: T.Action) => {
   const { payload } = action;
 
   switch (action.type) {
-    case T.NAVIGATE:
+    case T.NAVIGATION_HAPPENED:
       return {
         ...state,
         route: payload.route,

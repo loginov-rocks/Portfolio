@@ -4,7 +4,7 @@ const initialState = {
   //
 };
 
-export default (state = initialState, action) => {
+export default (state = initialState, action: T.Action) => {
   switch (action.type) {
     case T.POSITION_CREATED:
       return state;
