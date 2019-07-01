@@ -1,14 +1,11 @@
 import * as React from 'react';
 
+import { StateProps as Props } from './Navigation.enhancer';
 import * as R from '../../routes';
 import CreatePosition from '../../views/CreatePosition';
 import Home from '../../views/Home';
 import Position from '../../views/Position';
 import Profile from '../../views/Profile';
-
-interface Props {
-  route: string;
-}
 
 const Navigation: React.FunctionComponent<Props> = ({ route }: Props) => {
   switch (route) {

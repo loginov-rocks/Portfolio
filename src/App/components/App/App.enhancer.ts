@@ -4,15 +4,26 @@ import { branch, compose, withProps } from 'recompose';
 
 import withStockQuotesUpdater from 'Stocks/enhancers/withStockQuotesUpdater';
 
-const mapStateToProps = ({ firebase: { auth } }): { auth: {} } => ({ auth });
+import { State } from '../../../reducer';
 
-export default compose(
-  connect(mapStateToProps),
-  withProps(({ auth }) => ({
+interface StateProps {
+  auth: any;
+}
+
+export interface WithProps {
+  isAuthenticated: boolean;
+  progress: boolean;
+}
+
+const mapStateToProps = ({ firebase: { auth } }: State): StateProps => ({ auth });
+
+export default compose<StateProps & WithProps, {}>(
+  connect<StateProps, {}, {}, State>(mapStateToProps),
+  withProps<WithProps, StateProps>(({ auth }) => ({
     isAuthenticated: !isEmpty(auth) && isLoaded(auth),
     progress: !isLoaded(auth),
   })),
-  branch(
+  branch<StateProps & WithProps>(
     ({ isAuthenticated }) => isAuthenticated,
     withStockQuotesUpdater,
   ),
