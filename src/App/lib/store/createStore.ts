@@ -1,11 +1,13 @@
 import * as firebase from 'firebase';
 import { getFirebase, reactReduxFirebase } from 'react-redux-firebase';
-import { applyMiddleware, compose, createStore } from 'redux';
+import {
+  applyMiddleware, compose, createStore, Reducer,
+} from 'redux';
 import thunk from 'redux-thunk';
 
 import * as C from '../../../constants';
 
-export default reducer => {
+export default (reducer: Reducer) => {
   firebase.initializeApp({
     apiKey: C.FIREBASE_API_KEY,
     authDomain: C.FIREBASE_AUTH_DOMAIN,

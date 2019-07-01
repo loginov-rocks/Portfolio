@@ -5,9 +5,13 @@ import app from 'App/reducer';
 import portfolio from 'Portfolio/reducer';
 import stocks from 'Stocks/reducer';
 
-export default combineReducers({
+const reducer = combineReducers({
   app,
   firebase,
   portfolio,
   stocks,
 });
+
+export default reducer;
+
+export type State = ReturnType<typeof reducer>;
