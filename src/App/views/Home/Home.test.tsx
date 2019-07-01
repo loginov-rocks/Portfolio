@@ -16,3 +16,17 @@ it('matches snapshot', () => {
 
   expect(wrapper).toMatchSnapshot();
 });
+
+it('matches snapshot when positions are loading', () => {
+  const wrapper = shallow(
+    <Home
+      handleCreatePositionClick={() => undefined}
+      handlePositionClick={() => undefined}
+      handleProfileClick={() => undefined}
+      positions={[]}
+      positionsLoading
+    />,
+  );
+
+  expect(wrapper).toMatchSnapshot();
+});

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Fragment>
+  <div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Home
+    </button>
+  </div>
+  <h1>
+    Create position
+  </h1>
+  <Connect(withStateHandlers(withHandlers(CreatePositionForm)))
+    onCreate={[Function]}
+  />
+</Fragment>
+`;

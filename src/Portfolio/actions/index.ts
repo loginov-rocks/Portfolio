@@ -17,7 +17,7 @@ export const createPosition = (
     throw new Error('Trying to create position when unauthorized');
   }
 
-  firebase.database().ref(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}`).push({
+  return firebase.database().ref(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}`).push({
     amount, date, price, symbol,
   })
     .then(({ key }) => {
@@ -39,7 +39,7 @@ export const deletePosition = (id: string): ThunkAction<void, State, GetFirebase
     throw new Error('Trying to delete position when unauthorized');
   }
 
-  firebase.database().ref(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}/${id}`).remove()
+  return firebase.database().ref(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}/${id}`).remove()
     .then(() => {
       dispatch(positionDeleted(id));
     });

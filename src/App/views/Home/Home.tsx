@@ -1,18 +1,10 @@
 import * as React from 'react';
 
-import { Position } from 'Portfolio/lib/flow';
 import Progress from 'Shared/components/Progress';
 
 import StockPositionsList from '../../components/StockPositionsList';
 import StockPositionsValue from '../../components/StockPositionsValue';
-
-interface Props {
-  handleCreatePositionClick: () => void;
-  handlePositionClick: () => void;
-  handleProfileClick: () => void;
-  positions: Position[];
-  positionsLoading: boolean;
-}
+import { Props } from './Home.enhancer';
 
 const Home: React.FunctionComponent<Props> = ({
   handleCreatePositionClick, handlePositionClick, handleProfileClick, positions, positionsLoading,

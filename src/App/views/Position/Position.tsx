@@ -1,14 +1,8 @@
 import * as React from 'react';
 
-import { Position as PositionType } from 'Portfolio/lib/flow';
 import Progress from 'Shared/components/Progress';
 
-interface Props {
-  handleDeleteClick: () => void;
-  handleHomeClick: () => void;
-  position: PositionType;
-  positionLoading: boolean;
-}
+import { Props } from './Position.enhancer';
 
 const Position: React.FunctionComponent<Props> = ({
   handleDeleteClick, handleHomeClick, position, positionLoading,

@@ -34,3 +34,31 @@ exports[`matches snapshot 1`] = `
   </div>
 </Fragment>
 `;
+
+exports[`matches snapshot when positions are loading 1`] = `
+<Fragment>
+  <h1>
+    Home
+  </h1>
+  <div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Create position
+    </button>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Profile
+    </button>
+  </div>
+  <div>
+    <Progress />
+  </div>
+  <div>
+    <Progress />
+  </div>
+</Fragment>
+`;

@@ -2,14 +2,7 @@ import * as React from 'react';
 
 import LogoutButton from 'User/components/LogoutButton';
 
-interface Props {
-  handleHomeClick: () => void;
-  profile: {
-    avatarUrl: string;
-    displayName: string;
-    email: string;
-  };
-}
+import { Props } from './Profile.enhancer';
 
 const Profile: React.FunctionComponent<Props> = ({ handleHomeClick, profile }: Props) => (
   <React.Fragment>

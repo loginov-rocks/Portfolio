@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Fragment>
+  <div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Home
+    </button>
+  </div>
+  <h1>
+    Position
+  </h1>
+  <div>
+    {"amount":1,"date":"2019-07-01","id":"id","price":100,"symbol":"symbol"}
+  </div>
+  <div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Delete
+    </button>
+  </div>
+</Fragment>
+`;
