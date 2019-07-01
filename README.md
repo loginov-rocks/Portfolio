@@ -1,2 +1,1 @@
-# Portfolio-Firebase
-Training repository
+# Portfolio Firebase
