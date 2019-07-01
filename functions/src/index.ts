@@ -1,8 +1,19 @@
+// Import the Dialogflow module from the Actions on Google client library.
+import {dialogflow} from 'actions-on-google';
+// Import the firebase-functions package for deployment.
 import * as functions from 'firebase-functions';
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+// Instantiate the Dialogflow client.
+const app = dialogflow({debug: true});
+
+// Handle the Dialogflow intent named 'favorite color'.
+// The intent collects a parameter named 'color'.
+app.intent('favorite color', (conv, {color}) => {
+    // @ts-ignore
+    const luckyNumber = color.length;
+    // Respond with the user's lucky number and end the conversation.
+    conv.close('Your lucky number is ' + luckyNumber);
+});
+
+// Set the DialogflowApp object to handle the HTTPS POST request.
+exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
