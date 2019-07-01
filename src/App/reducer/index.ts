@@ -2,8 +2,10 @@ import * as T from '../actions/types';
 import * as R from '../routes';
 
 export interface State {
-  route: string;
-  routeParams: {};
+  route: R.Route;
+  routeParams: {
+    [key: string]: any;
+  };
 }
 
 const initialState: State = {

@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 
 import { State } from '../../../reducer';
+import { Route } from '../../routes';
 
 export interface StateProps {
-  route: string;
+  route: Route;
 }
 
 const mapStateToProps = ({ app: { route } }: State): StateProps => ({ route });

@@ -1,10 +1,12 @@
+import { Route } from '../routes';
+
 export const NAVIGATION_HAPPENED = 'app/NAVIGATION_HAPPENED';
 
 interface NavigationHappened {
   type: typeof NAVIGATION_HAPPENED;
   payload: {
-    params?: {};
-    route: string;
+    params?: { [key: string]: any };
+    route: Route;
   };
 }
 

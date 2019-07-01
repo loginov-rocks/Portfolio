@@ -1,31 +1,50 @@
 import { connect } from 'react-redux';
-import { compose, withHandlers } from 'recompose';
+import { compose, HandleCreators, withHandlers } from 'recompose';
 
-import { navigate } from '../actions';
+import { navigate as navigateAction } from '../actions';
+import { Route } from '../routes';
 
-interface Handler {
-  (props: {}, event: any): { params: {}; route: string };
+/**
+ * Function returning route and params based on component props and event passed when handler triggered.
+ */
+interface RouteMapper {
+  (props: { [key: string]: any }, event: any): {
+    route: Route;
+    params?: {
+      [key: string]: any;
+    };
+  };
 }
 
-interface HandlersMapper {
-  [key: string]: Handler | string;
+/**
+ * Map containing handlers names as key and route or function returning route and params as a value.
+ */
+interface NavigationHandlersMapper {
+  [key: string]: Route | RouteMapper;
 }
 
-const mapDispatchToProps = { navigate };
+const mapDispatchToProps = { navigate: navigateAction };
 
-export default (handlersMapper: HandlersMapper) => compose(
+export default <TInner, TOutter>(handlersMapper: NavigationHandlersMapper) => compose<TInner, TOutter>(
+  // Connect to get navigate action.
   connect(null, mapDispatchToProps),
+  // Add handlers using recompose.
   withHandlers(() => {
-    const handlers = {};
+    const handlers: HandleCreators<{ navigate: typeof navigateAction }, {}> = {};
 
+    // Iterate over mapper to compose object which is consumed by withHandlers higher order component.
     Object.keys(handlersMapper).forEach(key => {
-      handlers[key] = ({ navigate: dispatchNavigate, ...props }) => event => {
+      // Each handler has props as an argument of the first function and event passed when handler triggered as an
+      // argument of the second function.
+      handlers[key] = ({ navigate, ...props }) => (event: any) => {
         if (typeof handlersMapper[key] === 'function') {
-          const { params, route } = (handlersMapper[key] as Handler)(props, event);
-          dispatchNavigate(route, params);
+          // If element is a function, then it is a RouteMapper.
+          const { params, route } = (handlersMapper[key] as RouteMapper)(props, event);
+          navigate(route, params);
         } else {
-          const route = handlersMapper[key];
-          dispatchNavigate(route);
+          // Otherwise it is a Route.
+          const route = (handlersMapper[key] as Route);
+          navigate(route);
         }
       };
     });
