@@ -1,8 +1,12 @@
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+import 'firebase/firestore';
 import { getFirebase, reactReduxFirebase } from 'react-redux-firebase';
 import {
   applyMiddleware, compose, createStore, Reducer,
 } from 'redux';
+import { reduxFirestore } from 'redux-firestore';
 import thunk from 'redux-thunk';
 
 import * as C from '../../../constants';
@@ -17,6 +21,8 @@ export default (reducer: Reducer) => {
     storageBucket: C.FIREBASE_STORAGE_BUCKET,
   });
 
+  firebase.firestore();
+
   const middleware = [
     thunk.withExtraArgument(getFirebase),
   ];
@@ -28,7 +34,8 @@ export default (reducer: Reducer) => {
   /* eslint-enable no-underscore-dangle */
 
   const enhancer = composeEnhancers(
-    reactReduxFirebase(firebase, { userProfile: C.FIREBASE_USERS_PATH }),
+    reactReduxFirebase(firebase, { useFirestoreForProfile: true, userProfile: C.FIREBASE_USERS_PATH }),
+    reduxFirestore(firebase),
     applyMiddleware(...middleware),
   );
 
