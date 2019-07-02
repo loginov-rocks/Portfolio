@@ -9,7 +9,7 @@ interface EnhancedProps {
   provider: string;
 }
 
-export default compose<Props, EnhancedProps>(
+export default compose<Props & WithFirebaseHocProps & EnhancedProps, EnhancedProps>(
   withFirebase,
   withHandlers<EnhancedProps & WithFirebaseHocProps, {}>({
 

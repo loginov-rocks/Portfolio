@@ -1,3 +1,5 @@
+import { Position } from 'Portfolio/lib';
+
 export interface AuthState {
   isEmpty: boolean;
   isLoaded: boolean;
@@ -18,7 +20,11 @@ export default interface State {
     profile: ProfileState;
   };
   firestore: {
-    data: {};
-    ordered: {};
+    ordered: {
+      users?: {
+        id: string;
+        positions?: Position[];
+      }[];
+    };
   };
 } // eslint-disable-line semi

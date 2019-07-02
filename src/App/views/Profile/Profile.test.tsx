@@ -11,6 +11,8 @@ it('matches snapshot', () => {
         avatarUrl: 'http://example.com/avatar.png',
         displayName: 'Dolph',
         email: 'dolph@example.com',
+        isEmpty: false,
+        isLoaded: true,
       }}
     />,
   );

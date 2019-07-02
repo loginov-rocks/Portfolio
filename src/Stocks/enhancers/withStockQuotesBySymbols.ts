@@ -3,7 +3,7 @@ import { compose, lifecycle, mapProps } from 'recompose';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
 
-import { areArraysEqual } from 'Shared/lib/utils';
+import { areArraysEqual } from 'Shared/lib';
 
 import { fetchQuote as fetchQuoteAction } from '../actions';
 

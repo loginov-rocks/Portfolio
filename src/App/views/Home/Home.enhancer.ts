@@ -1,18 +1,10 @@
 import { compose } from 'recompose';
 
-import withPositionsArray from 'Portfolio/enhancers/withPositionsArray';
-import { Position } from 'Portfolio/lib/flow';
+import withPositions from 'Portfolio/enhancers/withPositions';
 
 import withNavigationHandlers from '../../enhancers/withNavigationHandlers';
+import { Props } from './Home';
 import * as R from '../../routes';
-
-export interface Props {
-  handleCreatePositionClick: () => void;
-  handlePositionClick: (position: Position) => void;
-  handleProfileClick: () => void;
-  positions: Position[];
-  positionsLoading: boolean;
-}
 
 export default compose<Props, {}>(
   withNavigationHandlers({
@@ -23,5 +15,5 @@ export default compose<Props, {}>(
     }),
     handleProfileClick: R.PROFILE,
   }),
-  withPositionsArray,
+  withPositions,
 );

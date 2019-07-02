@@ -14,7 +14,34 @@ exports[`matches snapshot 1`] = `
     Position
   </h1>
   <div>
-    {"amount":1,"date":"2019-07-01","id":"id","price":100,"symbol":"symbol"}
+    {"amount":1,"closeCommission":null,"closeDate":null,"closePrice":null,"id":"id","openCommission":1,"openDate":"2019-07-01","openPrice":100,"symbol":"AAPL"}
+  </div>
+  <div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Delete
+    </button>
+  </div>
+</Fragment>
+`;
+
+exports[`matches snapshot when loading 1`] = `
+<Fragment>
+  <div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Home
+    </button>
+  </div>
+  <h1>
+    Position
+  </h1>
+  <div>
+    <Progress />
   </div>
   <div>
     <button

@@ -1,8 +1,11 @@
 import * as React from 'react';
 
-import CreatePositionForm from 'Portfolio/components/CreatePositionForm';
+import CreatePositionForm from 'Portfolio/components/OpenPositionForm';
 
-import { Props } from './CreatePosition.enhancer';
+export interface Props {
+  handleHomeClick: () => void;
+  handleOnCreate: () => void;
+}
 
 const CreatePosition: React.FunctionComponent<Props> = ({ handleHomeClick, handleOnCreate }: Props) => (
   <React.Fragment>

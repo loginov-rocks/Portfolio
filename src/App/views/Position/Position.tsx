@@ -1,8 +1,14 @@
 import * as React from 'react';
 
+import { Position as PositionInterface } from 'Portfolio/lib';
 import Progress from 'Shared/components/Progress';
 
-import { Props } from './Position.enhancer';
+export interface Props {
+  handleDeleteClick: () => void;
+  handleHomeClick: () => void;
+  position: PositionInterface | null;
+  positionLoading: boolean;
+}
 
 const Position: React.FunctionComponent<Props> = ({
   handleDeleteClick, handleHomeClick, position, positionLoading,

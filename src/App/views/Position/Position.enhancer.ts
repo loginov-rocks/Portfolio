@@ -1,47 +1,41 @@
 import { connect } from 'react-redux';
 import { compose, withHandlers } from 'recompose';
 
-import { deletePosition as deletePositionAction } from 'Portfolio/actions';
+import { deletePosition as deletePositionAction, DeletePositionAction } from 'Portfolio/actions';
 import withPositionById from 'Portfolio/enhancers/withPositionById';
-import { Position } from 'Portfolio/lib/flow';
+import { Position } from 'Portfolio/lib';
 
 import withNavigationHandlers from '../../enhancers/withNavigationHandlers';
 import withRouteParams from '../../enhancers/withRouteParams';
+import { Props } from './Position';
 import * as R from '../../routes';
+import { RouteParamsState } from '../../State';
 
-interface NavigationProps {
+interface WithHandlersProps {
+  deletePosition: DeletePositionAction;
   handleHomeClick: () => void;
-}
-
-interface RouteParamsProps {
-  position: Position;
-}
-
-interface DispatchProps {
-  deletePosition: (id: string) => Promise<void>;
-}
-
-export interface Props extends NavigationProps, RouteParamsProps {
-  handleDeleteClick: () => void;
+  position: Position | null;
   positionLoading: boolean;
 }
 
 const mapDispatchToProps = { deletePosition: deletePositionAction };
 
-export default compose<Props, {}>(
+export default compose<Props & WithHandlersProps, {}>(
   withNavigationHandlers({
     handleHomeClick: R.HOME,
   }),
   withRouteParams,
-  withPositionById(({ routeParams }) => routeParams.position),
+  withPositionById<{ routeParams: RouteParamsState }>(({ routeParams }) => routeParams.position),
   connect(null, mapDispatchToProps),
-  withHandlers<NavigationProps & RouteParamsProps & DispatchProps, {}>({
+  withHandlers<WithHandlersProps, {}>({
 
     handleDeleteClick: ({
       deletePosition, handleHomeClick, position,
     }) => () => {
-      deletePosition(position.id)
-        .then(() => handleHomeClick());
+      if (position) {
+        deletePosition(position.id)
+          .then(() => handleHomeClick());
+      }
     },
 
   }),

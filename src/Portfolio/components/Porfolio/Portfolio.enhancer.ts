@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { compose, mapProps } from 'recompose';
 
 import { deletePosition } from '../../actions';
-import { calculatePositionsValue, mergePositionsBySymbols } from '../../lib/portfolio';
+import { calculatePositionsValue, mergePositionsBySymbols } from '../../lib';
 
 const mapStateToProps = ({ portfolio: { positions }, stocks: { quotes } }): { positions: []; quotes: [] } => ({
   positions, quotes,

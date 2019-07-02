@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Position } from 'Portfolio/lib/flow';
+import { Position } from 'Portfolio/lib';
 import PositionItem from 'Portfolio/components/PositionItem';
 import { RenderProps as PositionItemRenderProps } from 'Portfolio/components/PositionItem/PositionItem';
 import Stock from 'Stocks/components/Stock';

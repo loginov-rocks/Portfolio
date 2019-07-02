@@ -14,13 +14,13 @@ interface StateProps {
 
 const mapStateToProps = ({ firebase: { firebase: { auth } } }: State): StateProps => ({ auth });
 
-export default compose<StateProps & Props, {}>(
+export default compose<Props & StateProps, {}>(
   connect(mapStateToProps),
   withProps<Props, StateProps>(({ auth }) => ({
     isAuthenticated: !isEmpty(auth) && isLoaded(auth),
     progress: !isLoaded(auth),
   })),
-  branch<StateProps & Props>(
+  branch<Props & StateProps>(
     ({ isAuthenticated }) => isAuthenticated,
     withStockQuotesUpdater,
   ),

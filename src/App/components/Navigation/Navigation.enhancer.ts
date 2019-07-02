@@ -6,4 +6,4 @@ import { Props } from './Navigation';
 
 const mapStateToProps = ({ app: { route } }: State): Props => ({ route });
 
-export default connect(mapStateToProps);
+export default connect<Props, {}, {}, State>(mapStateToProps);

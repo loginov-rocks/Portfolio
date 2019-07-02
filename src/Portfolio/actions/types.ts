@@ -1,14 +1,26 @@
-export const POSITION_CREATED = 'portfolio/POSITION_CREATED';
+export const POSITION_OPENED = 'portfolio/POSITION_OPENED';
+export const POSITION_CLOSED = 'portfolio/POSITION_CLOSED';
 export const POSITION_DELETED = 'portfolio/POSITION_DELETED';
 
-interface PositionCreated {
-  type: typeof POSITION_CREATED;
+interface PositionOpened {
+  type: typeof POSITION_OPENED;
   payload: {
+    id: string;
+    symbol: string;
     amount: number;
+    price: number;
+    commission: number;
     date: string;
+  };
+}
+
+interface PositionClosed {
+  type: typeof POSITION_CLOSED;
+  payload: {
     id: string;
     price: number;
-    symbol: string;
+    commission: number;
+    date: string;
   };
 }
 
@@ -17,4 +29,4 @@ interface PositionDeleted {
   payload: string;
 }
 
-export type Action = PositionCreated | PositionDeleted;
+export type Action = PositionOpened | PositionClosed | PositionDeleted;

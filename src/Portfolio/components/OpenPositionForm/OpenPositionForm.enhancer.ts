@@ -1,17 +1,31 @@
 import { connect } from 'react-redux';
 import { compose, withHandlers, withStateHandlers } from 'recompose';
 
-import { createPosition as createPositionAction } from '../../actions';
+import { openPosition as openPositionAction, OpenPositionAction } from '../../actions';
+import { formatDate, Position } from '../../lib';
+import { Props } from './OpenPositionForm';
 
-const mapDispatchToProps = { createPosition: createPositionAction };
+const mapDispatchToProps = { openPosition: openPositionAction };
 
-const formatDate = (date: Date): string => date.toISOString().slice(0, 10);
+interface WithHandlersProps {
+  amount: number;
+  commission: number;
+  date: string;
+  openPosition: OpenPositionAction;
+  price: number;
+  symbol: string;
+}
 
-export default compose(
+interface EnhancedProps {
+  onCreate: (position: Position) => void;
+}
+
+export default compose<Props & WithHandlersProps, EnhancedProps>(
   connect(null, mapDispatchToProps),
   withStateHandlers(
     {
       amount: 1,
+      commission: 0,
       date: formatDate(new Date()),
       price: 0,
       symbol: '',
@@ -22,6 +36,13 @@ export default compose(
 
         return {
           amount: amount > 0 ? amount : 1,
+        };
+      },
+      handleCommissionChange: () => event => {
+        const price = parseFloat(event.target.value);
+
+        return {
+          commission: price >= 0 ? price : 0,
         };
       },
       handleDateChange: () => event => {
@@ -43,14 +64,14 @@ export default compose(
       }),
     },
   ),
-  withHandlers({
+  withHandlers<WithHandlersProps & EnhancedProps, {}>({
 
     handleSubmit: ({
-      amount, createPosition, date, onCreate, price, symbol,
-    }) => event => {
+      amount, commission, date, onCreate, openPosition, price, symbol,
+    }) => (event: React.SyntheticEvent) => {
       event.preventDefault();
 
-      createPosition(symbol, price, amount, date)
+      openPosition(symbol, amount, price, commission, date)
         .then(position => {
           if (onCreate) {
             onCreate(position);

@@ -5,11 +5,16 @@ import * as C from 'Constants';
 import { GetFirebaseExtraArgument } from 'Firebase/lib';
 import State from 'State';
 
-import { positionCreated, positionDeleted } from './creators';
+import { positionOpened, positionClosed, positionDeleted } from './creators';
+import { Position } from '../lib';
 
-export const createPosition = (
-  symbol: string, price: number, amount: number, date: string,
-): ThunkAction<void, State, GetFirebaseExtraArgument, Action> => (dispatch, getState, getFirebase) => {
+export interface OpenPositionAction {
+  (symbol: string, amount: number, price: number, commission: number, date: string): Promise<Position>;
+}
+
+export const openPosition = (
+  symbol: string, amount: number, price: number, commission: number, date: string,
+): ThunkAction<Promise<Position>, State, GetFirebaseExtraArgument, Action> => (dispatch, getState, getFirebase) => {
   const firebase = getFirebase();
   const user = firebase.auth().currentUser;
 
@@ -17,21 +22,50 @@ export const createPosition = (
     throw new Error('Trying to create position when unauthorized');
   }
 
-  return firebase.database().ref(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}`).push({
-    amount, date, price, symbol,
-  })
-    .then(({ key }) => {
-      if (!key) {
-        throw new Error('Reference key is null');
-      }
+  const positionData = {
+    amount,
+    closeCommission: null,
+    closeDate: null,
+    closePrice: null,
+    openCommission: commission,
+    openDate: date,
+    openPrice: price,
+    symbol,
+  };
 
-      dispatch(positionCreated(key, symbol, price, amount, date));
+  return firebase.firestore()
+    .collection(C.FIRESTORE_USERS_COLLECTION)
+    .doc(user.uid)
+    .collection(C.FIRESTORE_POSITIONS_COLLECTION)
+    .add(positionData)
+    .then(({ id }) => {
+      dispatch(positionOpened(id, symbol, amount, price, commission, date));
+
+      return { ...positionData, id };
     });
 };
 
-export const deletePosition = (id: string): ThunkAction<void, State, GetFirebaseExtraArgument, Action> => (
-  dispatch, getState, getFirebase,
-) => {
+export interface ClosePositionAction {
+  (id: string, price: number, commission: number, date: string): Promise<string>;
+}
+
+export const closePosition = (
+  id: string, price: number, commission: number, date: string,
+): ThunkAction<Promise<string>, State, GetFirebaseExtraArgument, Action> => dispatch => {
+  // TODO: Implement.
+
+  dispatch(positionClosed(id, price, commission, date));
+
+  return Promise.resolve(id);
+};
+
+export interface DeletePositionAction {
+  (id: string): Promise<string>;
+}
+
+export const deletePosition = (
+  id: string,
+): ThunkAction<Promise<string>, State, GetFirebaseExtraArgument, Action> => (dispatch, getState, getFirebase) => {
   const firebase = getFirebase();
   const user = firebase.auth().currentUser;
 
@@ -39,8 +73,15 @@ export const deletePosition = (id: string): ThunkAction<void, State, GetFirebase
     throw new Error('Trying to delete position when unauthorized');
   }
 
-  return firebase.database().ref(`${C.FIREBASE_POSITIONS_PATH}/${user.uid}/${id}`).remove()
+  return firebase.firestore()
+    .collection(C.FIRESTORE_USERS_COLLECTION)
+    .doc(user.uid)
+    .collection(C.FIRESTORE_POSITIONS_COLLECTION)
+    .doc(id)
+    .delete()
     .then(() => {
       dispatch(positionDeleted(id));
+
+      return id;
     });
 };

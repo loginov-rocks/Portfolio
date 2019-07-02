@@ -8,7 +8,7 @@ import * as R from '../routes';
 import withNavigationHandlers from './withNavigationHandlers';
 
 interface Props {
-  handleClickDependentOnEvent: (event: any) => void;
+  handleClickDependentOnEvent: (event: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
   handleClickDependentOnProp: () => void;
   handleRouteClick: () => void;
 }

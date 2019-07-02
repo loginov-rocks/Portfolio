@@ -5,7 +5,7 @@ import { WithFirebaseHocProps } from 'Firebase/lib';
 
 import { Props } from './LogoutButton';
 
-export default compose<Props, {}>(
+export default compose<Props & WithFirebaseHocProps, {}>(
   withFirebase,
   withHandlers<WithFirebaseHocProps, {}>({
 

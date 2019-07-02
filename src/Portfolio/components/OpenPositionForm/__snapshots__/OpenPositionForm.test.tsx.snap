@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div>
+    Symbol
+    <br />
+    <input
+      onChange={[Function]}
+      type="text"
+      value="AAPL"
+    />
+  </div>
+  <div>
+    Amount
+    <br />
+    <input
+      min="1"
+      onChange={[Function]}
+      type="number"
+      value={1}
+    />
+  </div>
+  <div>
+    Price
+    <br />
+    <input
+      min="0"
+      onChange={[Function]}
+      step="0.01"
+      type="number"
+      value={100}
+    />
+  </div>
+  <div>
+    Commission
+    <br />
+    <input
+      min="0"
+      onChange={[Function]}
+      step="0.01"
+      type="number"
+      value={1}
+    />
+  </div>
+  <div>
+    Date
+    <br />
+    <input
+      onChange={[Function]}
+      type="date"
+      value="2019-07-02"
+    />
+  </div>
+  <div>
+    <button
+      type="submit"
+    >
+      Open
+    </button>
+  </div>
+</form>
+`;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Position } from 'Portfolio/lib/flow';
+import { Position } from 'Portfolio/lib';
 import Progress from 'Shared/components/Progress';
 
 import StockPositionItem from '../StockPositionItem';

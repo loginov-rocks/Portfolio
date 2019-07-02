@@ -7,6 +7,10 @@ import { navigationHappened } from './creators';
 import { RouteParamsState } from '../State';
 import * as R from '../routes';
 
+export interface NavigateAction {
+  (route: R.Route, params?: RouteParamsState): void;
+}
+
 export const navigate = (
   route: R.Route,
   params?: RouteParamsState,

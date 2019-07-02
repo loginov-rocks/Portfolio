@@ -10,12 +10,29 @@ it('matches snapshot', () => {
       handleHomeClick={() => undefined}
       position={{
         amount: 1,
-        date: '2019-07-01',
+        closeCommission: null,
+        closeDate: null,
+        closePrice: null,
         id: 'id',
-        price: 100,
-        symbol: 'symbol',
+        openCommission: 1,
+        openDate: '2019-07-01',
+        openPrice: 100,
+        symbol: 'AAPL',
       }}
       positionLoading={false}
+    />,
+  );
+
+  expect(wrapper).toMatchSnapshot();
+});
+
+it('matches snapshot when loading', () => {
+  const wrapper = shallow(
+    <Position
+      handleDeleteClick={() => undefined}
+      handleHomeClick={() => undefined}
+      position={null}
+      positionLoading
     />,
   );
 

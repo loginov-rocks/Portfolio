@@ -5,11 +5,7 @@ import CreatePosition from './CreatePosition';
 
 it('matches snapshot', () => {
   const wrapper = shallow(
-    <CreatePosition
-      handleHomeClick={() => undefined}
-      handleOnCreate={() => undefined}
-      handlePositionClick={() => undefined}
-    />,
+    <CreatePosition handleHomeClick={() => undefined} handleOnCreate={() => undefined} />,
   );
 
   expect(wrapper).toMatchSnapshot();

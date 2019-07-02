@@ -13,7 +13,7 @@ exports[`matches snapshot 1`] = `
   <h1>
     Create position
   </h1>
-  <Connect(withStateHandlers(withHandlers(CreatePositionForm)))
+  <Connect(withStateHandlers(withHandlers(OpenPositionForm)))
     onCreate={[Function]}
   />
 </Fragment>

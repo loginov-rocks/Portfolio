@@ -1,10 +1,18 @@
 import * as React from 'react';
 
+import { Position } from 'Portfolio/lib';
 import Progress from 'Shared/components/Progress';
 
 import StockPositionsList from '../../components/StockPositionsList';
 import StockPositionsValue from '../../components/StockPositionsValue';
-import { Props } from './Home.enhancer';
+
+export interface Props {
+  handleCreatePositionClick: () => void;
+  handlePositionClick: (position: Position) => void;
+  handleProfileClick: () => void;
+  positions: Position[];
+  positionsLoading: boolean;
+}
 
 const Home: React.FunctionComponent<Props> = ({
   handleCreatePositionClick, handlePositionClick, handleProfileClick, positions, positionsLoading,
@@ -31,12 +39,7 @@ const Home: React.FunctionComponent<Props> = ({
     <div>
       {positionsLoading
         ? <Progress />
-        : (
-          <StockPositionsList
-            onClick={handlePositionClick}
-            positions={positions}
-          />
-        )}
+        : <StockPositionsList onClick={handlePositionClick} positions={positions} />}
     </div>
 
   </React.Fragment>

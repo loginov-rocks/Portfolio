@@ -1,6 +1,20 @@
 import { findQuoteBySymbol, getQuotePrice } from 'Stocks/lib/stocks';
 
-import { Position } from '../flow';
+export interface Position {
+  id: string;
+  symbol: string;
+  amount: number;
+
+  openPrice: number;
+  openCommission: number;
+  openDate: string;
+
+  closePrice: number | null;
+  closeCommission: number | null;
+  closeDate: string | null;
+}
+
+export const formatDate = (date: Date): string => date.toISOString().slice(0, 10);
 
 export const calculatePositionsValue = (positions, quotesRepository): number => (
   positions
