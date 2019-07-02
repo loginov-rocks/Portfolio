@@ -6,24 +6,21 @@ import { AuthState } from 'Firebase/State';
 import withStockQuotesUpdater from 'Stocks/enhancers/withStockQuotesUpdater';
 import State from 'State';
 
+import { Props } from './App';
+
 interface StateProps {
   auth: AuthState;
 }
 
-export interface WithProps {
-  isAuthenticated: boolean;
-  progress: boolean;
-}
-
 const mapStateToProps = ({ firebase: { firebase: { auth } } }: State): StateProps => ({ auth });
 
-export default compose<StateProps & WithProps, {}>(
-  connect<StateProps, {}, {}, State>(mapStateToProps),
-  withProps<WithProps, StateProps>(({ auth }) => ({
+export default compose<StateProps & Props, {}>(
+  connect(mapStateToProps),
+  withProps<Props, StateProps>(({ auth }) => ({
     isAuthenticated: !isEmpty(auth) && isLoaded(auth),
     progress: !isLoaded(auth),
   })),
-  branch<StateProps & WithProps>(
+  branch<StateProps & Props>(
     ({ isAuthenticated }) => isAuthenticated,
     withStockQuotesUpdater,
   ),

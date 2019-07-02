@@ -1,4 +1,4 @@
-import { areArraysEqual } from './index';
+import { areArraysEqual, firebaseCollectionToArray } from './index';
 
 describe('areArraysEqual', () => {
   it('returns true if arrays are equal', () => {
@@ -12,5 +12,17 @@ describe('areArraysEqual', () => {
     expect(areArraysEqual([], ['a'])).toBeFalsy();
     expect(areArraysEqual(['a', 'b', 'c'], ['b', 'a'])).toBeFalsy();
     expect(areArraysEqual(['b', 'c', 'a'], ['a', 'c'])).toBeFalsy();
+  });
+});
+
+describe('firebaseCollectionToArray', () => {
+  it('transforms firebase collection to array', () => {
+    expect(firebaseCollectionToArray({
+      first: { firstProperty: 'firstValue' },
+      second: { secondProperty: 'secondValue' },
+    })).toStrictEqual([
+      { firstProperty: 'firstValue', id: 'first' },
+      { id: 'second', secondProperty: 'secondValue' },
+    ]);
   });
 });

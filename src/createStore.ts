@@ -27,11 +27,11 @@ export default (reducer: Reducer) => {
     thunk.withExtraArgument(getFirebase),
   ];
 
-  /* eslint-disable no-underscore-dangle */
+  /* eslint-disable @typescript-eslint/no-explicit-any, no-underscore-dangle */
   const composeEnhancers = (typeof window === 'object' && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     : compose);
-  /* eslint-enable no-underscore-dangle */
+  /* eslint-enable @typescript-eslint/no-explicit-any, no-underscore-dangle */
 
   const enhancer = composeEnhancers(
     reactReduxFirebase(firebase, { useFirestoreForProfile: true, userProfile: C.FIRESTORE_USERS_COLLECTION }),

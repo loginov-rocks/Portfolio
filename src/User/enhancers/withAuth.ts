@@ -5,15 +5,15 @@ import { compose, branch, renderNothing } from 'recompose';
 import { AuthState } from 'Firebase/State';
 import State from 'State';
 
-interface StateProps {
+export interface Props {
   auth: AuthState;
 }
 
-const mapStateToProps = ({ firebase: { firebase: { auth } } }: State): StateProps => ({ auth });
+const mapStateToProps = ({ firebase: { firebase: { auth } } }: State): Props => ({ auth });
 
-export default compose<StateProps, {}>(
-  connect<StateProps, {}, {}, State>(mapStateToProps),
-  branch<StateProps>(
+export default compose(
+  connect(mapStateToProps),
+  branch<Props>(
     ({ auth }) => isEmpty(auth) || !isLoaded(auth),
     renderNothing,
   ),

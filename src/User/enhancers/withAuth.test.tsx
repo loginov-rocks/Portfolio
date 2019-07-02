@@ -9,7 +9,7 @@ const node = <div>BaseComponent</div>;
 const BaseComponent: React.FunctionComponent = () => node;
 const EnhancedComponent = withAuth(BaseComponent);
 
-it('does not render children if unauthorized', () => {
+it('does not render children if unauthenticated', () => {
   const wrapper = mount(
     // @ts-ignore
     <EnhancedComponent
@@ -20,7 +20,7 @@ it('does not render children if unauthorized', () => {
   expect(wrapper.contains(node)).toBeFalsy();
 });
 
-it('renders children if authorized', () => {
+it('renders children if authenticated', () => {
   const wrapper = mount(
     // @ts-ignore
     <EnhancedComponent

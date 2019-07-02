@@ -3,13 +3,11 @@ import { compose, withHandlers } from 'recompose';
 
 import { WithFirebaseHocProps } from 'Firebase/lib';
 
-export interface HandlersProps {
-  handleClick: () => void;
-}
+import { Props } from './LogoutButton';
 
-export default compose<WithFirebaseHocProps & HandlersProps, {}>(
+export default compose<Props, {}>(
   withFirebase,
-  withHandlers<WithFirebaseHocProps, HandlersProps>({
+  withHandlers<WithFirebaseHocProps, {}>({
 
     handleClick: ({ firebase }) => () => {
       firebase.auth().signOut();

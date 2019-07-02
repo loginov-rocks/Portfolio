@@ -8,3 +8,10 @@ export const areArraysEqual = <T>(a: T[], b: T[]): boolean => {
 
   return sortedA.every((value, index) => value === sortedB[index]);
 };
+
+export const firebaseCollectionToArray = <T>(object: { [key: string]: T }): (T & { id: string })[] => (
+  Object.keys(object).map(id => ({
+    ...object[id],
+    id,
+  }))
+);

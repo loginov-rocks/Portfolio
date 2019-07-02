@@ -3,17 +3,15 @@ import { compose, withHandlers } from 'recompose';
 
 import { getAuthProvider, WithFirebaseHocProps } from 'Firebase/lib';
 
-export interface HandlersProps {
-  handleClick: () => void;
-}
+import { Props } from './ProviderLoginButton';
 
 interface EnhancedProps {
   provider: string;
 }
 
-export default compose<WithFirebaseHocProps & HandlersProps, EnhancedProps>(
+export default compose<Props, EnhancedProps>(
   withFirebase,
-  withHandlers<EnhancedProps & WithFirebaseHocProps, HandlersProps>({
+  withHandlers<EnhancedProps & WithFirebaseHocProps, {}>({
 
     handleClick: ({ firebase, provider }) => () => {
       firebase.auth().signInWithRedirect(getAuthProvider(provider));

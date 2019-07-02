@@ -1,9 +1,8 @@
 import * as React from 'react';
 
-import { HandlersProps } from './LogoutButton.enhancer';
-
-interface Props extends HandlersProps {
+export interface Props {
   children?: React.ReactNode;
+  handleClick: () => void;
 }
 
 const LogoutButton: React.FunctionComponent<Props> = ({ children, handleClick }: Props) => (

@@ -4,11 +4,12 @@ import { ThunkAction } from 'redux-thunk';
 import State from 'State';
 
 import { navigationHappened } from './creators';
-import { Route } from '../routes';
+import { RouteParamsState } from '../State';
+import * as R from '../routes';
 
 export const navigate = (
-  route: Route,
-  params?: { [key: string]: any },
+  route: R.Route,
+  params?: RouteParamsState,
 ): ThunkAction<void, State, null, Action> => dispatch => {
   dispatch(navigationHappened(route, params));
 };

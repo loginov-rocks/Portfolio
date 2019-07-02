@@ -2,12 +2,8 @@ import { connect } from 'react-redux';
 
 import State from 'State';
 
-import { Route } from '../../routes';
+import { Props } from './Navigation';
 
-export interface StateProps {
-  route: Route;
-}
+const mapStateToProps = ({ app: { route } }: State): Props => ({ route });
 
-const mapStateToProps = ({ app: { route } }: State): StateProps => ({ route });
-
-export default connect<StateProps, {}, {}, State>(mapStateToProps);
+export default connect(mapStateToProps);
