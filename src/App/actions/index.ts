@@ -1,8 +1,9 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
+import State from 'State';
+
 import { navigationHappened } from './creators';
-import { State } from '../../reducer';
 import { Route } from '../routes';
 
 export const navigate = (

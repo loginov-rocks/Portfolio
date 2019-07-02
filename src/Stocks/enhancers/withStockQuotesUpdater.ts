@@ -3,8 +3,9 @@ import { compose, lifecycle, mapProps } from 'recompose';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { isExpired } from 'redux-repository/lib/resource';
 
+import * as C from 'Constants';
+
 import { fetchQuote as fetchQuoteAction } from '../actions';
-import * as C from '../../constants';
 
 interface Props {
   fetchQuote: (symbol: string) => void;

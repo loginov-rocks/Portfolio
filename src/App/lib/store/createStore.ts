@@ -9,7 +9,7 @@ import {
 import { reduxFirestore } from 'redux-firestore';
 import thunk from 'redux-thunk';
 
-import * as C from '../../../constants';
+import * as C from 'Constants';
 
 export default (reducer: Reducer) => {
   firebase.initializeApp({
@@ -34,7 +34,7 @@ export default (reducer: Reducer) => {
   /* eslint-enable no-underscore-dangle */
 
   const enhancer = composeEnhancers(
-    reactReduxFirebase(firebase, { useFirestoreForProfile: true, userProfile: C.FIREBASE_USERS_PATH }),
+    reactReduxFirebase(firebase, { useFirestoreForProfile: true, userProfile: C.FIRESTORE_USERS_COLLECTION }),
     reduxFirestore(firebase),
     applyMiddleware(...middleware),
   );

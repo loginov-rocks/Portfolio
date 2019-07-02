@@ -2,9 +2,10 @@ import { Action } from 'redux';
 import { createFetchResource } from 'redux-repository/lib/actions';
 import { ThunkAction } from 'redux-thunk';
 
-import * as C from '../../constants';
+import * as C from 'Constants';
+import State from 'State';
+
 import iex from '../lib/IEX/instance';
-import { State } from '../../reducer';
 
 export const fetchLogo = (symbol: string): ThunkAction<void, State, null, Action> => createFetchResource(
   C.STOCKS_LOGOS_RESOURCE_NAME,

@@ -1,11 +1,11 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import { GetFirebaseExtraArgument } from 'Shared/lib/firebase';
+import * as C from 'Constants';
+import { GetFirebaseExtraArgument } from 'Firebase/lib';
+import State from 'State';
 
-import * as C from '../../constants';
 import { positionCreated, positionDeleted } from './creators';
-import { State } from '../../reducer';
 
 export const createPosition = (
   symbol: string, price: number, amount: number, date: string,

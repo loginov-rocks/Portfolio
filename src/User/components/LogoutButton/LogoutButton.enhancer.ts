@@ -1,7 +1,7 @@
 import { withFirebase } from 'react-redux-firebase';
 import { compose, withHandlers } from 'recompose';
 
-import { WithFirebaseHocProps } from 'Shared/lib/firebase';
+import { WithFirebaseHocProps } from 'Firebase/lib';
 
 export interface HandlersProps {
   handleClick: () => void;

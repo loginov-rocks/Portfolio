@@ -2,9 +2,8 @@ import { connect } from 'react-redux';
 import { firebaseConnect, isLoaded } from 'react-redux-firebase';
 import { compose } from 'recompose';
 
+import * as C from 'Constants';
 import withAuth from 'User/enhancers/withAuth';
-
-import * as C from '../../constants';
 
 const mapStateToProps = (transform: Function) => ({ firebase: { data } }) => ({
   positions: transform(data[C.FIREBASE_POSITIONS_PATH] || {}),

@@ -1,5 +1,5 @@
-export const FIREBASE_POSITIONS_PATH = 'positions';
-export const FIREBASE_USERS_PATH = 'users';
+export const FIRESTORE_POSITIONS_COLLECTION = 'positions';
+export const FIRESTORE_USERS_COLLECTION = 'users';
 
 export const STOCKS_LOGOS_RESOURCE_NAME = 'stocks/logos';
 export const STOCKS_LOGOS_TTL = 7 * 24 * 60 * 60 * 1000; // 1 week

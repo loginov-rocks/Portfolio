@@ -41,6 +41,10 @@ module.exports = {
     }),
   ],
   resolve: {
+    alias: {
+      Constants: path.resolve(__dirname, 'src/Constants.ts'),
+      State: path.resolve(__dirname, 'src/State.ts'),
+    },
     extensions: ['.js', '.ts', '.tsx'],
     modules: [
       'node_modules',

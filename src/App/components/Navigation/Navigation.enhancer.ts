@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
-import { State } from '../../../reducer';
+import State from 'State';
+
 import { Route } from '../../routes';
 
 export interface StateProps {

@@ -2,12 +2,12 @@ import { connect } from 'react-redux';
 import { isEmpty, isLoaded } from 'react-redux-firebase';
 import { branch, compose, withProps } from 'recompose';
 
+import { AuthState } from 'Firebase/State';
 import withStockQuotesUpdater from 'Stocks/enhancers/withStockQuotesUpdater';
-
-import { State } from '../../../reducer';
+import State from 'State';
 
 interface StateProps {
-  auth: any;
+  auth: AuthState;
 }
 
 export interface WithProps {
@@ -15,7 +15,7 @@ export interface WithProps {
   progress: boolean;
 }
 
-const mapStateToProps = ({ firebase: { auth } }: State): StateProps => ({ auth });
+const mapStateToProps = ({ firebase: { firebase: { auth } } }: State): StateProps => ({ auth });
 
 export default compose<StateProps & WithProps, {}>(
   connect<StateProps, {}, {}, State>(mapStateToProps),

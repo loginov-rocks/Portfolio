@@ -1,12 +1,9 @@
 import { isResourceAction, repositoryReducer } from 'redux-repository/lib/reducer';
 import { createInitialState } from 'redux-repository/lib/repository';
 
-import * as C from '../../constants';
+import * as C from 'Constants';
 
-export interface State {
-  logos: {};
-  quotes: {};
-}
+import State from '../State';
 
 const initialState: State = {
   logos: createInitialState(),

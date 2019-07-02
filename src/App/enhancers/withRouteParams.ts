@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { State } from '../../reducer';
+import State from 'State';
 
 interface StateProps {
   routeParams: {
