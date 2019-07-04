@@ -2,7 +2,7 @@ import { compose, withProps } from 'recompose';
 
 import withStockLogoBySymbol from '../../enhancers/withStockLogoBySymbol';
 import withStockQuoteBySymbol from '../../enhancers/withStockQuoteBySymbol';
-import { getQuotePrice } from '../../lib/stocks';
+import { getQuotePrice } from '../../lib';
 
 export default compose(
   withStockLogoBySymbol,

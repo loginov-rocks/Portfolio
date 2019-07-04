@@ -2,7 +2,7 @@ import { compose, withProps } from 'recompose';
 
 import { getUniqueSymbolsFromPositions } from 'Portfolio/lib';
 import withStockQuotesBySymbols from 'Stocks/enhancers/withStockQuotesBySymbols';
-import { getQuotePrice } from 'Stocks/lib/stocks';
+import { getQuotePrice } from 'Stocks/lib';
 
 export default compose(
   withProps(({ positions }) => ({

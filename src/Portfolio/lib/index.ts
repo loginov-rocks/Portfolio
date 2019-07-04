@@ -1,4 +1,6 @@
-import { findQuoteBySymbol, getQuotePrice } from 'Stocks/lib/stocks';
+import { findQuoteBySymbol, getQuotePrice } from 'Stocks/lib';
+
+// TODO: Tests.
 
 export interface Position {
   id: string;

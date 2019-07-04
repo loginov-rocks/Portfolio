@@ -3,10 +3,10 @@ import * as React from 'react';
 import { Quote } from '../../lib/IEX/IEX';
 
 export interface RenderProps {
-  logo: string | undefined;
+  logo: string | null;
   logoProgress: boolean;
   price: number;
-  quote: Quote | undefined;
+  quote: Quote | null;
   quoteProgress: boolean;
   symbol: string;
 }
