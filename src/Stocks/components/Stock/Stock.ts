@@ -11,7 +11,7 @@ export interface RenderProps {
   symbol: string;
 }
 
-interface Props extends RenderProps {
+export interface Props extends RenderProps {
   children: React.FunctionComponent<RenderProps>;
 }
 

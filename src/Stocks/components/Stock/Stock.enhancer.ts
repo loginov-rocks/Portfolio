@@ -1,13 +1,18 @@
 import { compose, withProps } from 'recompose';
 
 import withStockLogoBySymbol from '../../enhancers/withStockLogoBySymbol';
-import withStockQuoteBySymbol from '../../enhancers/withStockQuoteBySymbol';
+import withStockQuoteBySymbol, { Props as WithStockQuoteBySymbolProps } from '../../enhancers/withStockQuoteBySymbol';
 import { getQuotePrice } from '../../lib';
+import { Props } from './Stock';
 
-export default compose(
+interface EnhancedProps {
+  symbol: string;
+}
+
+export default compose<Props, EnhancedProps>(
   withStockLogoBySymbol,
   withStockQuoteBySymbol,
-  withProps(({ quote }) => ({
+  withProps<Partial<Props>, WithStockQuoteBySymbolProps>(({ quote }) => ({
     price: getQuotePrice(quote),
   })),
 );

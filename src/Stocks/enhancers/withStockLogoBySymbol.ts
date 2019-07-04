@@ -1,22 +1,39 @@
 import { connect } from 'react-redux';
 import { compose, lifecycle, mapProps } from 'recompose';
+import { Repository } from 'redux-repository/lib/interfaces';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
 
-import { fetchLogo as fetchLogoAction } from '../actions';
+import State from 'State';
 
-interface Props {
-  fetchLogo: (symbol: string) => void;
+import { FetchLogo, fetchLogo as fetchLogoAction } from '../actions';
+
+// TODO: Tests.
+
+interface EnhancedProps {
   symbol: string;
 }
 
-const mapStateToProps = ({ stocks: { logos } }): { logos: [] } => ({ logos });
+interface StateProps {
+  logos: Repository<string, string>;
+}
+
+interface DispatchProps {
+  fetchLogo: FetchLogo;
+}
+
+export interface Props extends EnhancedProps {
+  logo: string | null;
+  logoProgress: boolean;
+}
+
+const mapStateToProps = ({ stocks: { logos } }: State): StateProps => ({ logos });
 
 const mapDispatchToProps = { fetchLogo: fetchLogoAction };
 
-export default compose(
+export default compose<Props, EnhancedProps>(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle<Props, {}>({
+  lifecycle<EnhancedProps & StateProps & DispatchProps, {}>({
 
     componentDidMount() {
       const { fetchLogo, symbol } = this.props;
@@ -35,7 +52,7 @@ export default compose(
     },
 
   }),
-  mapProps(({
+  mapProps<Props, EnhancedProps & StateProps & DispatchProps>(({
     fetchLogo, logos, symbol, ...props
   }) => {
     const logo = getResourceById(logos, symbol);

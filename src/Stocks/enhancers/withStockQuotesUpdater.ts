@@ -1,33 +1,39 @@
 import { connect } from 'react-redux';
 import { compose, lifecycle, mapProps } from 'recompose';
+import { Repository } from 'redux-repository/lib/interfaces';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { isExpired } from 'redux-repository/lib/resource';
 
 import * as C from 'Constants';
+import State from 'State';
 
-import { fetchQuote as fetchQuoteAction } from '../actions';
+import { FetchQuote, fetchQuote as fetchQuoteAction } from '../actions';
+import Quote from '../lib/IEX/Quote';
 
-interface Props {
-  fetchQuote: (symbol: string) => void;
-  quotes: {
-    allIds: string[];
-  };
+// TODO: Tests.
+
+interface StateProps {
+  quotes: Repository<Quote, string>;
 }
 
-const mapStateToProps = ({ stocks: { quotes } }): { quotes: [] } => ({ quotes });
+interface DispatchProps {
+  fetchQuote: FetchQuote;
+}
+
+const mapStateToProps = ({ stocks: { quotes } }: State): StateProps => ({ quotes });
 
 const mapDispatchToProps = { fetchQuote: fetchQuoteAction };
 
-let digest;
+let digest: number;
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle<Props, {}>({
+  lifecycle<StateProps & DispatchProps, {}>({
 
     componentDidMount() {
-      digest = setInterval(() => {
+      digest = window.setInterval(() => {
         const { fetchQuote, quotes } = this.props;
-        const expired = [];
+        const expired: string[] = [];
 
         quotes.allIds.forEach(symbol => {
           const quote = getResourceById(quotes, symbol);
@@ -47,5 +53,5 @@ export default compose(
     },
 
   }),
-  mapProps(({ fetchQuote, quotes, ...props }) => props),
+  mapProps<{}, StateProps & DispatchProps>(({ fetchQuote, quotes, ...props }) => props),
 );
