@@ -4,7 +4,9 @@ import { Position } from 'Portfolio/lib';
 import Progress from 'Shared/components/Progress';
 
 import StockPositionsList from '../../components/StockPositionsList';
-import StockPositionsValue from '../../components/StockPositionsValue';
+import StockPositionsValue, {
+  RenderProps as StockPositionsValueRenderProps,
+} from '../../components/StockPositionsValue';
 
 export interface Props {
   handleCreatePositionClick: () => void;
@@ -31,7 +33,7 @@ const Home: React.FunctionComponent<Props> = ({
         ? <Progress />
         : (
           <StockPositionsValue positions={positions}>
-            {({ value }) => value.toFixed(2)}
+            {({ value }: StockPositionsValueRenderProps) => value.toFixed(2)}
           </StockPositionsValue>
         )}
     </div>

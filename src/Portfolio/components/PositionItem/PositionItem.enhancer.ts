@@ -3,7 +3,7 @@ import { compose, withHandlers, withProps } from 'recompose';
 import { Position } from '../../lib';
 import { Props } from './PositionItem';
 
-interface EnhancedProps {
+export interface EnhancedProps {
   onClick?: (position: Position) => void;
   position: Position;
 }

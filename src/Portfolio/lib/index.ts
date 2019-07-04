@@ -1,4 +1,7 @@
+import { Repository } from 'redux-repository/lib/interfaces';
+
 import { findQuoteBySymbol, getQuotePrice } from 'Stocks/lib';
+import Quote from 'Stocks/lib/IEX/Quote';
 
 // TODO: Tests.
 
@@ -18,7 +21,7 @@ export interface Position {
 
 export const formatDate = (date: Date): string => date.toISOString().slice(0, 10);
 
-export const calculatePositionsValue = (positions, quotesRepository): number => (
+export const calculatePositionsValue = (positions: Position[], quotesRepository: Repository<Quote, string>): number => (
   positions
     .map(position => {
       const { amount, symbol } = position;

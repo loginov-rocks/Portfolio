@@ -5,6 +5,8 @@ import Progress from 'Shared/components/Progress';
 
 import StockPositionItem from '../StockPositionItem';
 
+// TODO: Tests.
+
 interface Props {
   onClick?: (position: Position) => void;
   positions: Position[];

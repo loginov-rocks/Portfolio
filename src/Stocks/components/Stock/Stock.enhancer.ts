@@ -5,7 +5,7 @@ import withStockQuoteBySymbol, { Props as WithStockQuoteBySymbolProps } from '..
 import { getQuotePrice } from '../../lib';
 import { Props } from './Stock';
 
-interface EnhancedProps {
+export interface EnhancedProps {
   symbol: string;
 }
 
