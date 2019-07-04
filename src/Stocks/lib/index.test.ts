@@ -1,21 +1,15 @@
 import { createInitialState, pushResource } from 'redux-repository/lib/repository';
 import { createReceived } from 'redux-repository/lib/resource';
 
-import { Quote } from './IEX/IEX';
+import quoteFixture from './IEX/__fixtures__/quote';
+import Quote from './IEX/Quote';
 import { findQuoteBySymbol, getQuotePrice } from './index';
 
-const quote = {
-  change: 20,
-  changePercent: 10,
-  latestPrice: 200,
-  symbol: 'AAPL',
-};
-
-const quotesRepository = pushResource<Quote, string>(createInitialState(), createReceived('AAPL', quote));
+const quotesRepository = pushResource<Quote, string>(createInitialState(), createReceived('AAPL', quoteFixture));
 
 describe('findQuoteBySymbol', () => {
   it('returns quote by symbol', () => {
-    expect(findQuoteBySymbol(quotesRepository, 'AAPL')).toBe(quote);
+    expect(findQuoteBySymbol(quotesRepository, 'AAPL')).toStrictEqual(quoteFixture);
   });
 
   it('returns null if quote not found', () => {
@@ -25,14 +19,14 @@ describe('findQuoteBySymbol', () => {
 
 describe('getQuotePrice', () => {
   it('returns quote latest price', () => {
-    expect(getQuotePrice(quote)).toBe(200);
+    expect(getQuotePrice(quoteFixture)).toBe(204.41);
   });
 
   it('returns quote IEX realtime price if present', () => {
-    expect(getQuotePrice(Object.assign({ iexRealtimePrice: 220 }, quote))).toBe(220);
+    expect(getQuotePrice(Object.assign({ iexRealtimePrice: 777 }, quoteFixture))).toBe(777);
   });
 
-  it('returns 0 is quote is null', () => {
+  it('returns 0 if quote is null', () => {
     expect(getQuotePrice(null)).toBe(0);
   });
 });

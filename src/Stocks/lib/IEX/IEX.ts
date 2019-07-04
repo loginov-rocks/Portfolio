@@ -1,14 +1,6 @@
 import axios from 'axios';
 
-// TODO: Tests.
-
-export interface Quote {
-  change: number;
-  changePercent: number;
-  iexRealtimePrice?: number;
-  latestPrice: number;
-  symbol: string;
-}
+import Quote from './Quote';
 
 export default class IEX {
   protected baseUrl: string;
@@ -21,12 +13,12 @@ export default class IEX {
   }
 
   public getStockLogo(symbol: string): Promise<string> {
-    return axios.get(`${this.baseUrl}/stock/${symbol}/logo?token=${this.token}`)
+    return axios.get(`${this.baseUrl}/stock/${symbol.toLocaleLowerCase()}/logo?token=${this.token}`)
       .then(({ data }) => data.url);
   }
 
   public getStockQuote(symbol: string): Promise<Quote> {
-    return axios.get(`${this.baseUrl}/stock/${symbol}/quote?token=${this.token}`)
+    return axios.get(`${this.baseUrl}/stock/${symbol.toLocaleLowerCase()}/quote?token=${this.token}`)
       .then(({ data }) => data);
   }
 }

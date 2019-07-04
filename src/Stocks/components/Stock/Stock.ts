@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Quote } from '../../lib/IEX/IEX';
+import Quote from '../../lib/IEX/Quote';
 
 export interface RenderProps {
   logo: string | null;

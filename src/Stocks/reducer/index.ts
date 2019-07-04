@@ -5,7 +5,7 @@ import { Action as ReduxRepositoryAction } from 'redux-repository/lib/types';
 
 import * as C from 'Constants';
 
-import { Quote } from '../lib/IEX/IEX';
+import Quote from '../lib/IEX/Quote';
 import State from '../State';
 
 const initialState: State = {

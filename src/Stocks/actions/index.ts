@@ -5,8 +5,8 @@ import { ThunkAction } from 'redux-thunk';
 import * as C from 'Constants';
 import State from 'State';
 
-import { Quote } from '../lib/IEX/IEX';
-import iex from '../lib/IEX/instance';
+import iex from '../lib/IEX';
+import Quote from '../lib/IEX/Quote';
 
 export interface FetchLogo {
   (symbol: string): void;
