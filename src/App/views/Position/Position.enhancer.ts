@@ -1,29 +1,41 @@
 import { connect } from 'react-redux';
 import { compose, withHandlers } from 'recompose';
 
-import { deletePosition as deletePositionAction } from 'Portfolio/actions';
+import { deletePosition as deletePositionAction, DeletePositionAction } from 'Portfolio/actions';
 import withPositionById from 'Portfolio/enhancers/withPositionById';
+import { Position } from 'Portfolio/lib';
 
 import withNavigationHandlers from '../../enhancers/withNavigationHandlers';
 import withRouteParams from '../../enhancers/withRouteParams';
+import { Props } from './Position';
 import * as R from '../../routes';
+import { RouteParamsState } from '../../State';
+
+interface WithHandlersProps {
+  deletePosition: DeletePositionAction;
+  handleHomeClick: () => void;
+  position: Position | null;
+  positionLoading: boolean;
+}
 
 const mapDispatchToProps = { deletePosition: deletePositionAction };
 
-export default compose(
+export default compose<Props & WithHandlersProps, {}>(
   withNavigationHandlers({
     handleHomeClick: R.HOME,
   }),
   withRouteParams,
-  withPositionById(({ routeParams }) => routeParams.position),
+  withPositionById<{ routeParams: RouteParamsState }>(({ routeParams }) => routeParams.position),
   connect(null, mapDispatchToProps),
-  withHandlers({
+  withHandlers<WithHandlersProps, {}>({
 
     handleDeleteClick: ({
       deletePosition, handleHomeClick, position,
     }) => () => {
-      deletePosition(position.id)
-        .then(() => handleHomeClick());
+      if (position) {
+        deletePosition(position.id)
+          .then(() => handleHomeClick());
+      }
     },
 
   }),

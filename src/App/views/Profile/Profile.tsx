@@ -1,14 +1,11 @@
 import * as React from 'react';
 
+import { ProfileState } from 'Firebase/State';
 import LogoutButton from 'User/components/LogoutButton';
 
-interface Props {
+export interface Props {
   handleHomeClick: () => void;
-  profile: {
-    avatarUrl: string;
-    displayName: string;
-    email: string;
-  };
+  profile: ProfileState;
 }
 
 const Profile: React.FunctionComponent<Props> = ({ handleHomeClick, profile }: Props) => (

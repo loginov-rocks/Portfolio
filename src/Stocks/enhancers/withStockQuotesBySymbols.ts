@@ -1,24 +1,41 @@
 import { connect } from 'react-redux';
 import { compose, lifecycle, mapProps } from 'recompose';
+import { Repository } from 'redux-repository/lib/interfaces';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
 
-import { areArraysEqual } from 'Shared/lib/utils';
+import { areArraysEqual } from 'Shared/lib';
+import State from 'State';
 
-import { fetchQuote as fetchQuoteAction } from '../actions';
+import { FetchQuote, fetchQuote as fetchQuoteAction } from '../actions';
+import Quote from '../lib/IEX/Quote';
 
-interface Props {
-  fetchQuote: (symbol: string) => void;
+// TODO: Tests.
+
+interface EnhancedProps {
   symbols: string[];
 }
 
-const mapStateToProps = ({ stocks: { quotes } }): { quotes: [] } => ({ quotes });
+interface StateProps {
+  quotes: Repository<Quote, string>;
+}
+
+interface DispatchProps {
+  fetchQuote: FetchQuote;
+}
+
+export interface Props extends EnhancedProps {
+  quotes: (Quote | null)[];
+  quotesProgress: boolean;
+}
+
+const mapStateToProps = ({ stocks: { quotes } }: State): StateProps => ({ quotes });
 
 const mapDispatchToProps = { fetchQuote: fetchQuoteAction };
 
-export default compose(
+export default compose<Props, EnhancedProps>(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle<Props, {}>({
+  lifecycle<EnhancedProps & StateProps & DispatchProps, {}>({
 
     componentDidMount() {
       const { fetchQuote, symbols } = this.props;
@@ -35,7 +52,7 @@ export default compose(
     },
 
   }),
-  mapProps(({
+  mapProps<Props, EnhancedProps & StateProps & DispatchProps>(({
     fetchQuote, quotes, symbols, ...props
   }) => {
     let quotesProgress = false;

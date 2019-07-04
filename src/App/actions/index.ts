@@ -1,8 +1,19 @@
-import * as T from './types';
+import { Action } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 
-export const navigate = (route: string, params?: {}) => dispatch => {
-  dispatch({
-    payload: { params, route },
-    type: T.NAVIGATE,
-  });
+import State from 'State';
+
+import { navigationHappened } from './creators';
+import { RouteParamsState } from '../State';
+import * as R from '../routes';
+
+export interface NavigateAction {
+  (route: R.Route, params?: RouteParamsState): void;
+}
+
+export const navigate = (
+  route: R.Route,
+  params?: RouteParamsState,
+): ThunkAction<void, State, null, Action> => dispatch => {
+  dispatch(navigationHappened(route, params));
 };

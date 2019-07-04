@@ -1,17 +1,17 @@
 import * as React from 'react';
 
-import { Quote } from '../../lib/IEX/IEX';
+import Quote from '../../lib/IEX/Quote';
 
 export interface RenderProps {
-  logo: string | undefined;
+  logo: string | null;
   logoProgress: boolean;
   price: number;
-  quote: Quote | undefined;
+  quote: Quote | null;
   quoteProgress: boolean;
   symbol: string;
 }
 
-interface Props extends RenderProps {
+export interface Props extends RenderProps {
   children: React.FunctionComponent<RenderProps>;
 }
 

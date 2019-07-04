@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { Position as PositionType } from 'Portfolio/lib/flow';
+import { Position as PositionInterface } from 'Portfolio/lib';
 import Progress from 'Shared/components/Progress';
 
-interface Props {
+export interface Props {
   handleDeleteClick: () => void;
   handleHomeClick: () => void;
-  position: PositionType;
+  position: PositionInterface | null;
   positionLoading: boolean;
 }
 

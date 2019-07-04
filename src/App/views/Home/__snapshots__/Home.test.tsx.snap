@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Fragment>
+  <h1>
+    Home
+  </h1>
+  <div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Create position
+    </button>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Profile
+    </button>
+  </div>
+  <div>
+    <withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))
+      positions={Array []}
+    >
+      <Component />
+    </withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))>
+  </div>
+  <div>
+    <StockPositionsList
+      onClick={[Function]}
+      positions={Array []}
+    />
+  </div>
+</Fragment>
+`;
+
+exports[`matches snapshot when positions are loading 1`] = `
+<Fragment>
+  <h1>
+    Home
+  </h1>
+  <div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Create position
+    </button>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Profile
+    </button>
+  </div>
+  <div>
+    <Progress />
+  </div>
+  <div>
+    <Progress />
+  </div>
+</Fragment>
+`;

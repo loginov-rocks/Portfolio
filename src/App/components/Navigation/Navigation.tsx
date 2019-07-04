@@ -6,8 +6,8 @@ import Home from '../../views/Home';
 import Position from '../../views/Position';
 import Profile from '../../views/Profile';
 
-interface Props {
-  route: string;
+export interface Props {
+  route: R.Route;
 }
 
 const Navigation: React.FunctionComponent<Props> = ({ route }: Props) => {

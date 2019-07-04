@@ -1,9 +1,16 @@
 import { compose, withHandlers } from 'recompose';
 
+import { Position } from 'Portfolio/lib';
+
+import { Props } from './CreatePosition';
 import withNavigationHandlers from '../../enhancers/withNavigationHandlers';
 import * as R from '../../routes';
 
-export default compose(
+interface WithHandlersProps {
+  handlePositionClick: (position: Position) => void;
+}
+
+export default compose<Props & WithHandlersProps, {}>(
   withNavigationHandlers({
     handleHomeClick: R.HOME,
     handlePositionClick: (props, position) => ({
@@ -11,9 +18,9 @@ export default compose(
       route: R.POSITION,
     }),
   }),
-  withHandlers({
+  withHandlers<WithHandlersProps, {}>({
 
-    handleOnCreate: ({ handlePositionClick }) => position => {
+    handleOnCreate: ({ handlePositionClick }) => (position: Position) => {
       handlePositionClick(position);
     },
 

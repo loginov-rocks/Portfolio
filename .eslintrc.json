@@ -18,6 +18,7 @@
         "allowTypedFunctionExpressions": true
       }
     ],
+    "@typescript-eslint/no-explicit-any": "error",
     "import/prefer-default-export": "warn",
     "max-len": [
       "error",

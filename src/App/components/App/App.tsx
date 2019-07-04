@@ -4,7 +4,7 @@ import Navigation from '../Navigation';
 import Guest from '../../views/Guest';
 import Loading from '../../views/Loading';
 
-interface Props {
+export interface Props {
   isAuthenticated: boolean;
   progress: boolean;
 }

@@ -1,23 +1,42 @@
 import { connect } from 'react-redux';
-import { firebaseConnect, isLoaded } from 'react-redux-firebase';
+import { firestoreConnect, isLoaded } from 'react-redux-firebase';
 import { compose } from 'recompose';
 
-import withAuth from 'User/enhancers/withAuth';
+import { getPositionsCollectionPath } from 'Firebase/lib';
+import State from 'State';
+import withAuth, { Props as WithAuthProps } from 'User/enhancers/withAuth';
 
-import * as C from '../../constants';
+import { Position } from '../lib';
 
-const mapStateToProps = (transform: Function) => ({ firebase: { data } }) => ({
-  positions: transform(data[C.FIREBASE_POSITIONS_PATH] || {}),
-  positionsLoading: !isLoaded(data[C.FIREBASE_POSITIONS_PATH]),
-});
+// TODO: Tests.
 
-export default (transform: Function = x => x) => compose(
+export interface Props {
+  positions: Position[];
+  positionsLoading: boolean;
+}
+
+const mapStateToProps = ({ firebase: { firestore: { ordered } } }: State, { auth }: WithAuthProps): Props => {
+  let positions: Position[] = [];
+
+  if (ordered.users) {
+    const user = ordered.users.find(({ id }) => id === auth.uid);
+
+    if (user && user.positions) {
+      ({ positions } = user);
+    }
+  }
+
+  return ({
+    positions,
+    // `as string` used because uid should be present at this point when using withAuth.
+    positionsLoading: !isLoaded(getPositionsCollectionPath(auth.uid as string)),
+  });
+};
+
+export default compose(
   withAuth,
-  firebaseConnect(({ auth }) => [
-    {
-      path: `${C.FIREBASE_POSITIONS_PATH}/${auth.uid}`,
-      storeAs: C.FIREBASE_POSITIONS_PATH,
-    },
+  firestoreConnect(({ auth }: WithAuthProps) => [
+    getPositionsCollectionPath(auth.uid as string),
   ]),
-  connect(mapStateToProps(transform)),
+  connect(mapStateToProps),
 );

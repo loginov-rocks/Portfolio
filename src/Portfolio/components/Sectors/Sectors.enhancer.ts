@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { compose, mapProps } from 'recompose';
 
-import { mergePositionsBySymbols, mergeSymbolsBySectors } from '../../lib/portfolio';
+import { mergePositionsBySymbols, mergeSymbolsBySectors } from '../../lib';
 
 const mapStateToProps = ({ portfolio: { positions }, stocks: { quotes } }): { positions: []; quotes: [] } => ({
   positions,

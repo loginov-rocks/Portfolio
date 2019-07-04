@@ -1,12 +1,16 @@
 import { withFirebase } from 'react-redux-firebase';
 import { compose, withHandlers } from 'recompose';
 
-export default compose(
+import { WithFirebaseHocProps } from 'Firebase/lib';
+
+import { Props } from './LogoutButton';
+
+export default compose<Props & WithFirebaseHocProps, {}>(
   withFirebase,
-  withHandlers({
+  withHandlers<WithFirebaseHocProps, {}>({
 
     handleClick: ({ firebase }) => () => {
-      firebase.logout();
+      firebase.auth().signOut();
     },
 
   }),

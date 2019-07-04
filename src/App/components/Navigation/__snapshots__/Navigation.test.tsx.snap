@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot if on the create position page 1`] = `<Connect(withHandlers(withHandlers(CreatePosition))) />`;
+
+exports[`matches snapshot if on the home page 1`] = `<Connect(withHandlers(Connect(branch(FirestoreConnect(Connect(Home)))))) />`;
+
+exports[`matches snapshot if on the position page 1`] = `<Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(Connect(withHandlers(Position))))))))) />`;
+
+exports[`matches snapshot if on the profile page 1`] = `<Connect(withHandlers(Connect(Profile))) />`;

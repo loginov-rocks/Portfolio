@@ -1,37 +1,54 @@
 import { connect } from 'react-redux';
-import { firebaseConnect, isLoaded } from 'react-redux-firebase';
+import { firestoreConnect, isLoaded } from 'react-redux-firebase';
 import { compose } from 'recompose';
 
-import withAuth from 'User/enhancers/withAuth';
+import { getPositionDocumentPath, getPositionsCollectionPath } from 'Firebase/lib';
+import State from 'State';
+import withAuth, { Props as WithAuthProps } from 'User/enhancers/withAuth';
 
-import * as C from '../../constants';
+import { Position } from '../lib';
 
-interface ExtractPositionId {
-  (ownProps: { routeParams }): string;
+// TODO: Tests.
+
+export interface Props {
+  position: Position | null;
+  positionLoading: boolean;
 }
 
-const mapStateToProps = (extractPositionId: ExtractPositionId) => ({ firebase: { data } }, ownProps) => {
-  const positionId = extractPositionId(ownProps);
-  const positionData = data[C.FIREBASE_POSITIONS_PATH] && data[C.FIREBASE_POSITIONS_PATH][positionId];
+interface PositionIdExtractor<OwnProps> {
+  (ownProps: OwnProps): string;
+}
+
+const mapStateToProps = <OwnProps>(positionIdExtractor: PositionIdExtractor<OwnProps>) => (
+  { firebase: { firestore: { ordered } } }: State, ownProps: OwnProps & WithAuthProps,
+): Props => {
+  const positionId = positionIdExtractor(ownProps);
+  let position: Position | null = null;
+
+  if (ordered.users) {
+    const user = ordered.users.find(({ id }) => id === ownProps.auth.uid);
+
+    if (user && user.positions) {
+      position = user.positions.find(p => p.id === positionId) || null;
+    }
+  }
 
   return {
-    position: Object.assign({ id: positionId }, positionData),
-    positionLoading: !isLoaded(positionData),
+    position,
+    // `as string` used because uid should be present at this point when using withAuth.
+    positionLoading: !isLoaded(getPositionsCollectionPath(ownProps.auth.uid as string)),
   };
 };
 
-export default (extractPositionId: ExtractPositionId) => compose(
+export default <OwnProps>(positionIdExtractor: PositionIdExtractor<OwnProps>) => compose(
   withAuth,
-  firebaseConnect(props => {
-    const { auth } = props;
-    const positionId = extractPositionId(props);
+  firestoreConnect((props: OwnProps & WithAuthProps) => {
+    const positionId = positionIdExtractor(props);
 
     return [
-      {
-        path: `${C.FIREBASE_POSITIONS_PATH}/${auth.uid}/${positionId}`,
-        storeAs: `${C.FIREBASE_POSITIONS_PATH}/${positionId}`,
-      },
+      // `as string` used because uid should be present at this point when using withAuth.
+      getPositionDocumentPath(props.auth.uid as string, positionId),
     ];
   }),
-  connect(mapStateToProps(extractPositionId)),
+  connect(mapStateToProps(positionIdExtractor)),
 );

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import CreatePositionForm from 'Portfolio/components/CreatePositionForm';
+import CreatePositionForm from 'Portfolio/components/OpenPositionForm';
 
-interface Props {
+export interface Props {
   handleHomeClick: () => void;
   handleOnCreate: () => void;
 }

@@ -1,11 +1,12 @@
 import { compose } from 'recompose';
 
-import withPositionsArray from 'Portfolio/enhancers/withPositionsArray';
+import withPositions from 'Portfolio/enhancers/withPositions';
 
 import withNavigationHandlers from '../../enhancers/withNavigationHandlers';
+import { Props } from './Home';
 import * as R from '../../routes';
 
-export default compose(
+export default compose<Props, {}>(
   withNavigationHandlers({
     handleCreatePositionClick: R.CREATE_POSITION,
     handlePositionClick: (props, position) => ({
@@ -14,5 +15,5 @@ export default compose(
     }),
     handleProfileClick: R.PROFILE,
   }),
-  withPositionsArray,
+  withPositions,
 );

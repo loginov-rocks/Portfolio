@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Position } from '../../lib/flow';
+import { Position } from '../../lib';
 
 export interface RenderProps {
   handleClick: () => void;
@@ -8,7 +8,7 @@ export interface RenderProps {
   position: Position;
 }
 
-interface Props extends RenderProps {
+export interface Props extends RenderProps {
   children: React.FunctionComponent<RenderProps>;
 }
 

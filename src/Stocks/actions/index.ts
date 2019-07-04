@@ -1,9 +1,20 @@
 import { createFetchResource } from 'redux-repository/lib/actions';
+import { Action } from 'redux-repository/lib/types';
+import { ThunkAction } from 'redux-thunk';
 
-import * as C from '../../constants';
-import iex from '../lib/IEX/instance';
+import * as C from 'Constants';
+import State from 'State';
 
-export const fetchLogo = (symbol: string): void => createFetchResource(
+import iex from '../lib/IEX';
+import Quote from '../lib/IEX/Quote';
+
+export interface FetchLogo {
+  (symbol: string): void;
+}
+
+export const fetchLogo = (
+  symbol: string,
+): ThunkAction<void, State, null, Action<string, string>> => createFetchResource(
   C.STOCKS_LOGOS_RESOURCE_NAME,
   symbol,
   ({ stocks: { logos } }) => logos,
@@ -15,7 +26,13 @@ export const fetchLogo = (symbol: string): void => createFetchResource(
   { ttl: C.STOCKS_LOGOS_TTL },
 );
 
-export const fetchQuote = (symbol: string): void => createFetchResource(
+export interface FetchQuote {
+  (symbol: string): void;
+}
+
+export const fetchQuote = (
+  symbol: string,
+): ThunkAction<void, State, null, Action<Quote, string>> => createFetchResource(
   C.STOCKS_QUOTES_RESOURCE_NAME,
   symbol,
   ({ stocks: { quotes } }) => quotes,

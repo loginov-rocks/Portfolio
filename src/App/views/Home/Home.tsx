@@ -1,14 +1,16 @@
 import * as React from 'react';
 
-import { Position } from 'Portfolio/lib/flow';
+import { Position } from 'Portfolio/lib';
 import Progress from 'Shared/components/Progress';
 
 import StockPositionsList from '../../components/StockPositionsList';
-import StockPositionsValue from '../../components/StockPositionsValue';
+import StockPositionsValue, {
+  RenderProps as StockPositionsValueRenderProps,
+} from '../../components/StockPositionsValue';
 
-interface Props {
+export interface Props {
   handleCreatePositionClick: () => void;
-  handlePositionClick: () => void;
+  handlePositionClick: (position: Position) => void;
   handleProfileClick: () => void;
   positions: Position[];
   positionsLoading: boolean;
@@ -31,7 +33,7 @@ const Home: React.FunctionComponent<Props> = ({
         ? <Progress />
         : (
           <StockPositionsValue positions={positions}>
-            {({ value }) => value.toFixed(2)}
+            {({ value }: StockPositionsValueRenderProps) => value.toFixed(2)}
           </StockPositionsValue>
         )}
     </div>
@@ -39,12 +41,7 @@ const Home: React.FunctionComponent<Props> = ({
     <div>
       {positionsLoading
         ? <Progress />
-        : (
-          <StockPositionsList
-            onClick={handlePositionClick}
-            positions={positions}
-          />
-        )}
+        : <StockPositionsList onClick={handlePositionClick} positions={positions} />}
     </div>
 
   </React.Fragment>

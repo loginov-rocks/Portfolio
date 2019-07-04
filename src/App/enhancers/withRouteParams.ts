@@ -1,5 +1,13 @@
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({ app: { routeParams } }): { routeParams: {} } => ({ routeParams });
+import State from 'State';
 
-export default connect(mapStateToProps);
+import { RouteParamsState } from '../State';
+
+interface Props {
+  routeParams: RouteParamsState;
+}
+
+const mapStateToProps = ({ app: { routeParams } }: State): Props => ({ routeParams });
+
+export default connect<Props, {}, {}, State>(mapStateToProps);

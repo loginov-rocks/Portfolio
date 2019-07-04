@@ -1,12 +1,20 @@
 import { withFirebase } from 'react-redux-firebase';
 import { compose, withHandlers } from 'recompose';
 
-export default compose(
+import { getAuthProvider, WithFirebaseHocProps } from 'Firebase/lib';
+
+import { Props } from './ProviderLoginButton';
+
+interface EnhancedProps {
+  provider: string;
+}
+
+export default compose<Props & WithFirebaseHocProps & EnhancedProps, EnhancedProps>(
   withFirebase,
-  withHandlers({
+  withHandlers<EnhancedProps & WithFirebaseHocProps, {}>({
 
     handleClick: ({ firebase, provider }) => () => {
-      firebase.login({ provider });
+      firebase.auth().signInWithRedirect(getAuthProvider(provider));
     },
 
   }),

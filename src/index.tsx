@@ -3,10 +3,9 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import App from 'App/components/App';
-import createStore from 'App/lib/store/createStore';
 
+import createStore from './createStore';
 import reducer from './reducer';
-// import * as serviceWorker from './serviceWorker';
 
 const container = document.getElementById('root');
 const store = createStore(reducer);
@@ -17,5 +16,3 @@ ReactDOM.render(
   </Provider>,
   container,
 );
-
-// serviceWorker.register();
