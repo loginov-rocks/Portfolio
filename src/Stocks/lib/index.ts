@@ -14,9 +14,7 @@ export const getQuotePrice = (quote: Quote | null): number => {
       return quote.iexRealtimePrice;
     }
 
-    if (quote.latestPrice) {
-      return quote.latestPrice;
-    }
+    return quote.latestPrice;
   }
 
   return 0;
