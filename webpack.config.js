@@ -34,6 +34,7 @@ module.exports = {
     ]),
     new Dotenv({
       safe: false,
+      systemvars: true,
     }),
     new HtmlPlugin({
       inject: false,
