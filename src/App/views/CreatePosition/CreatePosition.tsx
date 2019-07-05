@@ -3,11 +3,11 @@ import * as React from 'react';
 import CreatePositionForm from 'Portfolio/components/OpenPositionForm';
 
 export interface Props {
+  handleCreate: () => void;
   handleHomeClick: () => void;
-  handleOnCreate: () => void;
 }
 
-const CreatePosition: React.FunctionComponent<Props> = ({ handleHomeClick, handleOnCreate }: Props) => (
+const CreatePosition: React.FunctionComponent<Props> = ({ handleCreate, handleHomeClick }: Props) => (
   <React.Fragment>
 
     <div>
@@ -16,7 +16,7 @@ const CreatePosition: React.FunctionComponent<Props> = ({ handleHomeClick, handl
 
     <h1>Create position</h1>
 
-    <CreatePositionForm onCreate={handleOnCreate} />
+    <CreatePositionForm onCreate={handleCreate} />
 
   </React.Fragment>
 );

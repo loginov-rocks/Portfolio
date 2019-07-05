@@ -19,7 +19,7 @@ export const openPosition = (
   const user = firebase.auth().currentUser;
 
   if (!user) {
-    throw new Error('Trying to create position when unauthorized');
+    throw new Error('Trying to open position when unauthorized');
   }
 
   const positionData = {
@@ -51,12 +51,29 @@ export interface ClosePositionAction {
 
 export const closePosition = (
   id: string, price: number, commission: number, date: string,
-): ThunkAction<Promise<string>, State, GetFirebaseExtraArgument, Action> => dispatch => {
-  // TODO: Implement.
+): ThunkAction<Promise<string>, State, GetFirebaseExtraArgument, Action> => (dispatch, getState, getFirebase) => {
+  const firebase = getFirebase();
+  const user = firebase.auth().currentUser;
 
-  dispatch(positionClosed(id, price, commission, date));
+  if (!user) {
+    throw new Error('Trying to close position when unauthorized');
+  }
 
-  return Promise.resolve(id);
+  return firebase.firestore()
+    .collection(C.FIRESTORE_USERS_COLLECTION)
+    .doc(user.uid)
+    .collection(C.FIRESTORE_POSITIONS_COLLECTION)
+    .doc(id)
+    .update({
+      closeCommission: commission,
+      closeDate: date,
+      closePrice: price,
+    })
+    .then(() => {
+      dispatch(positionClosed(id, price, commission, date));
+
+      return id;
+    });
 };
 
 export interface DeletePositionAction {

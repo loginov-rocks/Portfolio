@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Portfolio App",
   "scripts": {
     "build": "npm run clean:build && webpack --mode production",

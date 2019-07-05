@@ -21,6 +21,14 @@ exports[`matches snapshot 1`] = `
       onClick={[Function]}
       type="button"
     >
+      Close
+    </button>
+  </div>
+  <div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
       Delete
     </button>
   </div>

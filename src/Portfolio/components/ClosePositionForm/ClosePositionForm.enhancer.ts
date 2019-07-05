@@ -1,46 +1,36 @@
 import { connect } from 'react-redux';
 import { compose, withHandlers, withStateHandlers } from 'recompose';
 
-import { openPosition as openPositionAction, OpenPositionAction } from '../../actions';
-import { formatDate, Position } from '../../lib';
-import { Props } from './OpenPositionForm';
+import { Props } from './ClosePositionForm';
+import { closePosition as closePositionAction, ClosePositionAction } from '../../actions';
+import { formatDate } from '../../lib';
 
-const mapDispatchToProps = { openPosition: openPositionAction };
+const mapDispatchToProps = { closePosition: closePositionAction };
 
 interface DispatchProps {
-  openPosition: OpenPositionAction;
+  closePosition: ClosePositionAction;
 }
 
 interface WithStateHandlersProps {
-  amount: number;
   commission: number;
   date: string;
   price: number;
-  symbol: string;
 }
 
 interface EnhancedProps {
-  onCreate?: (position: Position) => void;
+  id: string;
+  onClose?: (positionId: string) => void;
 }
 
 export default compose<Props & DispatchProps & WithStateHandlersProps, EnhancedProps>(
   connect(null, mapDispatchToProps),
   withStateHandlers(
     {
-      amount: 1,
       commission: 0,
       date: formatDate(new Date()),
       price: 0,
-      symbol: '',
     },
     {
-      handleAmountChange: () => event => {
-        const amount = parseInt(event.target.value, 10);
-
-        return {
-          amount: amount > 0 ? amount : 1,
-        };
-      },
       handleCommissionChange: () => event => {
         const price = parseFloat(event.target.value);
 
@@ -62,22 +52,19 @@ export default compose<Props & DispatchProps & WithStateHandlersProps, EnhancedP
           price: price >= 0 ? price : 0,
         };
       },
-      handleSymbolChange: () => event => ({
-        symbol: event.target.value.toUpperCase(),
-      }),
     },
   ),
   withHandlers<EnhancedProps & DispatchProps & WithStateHandlersProps, {}>({
 
     handleSubmit: ({
-      amount, commission, date, onCreate, openPosition, price, symbol,
+      closePosition, commission, date, id, onClose, price,
     }) => (event: React.SyntheticEvent) => {
       event.preventDefault();
 
-      openPosition(symbol, amount, price, commission, date)
-        .then(position => {
-          if (onCreate) {
-            onCreate(position);
+      closePosition(id, price, commission, date)
+        .then(positionId => {
+          if (onClose) {
+            onClose(positionId);
           }
         });
     },

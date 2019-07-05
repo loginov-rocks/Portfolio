@@ -20,7 +20,7 @@ export default compose<Props & WithHandlersProps, {}>(
   }),
   withHandlers<WithHandlersProps, {}>({
 
-    handleOnCreate: ({ handlePositionClick }) => (position: Position) => {
+    handleCreate: ({ handlePositionClick }) => (position: Position) => {
       handlePositionClick(position);
     },
 

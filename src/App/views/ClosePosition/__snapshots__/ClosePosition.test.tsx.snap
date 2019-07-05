@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Fragment>
+  <div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Back
+    </button>
+  </div>
+  <h1>
+    Close position
+  </h1>
+  <div>
+    <Connect(withStateHandlers(withHandlers(ClosePositionForm)))
+      id="id"
+      onClose={[Function]}
+    />
+  </div>
+</Fragment>
+`;
+
+exports[`matches snapshot when loading 1`] = `
+<Fragment>
+  <div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Back
+    </button>
+  </div>
+  <h1>
+    Close position
+  </h1>
+  <div>
+    <Progress />
+  </div>
+</Fragment>
+`;
