@@ -1,11 +1,11 @@
 {
   "name": "portfolio",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Portfolio App",
   "scripts": {
     "build": "npm run clean:build && webpack --mode production",
     "build:dev": "npm run clean:build && webpack --mode development",
-    "ci": "npm run lint && npm test && npm run build",
+    "ci": "npm run lint && npm run typecheck && npm test && npm run build",
     "clean:build": "rm -rf dist",
     "clean:coverage": "rm -rf coverage",
     "coverage": "npm run clean:coverage && npm run test:coverage",

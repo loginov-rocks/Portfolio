@@ -13,6 +13,7 @@ import { RouteParamsState } from '../../State';
 
 interface WithHandlersProps {
   deletePosition: DeletePositionAction;
+  handleClosePositionClick: (positionId: string) => void;
   handleHomeClick: () => void;
   position: Position | null;
   positionLoading: boolean;
@@ -26,6 +27,12 @@ export default compose<Props & WithHandlersProps, {}>(
   }),
   withRouteParams,
   withPositionById<{ routeParams: RouteParamsState }>(({ routeParams }) => routeParams.position),
+  withNavigationHandlers({
+    handleCloseClick: ({ position }) => ({
+      params: { position: position.id },
+      route: R.CLOSE_POSITION,
+    }),
+  }),
   connect(null, mapDispatchToProps),
   withHandlers<WithHandlersProps, {}>({
 

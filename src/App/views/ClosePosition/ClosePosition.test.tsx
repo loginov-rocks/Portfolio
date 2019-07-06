@@ -1,14 +1,12 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import Position from './Position';
+import ClosePosition from './ClosePosition';
 
 it('matches snapshot', () => {
   const wrapper = shallow(
-    <Position
-      handleCloseClick={() => undefined}
-      handleDeleteClick={() => undefined}
-      handleHomeClick={() => undefined}
+    <ClosePosition
+      handleBackClick={() => undefined}
       position={{
         amount: 1,
         closeCommission: null,
@@ -29,10 +27,8 @@ it('matches snapshot', () => {
 
 it('matches snapshot when loading', () => {
   const wrapper = shallow(
-    <Position
-      handleCloseClick={() => undefined}
-      handleDeleteClick={() => undefined}
-      handleHomeClick={() => undefined}
+    <ClosePosition
+      handleBackClick={() => undefined}
       position={null}
       positionLoading
     />,
