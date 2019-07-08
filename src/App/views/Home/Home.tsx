@@ -1,9 +1,10 @@
 import * as React from 'react';
 
 import { Position } from 'Portfolio/lib';
+import Money from 'Shared/components/Money';
 import Progress from 'Shared/components/Progress';
 
-import StockPositionsList from '../../components/StockPositionsList';
+import OpenPositionsList from '../../components/OpenPositionsList';
 import StockPositionsValue, {
   RenderProps as StockPositionsValueRenderProps,
 } from '../../components/StockPositionsValue';
@@ -24,6 +25,16 @@ const Home: React.FunctionComponent<Props> = ({
     <h1>Home</h1>
 
     <div>
+      {positionsLoading
+        ? <Progress />
+        : (
+          <StockPositionsValue positions={positions}>
+            {({ value }: StockPositionsValueRenderProps) => <Money value={value} />}
+          </StockPositionsValue>
+        )}
+    </div>
+
+    <div>
       <button onClick={handleCreatePositionClick} type="button">Create position</button>
       <button onClick={handleProfileClick} type="button">Profile</button>
     </div>
@@ -31,17 +42,7 @@ const Home: React.FunctionComponent<Props> = ({
     <div>
       {positionsLoading
         ? <Progress />
-        : (
-          <StockPositionsValue positions={positions}>
-            {({ value }: StockPositionsValueRenderProps) => value.toFixed(2)}
-          </StockPositionsValue>
-        )}
-    </div>
-
-    <div>
-      {positionsLoading
-        ? <Progress />
-        : <StockPositionsList onClick={handlePositionClick} positions={positions} />}
+        : <OpenPositionsList onClick={handlePositionClick} positions={positions} />}
     </div>
 
   </React.Fragment>

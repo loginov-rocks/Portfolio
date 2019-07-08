@@ -5,7 +5,7 @@ import Quote from '../../lib/IEX/Quote';
 export interface RenderProps {
   logo: string | null;
   logoProgress: boolean;
-  price: number;
+  price: number | null;
   quote: Quote | null;
   quoteProgress: boolean;
   symbol: string;
