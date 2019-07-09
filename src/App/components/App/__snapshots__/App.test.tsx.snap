@@ -285,7 +285,7 @@ exports[`matches snapshot if authenticated 1`] = `
   }
 >
   <CssBaseline />
-  <Connect(Navigation) />
+  <WithStyles(Connect(Navigation)) />
 </ThemeProvider>
 `;
 

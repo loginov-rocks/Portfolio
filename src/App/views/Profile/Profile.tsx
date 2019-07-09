@@ -4,16 +4,11 @@ import { ProfileState } from 'Firebase/State';
 import LogoutButton from 'User/components/LogoutButton';
 
 export interface Props {
-  handleHomeClick: () => void;
   profile: ProfileState;
 }
 
-const Profile: React.FunctionComponent<Props> = ({ handleHomeClick, profile }: Props) => (
+const Profile: React.FunctionComponent<Props> = ({ profile }: Props) => (
   <React.Fragment>
-
-    <div>
-      <button onClick={handleHomeClick} type="button">Home</button>
-    </div>
 
     <h1>Profile</h1>
 

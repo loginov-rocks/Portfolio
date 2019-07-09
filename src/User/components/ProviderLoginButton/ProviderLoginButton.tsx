@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import * as React from 'react';
 
 export interface Props {
@@ -6,7 +7,7 @@ export interface Props {
 }
 
 const ProviderLoginButton: React.FunctionComponent<Props> = ({ children, handleClick }: Props) => (
-  <button onClick={handleClick} type="button">{children}</button>
+  <Button color="primary" onClick={handleClick} variant="contained">{children}</Button>
 );
 
 export default ProviderLoginButton;

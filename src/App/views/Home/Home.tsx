@@ -10,15 +10,13 @@ import StockPositionsValue, {
 } from '../../components/StockPositionsValue';
 
 export interface Props {
-  handleCreatePositionClick: () => void;
   handlePositionClick: (position: Position) => void;
-  handleProfileClick: () => void;
   positions: Position[];
   positionsLoading: boolean;
 }
 
 const Home: React.FunctionComponent<Props> = ({
-  handleCreatePositionClick, handlePositionClick, handleProfileClick, positions, positionsLoading,
+  handlePositionClick, positions, positionsLoading,
 }: Props) => (
   <React.Fragment>
 
@@ -32,11 +30,6 @@ const Home: React.FunctionComponent<Props> = ({
             {({ value }: StockPositionsValueRenderProps) => <Money value={value} />}
           </StockPositionsValue>
         )}
-    </div>
-
-    <div>
-      <button onClick={handleCreatePositionClick} type="button">Create position</button>
-      <button onClick={handleProfileClick} type="button">Profile</button>
     </div>
 
     <div>

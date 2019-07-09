@@ -12,7 +12,6 @@ interface WithHandlersProps {
 
 export default compose<Props & WithHandlersProps, {}>(
   withNavigationHandlers({
-    handleHomeClick: R.HOME,
     handlePositionClick: (props, position) => ({
       params: { position: position.id },
       route: R.POSITION,

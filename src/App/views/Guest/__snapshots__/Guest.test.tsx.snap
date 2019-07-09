@@ -1,12 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches snapshot 1`] = `
-<Fragment>
-  <h1>
-    Welcome!
-  </h1>
-  <div>
+<div
+  className="root"
+>
+  <div
+    className="row"
+  >
+    <Logo />
+  </div>
+  <div
+    className="row"
+  >
     <GoogleLoginButton />
   </div>
-</Fragment>
+</div>
 `;

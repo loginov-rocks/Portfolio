@@ -2,6 +2,14 @@ html, body {
   height: 100%;
 }
 
+html {
+  overflow: hidden;
+}
+
+body {
+  overflow: auto;
+}
+
 #root {
   display: flex;
   flex-direction: column;

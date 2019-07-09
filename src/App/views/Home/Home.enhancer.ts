@@ -8,12 +8,10 @@ import * as R from '../../routes';
 
 export default compose<Props, {}>(
   withNavigationHandlers({
-    handleCreatePositionClick: R.CREATE_POSITION,
     handlePositionClick: (props, position) => ({
       params: { position: position.id },
       route: R.POSITION,
     }),
-    handleProfileClick: R.PROFILE,
   }),
   withPositions,
 );

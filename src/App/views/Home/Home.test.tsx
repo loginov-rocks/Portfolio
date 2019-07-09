@@ -5,13 +5,7 @@ import Home from './Home';
 
 it('matches snapshot', () => {
   const wrapper = shallow(
-    <Home
-      handleCreatePositionClick={() => undefined}
-      handlePositionClick={() => undefined}
-      handleProfileClick={() => undefined}
-      positions={[]}
-      positionsLoading={false}
-    />,
+    <Home handlePositionClick={() => undefined} positions={[]} positionsLoading={false} />,
   );
 
   expect(wrapper).toMatchSnapshot();
@@ -19,13 +13,7 @@ it('matches snapshot', () => {
 
 it('matches snapshot when positions are loading', () => {
   const wrapper = shallow(
-    <Home
-      handleCreatePositionClick={() => undefined}
-      handlePositionClick={() => undefined}
-      handleProfileClick={() => undefined}
-      positions={[]}
-      positionsLoading
-    />,
+    <Home handlePositionClick={() => undefined} positions={[]} positionsLoading />,
   );
 
   expect(wrapper).toMatchSnapshot();

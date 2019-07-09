@@ -1,7 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot 1`] = `
-<div>
-  Progress...
-</div>
-`;
+exports[`matches snapshot 1`] = `<WithStyles(ForwardRef(CircularProgress)) />`;

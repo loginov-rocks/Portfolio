@@ -1,12 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches snapshot 1`] = `
-<Fragment>
-  <h1>
-    Loading
-  </h1>
-  <div>
-    <Progress />
-  </div>
-</Fragment>
+<div
+  className="root"
+>
+  <Progress
+    size="large"
+  />
+</div>
 `;

@@ -1,12 +1,10 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import CreatePosition from './CreatePosition';
+import Logo from './Logo';
 
 it('matches snapshot', () => {
-  const wrapper = shallow(
-    <CreatePosition handleCreate={() => undefined} />,
-  );
+  const wrapper = shallow(<Logo />);
 
   expect(wrapper).toMatchSnapshot();
 });
