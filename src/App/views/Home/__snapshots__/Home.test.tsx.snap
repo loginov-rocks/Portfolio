@@ -6,6 +6,13 @@ exports[`matches snapshot 1`] = `
     Home
   </h1>
   <div>
+    <withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))
+      positions={Array []}
+    >
+      <Component />
+    </withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))>
+  </div>
+  <div>
     <button
       onClick={[Function]}
       type="button"
@@ -20,14 +27,7 @@ exports[`matches snapshot 1`] = `
     </button>
   </div>
   <div>
-    <withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))
-      positions={Array []}
-    >
-      <Component />
-    </withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))>
-  </div>
-  <div>
-    <StockPositionsList
+    <OpenPositionsList
       onClick={[Function]}
       positions={Array []}
     />
@@ -41,6 +41,9 @@ exports[`matches snapshot when positions are loading 1`] = `
     Home
   </h1>
   <div>
+    <Progress />
+  </div>
+  <div>
     <button
       onClick={[Function]}
       type="button"
@@ -53,9 +56,6 @@ exports[`matches snapshot when positions are loading 1`] = `
     >
       Profile
     </button>
-  </div>
-  <div>
-    <Progress />
   </div>
   <div>
     <Progress />

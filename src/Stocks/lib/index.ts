@@ -8,7 +8,7 @@ export const findQuoteBySymbol = (quotesRepository: Repository<Quote, string>, s
   extractData(getResourceById(quotesRepository, symbol))
 );
 
-export const getQuotePrice = (quote: Quote | null): number => {
+export const getQuotePrice = (quote: Quote | null): number | null => {
   if (quote) {
     if (quote.iexRealtimePrice) {
       return quote.iexRealtimePrice;
@@ -17,5 +17,5 @@ export const getQuotePrice = (quote: Quote | null): number => {
     return quote.latestPrice;
   }
 
-  return 0;
+  return null;
 };

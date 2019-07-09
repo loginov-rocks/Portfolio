@@ -27,8 +27,13 @@ export default compose<Props, EnhancedProps>(
         .map(position => {
           const { amount, symbol } = position;
           const quote = quotes.find(q => q && q.symbol === symbol) || null;
+          const price = getQuotePrice(quote);
 
-          return amount * getQuotePrice(quote);
+          if (price === null) {
+            return 0;
+          }
+
+          return amount * price;
         })
         .reduce((a, b) => a + b, 0);
     }
