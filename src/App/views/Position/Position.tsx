@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import PositionDetails from 'Portfolio/components/PositionDetails';
 import { Position as PositionInterface } from 'Portfolio/lib';
 import Progress from 'Shared/components/Progress';
 
@@ -22,11 +23,7 @@ const Position: React.FunctionComponent<Props> = ({
 
     <h1>Position</h1>
 
-    <div>
-      {positionLoading
-        ? <Progress />
-        : JSON.stringify(position)}
-    </div>
+    <div>{positionLoading ? <Progress /> : position && <PositionDetails position={position} />}</div>
 
     {position && position.closeDate === null
       ? (
