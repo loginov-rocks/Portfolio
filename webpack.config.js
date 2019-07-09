@@ -19,6 +19,14 @@ module.exports = {
         test: /\.tsx?$/,
         use: 'babel-loader',
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.woff2?$/,
+        use: 'file-loader',
+      },
     ],
   },
   output: {
