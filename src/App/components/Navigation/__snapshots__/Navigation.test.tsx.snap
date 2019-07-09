@@ -126,7 +126,7 @@ exports[`matches snapshot if on the position page 1`] = `
 
 exports[`matches snapshot if on the profile page 1`] = `
 <Fragment>
-  <Connect(Profile) />
+  <WithStyles(Connect(Profile)) />
   <div
     className="bottomMock"
   />

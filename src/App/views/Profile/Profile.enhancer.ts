@@ -1,9 +1,12 @@
 import { connect } from 'react-redux';
 
+import { ProfileState } from 'Firebase/State';
 import State from 'State';
 
-import { Props } from './Profile';
+interface StateProps {
+  profile: ProfileState;
+}
 
-const mapStateToProps = ({ firebase: { firebase: { profile } } }: State): Props => ({ profile });
+const mapStateToProps = ({ firebase: { firebase: { profile } } }: State): StateProps => ({ profile });
 
-export default connect<Props, {}, {}, State>(mapStateToProps);
+export default connect<StateProps, {}, {}, State>(mapStateToProps);
