@@ -1,4 +1,8 @@
+import { createMuiTheme, CssBaseline } from '@material-ui/core';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import * as React from 'react';
+
+import themeOptions from 'Styles/themeOptions';
 
 import Navigation from '../Navigation';
 import Guest from '../../views/Guest';
@@ -9,16 +13,25 @@ export interface Props {
   progress: boolean;
 }
 
+const theme = createMuiTheme(themeOptions);
+
 const App: React.FunctionComponent<Props> = ({ isAuthenticated, progress }: Props) => {
+  let Component = null;
+
   if (progress) {
-    return <Loading />;
+    Component = Loading;
+  } else if (!isAuthenticated) {
+    Component = Guest;
+  } else {
+    Component = Navigation;
   }
 
-  if (!isAuthenticated) {
-    return <Guest />;
-  }
-
-  return <Navigation />;
+  return (
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      <Component />
+    </MuiThemeProvider>
+  );
 };
 
 export default App;
