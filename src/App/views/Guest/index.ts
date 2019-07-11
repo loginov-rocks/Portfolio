@@ -1,3 +1,4 @@
 import Guest from './Guest';
+import style from './Guest.styles';
 
-export default Guest;
+export default style(Guest);

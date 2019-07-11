@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches snapshot 1`] = `
-<button
+<WithStyles(ForwardRef(Button))
   onClick={[Function]}
-  type="button"
+  variant="outlined"
 >
   Logout
-</button>
+</WithStyles(ForwardRef(Button))>
 `;

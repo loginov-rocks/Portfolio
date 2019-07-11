@@ -1,42 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches snapshot 1`] = `
-<Fragment>
-  <div>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Back
-    </button>
-  </div>
-  <h1>
+<div
+  className="root"
+>
+  <WithStyles(ForwardRef(IconButton))
+    className="back"
+    onClick={[Function]}
+  >
+    <ArrowBackOutlinedIcon />
+  </WithStyles(ForwardRef(IconButton))>
+  <WithStyles(ForwardRef(Typography))
+    className="headline"
+    variant="h4"
+  >
     Close position
-  </h1>
-  <div>
-    <Connect(withStateHandlers(withHandlers(ClosePositionForm)))
-      id="id"
-      onClose={[Function]}
-    />
-  </div>
-</Fragment>
+  </WithStyles(ForwardRef(Typography))>
+  <WithStyles(Connect(withStateHandlers(withHandlers(ClosePositionForm))))
+    id="id"
+    onClose={[Function]}
+  />
+</div>
 `;
 
 exports[`matches snapshot when loading 1`] = `
-<Fragment>
-  <div>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Back
-    </button>
-  </div>
-  <h1>
+<div
+  className="root"
+>
+  <WithStyles(ForwardRef(IconButton))
+    className="back"
+    onClick={[Function]}
+  >
+    <ArrowBackOutlinedIcon />
+  </WithStyles(ForwardRef(IconButton))>
+  <WithStyles(ForwardRef(Typography))
+    className="headline"
+    variant="h4"
+  >
     Close position
-  </h1>
-  <div>
-    <Progress />
-  </div>
-</Fragment>
+  </WithStyles(ForwardRef(Typography))>
+  <Progress />
+</div>
 `;

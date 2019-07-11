@@ -1,17 +1,12 @@
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
 
+import { ProfileState } from 'Firebase/State';
 import State from 'State';
 
-import withNavigationHandlers from '../../enhancers/withNavigationHandlers';
-import * as R from '../../routes';
-import { Props } from './Profile';
+interface StateProps {
+  profile: ProfileState;
+}
 
-const mapStateToProps = ({ firebase: { firebase: { profile } } }: State): Partial<Props> => ({ profile });
+const mapStateToProps = ({ firebase: { firebase: { profile } } }: State): StateProps => ({ profile });
 
-export default compose<Props, {}>(
-  withNavigationHandlers({
-    handleHomeClick: R.HOME,
-  }),
-  connect(mapStateToProps),
-);
+export default connect<StateProps, {}, {}, State>(mapStateToProps);

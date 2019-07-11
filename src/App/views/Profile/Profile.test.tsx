@@ -1,4 +1,5 @@
 import { shallow } from 'enzyme';
+import classes from 'identity-obj-proxy';
 import * as React from 'react';
 
 import Profile from './Profile';
@@ -6,7 +7,7 @@ import Profile from './Profile';
 it('matches snapshot', () => {
   const wrapper = shallow(
     <Profile
-      handleHomeClick={() => undefined}
+      classes={classes}
       profile={{
         avatarUrl: 'http://example.com/avatar.png',
         displayName: 'Dolph',

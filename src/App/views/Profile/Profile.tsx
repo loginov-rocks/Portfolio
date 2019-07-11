@@ -1,43 +1,34 @@
+import { Avatar, Typography } from '@material-ui/core';
 import * as React from 'react';
 
 import { ProfileState } from 'Firebase/State';
 import LogoutButton from 'User/components/LogoutButton';
 
-export interface Props {
-  handleHomeClick: () => void;
+interface Props {
+  classes: { [key: string]: string };
   profile: ProfileState;
 }
 
-const Profile: React.FunctionComponent<Props> = ({ handleHomeClick, profile }: Props) => (
-  <React.Fragment>
+const Profile: React.FunctionComponent<Props> = ({ classes, profile }: Props) => (
+  <div className={classes.root}>
 
-    <div>
-      <button onClick={handleHomeClick} type="button">Home</button>
-    </div>
+    <Typography className={classes.headline} variant="h2">Profile</Typography>
 
-    <h1>Profile</h1>
+    {profile.avatarUrl && (
+      <Avatar className={classes.avatar} src={profile.avatarUrl} />
+    )}
 
-    <div>
+    {profile.displayName && (
+      <Typography className={classes.name} variant="h6">{profile.displayName}</Typography>
+    )}
 
-      {profile.avatarUrl && (
-        <img alt="Avatar" src={profile.avatarUrl} />
-      )}
+    {profile.email && (
+      <Typography className={classes.email}>{profile.email}</Typography>
+    )}
 
-      {profile.displayName && (
-        <strong>{profile.displayName}</strong>
-      )}
+    <LogoutButton className={classes.signOut}>Sign Out</LogoutButton>
 
-      {profile.email && (
-        <em>{profile.email}</em>
-      )}
-
-    </div>
-
-    <div>
-      <LogoutButton>Logout</LogoutButton>
-    </div>
-
-  </React.Fragment>
+  </div>
 );
 
 export default Profile;

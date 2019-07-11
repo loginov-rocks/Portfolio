@@ -1,24 +1,26 @@
+import { Tab, Tabs } from '@material-ui/core';
 import * as React from 'react';
 
 import { Position } from 'Portfolio/lib';
 import Money from 'Shared/components/Money';
 import Progress from 'Shared/components/Progress';
 
+import ClosedPositionsList from '../../components/ClosedPositionsList';
 import OpenPositionsList from '../../components/OpenPositionsList';
 import StockPositionsValue, {
   RenderProps as StockPositionsValueRenderProps,
 } from '../../components/StockPositionsValue';
 
 export interface Props {
-  handleCreatePositionClick: () => void;
   handlePositionClick: (position: Position) => void;
-  handleProfileClick: () => void;
+  handleTabChange: () => void;
   positions: Position[];
   positionsLoading: boolean;
+  tab: number;
 }
 
 const Home: React.FunctionComponent<Props> = ({
-  handleCreatePositionClick, handlePositionClick, handleProfileClick, positions, positionsLoading,
+  handlePositionClick, handleTabChange, positions, positionsLoading, tab,
 }: Props) => (
   <React.Fragment>
 
@@ -34,15 +36,20 @@ const Home: React.FunctionComponent<Props> = ({
         )}
     </div>
 
-    <div>
-      <button onClick={handleCreatePositionClick} type="button">Create position</button>
-      <button onClick={handleProfileClick} type="button">Profile</button>
-    </div>
+    <Tabs onChange={handleTabChange} value={tab}>
+      <Tab label="Open" />
+      <Tab label="Closed" />
+    </Tabs>
 
     <div>
       {positionsLoading
         ? <Progress />
-        : <OpenPositionsList onClick={handlePositionClick} positions={positions} />}
+        : (
+          <React.Fragment>
+            {tab === 0 && <OpenPositionsList onClick={handlePositionClick} positions={positions} />}
+            {tab === 1 && <ClosedPositionsList onClick={handlePositionClick} positions={positions} />}
+          </React.Fragment>
+        )}
     </div>
 
   </React.Fragment>

@@ -1,20 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches snapshot 1`] = `
-<Fragment>
-  <div>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Home
-    </button>
-  </div>
-  <h1>
-    Create position
-  </h1>
-  <Connect(withStateHandlers(withHandlers(OpenPositionForm)))
+<div
+  className="root"
+>
+  <WithStyles(ForwardRef(Typography))
+    className="headline"
+    variant="h4"
+  >
+    Open position
+  </WithStyles(ForwardRef(Typography))>
+  <WithStyles(Connect(withStateHandlers(withHandlers(OpenPositionForm))))
     onCreate={[Function]}
   />
-</Fragment>
+</div>
 `;

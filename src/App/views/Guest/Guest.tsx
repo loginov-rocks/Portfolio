@@ -2,16 +2,24 @@ import * as React from 'react';
 
 import GoogleLoginButton from 'User/components/GoogleLoginButton';
 
-const Guest: React.FunctionComponent = () => (
-  <React.Fragment>
+import Logo from '../../components/Logo';
 
-    <h1>Welcome!</h1>
+interface Props {
+  classes: { [key: string]: string };
+}
 
-    <div>
+const Guest: React.FunctionComponent<Props> = ({ classes }: Props) => (
+  <div className={classes.root}>
+
+    <div className={classes.row}>
+      <Logo />
+    </div>
+
+    <div className={classes.row}>
       <GoogleLoginButton />
     </div>
 
-  </React.Fragment>
+  </div>
 );
 
 export default Guest;

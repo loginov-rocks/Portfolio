@@ -2,16 +2,14 @@ import * as React from 'react';
 
 import Progress from 'Shared/components/Progress';
 
-const Loading: React.FunctionComponent = () => (
-  <React.Fragment>
+interface Props {
+  classes: { [key: string]: string };
+}
 
-    <h1>Loading</h1>
-
-    <div>
-      <Progress />
-    </div>
-
-  </React.Fragment>
+const Loading: React.FunctionComponent<Props> = ({ classes }: Props) => (
+  <div className={classes.root}>
+    <Progress size="large" />
+  </div>
 );
 
 export default Loading;

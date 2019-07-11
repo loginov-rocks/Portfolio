@@ -1,34 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches snapshot 1`] = `
-<Fragment>
-  <div>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Home
-    </button>
-  </div>
-  <h1>
+<div
+  className="root"
+>
+  <WithStyles(ForwardRef(Typography))
+    className="headline"
+    variant="h2"
+  >
     Profile
-  </h1>
-  <div>
-    <img
-      alt="Avatar"
-      src="http://example.com/avatar.png"
-    />
-    <strong>
-      Dolph
-    </strong>
-    <em>
-      dolph@example.com
-    </em>
-  </div>
-  <div>
-    <withFirebase(withHandlers(LogoutButton))>
-      Logout
-    </withFirebase(withHandlers(LogoutButton))>
-  </div>
-</Fragment>
+  </WithStyles(ForwardRef(Typography))>
+  <WithStyles(ForwardRef(Avatar))
+    className="avatar"
+    src="http://example.com/avatar.png"
+  />
+  <WithStyles(ForwardRef(Typography))
+    className="name"
+    variant="h6"
+  >
+    Dolph
+  </WithStyles(ForwardRef(Typography))>
+  <WithStyles(ForwardRef(Typography))
+    className="email"
+  >
+    dolph@example.com
+  </WithStyles(ForwardRef(Typography))>
+  <withFirebase(withHandlers(LogoutButton))
+    className="signOut"
+  >
+    Sign Out
+  </withFirebase(withHandlers(LogoutButton))>
+</div>
 `;

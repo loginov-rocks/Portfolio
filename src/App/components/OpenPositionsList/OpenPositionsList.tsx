@@ -1,16 +1,16 @@
 import * as React from 'react';
 
 import { Position } from 'Portfolio/lib';
-import Progress from 'Shared/components/Progress';
 import Money from 'Shared/components/Money';
 import Percent from 'Shared/components/Percent';
+import Progress from 'Shared/components/Progress';
 import Logo from 'Stocks/components/Logo';
 
 import StockPositionItem from '../StockPositionItem';
 
 // TODO: Tests.
 
-interface Props {
+export interface Props {
   onClick?: (position: Position) => void;
   positions: Position[];
 }
@@ -22,16 +22,16 @@ const OpenPositionsList: React.FunctionComponent<Props> = ({ onClick, positions 
       <tr>
         <th colSpan={2}>Company</th>
         <th>Symbol</th>
-        <th>Open Date</th>
         <th>Amount</th>
+        <th>Open Date</th>
         <th>Open Price</th>
-        <th>Open Cost</th>
+        <th>Open Sum</th>
         <th>Market Price</th>
-        <th>Market Value</th>
-        <th>Daily P/L%</th>
+        <th>Market Sum</th>
         <th>Daily P/L</th>
-        <th>Net P/L%</th>
-        <th>Net P/L</th>
+        <th>Daily P/L%</th>
+        <th>P/L</th>
+        <th>P/L%</th>
         <th>Annual P/L%</th>
       </tr>
     </thead>
@@ -44,24 +44,24 @@ const OpenPositionsList: React.FunctionComponent<Props> = ({ onClick, positions 
           position={position}
         >
           {({
-            annualPLPercent, dailyPL, dailyPLPercent, handleClick, isClickable, logo, logoProgress, marketValue, netPL,
-            netPLPercent, openCost, price, quote, quoteProgress, symbol,
+            dailyPL, dailyPLPercent, handleClick, isClickable, logo, logoProgress, marketPL, marketPLAnnualPercent,
+            marketPLPercent, marketSum, openSum, price, quote, quoteProgress, symbol,
           }) => (
             <tr onClick={handleClick} style={isClickable ? { cursor: 'pointer' } : {}}>
               <td>{logoProgress ? <Progress /> : <Logo url={logo} />}</td>
               <td>{quoteProgress ? <Progress /> : quote && quote.companyName}</td>
               <td>{symbol}</td>
-              <td>{position.openDate}</td>
               <td>{position.amount}</td>
+              <td>{position.openDate}</td>
               <td><Money value={position.openPrice} /></td>
-              <td><Money value={openCost} /></td>
+              <td><Money value={openSum} /></td>
               <td>{price !== null && <Money value={price} />}</td>
-              <td>{marketValue !== null && <Money value={marketValue} />}</td>
-              <td>{dailyPLPercent !== null && <Percent pl value={dailyPLPercent} />}</td>
+              <td>{marketSum !== null && <Money value={marketSum} />}</td>
               <td>{dailyPL !== null && <Money pl value={dailyPL} />}</td>
-              <td>{netPLPercent !== null && <Percent pl value={netPLPercent} />}</td>
-              <td>{netPL !== null && <Money pl value={netPL} />}</td>
-              <td>{annualPLPercent !== null && <Percent pl value={annualPLPercent} />}</td>
+              <td>{dailyPLPercent !== null && <Percent pl value={dailyPLPercent} />}</td>
+              <td>{marketPL !== null && <Money pl value={marketPL} />}</td>
+              <td>{marketPLPercent !== null && <Percent pl value={marketPLPercent} />}</td>
+              <td>{marketPLAnnualPercent !== null && <Percent pl value={marketPLAnnualPercent} />}</td>
             </tr>
           )}
         </StockPositionItem>

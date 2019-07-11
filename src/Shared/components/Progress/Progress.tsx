@@ -1,7 +1,18 @@
+import { CircularProgress } from '@material-ui/core';
 import * as React from 'react';
 
-const Progress: React.FunctionComponent = () => (
-  <div>Progress...</div>
-);
+interface Props {
+  size?: 'large';
+}
+
+const Progress: React.FunctionComponent<Props> = ({ size }: Props) => {
+  let sizeProp;
+
+  if (size === 'large') {
+    sizeProp = 64;
+  }
+
+  return <CircularProgress size={sizeProp} />;
+};
 
 export default Progress;
