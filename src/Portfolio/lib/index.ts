@@ -38,3 +38,15 @@ export const formatDate = (date: Date): string => date.toISOString().slice(0, 10
 export const getUniqueSymbolsFromPositions = (positions: Position[]): string[] => Array.from(
   new Set(positions.map(position => position.symbol)),
 );
+
+export const sortBySymbol = (positions: Position[]): Position[] => positions.slice().sort((a, b) => {
+  if (a.symbol < b.symbol) {
+    return -1;
+  }
+
+  if (a.symbol > b.symbol) {
+    return 1;
+  }
+
+  return 0;
+});

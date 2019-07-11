@@ -1,6 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot 1`] = `
+exports[`matches snapshot when positions are loading 1`] = `
+<Fragment>
+  <h1>
+    Home
+  </h1>
+  <div>
+    <Progress />
+  </div>
+  <WithStyles(ForwardRef(Tabs))
+    onChange={[Function]}
+    value={0}
+  >
+    <WithStyles(ForwardRef(Tab))
+      label="Open"
+    />
+    <WithStyles(ForwardRef(Tab))
+      label="Closed"
+    />
+  </WithStyles(ForwardRef(Tabs))>
+  <div>
+    <Progress />
+  </div>
+</Fragment>
+`;
+
+exports[`matches snapshot with the first tab 1`] = `
 <Fragment>
   <h1>
     Home
@@ -12,8 +37,19 @@ exports[`matches snapshot 1`] = `
       <Component />
     </withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))>
   </div>
+  <WithStyles(ForwardRef(Tabs))
+    onChange={[Function]}
+    value={0}
+  >
+    <WithStyles(ForwardRef(Tab))
+      label="Open"
+    />
+    <WithStyles(ForwardRef(Tab))
+      label="Closed"
+    />
+  </WithStyles(ForwardRef(Tabs))>
   <div>
-    <OpenPositionsList
+    <withProps(OpenPositionsList)
       onClick={[Function]}
       positions={Array []}
     />
@@ -21,16 +57,34 @@ exports[`matches snapshot 1`] = `
 </Fragment>
 `;
 
-exports[`matches snapshot when positions are loading 1`] = `
+exports[`matches snapshot with the second tab 1`] = `
 <Fragment>
   <h1>
     Home
   </h1>
   <div>
-    <Progress />
+    <withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))
+      positions={Array []}
+    >
+      <Component />
+    </withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))>
   </div>
+  <WithStyles(ForwardRef(Tabs))
+    onChange={[Function]}
+    value={1}
+  >
+    <WithStyles(ForwardRef(Tab))
+      label="Open"
+    />
+    <WithStyles(ForwardRef(Tab))
+      label="Closed"
+    />
+  </WithStyles(ForwardRef(Tabs))>
   <div>
-    <Progress />
+    <withProps(ClosedPositionsList)
+      onClick={[Function]}
+      positions={Array []}
+    />
   </div>
 </Fragment>
 `;

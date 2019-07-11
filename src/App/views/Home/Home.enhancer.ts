@@ -1,4 +1,4 @@
-import { compose } from 'recompose';
+import { compose, withStateHandlers } from 'recompose';
 
 import withPositions from 'Portfolio/enhancers/withPositions';
 
@@ -14,4 +14,8 @@ export default compose<Props, {}>(
     }),
   }),
   withPositions,
+  withStateHandlers(
+    { tab: 0 },
+    { handleTabChange: () => (event: React.ChangeEvent<{}>, tab: number) => ({ tab }) },
+  ),
 );
