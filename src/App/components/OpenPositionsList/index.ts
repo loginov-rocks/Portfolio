@@ -1,3 +1,4 @@
 import OpenPositionsList from './OpenPositionsList';
+import enhance from './OpenPositionsList.enhancer';
 
-export default OpenPositionsList;
+export default enhance(OpenPositionsList);

@@ -15,7 +15,7 @@ export interface Props {
   positions: Position[];
 }
 
-const OpenPositionsList: React.FunctionComponent<Props> = ({ onClick, positions }: Props) => (
+const ClosedPositionsList: React.FunctionComponent<Props> = ({ onClick, positions }: Props) => (
   <table>
 
     <thead>
@@ -26,10 +26,9 @@ const OpenPositionsList: React.FunctionComponent<Props> = ({ onClick, positions 
         <th>Open Date</th>
         <th>Open Price</th>
         <th>Open Sum</th>
-        <th>Market Price</th>
-        <th>Market Sum</th>
-        <th>Daily P/L</th>
-        <th>Daily P/L%</th>
+        <th>Close Date</th>
+        <th>Close Price</th>
+        <th>Close Sum</th>
         <th>P/L</th>
         <th>P/L%</th>
         <th>Annual P/L%</th>
@@ -44,8 +43,8 @@ const OpenPositionsList: React.FunctionComponent<Props> = ({ onClick, positions 
           position={position}
         >
           {({
-            dailyPL, dailyPLPercent, handleClick, isClickable, logo, logoProgress, marketPL, marketPLAnnualPercent,
-            marketPLPercent, marketSum, openSum, price, quote, quoteProgress, symbol,
+            closePL, closePLAnnualPercent, closePLPercent, closeSum, handleClick, isClickable, logo, logoProgress,
+            openSum, quote, quoteProgress, symbol,
           }) => (
             <tr onClick={handleClick} style={isClickable ? { cursor: 'pointer' } : {}}>
               <td>{logoProgress ? <Progress /> : <Logo url={logo} />}</td>
@@ -55,13 +54,12 @@ const OpenPositionsList: React.FunctionComponent<Props> = ({ onClick, positions 
               <td>{position.openDate}</td>
               <td><Money value={position.openPrice} /></td>
               <td><Money value={openSum} /></td>
-              <td>{price !== null && <Money value={price} />}</td>
-              <td>{marketSum !== null && <Money value={marketSum} />}</td>
-              <td>{dailyPL !== null && <Money pl value={dailyPL} />}</td>
-              <td>{dailyPLPercent !== null && <Percent pl value={dailyPLPercent} />}</td>
-              <td>{marketPL !== null && <Money pl value={marketPL} />}</td>
-              <td>{marketPLPercent !== null && <Percent pl value={marketPLPercent} />}</td>
-              <td>{marketPLAnnualPercent !== null && <Percent pl value={marketPLAnnualPercent} />}</td>
+              <td>{position.closeDate}</td>
+              <td>{position.closePrice !== null && <Money value={position.closePrice} />}</td>
+              <td>{closeSum !== null && <Money value={closeSum} />}</td>
+              <td>{closePL !== null && <Money pl value={closePL} />}</td>
+              <td>{closePLPercent !== null && <Percent pl value={closePLPercent} />}</td>
+              <td>{closePLAnnualPercent !== null && <Percent pl value={closePLAnnualPercent} />}</td>
             </tr>
           )}
         </StockPositionItem>
@@ -70,4 +68,4 @@ const OpenPositionsList: React.FunctionComponent<Props> = ({ onClick, positions 
   </table>
 );
 
-export default OpenPositionsList;
+export default ClosedPositionsList;
