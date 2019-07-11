@@ -2,11 +2,9 @@ import { withStyles } from '@material-ui/core';
 
 export default withStyles(theme => ({
   root: {
-    alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
-    flexGrow: 1,
-    justifyContent: 'center',
+    width: '100%',
   },
   row: {
     margin: theme.spacing(1),

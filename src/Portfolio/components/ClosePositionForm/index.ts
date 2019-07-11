@@ -1,4 +1,5 @@
 import ClosePositionForm from './ClosePositionForm';
 import enhance from './ClosePositionForm.enhancer';
+import style from './ClosePositionForm.styles';
 
-export default enhance(ClosePositionForm);
+export default style(enhance(ClosePositionForm));

@@ -1,7 +1,9 @@
+import { Button, TextField } from '@material-ui/core';
 import * as React from 'react';
 
 export interface Props {
   amount: number;
+  classes: { [key: string]: string };
   commission: number;
   date: string;
   handleAmountChange: (event: React.SyntheticEvent) => void;
@@ -15,60 +17,71 @@ export interface Props {
 }
 
 const OpenPositionForm: React.FunctionComponent<Props> = ({
-  amount, commission, date, handleAmountChange, handleCommissionChange, handleDateChange, handlePriceChange,
+  amount, classes, commission, date, handleAmountChange, handleCommissionChange, handleDateChange, handlePriceChange,
   handleSymbolChange, handleSubmit, price, symbol,
 }: Props) => (
-  <form onSubmit={handleSubmit}>
+  <form className={classes.root} onSubmit={handleSubmit}>
 
-    <div>
-      Symbol
-      <br />
-      <input onChange={handleSymbolChange} type="text" value={symbol} />
+    <div className={classes.row}>
+      <TextField
+        fullWidth
+        label="Symbol"
+        onChange={handleSymbolChange}
+        type="text"
+        value={symbol}
+        variant="outlined"
+      />
     </div>
 
-    <div>
-      Amount
-      <br />
-      <input
-        min="1"
+    <div className={classes.row}>
+      <TextField
+        fullWidth
+        inputProps={{ min: 1 }}
+        label="Amount"
         onChange={handleAmountChange}
         type="number"
         value={amount}
+        variant="outlined"
       />
     </div>
 
-    <div>
-      Price
-      <br />
-      <input
-        min="0"
+    <div className={classes.row}>
+      <TextField
+        fullWidth
+        inputProps={{ min: 0, step: 0.01 }}
+        label="Price"
         onChange={handlePriceChange}
-        step="0.01"
         type="number"
         value={price}
+        variant="outlined"
       />
     </div>
 
-    <div>
-      Commission
-      <br />
-      <input
-        min="0"
+    <div className={classes.row}>
+      <TextField
+        fullWidth
+        inputProps={{ min: 0, step: 0.01 }}
+        label="Commission"
         onChange={handleCommissionChange}
-        step="0.01"
         type="number"
         value={commission}
+        variant="outlined"
       />
     </div>
 
-    <div>
-      Date
-      <br />
-      <input onChange={handleDateChange} type="date" value={date} />
+    <div className={classes.row}>
+      <TextField
+        fullWidth
+        label="Date"
+        onChange={handleDateChange}
+        type="date"
+        value={date}
+        variant="outlined"
+      />
     </div>
 
-    <div>
-      <button type="submit">Open</button>
+    <div className={classes.row}>
+      <Button color="primary" variant="contained" type="submit">Open</Button>
     </div>
 
   </form>

@@ -1,4 +1,5 @@
 import ClosePosition from './ClosePosition';
 import enhance from './ClosePosition.enhancer';
+import style from './ClosePosition.styles';
 
-export default enhance(ClosePosition);
+export default style(enhance(ClosePosition));

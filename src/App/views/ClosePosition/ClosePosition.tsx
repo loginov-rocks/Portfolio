@@ -1,3 +1,5 @@
+import { IconButton, Typography } from '@material-ui/core';
+import { ArrowBackOutlined } from '@material-ui/icons';
 import * as React from 'react';
 
 import ClosePositionForm from 'Portfolio/components/ClosePositionForm';
@@ -5,29 +7,26 @@ import { Position } from 'Portfolio/lib';
 import Progress from 'Shared/components/Progress';
 
 export interface Props {
+  classes: { [key: string]: string };
   handleBackClick: () => void;
   position: Position | null;
   positionLoading: boolean;
 }
 
 const ClosePosition: React.FunctionComponent<Props> = ({
-  handleBackClick, position, positionLoading,
+  classes, handleBackClick, position, positionLoading,
 }: Props) => (
-  <React.Fragment>
+  <div className={classes.root}>
 
-    <div>
-      <button onClick={handleBackClick} type="button">Back</button>
-    </div>
+    <IconButton className={classes.back} onClick={handleBackClick}><ArrowBackOutlined /></IconButton>
 
-    <h1>Close position</h1>
+    <Typography className={classes.headline} variant="h4">Close position</Typography>
 
-    <div>
-      {positionLoading || !position
-        ? <Progress />
-        : <ClosePositionForm id={position.id} onClose={handleBackClick} />}
-    </div>
+    {positionLoading || !position
+      ? <Progress />
+      : <ClosePositionForm id={position.id} onClose={handleBackClick} />}
 
-  </React.Fragment>
+  </div>
 );
 
 export default ClosePosition;

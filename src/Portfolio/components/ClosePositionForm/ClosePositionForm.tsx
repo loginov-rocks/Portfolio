@@ -1,6 +1,8 @@
+import { Button, TextField } from '@material-ui/core';
 import * as React from 'react';
 
 export interface Props {
+  classes: { [key: string]: string };
   commission: number;
   date: string;
   handleCommissionChange: (event: React.SyntheticEvent) => void;
@@ -11,42 +13,47 @@ export interface Props {
 }
 
 const ClosePositionForm: React.FunctionComponent<Props> = ({
-  commission, date, handleCommissionChange, handleDateChange, handlePriceChange, handleSubmit, price,
+  classes, commission, date, handleCommissionChange, handleDateChange, handlePriceChange, handleSubmit, price,
 }: Props) => (
-  <form onSubmit={handleSubmit}>
+  <form className={classes.root} onSubmit={handleSubmit}>
 
-    <div>
-      Price
-      <br />
-      <input
-        min="0"
+    <div className={classes.row}>
+      <TextField
+        fullWidth
+        inputProps={{ min: 0, step: 0.01 }}
+        label="Price"
         onChange={handlePriceChange}
-        step="0.01"
         type="number"
         value={price}
+        variant="outlined"
       />
     </div>
 
-    <div>
-      Commission
-      <br />
-      <input
-        min="0"
+    <div className={classes.row}>
+      <TextField
+        fullWidth
+        inputProps={{ min: 0, step: 0.01 }}
+        label="Commission"
         onChange={handleCommissionChange}
-        step="0.01"
         type="number"
         value={commission}
+        variant="outlined"
       />
     </div>
 
-    <div>
-      Date
-      <br />
-      <input onChange={handleDateChange} type="date" value={date} />
+    <div className={classes.row}>
+      <TextField
+        fullWidth
+        label="Date"
+        onChange={handleDateChange}
+        type="date"
+        value={date}
+        variant="outlined"
+      />
     </div>
 
-    <div>
-      <button type="submit">Close</button>
+    <div className={classes.row}>
+      <Button color="primary" variant="contained" type="submit">Close</Button>
     </div>
 
   </form>

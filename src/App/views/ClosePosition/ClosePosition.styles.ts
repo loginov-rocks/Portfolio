@@ -1,31 +1,23 @@
 import { withStyles } from '@material-ui/core';
 
 export default withStyles(theme => ({
-  avatar: {
-    height: 128,
-    marginBottom: theme.spacing(3),
-    marginTop: theme.spacing(3),
-    width: 128,
-  },
-  email: {
-    //
+  back: {
+    left: theme.spacing(6 - 3),
+    position: 'absolute',
+    top: theme.spacing(6 + 3) - (48 - 39) / 2, // Back button height - headline width.
   },
   headline: {
     marginBottom: theme.spacing(3),
+    marginLeft: 48 - theme.spacing(3), // Back button width.
+    marginRight: 48 - theme.spacing(3), // Back button width.
     marginTop: theme.spacing(3),
     textAlign: 'center',
-  },
-  name: {
-    //
   },
   root: {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
     padding: theme.spacing(6),
-  },
-  signOut: {
-    marginBottom: theme.spacing(3),
-    marginTop: theme.spacing(3),
+    position: 'relative',
   },
 }));
