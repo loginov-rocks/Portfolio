@@ -13,23 +13,76 @@ exports[`matches snapshot 1`] = `
   <h1>
     Position
   </h1>
-  <div>
-    <withProps(PositionDetails)
-      position={
-        Object {
-          "amount": 1,
-          "closeCommission": null,
-          "closeDate": null,
-          "closePrice": null,
-          "id": "id",
-          "openCommission": 1,
-          "openDate": "2019-07-01",
-          "openPrice": 100,
-          "symbol": "AAPL",
-        }
-      }
-    />
-  </div>
+  <Connect(lifecycle(mapProps(StockLogo)))
+    symbol="AAPL"
+  />
+  <table>
+    <tbody>
+      <tr>
+        <th
+          colSpan={2}
+        >
+          Symbol
+        </th>
+        <td>
+          AAPL
+        </td>
+      </tr>
+      <tr>
+        <th
+          colSpan={2}
+        >
+          Amount
+        </th>
+        <td>
+          1
+        </td>
+      </tr>
+      <tr>
+        <th
+          rowSpan={4}
+        >
+          Open
+        </th>
+        <th>
+          Date
+        </th>
+        <td>
+          2019-07-01
+        </td>
+      </tr>
+      <tr>
+        <th>
+          Price
+        </th>
+        <td>
+          <Money
+            value={100}
+          />
+        </td>
+      </tr>
+      <tr>
+        <th>
+          Commission
+        </th>
+        <td>
+          <Money
+            value={1}
+          />
+        </td>
+      </tr>
+      <tr>
+        <th>
+          Sum
+        </th>
+        <td>
+          <Money
+            value={101}
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
   <div>
     <button
       onClick={[Function]}

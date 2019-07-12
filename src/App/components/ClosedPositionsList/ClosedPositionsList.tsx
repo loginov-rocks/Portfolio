@@ -1,21 +1,20 @@
 import * as React from 'react';
 
-import { Position } from 'Portfolio/lib';
 import Money from 'Shared/components/Money';
 import Percent from 'Shared/components/Percent';
 import Progress from 'Shared/components/Progress';
-import Logo from 'Stocks/components/Logo';
+import StockLogo from 'Stocks/components/StockLogo';
 
-import StockPositionItem from '../StockPositionItem';
+import { StockPosition } from '../../lib';
 
 // TODO: Tests.
 
 export interface Props {
-  onClick?: (position: Position) => void;
-  positions: Position[];
+  onPositionClick?: (positionId: string) => void;
+  stockPositions: StockPosition[];
 }
 
-const ClosedPositionsList: React.FunctionComponent<Props> = ({ onClick, positions }: Props) => (
+const ClosedPositionsList: React.FunctionComponent<Props> = ({ onPositionClick, stockPositions }: Props) => (
   <table>
 
     <thead>
@@ -36,33 +35,29 @@ const ClosedPositionsList: React.FunctionComponent<Props> = ({ onClick, position
     </thead>
 
     <tbody>
-      {positions.map(position => (
-        <StockPositionItem
-          key={position.id}
-          onClick={onClick}
-          position={position}
+      {stockPositions.map(({
+        amount, closeDate, closePL, closePLAnnualPercent, closePLPercent, closePrice, closeSum, id, openDate, openPrice,
+        openSum, quote, quoteProgress, symbol,
+      }) => (
+        <tr
+          key={id}
+          onClick={() => onPositionClick && onPositionClick(id)}
+          style={onPositionClick ? { cursor: 'pointer' } : {}}
         >
-          {({
-            closePL, closePLAnnualPercent, closePLPercent, closeSum, handleClick, isClickable, logo, logoProgress,
-            openSum, quote, quoteProgress, symbol,
-          }) => (
-            <tr onClick={handleClick} style={isClickable ? { cursor: 'pointer' } : {}}>
-              <td>{logoProgress ? <Progress /> : <Logo url={logo} />}</td>
-              <td>{quoteProgress ? <Progress /> : quote && quote.companyName}</td>
-              <td>{symbol}</td>
-              <td>{position.amount}</td>
-              <td>{position.openDate}</td>
-              <td><Money value={position.openPrice} /></td>
-              <td><Money value={openSum} /></td>
-              <td>{position.closeDate}</td>
-              <td>{position.closePrice !== null && <Money value={position.closePrice} />}</td>
-              <td>{closeSum !== null && <Money value={closeSum} />}</td>
-              <td>{closePL !== null && <Money pl value={closePL} />}</td>
-              <td>{closePLPercent !== null && <Percent pl value={closePLPercent} />}</td>
-              <td>{closePLAnnualPercent !== null && <Percent pl value={closePLAnnualPercent} />}</td>
-            </tr>
-          )}
-        </StockPositionItem>
+          <td><StockLogo symbol={symbol} /></td>
+          <td>{quoteProgress ? <Progress /> : quote && quote.companyName}</td>
+          <td>{symbol}</td>
+          <td>{amount}</td>
+          <td>{openDate}</td>
+          <td><Money value={openPrice} /></td>
+          <td><Money value={openSum} /></td>
+          <td>{closeDate}</td>
+          <td>{closePrice !== null && <Money value={closePrice} />}</td>
+          <td>{closeSum !== null && <Money value={closeSum} />}</td>
+          <td>{closePL !== null && <Money pl value={closePL} />}</td>
+          <td>{closePLPercent !== null && <Percent pl value={closePLPercent} />}</td>
+          <td>{closePLAnnualPercent !== null && <Percent pl value={closePLAnnualPercent} />}</td>
+        </tr>
       ))}
     </tbody>
   </table>

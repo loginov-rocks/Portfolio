@@ -12,7 +12,7 @@ import StockPositionsValue, {
 } from '../../components/StockPositionsValue';
 
 export interface Props {
-  handlePositionClick: (position: Position) => void;
+  handlePositionClick: (positionId: string) => void;
   handleTabChange: () => void;
   positions: Position[];
   positionsLoading: boolean;
@@ -46,8 +46,8 @@ const Home: React.FunctionComponent<Props> = ({
         ? <Progress />
         : (
           <React.Fragment>
-            {tab === 0 && <OpenPositionsList onClick={handlePositionClick} positions={positions} />}
-            {tab === 1 && <ClosedPositionsList onClick={handlePositionClick} positions={positions} />}
+            {tab === 0 && <OpenPositionsList onPositionClick={handlePositionClick} positions={positions} />}
+            {tab === 1 && <ClosedPositionsList onPositionClick={handlePositionClick} positions={positions} />}
           </React.Fragment>
         )}
     </div>

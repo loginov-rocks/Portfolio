@@ -95,7 +95,7 @@ exports[`matches snapshot if on the home page 1`] = `
 
 exports[`matches snapshot if on the position page 1`] = `
 <Fragment>
-  <Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(Connect(withHandlers(Connect(withHandlers(Position))))))))))) />
+  <Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(Connect(withHandlers(Connect(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Position)))))))))))))))) />
   <div
     className="bottomMock"
   />

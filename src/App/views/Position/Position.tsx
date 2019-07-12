@@ -1,19 +1,22 @@
 import * as React from 'react';
 
-import PositionDetails from 'Portfolio/components/PositionDetails';
-import { Position as PositionInterface } from 'Portfolio/lib';
+import Money from 'Shared/components/Money';
+import Percent from 'Shared/components/Percent';
 import Progress from 'Shared/components/Progress';
+import StockLogo from 'Stocks/components/StockLogo';
+
+import { StockPosition } from '../../lib';
 
 export interface Props {
   handleCloseClick: () => void;
   handleDeleteClick: () => void;
   handleHomeClick: () => void;
-  position: PositionInterface | null;
   positionLoading: boolean;
+  stockPosition: StockPosition | null;
 }
 
 const Position: React.FunctionComponent<Props> = ({
-  handleCloseClick, handleDeleteClick, handleHomeClick, position, positionLoading,
+  handleCloseClick, handleDeleteClick, handleHomeClick, positionLoading, stockPosition,
 }: Props) => (
   <React.Fragment>
 
@@ -23,14 +26,102 @@ const Position: React.FunctionComponent<Props> = ({
 
     <h1>Position</h1>
 
-    <div>{positionLoading ? <Progress /> : position && <PositionDetails position={position} />}</div>
+    {positionLoading && <div><Progress /></div>}
 
-    {position && position.closeDate === null
-      ? (
-        <div>
-          <button onClick={handleCloseClick} type="button">Close</button>
-        </div>
-      ) : null}
+    {!positionLoading && stockPosition && (
+      <StockLogo symbol={stockPosition.symbol} />
+    )}
+
+    {!positionLoading && stockPosition && stockPosition.quote && (
+      <div>{stockPosition.quote.companyName}</div>
+    )}
+
+    {!positionLoading && stockPosition && (
+      <table>
+        <tbody>
+
+          <tr>
+            <th colSpan={2}>Symbol</th>
+            <td>{stockPosition.symbol}</td>
+          </tr>
+          <tr>
+            <th colSpan={2}>Amount</th>
+            <td>{stockPosition.amount}</td>
+          </tr>
+
+          <tr>
+            <th rowSpan={4}>Open</th>
+            <th>Date</th>
+            <td>{stockPosition.openDate}</td>
+          </tr>
+          <tr>
+            <th>Price</th>
+            <td><Money value={stockPosition.openPrice} /></td>
+          </tr>
+          <tr>
+            <th>Commission</th>
+            <td><Money value={stockPosition.openCommission} /></td>
+          </tr>
+          <tr>
+            <th>Sum</th>
+            <td><Money value={stockPosition.openSum} /></td>
+          </tr>
+
+          {stockPosition.closeSum !== null && stockPosition.closeCommission !== null
+          && stockPosition.closePrice !== null && (
+            <React.Fragment>
+
+              <tr>
+                <th rowSpan={4}>Close</th>
+                <th>Date</th>
+                <td>{stockPosition.closeDate}</td>
+              </tr>
+              <tr>
+                <th>Price</th>
+                <td><Money value={stockPosition.closePrice} /></td>
+              </tr>
+              <tr>
+                <th>Commission</th>
+                <td><Money value={stockPosition.closeCommission} /></td>
+              </tr>
+              <tr>
+                <th>Sum</th>
+                <td><Money value={stockPosition.closeSum} /></td>
+              </tr>
+
+            </React.Fragment>
+          )}
+
+          {stockPosition.closePL !== null && (
+            <tr>
+              <th colSpan={2}>Close PL</th>
+              <td><Money pl value={stockPosition.closePL} /></td>
+            </tr>
+          )}
+
+          {stockPosition.closePLPercent !== null && (
+            <tr>
+              <th colSpan={2}>Close PL%</th>
+              <td><Percent pl value={stockPosition.closePLPercent} /></td>
+            </tr>
+          )}
+
+          {stockPosition.closePLAnnualPercent !== null && (
+            <tr>
+              <th colSpan={2}>Close Annual PL%</th>
+              <td><Percent pl value={stockPosition.closePLAnnualPercent} /></td>
+            </tr>
+          )}
+
+        </tbody>
+      </table>
+    )}
+
+    {stockPosition && stockPosition.closeDate === null && (
+      <div>
+        <button onClick={handleCloseClick} type="button">Close</button>
+      </div>
+    )}
 
     <div>
       <button onClick={handleDeleteClick} type="button">Delete</button>

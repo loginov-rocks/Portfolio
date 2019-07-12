@@ -1,12 +1,14 @@
 import { compose, withProps } from 'recompose';
 
 import { getUniqueSymbolsFromPositions, Position } from 'Portfolio/lib';
-import withStockQuotesBySymbols, { Props as WithStockQuotesBySymbols } from 'Stocks/enhancers/withStockQuotesBySymbols';
+import withStockQuotesBySymbols, {
+  Props as WithStockQuotesBySymbolsProps,
+} from 'Stocks/enhancers/withStockQuotesBySymbols';
 import { getQuotePrice } from 'Stocks/lib';
 
 import { Props } from './StockPositionsValue';
 
-export interface EnhancedProps {
+interface EnhancedProps {
   positions: Position[];
 }
 
@@ -19,24 +21,18 @@ export default compose<Props, EnhancedProps>(
     symbols: getUniqueSymbolsFromPositions(positions),
   })),
   withStockQuotesBySymbols,
-  withProps<Partial<Props>, EnhancedProps & WithStockQuotesBySymbols>(({ positions, quotes, quotesProgress }) => {
-    let value = 0;
+  withProps<Partial<Props>, EnhancedProps & WithStockQuotesBySymbolsProps>(({ positions, quotesBySymbols }) => {
+    const value = positions
+      .map(position => {
+        const marketPrice = getQuotePrice(quotesBySymbols[position.symbol].quote);
 
-    if (!quotesProgress) {
-      value = positions
-        .map(position => {
-          const { amount, symbol } = position;
-          const quote = quotes.find(q => q && q.symbol === symbol) || null;
-          const price = getQuotePrice(quote);
+        if (marketPrice === null) {
+          return 0;
+        }
 
-          if (price === null) {
-            return 0;
-          }
-
-          return amount * price;
-        })
-        .reduce((a, b) => a + b, 0);
-    }
+        return position.amount * marketPrice;
+      })
+      .reduce((a, b) => a + b, 0);
 
     return { value };
   }),

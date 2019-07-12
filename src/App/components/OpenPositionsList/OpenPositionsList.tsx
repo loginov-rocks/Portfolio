@@ -1,21 +1,20 @@
 import * as React from 'react';
 
-import { Position } from 'Portfolio/lib';
 import Money from 'Shared/components/Money';
 import Percent from 'Shared/components/Percent';
 import Progress from 'Shared/components/Progress';
-import Logo from 'Stocks/components/Logo';
+import StockLogo from 'Stocks/components/StockLogo';
 
-import StockPositionItem from '../StockPositionItem';
+import { StockPosition } from '../../lib';
 
 // TODO: Tests.
 
 export interface Props {
-  onClick?: (position: Position) => void;
-  positions: Position[];
+  onPositionClick?: (positionId: string) => void;
+  stockPositions: StockPosition[];
 }
 
-const OpenPositionsList: React.FunctionComponent<Props> = ({ onClick, positions }: Props) => (
+const OpenPositionsList: React.FunctionComponent<Props> = ({ onPositionClick, stockPositions }: Props) => (
   <table>
 
     <thead>
@@ -37,34 +36,30 @@ const OpenPositionsList: React.FunctionComponent<Props> = ({ onClick, positions 
     </thead>
 
     <tbody>
-      {positions.map(position => (
-        <StockPositionItem
-          key={position.id}
-          onClick={onClick}
-          position={position}
+      {stockPositions.map(({
+        amount, dailyPL, dailyPLPercent, id, marketPL, marketPLAnnualPercent,
+        marketPLPercent, marketPrice, marketSum, openDate, openPrice, openSum, quote, quoteProgress, symbol,
+      }) => (
+        <tr
+          key={id}
+          onClick={() => onPositionClick && onPositionClick(id)}
+          style={onPositionClick ? { cursor: 'pointer' } : {}}
         >
-          {({
-            dailyPL, dailyPLPercent, handleClick, isClickable, logo, logoProgress, marketPL, marketPLAnnualPercent,
-            marketPLPercent, marketSum, openSum, price, quote, quoteProgress, symbol,
-          }) => (
-            <tr onClick={handleClick} style={isClickable ? { cursor: 'pointer' } : {}}>
-              <td>{logoProgress ? <Progress /> : <Logo url={logo} />}</td>
-              <td>{quoteProgress ? <Progress /> : quote && quote.companyName}</td>
-              <td>{symbol}</td>
-              <td>{position.amount}</td>
-              <td>{position.openDate}</td>
-              <td><Money value={position.openPrice} /></td>
-              <td><Money value={openSum} /></td>
-              <td>{price !== null && <Money value={price} />}</td>
-              <td>{marketSum !== null && <Money value={marketSum} />}</td>
-              <td>{dailyPL !== null && <Money pl value={dailyPL} />}</td>
-              <td>{dailyPLPercent !== null && <Percent pl value={dailyPLPercent} />}</td>
-              <td>{marketPL !== null && <Money pl value={marketPL} />}</td>
-              <td>{marketPLPercent !== null && <Percent pl value={marketPLPercent} />}</td>
-              <td>{marketPLAnnualPercent !== null && <Percent pl value={marketPLAnnualPercent} />}</td>
-            </tr>
-          )}
-        </StockPositionItem>
+          <td><StockLogo symbol={symbol} /></td>
+          <td>{quoteProgress ? <Progress /> : quote && quote.companyName}</td>
+          <td>{symbol}</td>
+          <td>{amount}</td>
+          <td>{openDate}</td>
+          <td><Money value={openPrice} /></td>
+          <td><Money value={openSum} /></td>
+          <td>{marketPrice !== null && <Money value={marketPrice} />}</td>
+          <td>{marketSum !== null && <Money value={marketSum} />}</td>
+          <td>{dailyPL !== null && <Money pl value={dailyPL} />}</td>
+          <td>{dailyPLPercent !== null && <Percent pl value={dailyPLPercent} />}</td>
+          <td>{marketPL !== null && <Money pl value={marketPL} />}</td>
+          <td>{marketPLPercent !== null && <Percent pl value={marketPLPercent} />}</td>
+          <td>{marketPLAnnualPercent !== null && <Percent pl value={marketPLAnnualPercent} />}</td>
+        </tr>
       ))}
     </tbody>
   </table>
