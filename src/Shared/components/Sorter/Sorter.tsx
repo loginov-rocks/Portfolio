@@ -1,4 +1,7 @@
-import { Button, Menu, MenuItem } from '@material-ui/core';
+import {
+  Button, ButtonGroup, Menu, MenuItem,
+} from '@material-ui/core';
+import { SortOutlined } from '@material-ui/icons';
 import * as React from 'react';
 
 // TODO: Tests.
@@ -19,15 +22,22 @@ const Sorter: React.FunctionComponent<Props> = ({
 }: Props) => (
   <React.Fragment>
 
-    <Button onClick={event => updateAnchor(event.currentTarget)}>
-      {keyLabel}
-    </Button>
+    <ButtonGroup>
+      <Button onClick={event => updateAnchor(event.currentTarget)}>
+        {keyLabel}
+      </Button>
+      <Button onClick={() => onOrderChange(sorterOrder === 'asc' ? 'desc' : 'asc')} size="small">
+        <SortOutlined style={sorterOrder === 'asc' ? { transform: 'scaleY(-1)' } : {}} />
+      </Button>
+    </ButtonGroup>
 
-    <Button onClick={() => onOrderChange(sorterOrder === 'asc' ? 'desc' : 'asc')}>
-      {sorterOrder}
-    </Button>
-
-    <Menu anchorEl={anchor} onClose={() => updateAnchor(null)} open={Boolean(anchor)}>
+    <Menu
+      anchorEl={anchor}
+      anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
+      getContentAnchorEl={null}
+      onClose={() => updateAnchor(null)}
+      open={Boolean(anchor)}
+    >
       {keys.map(({ key, label }) => (
         <MenuItem
           key={key}
