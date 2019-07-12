@@ -14,8 +14,8 @@ export interface Position {
   closeDate: string | null;
 }
 
-export const calculateAnnualPLPercent = (netPLPercent: number, fromDate: string, toDate?: string): number => {
-  if (netPLPercent === 0) {
+export const annualizePercent = (percent: number, fromDate: string, toDate?: string): number => {
+  if (percent === 0) {
     return 0;
   }
 
@@ -30,7 +30,7 @@ export const calculateAnnualPLPercent = (netPLPercent: number, fromDate: string,
 
   const years = (to - from) / oneYear;
 
-  return netPLPercent / years;
+  return percent / years;
 };
 
 export const formatDate = (date: Date): string => date.toISOString().slice(0, 10);
@@ -38,15 +38,3 @@ export const formatDate = (date: Date): string => date.toISOString().slice(0, 10
 export const getUniqueSymbolsFromPositions = (positions: Position[]): string[] => Array.from(
   new Set(positions.map(position => position.symbol)),
 );
-
-export const sortBySymbol = (positions: Position[]): Position[] => positions.slice().sort((a, b) => {
-  if (a.symbol < b.symbol) {
-    return -1;
-  }
-
-  if (a.symbol > b.symbol) {
-    return 1;
-  }
-
-  return 0;
-});

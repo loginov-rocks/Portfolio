@@ -49,7 +49,7 @@ exports[`matches snapshot with the first tab 1`] = `
     />
   </WithStyles(ForwardRef(Tabs))>
   <div>
-    <withProps(withProps(Connect(lifecycle(mapProps(mapProps(OpenPositionsList))))))
+    <withProps(withProps(Connect(lifecycle(mapProps(mapProps(withStateHandlers(withProps(OpenPositionsList))))))))
       onPositionClick={[Function]}
       positions={Array []}
     />
@@ -81,7 +81,7 @@ exports[`matches snapshot with the second tab 1`] = `
     />
   </WithStyles(ForwardRef(Tabs))>
   <div>
-    <withProps(withProps(Connect(lifecycle(mapProps(mapProps(ClosedPositionsList))))))
+    <withProps(withProps(Connect(lifecycle(mapProps(mapProps(withStateHandlers(withProps(ClosedPositionsList))))))))
       onPositionClick={[Function]}
       positions={Array []}
     />

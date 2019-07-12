@@ -1,4 +1,4 @@
-import { calculateAnnualPLPercent, Position } from 'Portfolio/lib';
+import { annualizePercent, Position } from 'Portfolio/lib';
 import { getQuotePrice } from 'Stocks/lib';
 import Quote from 'Stocks/lib/IEX/Quote';
 
@@ -37,7 +37,7 @@ export const createStockPosition = (position: Position, quote: Quote | null, quo
     closeSum = position.amount * position.closePrice - position.closeCommission;
     closePL = closeSum - openSum;
     closePLPercent = closePL / openSum;
-    closePLAnnualPercent = calculateAnnualPLPercent(closePLPercent, position.openDate, position.closeDate);
+    closePLAnnualPercent = annualizePercent(closePLPercent, position.openDate, position.closeDate);
   }
 
   let dailyPL = null;
@@ -58,7 +58,7 @@ export const createStockPosition = (position: Position, quote: Quote | null, quo
     marketSum = position.amount * marketPrice;
     marketPL = marketSum - openSum;
     marketPLPercent = marketPL / openSum;
-    marketPLAnnualPercent = calculateAnnualPLPercent(marketPLPercent, position.openDate);
+    marketPLAnnualPercent = annualizePercent(marketPLPercent, position.openDate);
   }
 
   return {

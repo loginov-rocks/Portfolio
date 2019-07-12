@@ -6,7 +6,7 @@ import { getPositionsCollectionPath } from 'Firebase/lib';
 import State from 'State';
 import withAuth, { Props as WithAuthProps } from 'User/enhancers/withAuth';
 
-import { Position, sortBySymbol } from '../lib';
+import { Position } from '../lib';
 
 // TODO: Tests.
 
@@ -22,7 +22,7 @@ const mapStateToProps = ({ firebase: { firestore: { ordered } } }: State, { auth
     const user = ordered.users.find(({ id }) => id === auth.uid);
 
     if (user && user.positions) {
-      positions = sortBySymbol(user.positions);
+      ({ positions } = user);
     }
   }
 
