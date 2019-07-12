@@ -7,6 +7,11 @@ import Quote from 'Stocks/lib/IEX/Quote';
 export interface StockPosition extends Position {
   openSum: number;
 
+  closeSum: number | null;
+  closePL: number | null;
+  closePLPercent: number | null;
+  closePLAnnualPercent: number | null;
+
   quote: Quote | null;
   quoteProgress: boolean;
 
@@ -18,18 +23,30 @@ export interface StockPosition extends Position {
   marketPL: number | null;
   marketPLPercent: number | null;
   marketPLAnnualPercent: number | null;
-
-  closeSum: number | null;
-  closePL: number | null;
-  closePLPercent: number | null;
-  closePLAnnualPercent: number | null;
 }
 
 export const createStockPosition = (position: Position, quote: Quote | null, quoteProgress: boolean): StockPosition => {
   const openSum = position.amount * position.openPrice + position.openCommission;
 
+  let closeSum = null;
+  let closePL = null;
+  let closePLPercent = null;
+  let closePLAnnualPercent = null;
+
+  if (position.closeCommission !== null && position.closeDate !== null && position.closePrice !== null) {
+    closeSum = position.amount * position.closePrice - position.closeCommission;
+    closePL = closeSum - openSum;
+    closePLPercent = closePL / openSum;
+    closePLAnnualPercent = calculateAnnualPLPercent(closePLPercent, position.openDate, position.closeDate);
+  }
+
   let dailyPL = null;
   let dailyPLPercent = null;
+
+  if (quote) {
+    dailyPL = position.amount * quote.change;
+    dailyPLPercent = quote.changePercent;
+  }
 
   const marketPrice = getQuotePrice(quote);
   let marketSum = null;
@@ -37,28 +54,11 @@ export const createStockPosition = (position: Position, quote: Quote | null, quo
   let marketPLPercent = null;
   let marketPLAnnualPercent = null;
 
-  let closeSum = null;
-  let closePL = null;
-  let closePLPercent = null;
-  let closePLAnnualPercent = null;
-
-  if (quote) {
-    dailyPL = position.amount * quote.change;
-    dailyPLPercent = quote.changePercent;
-  }
-
   if (marketPrice) {
     marketSum = position.amount * marketPrice;
     marketPL = marketSum - openSum;
     marketPLPercent = marketPL / openSum;
     marketPLAnnualPercent = calculateAnnualPLPercent(marketPLPercent, position.openDate);
-  }
-
-  if (position.closeCommission !== null && position.closeDate !== null && position.closePrice !== null) {
-    closeSum = position.amount * position.closePrice - position.closeCommission;
-    closePL = closeSum - openSum;
-    closePLPercent = closePL / openSum;
-    closePLAnnualPercent = calculateAnnualPLPercent(closePLPercent, position.openDate, position.closeDate);
   }
 
   return {

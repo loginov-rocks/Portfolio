@@ -67,12 +67,13 @@ const Position: React.FunctionComponent<Props> = ({
             <td><Money value={stockPosition.openSum} /></td>
           </tr>
 
-          {stockPosition.closeSum !== null && stockPosition.closeCommission !== null
-          && stockPosition.closePrice !== null && (
+          {stockPosition.closeCommission !== null && stockPosition.closePrice !== null
+          && stockPosition.closeSum !== null && stockPosition.closePL !== null
+          && stockPosition.closePLPercent !== null && stockPosition.closePLAnnualPercent !== null && (
             <React.Fragment>
 
               <tr>
-                <th rowSpan={4}>Close</th>
+                <th rowSpan={7}>Close</th>
                 <th>Date</th>
                 <td>{stockPosition.closeDate}</td>
               </tr>
@@ -88,29 +89,66 @@ const Position: React.FunctionComponent<Props> = ({
                 <th>Sum</th>
                 <td><Money value={stockPosition.closeSum} /></td>
               </tr>
+              <tr>
+                <th>PL</th>
+                <td><Money pl value={stockPosition.closePL} /></td>
+              </tr>
+              <tr>
+                <th>PL%</th>
+                <td><Percent pl value={stockPosition.closePLPercent} /></td>
+              </tr>
+              <tr>
+                <th>Annual PL%</th>
+                <td><Percent pl value={stockPosition.closePLAnnualPercent} /></td>
+              </tr>
 
             </React.Fragment>
           )}
 
-          {stockPosition.closePL !== null && (
-            <tr>
-              <th colSpan={2}>Close PL</th>
-              <td><Money pl value={stockPosition.closePL} /></td>
-            </tr>
+          {stockPosition.dailyPL !== null && stockPosition.dailyPLPercent !== null && (
+            <React.Fragment>
+
+              <tr>
+                <th rowSpan={2}>Daily</th>
+                <th>PL</th>
+                <td><Money pl value={stockPosition.dailyPL} /></td>
+              </tr>
+              <tr>
+                <th>PL%</th>
+                <td><Percent pl value={stockPosition.dailyPLPercent} /></td>
+              </tr>
+
+            </React.Fragment>
           )}
 
-          {stockPosition.closePLPercent !== null && (
-            <tr>
-              <th colSpan={2}>Close PL%</th>
-              <td><Percent pl value={stockPosition.closePLPercent} /></td>
-            </tr>
-          )}
+          {stockPosition.marketPrice !== null && stockPosition.marketSum !== null
+          && stockPosition.marketPL !== null && stockPosition.marketPLPercent !== null
+          && stockPosition.marketPLAnnualPercent !== null && (
+            <React.Fragment>
 
-          {stockPosition.closePLAnnualPercent !== null && (
-            <tr>
-              <th colSpan={2}>Close Annual PL%</th>
-              <td><Percent pl value={stockPosition.closePLAnnualPercent} /></td>
-            </tr>
+              <tr>
+                <th rowSpan={5}>Market</th>
+                <th>Price</th>
+                <td><Money value={stockPosition.marketPrice} /></td>
+              </tr>
+              <tr>
+                <th>Sum</th>
+                <td><Money value={stockPosition.marketSum} /></td>
+              </tr>
+              <tr>
+                <th>PL</th>
+                <td><Money pl value={stockPosition.marketPL} /></td>
+              </tr>
+              <tr>
+                <th>PL%</th>
+                <td><Percent pl value={stockPosition.marketPLPercent} /></td>
+              </tr>
+              <tr>
+                <th>Annual PL%</th>
+                <td><Percent pl value={stockPosition.marketPLAnnualPercent} /></td>
+              </tr>
+
+            </React.Fragment>
           )}
 
         </tbody>
