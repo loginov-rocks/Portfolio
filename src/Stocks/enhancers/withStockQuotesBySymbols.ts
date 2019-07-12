@@ -24,9 +24,15 @@ interface DispatchProps {
   fetchQuote: FetchQuote;
 }
 
+interface QuotesBySymbols {
+  [key: string]: {
+    quote: Quote | null;
+    progress: boolean;
+  };
+}
+
 export interface Props extends EnhancedProps {
-  quotes: (Quote | null)[];
-  quotesProgress: boolean;
+  quotesBySymbols: QuotesBySymbols;
 }
 
 const mapStateToProps = ({ stocks: { quotes } }: State): StateProps => ({ quotes });
@@ -55,23 +61,19 @@ export default compose<Props, EnhancedProps>(
   mapProps<Props, EnhancedProps & StateProps & DispatchProps>(({
     fetchQuote, quotes, symbols, ...props
   }) => {
-    let quotesProgress = false;
+    const quotesBySymbols: QuotesBySymbols = {};
 
-    const quotesArray = symbols
-      .map(symbol => {
-        const resource = getResourceById(quotes, symbol);
+    symbols.forEach(symbol => {
+      const resource = getResourceById(quotes, symbol);
 
-        if (isRequested(resource)) {
-          quotesProgress = true;
-        }
-
-        return extractData(resource);
-      })
-      .filter(value => !!value);
+      quotesBySymbols[symbol] = {
+        progress: isRequested(resource),
+        quote: extractData(resource),
+      };
+    });
 
     return {
-      quotes: quotesArray,
-      quotesProgress,
+      quotesBySymbols,
       symbols,
       ...props,
     };
