@@ -39,7 +39,7 @@ const StockLogo: React.FunctionComponent<Props> = ({
 };
 
 StockLogo.defaultProps = {
-  size: 32,
+  size: 40,
 };
 
 export default StockLogo;

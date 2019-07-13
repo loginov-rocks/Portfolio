@@ -4,11 +4,14 @@ import * as React from 'react';
 
 interface Props {
   classes: { [key: string]: string };
+  highlighted?: boolean;
   pl?: boolean;
   value: number;
 }
 
-const Money: React.FunctionComponent<Props> = ({ classes, pl, value }: Props) => {
+const Money: React.FunctionComponent<Props> = ({
+  classes, highlighted, pl, value,
+}: Props) => {
   let className;
 
   if (pl) {
@@ -19,11 +22,13 @@ const Money: React.FunctionComponent<Props> = ({ classes, pl, value }: Props) =>
     }
   }
 
-  return (
-    <span className={className}>
-      {value.toLocaleString(undefined, { currency: 'USD', style: 'currency' })}
-    </span>
-  );
+  const content = value.toLocaleString(undefined, { currency: 'USD', style: 'currency' });
+
+  if (highlighted) {
+    return <strong className={className}>{content}</strong>;
+  }
+
+  return <span className={className}>{content}</span>;
 };
 
 export default Money;

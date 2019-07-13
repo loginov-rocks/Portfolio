@@ -43,7 +43,7 @@ exports[`matches snapshot with the Closed tab 1`] = `
   <div
     className="root"
   >
-    <withProps(withProps(Connect(lifecycle(mapProps(mapProps(Connect(withProps(ClosedPositionsList))))))))
+    <WithStyles(withProps(withProps(Connect(lifecycle(mapProps(mapProps(Connect(withProps(ClosedPositionsList)))))))))
       onPositionClick={[Function]}
       positions={Array []}
     />
@@ -84,7 +84,7 @@ exports[`matches snapshot with the Open tab 1`] = `
   <div
     className="root"
   >
-    <withProps(withProps(Connect(lifecycle(mapProps(mapProps(Connect(withProps(OpenPositionsList))))))))
+    <WithStyles(withProps(withProps(Connect(lifecycle(mapProps(mapProps(Connect(withProps(OpenPositionsList)))))))))
       onPositionClick={[Function]}
       positions={Array []}
     />

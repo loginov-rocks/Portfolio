@@ -9,6 +9,9 @@ export default withStyles(theme => ({
   headline: viewHeadline(theme),
   root: {
     ...viewRoot(theme),
-    padding: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingTop: theme.spacing(2),
   },
 }));

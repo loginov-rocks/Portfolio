@@ -4,11 +4,14 @@ import * as React from 'react';
 
 interface Props {
   classes: { [key: string]: string };
+  highlighted?: boolean;
   pl?: boolean;
   value: number;
 }
 
-const Percent: React.FunctionComponent<Props> = ({ classes, pl, value }: Props) => {
+const Percent: React.FunctionComponent<Props> = ({
+  classes, highlighted, pl, value,
+}: Props) => {
   let className;
 
   if (pl) {
@@ -19,12 +22,13 @@ const Percent: React.FunctionComponent<Props> = ({ classes, pl, value }: Props) 
     }
   }
 
-  return (
-    <span className={className}>
-      {(value * 100).toFixed(2)}
-      %
-    </span>
-  );
+  const content = `${(value * 100).toFixed(2)}%`;
+
+  if (highlighted) {
+    return <strong className={className}>{content}</strong>;
+  }
+
+  return <span className={className}>{content}</span>;
 };
 
 export default Percent;

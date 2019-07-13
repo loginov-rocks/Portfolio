@@ -1,9 +1,12 @@
+import {
+  List, ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText,
+} from '@material-ui/core';
 import * as React from 'react';
 
 import * as C from 'Constants';
+import PositionDate from 'Portfolio/components/PositionDate';
 import Money from 'Shared/components/Money';
 import Percent from 'Shared/components/Percent';
-import Progress from 'Shared/components/Progress';
 import Sorter from 'Shared/components/Sorter';
 import StockLogo from 'Stocks/components/StockLogo';
 
@@ -12,6 +15,7 @@ import { StockPosition } from '../../lib';
 // TODO: Tests.
 
 export interface Props {
+  classes: { [key: string]: string };
   handleSorterKeyChange: (key: string) => void;
   handleSorterOrderChange: (order: 'asc' | 'desc') => void;
   onPositionClick?: (positionId: string) => void;
@@ -21,7 +25,7 @@ export interface Props {
 }
 
 const OpenPositionsList: React.FunctionComponent<Props> = ({
-  handleSorterKeyChange, handleSorterOrderChange, onPositionClick, stockPositions, sorterKey, sorterOrder,
+  classes, handleSorterKeyChange, handleSorterOrderChange, onPositionClick, stockPositions, sorterKey, sorterOrder,
 }: Props) => (
   <React.Fragment>
 
@@ -33,54 +37,55 @@ const OpenPositionsList: React.FunctionComponent<Props> = ({
       sorterOrder={sorterOrder}
     />
 
-    <table>
+    <List dense className={classes.list}>
+      {stockPositions.map(({
+        amount, dailyPL, dailyPLPercent, id, marketPL, marketPLAnnualPercent, marketPLPercent, openDate, quote,
+        quoteProgress, symbol,
+      }) => (
+        <ListItem button key={id} onClick={() => onPositionClick && onPositionClick(id)}>
 
-      <thead>
-        <tr>
-          <th colSpan={2}>Company</th>
-          <th>Symbol</th>
-          <th>Amount</th>
-          <th>Open Date</th>
-          <th>Open Price</th>
-          <th>Open Sum</th>
-          <th>Market Price</th>
-          <th>Market Sum</th>
-          <th>Daily P/L</th>
-          <th>Daily P/L%</th>
-          <th>P/L</th>
-          <th>P/L%</th>
-          <th>Annual P/L%</th>
-        </tr>
-      </thead>
+          <ListItemIcon><StockLogo symbol={symbol} /></ListItemIcon>
 
-      <tbody>
-        {stockPositions.map(({
-          amount, dailyPL, dailyPLPercent, id, marketPL, marketPLAnnualPercent,
-          marketPLPercent, marketPrice, marketSum, openDate, openPrice, openSum, quote, quoteProgress, symbol,
-        }) => (
-          <tr
-            key={id}
-            onClick={() => onPositionClick && onPositionClick(id)}
-            style={onPositionClick ? { cursor: 'pointer' } : {}}
-          >
-            <td><StockLogo symbol={symbol} /></td>
-            <td>{quoteProgress ? <Progress /> : quote && quote.companyName}</td>
-            <td>{symbol}</td>
-            <td>{amount}</td>
-            <td>{openDate}</td>
-            <td><Money value={openPrice} /></td>
-            <td><Money value={openSum} /></td>
-            <td>{marketPrice !== null && <Money value={marketPrice} />}</td>
-            <td>{marketSum !== null && <Money value={marketSum} />}</td>
-            <td>{dailyPL !== null && <Money pl value={dailyPL} />}</td>
-            <td>{dailyPLPercent !== null && <Percent pl value={dailyPLPercent} />}</td>
-            <td>{marketPL !== null && <Money pl value={marketPL} />}</td>
-            <td>{marketPLPercent !== null && <Percent pl value={marketPLPercent} />}</td>
-            <td>{marketPLAnnualPercent !== null && <Percent pl value={marketPLAnnualPercent} />}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+          <ListItemText
+            primary={quoteProgress || quote === null ? symbol : quote && quote.companyName}
+            secondary={(
+              <React.Fragment>
+                {amount}
+                {' @ '}
+                <PositionDate highlighted={sorterKey === 'openDate'} date={openDate} />
+              </React.Fragment>
+            )}
+          />
+
+          {(sorterKey === 'dailyPL' || sorterKey === 'dailyPLPercent') && (
+            <ListItemSecondaryAction className={classes.listItemSecondaryAction}>
+              {dailyPL !== null && <Money highlighted={sorterKey === 'dailyPL'} pl value={dailyPL} />}
+              <br />
+              {dailyPLPercent !== null && (
+                <Percent highlighted={sorterKey === 'dailyPLPercent'} pl value={dailyPLPercent} />
+              )}
+            </ListItemSecondaryAction>
+          )}
+
+          {sorterKey === 'marketPLAnnualPercent' && (
+            <ListItemSecondaryAction className={classes.listItemSecondaryAction}>
+              {marketPLAnnualPercent !== null && <Percent pl value={marketPLAnnualPercent} />}
+            </ListItemSecondaryAction>
+          )}
+
+          {sorterKey !== 'dailyPL' && sorterKey !== 'dailyPLPercent' && sorterKey !== 'marketPLAnnualPercent' && (
+            <ListItemSecondaryAction className={classes.listItemSecondaryAction}>
+              {marketPL !== null && <Money highlighted={sorterKey === 'marketPL'} pl value={marketPL} />}
+              <br />
+              {marketPLPercent !== null && (
+                <Percent highlighted={sorterKey === 'marketPLPercent'} pl value={marketPLPercent} />
+              )}
+            </ListItemSecondaryAction>
+          )}
+
+        </ListItem>
+      ))}
+    </List>
 
   </React.Fragment>
 );

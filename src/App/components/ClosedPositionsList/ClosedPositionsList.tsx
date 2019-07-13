@@ -1,9 +1,12 @@
+import {
+  List, ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText,
+} from '@material-ui/core';
 import * as React from 'react';
 
 import * as C from 'Constants';
+import PositionDate from 'Portfolio/components/PositionDate';
 import Money from 'Shared/components/Money';
 import Percent from 'Shared/components/Percent';
-import Progress from 'Shared/components/Progress';
 import Sorter from 'Shared/components/Sorter';
 import StockLogo from 'Stocks/components/StockLogo';
 
@@ -12,6 +15,7 @@ import { StockPosition } from '../../lib';
 // TODO: Tests.
 
 export interface Props {
+  classes: { [key: string]: string };
   handleSorterKeyChange: (key: string) => void;
   handleSorterOrderChange: (order: 'asc' | 'desc') => void;
   onPositionClick?: (positionId: string) => void;
@@ -21,7 +25,7 @@ export interface Props {
 }
 
 const ClosedPositionsList: React.FunctionComponent<Props> = ({
-  handleSorterKeyChange, handleSorterOrderChange, onPositionClick, stockPositions, sorterKey, sorterOrder,
+  classes, handleSorterKeyChange, handleSorterOrderChange, onPositionClick, stockPositions, sorterKey, sorterOrder,
 }: Props) => (
   <React.Fragment>
 
@@ -33,52 +37,45 @@ const ClosedPositionsList: React.FunctionComponent<Props> = ({
       sorterOrder={sorterOrder}
     />
 
-    <table>
+    <List dense className={classes.list}>
+      {stockPositions.map(({
+        amount, closeDate, closePL, closePLAnnualPercent, closePLPercent, id, openDate, quote, quoteProgress, symbol,
+      }) => (
+        <ListItem button key={id} onClick={() => onPositionClick && onPositionClick(id)}>
 
-      <thead>
-        <tr>
-          <th colSpan={2}>Company</th>
-          <th>Symbol</th>
-          <th>Amount</th>
-          <th>Open Date</th>
-          <th>Open Price</th>
-          <th>Open Sum</th>
-          <th>Close Date</th>
-          <th>Close Price</th>
-          <th>Close Sum</th>
-          <th>P/L</th>
-          <th>P/L%</th>
-          <th>Annual P/L%</th>
-        </tr>
-      </thead>
+          <ListItemIcon><StockLogo symbol={symbol} /></ListItemIcon>
 
-      <tbody>
-        {stockPositions.map(({
-          amount, closeDate, closePL, closePLAnnualPercent, closePLPercent, closePrice, closeSum, id, openDate,
-          openPrice, openSum, quote, quoteProgress, symbol,
-        }) => (
-          <tr
-            key={id}
-            onClick={() => onPositionClick && onPositionClick(id)}
-            style={onPositionClick ? { cursor: 'pointer' } : {}}
-          >
-            <td><StockLogo symbol={symbol} /></td>
-            <td>{quoteProgress ? <Progress /> : quote && quote.companyName}</td>
-            <td>{symbol}</td>
-            <td>{amount}</td>
-            <td>{openDate}</td>
-            <td><Money value={openPrice} /></td>
-            <td><Money value={openSum} /></td>
-            <td>{closeDate}</td>
-            <td>{closePrice !== null && <Money value={closePrice} />}</td>
-            <td>{closeSum !== null && <Money value={closeSum} />}</td>
-            <td>{closePL !== null && <Money pl value={closePL} />}</td>
-            <td>{closePLPercent !== null && <Percent pl value={closePLPercent} />}</td>
-            <td>{closePLAnnualPercent !== null && <Percent pl value={closePLAnnualPercent} />}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+          <ListItemText
+            primary={quoteProgress || quote === null ? symbol : quote && quote.companyName}
+            secondary={(
+              <React.Fragment>
+                {amount}
+                {' @ '}
+                {sorterKey === 'openDate' || closeDate === null
+                  ? <PositionDate highlighted={sorterKey === 'openDate'} date={openDate} />
+                  : <PositionDate highlighted={sorterKey === 'closeDate'} date={closeDate} />}
+              </React.Fragment>
+            )}
+          />
+
+          {sorterKey === 'closePLAnnualPercent'
+            ? (
+              <ListItemSecondaryAction className={classes.listItemSecondaryAction}>
+                {closePLAnnualPercent !== null && <Percent pl value={closePLAnnualPercent} />}
+              </ListItemSecondaryAction>
+            ) : (
+              <ListItemSecondaryAction className={classes.listItemSecondaryAction}>
+                {closePL !== null && <Money highlighted={sorterKey === 'closePL'} pl value={closePL} />}
+                <br />
+                {closePLPercent !== null && (
+                  <Percent highlighted={sorterKey === 'closePLPercent'} pl value={closePLPercent} />
+                )}
+              </ListItemSecondaryAction>
+            )}
+
+        </ListItem>
+      ))}
+    </List>
 
   </React.Fragment>
 );
