@@ -7,4 +7,10 @@ export interface RouteParamsState {
 export default interface State {
   route: R.Route;
   routeParams: RouteParamsState;
+  sorters: {
+    [key: string]: {
+      key?: string;
+      order?: 'asc' | 'desc';
+    };
+  };
 } // eslint-disable-line semi

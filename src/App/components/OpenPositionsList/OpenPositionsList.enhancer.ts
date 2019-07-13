@@ -1,5 +1,6 @@
 import { compose, withProps } from 'recompose';
 
+import * as C from 'Constants';
 import { Position } from 'Portfolio/lib';
 import { sortCollection } from 'Shared/lib';
 
@@ -18,7 +19,11 @@ export default compose<Props, EnhancedProps>(
     positions: positions.filter(position => position.closeDate === null),
   })),
   withStockPositions,
-  withSorter('symbol'),
+  withSorter(
+    C.OPEN_POSITIONS_LIST_SORTER_NAME,
+    C.OPEN_POSITIONS_LIST_SORTER_INITIAL_KEY,
+    C.OPEN_POSITIONS_LIST_SORTER_INITIAL_ORDER,
+  ),
   withProps<Partial<Props>, EnhancedProps & WithStockPositionsProps & WithSorterProps>(({
     stockPositions, sorterKey, sorterOrder,
   }) => ({
