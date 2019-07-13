@@ -3,9 +3,21 @@ import { ThunkAction } from 'redux-thunk';
 
 import State from 'State';
 
-import { navigationHappened, sorterKeyChanged, sorterOrderChanged } from './creators';
+import {
+  homeTabChanged, navigationHappened, sorterKeyChanged, sorterOrderChanged,
+} from './creators';
 import { RouteParamsState } from '../State';
 import * as R from '../routes';
+
+export interface ChangeHomeTabAction {
+  (tab: 'closed' | 'open' | 'summary'): void;
+}
+
+export const changeHomeTab = (
+  tab: 'closed' | 'open' | 'summary',
+): ThunkAction<void, State, null, Action> => dispatch => {
+  dispatch(homeTabChanged(tab));
+};
 
 export interface NavigateAction {
   (route: R.Route, params?: RouteParamsState): void;

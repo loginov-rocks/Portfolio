@@ -5,7 +5,7 @@ import { viewRoot } from 'Styles/mixins';
 export default withStyles(theme => ({
   bar: {
     alignItems: 'center',
-    backgroundColor: theme.palette.background.paper,
+    borderBottom: `1px solid ${theme.palette.divider}`,
     display: 'flex',
     paddingBottom: theme.spacing(2),
     paddingLeft: theme.spacing(4),

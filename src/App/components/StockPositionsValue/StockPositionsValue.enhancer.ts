@@ -17,6 +17,9 @@ interface WithProps {
 }
 
 export default compose<Props, EnhancedProps>(
+  withProps<EnhancedProps, EnhancedProps>(({ positions }) => ({
+    positions: positions.filter(position => position.closeDate === null),
+  })),
   withProps<WithProps, EnhancedProps>(({ positions }) => ({
     symbols: getUniqueSymbolsFromPositions(positions),
   })),

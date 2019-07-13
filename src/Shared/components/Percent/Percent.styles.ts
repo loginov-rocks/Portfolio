@@ -6,7 +6,7 @@ export default withStyles({
     color: red.A400,
   },
   neutral: {
-    color: grey.A400,
+    color: grey.A200,
   },
   positive: {
     color: green.A400,

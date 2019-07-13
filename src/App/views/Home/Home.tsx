@@ -1,4 +1,4 @@
-import { Tab, Tabs } from '@material-ui/core';
+import { Tab, Tabs, Typography } from '@material-ui/core';
 import * as React from 'react';
 
 import { Position } from 'Portfolio/lib';
@@ -14,44 +14,52 @@ import StockPositionsValue, {
 export interface Props {
   classes: { [key: string]: string };
   handlePositionClick: (positionId: string) => void;
-  handleTabChange: () => void;
+  handleTabChange: (tab: 'closed' | 'open' | 'summary') => void;
   positions: Position[];
   positionsLoading: boolean;
-  tab: number;
+  tab: 'closed' | 'open' | 'summary';
 }
 
 const Home: React.FunctionComponent<Props> = ({
   classes, handlePositionClick, handleTabChange, positions, positionsLoading, tab,
 }: Props) => (
-  <div className={classes.root}>
+  <React.Fragment>
 
-    <div>
-      {positionsLoading
-        ? <Progress />
-        : (
-          <StockPositionsValue positions={positions}>
-            {({ value }: StockPositionsValueRenderProps) => <Money value={value} />}
-          </StockPositionsValue>
-        )}
-    </div>
+    {!positionsLoading && (
+      <div className={classes.bar}>
 
-    <Tabs onChange={handleTabChange} value={tab}>
-      <Tab label="Open" />
-      <Tab label="Closed" />
-    </Tabs>
+        <StockPositionsValue positions={positions}>
+          {({ value }: StockPositionsValueRenderProps) => (
+            <Typography className={classes.headline} variant="h6"><Money value={value} /></Typography>
+          )}
+        </StockPositionsValue>
 
-    <div>
+        <Tabs
+          indicatorColor="primary"
+          onChange={(event, newTab) => handleTabChange(newTab)}
+          value={tab}
+          variant="fullWidth"
+        >
+          <Tab label="Summary" value="summary" />
+          <Tab label="Open" value="open" />
+          <Tab label="Closed" value="closed" />
+        </Tabs>
+
+      </div>
+    )}
+
+    <div className={classes.root}>
       {positionsLoading
         ? <Progress />
         : (
           <React.Fragment>
-            {tab === 0 && <OpenPositionsList onPositionClick={handlePositionClick} positions={positions} />}
-            {tab === 1 && <ClosedPositionsList onPositionClick={handlePositionClick} positions={positions} />}
+            {tab === 'closed' && <ClosedPositionsList onPositionClick={handlePositionClick} positions={positions} />}
+            {tab === 'open' && <OpenPositionsList onPositionClick={handlePositionClick} positions={positions} />}
           </React.Fragment>
         )}
     </div>
 
-  </div>
+  </React.Fragment>
 );
 
 export default Home;

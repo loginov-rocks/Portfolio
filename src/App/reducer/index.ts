@@ -4,6 +4,7 @@ import * as R from '../routes';
 import State from '../State';
 
 const initialState: State = {
+  homeTab: 'summary',
   route: R.HOME,
   routeParams: {},
   sorters: {},
@@ -11,6 +12,12 @@ const initialState: State = {
 
 export default (state = initialState, action: T.Action) => {
   switch (action.type) {
+    case T.HOME_TAB_CHANGED:
+      return {
+        ...state,
+        homeTab: action.payload,
+      };
+
     case T.NAVIGATION_HAPPENED:
       return {
         ...state,

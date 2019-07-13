@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import Home from './Home';
 
-it('matches snapshot with the first tab', () => {
+it('matches snapshot with the Closed tab', () => {
   const wrapper = shallow(
     <Home
       classes={classes}
@@ -12,14 +12,14 @@ it('matches snapshot with the first tab', () => {
       handleTabChange={() => undefined}
       positions={[]}
       positionsLoading={false}
-      tab={0}
+      tab="closed"
     />,
   );
 
   expect(wrapper).toMatchSnapshot();
 });
 
-it('matches snapshot with the second tab', () => {
+it('matches snapshot with the Open tab', () => {
   const wrapper = shallow(
     <Home
       classes={classes}
@@ -27,7 +27,22 @@ it('matches snapshot with the second tab', () => {
       handleTabChange={() => undefined}
       positions={[]}
       positionsLoading={false}
-      tab={1}
+      tab="open"
+    />,
+  );
+
+  expect(wrapper).toMatchSnapshot();
+});
+
+it('matches snapshot with the Summary tab', () => {
+  const wrapper = shallow(
+    <Home
+      classes={classes}
+      handlePositionClick={() => undefined}
+      handleTabChange={() => undefined}
+      positions={[]}
+      positionsLoading={false}
+      tab="summary"
     />,
   );
 
@@ -42,7 +57,7 @@ it('matches snapshot when positions are loading', () => {
       handleTabChange={() => undefined}
       positions={[]}
       positionsLoading
-      tab={0}
+      tab="summary"
     />,
   );
 

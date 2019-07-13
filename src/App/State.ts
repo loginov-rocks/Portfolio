@@ -5,6 +5,7 @@ export interface RouteParamsState {
 }
 
 export default interface State {
+  homeTab: 'closed' | 'open' | 'summary';
   route: R.Route;
   routeParams: RouteParamsState;
   sorters: {
