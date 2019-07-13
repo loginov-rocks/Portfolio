@@ -2,8 +2,12 @@ import { Typography } from '@material-ui/core';
 import { BusinessCenterOutlined } from '@material-ui/icons';
 import * as React from 'react';
 
-const Logo: React.FunctionComponent = () => (
-  <Typography variant="h4">
+interface Props {
+  className?: string;
+}
+
+const Logo: React.FunctionComponent<Props> = ({ className }: Props) => (
+  <Typography className={className} variant="h4">
     <BusinessCenterOutlined />
     {' '}
     Portfolio

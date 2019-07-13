@@ -3,23 +3,24 @@ import * as React from 'react';
 // TODO: Tests.
 
 interface Props {
+  classes: { [key: string]: string };
   pl?: boolean;
   value: number;
 }
 
-const Percent: React.FunctionComponent<Props> = ({ pl, value }: Props) => {
-  const style: React.CSSProperties = {};
+const Percent: React.FunctionComponent<Props> = ({ classes, pl, value }: Props) => {
+  let className;
 
   if (pl) {
     if (value === 0) {
-      style.color = 'gray';
+      className = classes.neutral;
     } else {
-      style.color = value > 0 ? 'green' : 'red';
+      className = value > 0 ? classes.positive : classes.negative;
     }
   }
 
   return (
-    <span style={style}>
+    <span className={className}>
       {(value * 100).toFixed(2)}
       %
     </span>

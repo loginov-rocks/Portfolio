@@ -1,3 +1,4 @@
 import Percent from './Percent';
+import style from './Percent.styles';
 
-export default Percent;
+export default style(Percent);

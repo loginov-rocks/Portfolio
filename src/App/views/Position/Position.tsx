@@ -8,23 +8,17 @@ import StockLogo from 'Stocks/components/StockLogo';
 import { StockPosition } from '../../lib';
 
 export interface Props {
+  classes: { [key: string]: string };
   handleCloseClick: () => void;
   handleDeleteClick: () => void;
-  handleHomeClick: () => void;
   positionLoading: boolean;
   stockPosition: StockPosition | null;
 }
 
 const Position: React.FunctionComponent<Props> = ({
-  handleCloseClick, handleDeleteClick, handleHomeClick, positionLoading, stockPosition,
+  classes, handleCloseClick, handleDeleteClick, positionLoading, stockPosition,
 }: Props) => (
-  <React.Fragment>
-
-    <div>
-      <button onClick={handleHomeClick} type="button">Home</button>
-    </div>
-
-    <h1>Position</h1>
+  <div className={classes.root}>
 
     {positionLoading && <div><Progress /></div>}
 
@@ -165,7 +159,7 @@ const Position: React.FunctionComponent<Props> = ({
       <button onClick={handleDeleteClick} type="button">Delete</button>
     </div>
 
-  </React.Fragment>
+  </div>
 );
 
 export default Position;

@@ -1,18 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches snapshot 1`] = `
-<Fragment>
-  <div>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Home
-    </button>
-  </div>
-  <h1>
-    Position
-  </h1>
+<div
+  className="root"
+>
   <Connect(lifecycle(mapProps(StockLogo)))
     symbol="AAPL"
   />
@@ -56,7 +47,7 @@ exports[`matches snapshot 1`] = `
           Price
         </th>
         <td>
-          <Money
+          <WithStyles(Money)
             value={100}
           />
         </td>
@@ -66,7 +57,7 @@ exports[`matches snapshot 1`] = `
           Commission
         </th>
         <td>
-          <Money
+          <WithStyles(Money)
             value={1}
           />
         </td>
@@ -76,7 +67,7 @@ exports[`matches snapshot 1`] = `
           Sum
         </th>
         <td>
-          <Money
+          <WithStyles(Money)
             value={101}
           />
         </td>
@@ -99,22 +90,13 @@ exports[`matches snapshot 1`] = `
       Delete
     </button>
   </div>
-</Fragment>
+</div>
 `;
 
 exports[`matches snapshot when loading 1`] = `
-<Fragment>
-  <div>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Home
-    </button>
-  </div>
-  <h1>
-    Position
-  </h1>
+<div
+  className="root"
+>
   <div>
     <Progress />
   </div>
@@ -126,5 +108,5 @@ exports[`matches snapshot when loading 1`] = `
       Delete
     </button>
   </div>
-</Fragment>
+</div>
 `;

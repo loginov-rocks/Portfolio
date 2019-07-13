@@ -1,4 +1,5 @@
 import { shallow } from 'enzyme';
+import classes from 'identity-obj-proxy';
 import * as React from 'react';
 
 import Position from './Position';
@@ -6,9 +7,9 @@ import Position from './Position';
 it('matches snapshot', () => {
   const wrapper = shallow(
     <Position
+      classes={classes}
       handleCloseClick={() => undefined}
       handleDeleteClick={() => undefined}
-      handleHomeClick={() => undefined}
       positionLoading={false}
       stockPosition={{
         amount: 1,
@@ -44,9 +45,9 @@ it('matches snapshot', () => {
 it('matches snapshot when loading', () => {
   const wrapper = shallow(
     <Position
+      classes={classes}
       handleCloseClick={() => undefined}
       handleDeleteClick={() => undefined}
-      handleHomeClick={() => undefined}
       positionLoading
       stockPosition={null}
     />,

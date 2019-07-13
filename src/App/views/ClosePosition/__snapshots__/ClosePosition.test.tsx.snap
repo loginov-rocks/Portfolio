@@ -4,12 +4,6 @@ exports[`matches snapshot 1`] = `
 <div
   className="root"
 >
-  <WithStyles(ForwardRef(IconButton))
-    className="back"
-    onClick={[Function]}
-  >
-    <ArrowBackOutlinedIcon />
-  </WithStyles(ForwardRef(IconButton))>
   <WithStyles(ForwardRef(Typography))
     className="headline"
     variant="h4"
@@ -17,6 +11,14 @@ exports[`matches snapshot 1`] = `
     Close position
   </WithStyles(ForwardRef(Typography))>
   <WithStyles(Connect(withStateHandlers(withHandlers(ClosePositionForm))))
+    backButton={
+      <ForwardRef(WithStyles)
+        color="primary"
+        onClick={[Function]}
+      >
+        Cancel
+      </ForwardRef(WithStyles)>
+    }
     id="id"
     onClose={[Function]}
   />
@@ -27,12 +29,6 @@ exports[`matches snapshot when loading 1`] = `
 <div
   className="root"
 >
-  <WithStyles(ForwardRef(IconButton))
-    className="back"
-    onClick={[Function]}
-  >
-    <ArrowBackOutlinedIcon />
-  </WithStyles(ForwardRef(IconButton))>
   <WithStyles(ForwardRef(Typography))
     className="headline"
     variant="h4"

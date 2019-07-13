@@ -12,6 +12,7 @@ import StockPositionsValue, {
 } from '../../components/StockPositionsValue';
 
 export interface Props {
+  classes: { [key: string]: string };
   handlePositionClick: (positionId: string) => void;
   handleTabChange: () => void;
   positions: Position[];
@@ -20,11 +21,9 @@ export interface Props {
 }
 
 const Home: React.FunctionComponent<Props> = ({
-  handlePositionClick, handleTabChange, positions, positionsLoading, tab,
+  classes, handlePositionClick, handleTabChange, positions, positionsLoading, tab,
 }: Props) => (
-  <React.Fragment>
-
-    <h1>Home</h1>
+  <div className={classes.root}>
 
     <div>
       {positionsLoading
@@ -52,7 +51,7 @@ const Home: React.FunctionComponent<Props> = ({
         )}
     </div>
 
-  </React.Fragment>
+  </div>
 );
 
 export default Home;

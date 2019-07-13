@@ -5,6 +5,7 @@ node_js:
 
 script:
   - npm run ci
+  - npm run build
 
 after_script:
   - npm run coveralls

@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches snapshot when positions are loading 1`] = `
-<Fragment>
-  <h1>
-    Home
-  </h1>
+<div
+  className="root"
+>
   <div>
     <Progress />
   </div>
@@ -22,14 +21,13 @@ exports[`matches snapshot when positions are loading 1`] = `
   <div>
     <Progress />
   </div>
-</Fragment>
+</div>
 `;
 
 exports[`matches snapshot with the first tab 1`] = `
-<Fragment>
-  <h1>
-    Home
-  </h1>
+<div
+  className="root"
+>
   <div>
     <withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))
       positions={Array []}
@@ -54,14 +52,13 @@ exports[`matches snapshot with the first tab 1`] = `
       positions={Array []}
     />
   </div>
-</Fragment>
+</div>
 `;
 
 exports[`matches snapshot with the second tab 1`] = `
-<Fragment>
-  <h1>
-    Home
-  </h1>
+<div
+  className="root"
+>
   <div>
     <withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))
       positions={Array []}
@@ -86,5 +83,5 @@ exports[`matches snapshot with the second tab 1`] = `
       positions={Array []}
     />
   </div>
-</Fragment>
+</div>
 `;

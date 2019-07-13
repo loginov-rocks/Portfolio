@@ -1,3 +1,4 @@
 import Money from './Money';
+import style from './Money.styles';
 
-export default Money;
+export default style(Money);

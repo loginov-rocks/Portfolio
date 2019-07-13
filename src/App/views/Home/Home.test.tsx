@@ -1,4 +1,5 @@
 import { shallow } from 'enzyme';
+import classes from 'identity-obj-proxy';
 import * as React from 'react';
 
 import Home from './Home';
@@ -6,6 +7,7 @@ import Home from './Home';
 it('matches snapshot with the first tab', () => {
   const wrapper = shallow(
     <Home
+      classes={classes}
       handlePositionClick={() => undefined}
       handleTabChange={() => undefined}
       positions={[]}
@@ -20,6 +22,7 @@ it('matches snapshot with the first tab', () => {
 it('matches snapshot with the second tab', () => {
   const wrapper = shallow(
     <Home
+      classes={classes}
       handlePositionClick={() => undefined}
       handleTabChange={() => undefined}
       positions={[]}
@@ -34,6 +37,7 @@ it('matches snapshot with the second tab', () => {
 it('matches snapshot when positions are loading', () => {
   const wrapper = shallow(
     <Home
+      classes={classes}
       handlePositionClick={() => undefined}
       handleTabChange={() => undefined}
       positions={[]}
