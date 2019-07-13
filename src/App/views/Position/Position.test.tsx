@@ -10,6 +10,7 @@ it('matches snapshot', () => {
       classes={classes}
       handleCloseClick={() => undefined}
       handleDeleteClick={() => undefined}
+      handleWantToDelete={() => undefined}
       positionLoading={false}
       stockPosition={{
         amount: 1,
@@ -36,6 +37,7 @@ it('matches snapshot', () => {
         quoteProgress: false,
         symbol: 'AAPL',
       }}
+      wantToDelete={false}
     />,
   );
 
@@ -48,8 +50,10 @@ it('matches snapshot when loading', () => {
       classes={classes}
       handleCloseClick={() => undefined}
       handleDeleteClick={() => undefined}
+      handleWantToDelete={() => undefined}
       positionLoading
       stockPosition={null}
+      wantToDelete={false}
     />,
   );
 

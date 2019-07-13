@@ -4,21 +4,42 @@ import Progress from 'Shared/components/Progress';
 
 // TODO: Tests.
 
-interface Props {
+export interface Props {
+  className?: string;
   logo: string | null;
   logoProgress: boolean;
+  size?: number;
 }
 
-const StockLogo: React.FunctionComponent<Props> = ({ logo, logoProgress }: Props) => {
+const StockLogo: React.FunctionComponent<Props> = ({
+  className, logo, logoProgress, size,
+}: Props) => {
   if (logoProgress) {
-    return <Progress />;
+    return <Progress className={className} />;
   }
 
   if (!logo) {
     return null;
   }
 
-  return <img alt="" src={logo} style={{ height: 32, objectFit: 'contain', width: 32 }} />;
+  return (
+    <div className={className}>
+      <img
+        alt=""
+        src={logo}
+        style={{
+          height: size,
+          objectFit: 'contain',
+          verticalAlign: 'top',
+          width: size,
+        }}
+      />
+    </div>
+  );
+};
+
+StockLogo.defaultProps = {
+  size: 32,
 };
 
 export default StockLogo;

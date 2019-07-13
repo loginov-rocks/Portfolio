@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { compose, withHandlers } from 'recompose';
+import { compose, withHandlers, withStateHandlers } from 'recompose';
 
 import { deletePosition as deletePositionAction, DeletePositionAction } from 'Portfolio/actions';
 import withPositionById, { Props as WithPositionByIdProps } from 'Portfolio/enhancers/withPositionById';
@@ -20,6 +20,11 @@ interface DispatchProps {
   deletePosition: DeletePositionAction;
 }
 
+interface WithStateHandlersProps {
+  handleWantToDelete: () => void;
+  wantToDelete: boolean;
+}
+
 const mapDispatchToProps = { deletePosition: deletePositionAction };
 
 export default compose<Props, {}>(
@@ -35,10 +40,16 @@ export default compose<Props, {}>(
     }),
   }),
   connect(null, mapDispatchToProps),
-  withHandlers<WithNavigationHandlersProps & WithPositionByIdProps & DispatchProps, {}>({
+  withStateHandlers(
+    { wantToDelete: false },
+    { handleWantToDelete: () => () => ({ wantToDelete: true }) },
+  ),
+  withHandlers<WithNavigationHandlersProps & WithPositionByIdProps & DispatchProps & WithStateHandlersProps, {}>({
 
-    handleDeleteClick: ({ deletePosition, handleHomeClick, position }) => () => {
-      if (position) {
+    handleDeleteClick: ({
+      deletePosition, handleHomeClick, position, wantToDelete,
+    }) => () => {
+      if (position && wantToDelete) {
         deletePosition(position.id)
           .then(() => handleHomeClick());
       }

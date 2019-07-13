@@ -1,112 +1,105 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches snapshot 1`] = `
-<div
-  className="root"
->
-  <Connect(lifecycle(mapProps(StockLogo)))
-    symbol="AAPL"
-  />
-  <table>
-    <tbody>
-      <tr>
-        <th
-          colSpan={2}
-        >
+<Fragment>
+  <div
+    className="bar"
+  >
+    <Connect(lifecycle(mapProps(StockLogo)))
+      className="logo"
+      size={48}
+      symbol="AAPL"
+    />
+    <WithStyles(ForwardRef(IconButton))
+      onClick={[Function]}
+    >
+      <MonetizationOnOutlinedIcon />
+    </WithStyles(ForwardRef(IconButton))>
+    <WithStyles(ForwardRef(IconButton))
+      onClick={[Function]}
+    >
+      <DeleteOutlinedIcon />
+    </WithStyles(ForwardRef(IconButton))>
+  </div>
+  <div
+    className="root"
+  >
+    <WithStyles(ForwardRef(List))
+      className="list"
+      dense={true}
+    >
+      <WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItemText))>
           Symbol
-        </th>
-        <td>
+        </WithStyles(ForwardRef(ListItemText))>
+        <WithStyles(ForwardRef(ListItemSecondaryAction))>
           AAPL
-        </td>
-      </tr>
-      <tr>
-        <th
-          colSpan={2}
-        >
+        </WithStyles(ForwardRef(ListItemSecondaryAction))>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItemText))>
           Amount
-        </th>
-        <td>
+        </WithStyles(ForwardRef(ListItemText))>
+        <WithStyles(ForwardRef(ListItemSecondaryAction))>
           1
-        </td>
-      </tr>
-      <tr>
-        <th
-          rowSpan={4}
-        >
-          Open
-        </th>
-        <th>
+        </WithStyles(ForwardRef(ListItemSecondaryAction))>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(ListSubheader))
+        disableSticky={true}
+      >
+        Open
+      </WithStyles(ForwardRef(ListSubheader))>
+      <WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItemText))>
           Date
-        </th>
-        <td>
-          2019-07-01
-        </td>
-      </tr>
-      <tr>
-        <th>
+        </WithStyles(ForwardRef(ListItemText))>
+        <WithStyles(ForwardRef(ListItemSecondaryAction))>
+          <PositionDate
+            date="2019-07-01"
+          />
+        </WithStyles(ForwardRef(ListItemSecondaryAction))>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItemText))>
           Price
-        </th>
-        <td>
+        </WithStyles(ForwardRef(ListItemText))>
+        <WithStyles(ForwardRef(ListItemSecondaryAction))>
           <WithStyles(Money)
             value={100}
           />
-        </td>
-      </tr>
-      <tr>
-        <th>
+        </WithStyles(ForwardRef(ListItemSecondaryAction))>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItemText))>
           Commission
-        </th>
-        <td>
+        </WithStyles(ForwardRef(ListItemText))>
+        <WithStyles(ForwardRef(ListItemSecondaryAction))>
           <WithStyles(Money)
             value={1}
           />
-        </td>
-      </tr>
-      <tr>
-        <th>
+        </WithStyles(ForwardRef(ListItemSecondaryAction))>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItemText))>
           Sum
-        </th>
-        <td>
+        </WithStyles(ForwardRef(ListItemText))>
+        <WithStyles(ForwardRef(ListItemSecondaryAction))>
           <WithStyles(Money)
             value={101}
           />
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Close
-    </button>
+        </WithStyles(ForwardRef(ListItemSecondaryAction))>
+      </WithStyles(ForwardRef(ListItem))>
+    </WithStyles(ForwardRef(List))>
   </div>
-  <div>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Delete
-    </button>
-  </div>
-</div>
+</Fragment>
 `;
 
 exports[`matches snapshot when loading 1`] = `
-<div
-  className="root"
->
-  <div>
+<Fragment>
+  <div
+    className="root"
+  >
     <Progress />
   </div>
-  <div>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Delete
-    </button>
-  </div>
-</div>
+</Fragment>
 `;

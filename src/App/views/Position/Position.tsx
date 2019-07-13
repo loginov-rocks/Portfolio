@@ -1,5 +1,10 @@
+import {
+  IconButton, List, ListItem, ListItemSecondaryAction, ListItemText, ListSubheader, Typography,
+} from '@material-ui/core';
+import { MonetizationOnOutlined, DeleteForeverOutlined, DeleteOutlined } from '@material-ui/icons';
 import * as React from 'react';
 
+import PositionDate from 'Portfolio/components/PositionDate';
 import Money from 'Shared/components/Money';
 import Percent from 'Shared/components/Percent';
 import Progress from 'Shared/components/Progress';
@@ -11,90 +16,129 @@ export interface Props {
   classes: { [key: string]: string };
   handleCloseClick: () => void;
   handleDeleteClick: () => void;
+  handleWantToDelete: () => void;
   positionLoading: boolean;
   stockPosition: StockPosition | null;
+  wantToDelete: boolean;
 }
 
 const Position: React.FunctionComponent<Props> = ({
-  classes, handleCloseClick, handleDeleteClick, positionLoading, stockPosition,
+  classes, handleCloseClick, handleDeleteClick, handleWantToDelete, positionLoading, stockPosition, wantToDelete,
 }: Props) => (
-  <div className={classes.root}>
-
-    {positionLoading && <div><Progress /></div>}
+  <React.Fragment>
 
     {!positionLoading && stockPosition && (
-      <StockLogo symbol={stockPosition.symbol} />
+      <div className={classes.bar}>
+
+        <StockLogo className={classes.logo} size={48} symbol={stockPosition.symbol} />
+
+        {stockPosition.quote && (
+          <Typography className={classes.companyName}>{stockPosition.quote.companyName}</Typography>
+        )}
+
+        {stockPosition.closeDate === null && (
+          <IconButton onClick={handleCloseClick}>
+            <MonetizationOnOutlined />
+          </IconButton>
+        )}
+
+        {wantToDelete
+          ? <IconButton onClick={handleDeleteClick}><DeleteForeverOutlined /></IconButton>
+          : <IconButton onClick={handleWantToDelete}><DeleteOutlined /></IconButton>}
+
+      </div>
     )}
 
-    {!positionLoading && stockPosition && stockPosition.quote && (
-      <div>{stockPosition.quote.companyName}</div>
-    )}
+    <div className={classes.root}>
 
-    {!positionLoading && stockPosition && (
-      <table>
-        <tbody>
+      {positionLoading && <Progress />}
 
-          <tr>
-            <th colSpan={2}>Symbol</th>
-            <td>{stockPosition.symbol}</td>
-          </tr>
-          <tr>
-            <th colSpan={2}>Amount</th>
-            <td>{stockPosition.amount}</td>
-          </tr>
+      {!positionLoading && stockPosition && (
+        <List className={classes.list} dense>
 
-          <tr>
-            <th rowSpan={4}>Open</th>
-            <th>Date</th>
-            <td>{stockPosition.openDate}</td>
-          </tr>
-          <tr>
-            <th>Price</th>
-            <td><Money value={stockPosition.openPrice} /></td>
-          </tr>
-          <tr>
-            <th>Commission</th>
-            <td><Money value={stockPosition.openCommission} /></td>
-          </tr>
-          <tr>
-            <th>Sum</th>
-            <td><Money value={stockPosition.openSum} /></td>
-          </tr>
+          <ListItem>
+            <ListItemText>Symbol</ListItemText>
+            <ListItemSecondaryAction>{stockPosition.symbol}</ListItemSecondaryAction>
+          </ListItem>
+          <ListItem>
+            <ListItemText>Amount</ListItemText>
+            <ListItemSecondaryAction>{stockPosition.amount}</ListItemSecondaryAction>
+          </ListItem>
 
-          {stockPosition.closeCommission !== null && stockPosition.closePrice !== null
-          && stockPosition.closeSum !== null && stockPosition.closePL !== null
+          <ListSubheader disableSticky>Open</ListSubheader>
+          <ListItem>
+            <ListItemText>Date</ListItemText>
+            <ListItemSecondaryAction>
+              <PositionDate date={stockPosition.openDate} />
+            </ListItemSecondaryAction>
+          </ListItem>
+          <ListItem>
+            <ListItemText>Price</ListItemText>
+            <ListItemSecondaryAction>
+              <Money value={stockPosition.openPrice} />
+            </ListItemSecondaryAction>
+          </ListItem>
+          <ListItem>
+            <ListItemText>Commission</ListItemText>
+            <ListItemSecondaryAction>
+              <Money value={stockPosition.openCommission} />
+            </ListItemSecondaryAction>
+          </ListItem>
+          <ListItem>
+            <ListItemText>Sum</ListItemText>
+            <ListItemSecondaryAction>
+              <Money value={stockPosition.openSum} />
+            </ListItemSecondaryAction>
+          </ListItem>
+
+          {stockPosition.closeDate !== null && stockPosition.closeCommission !== null
+          && stockPosition.closePrice !== null && stockPosition.closeSum !== null && stockPosition.closePL !== null
           && stockPosition.closePLPercent !== null && stockPosition.closePLAnnualPercent !== null && (
             <React.Fragment>
 
-              <tr>
-                <th rowSpan={7}>Close</th>
-                <th>Date</th>
-                <td>{stockPosition.closeDate}</td>
-              </tr>
-              <tr>
-                <th>Price</th>
-                <td><Money value={stockPosition.closePrice} /></td>
-              </tr>
-              <tr>
-                <th>Commission</th>
-                <td><Money value={stockPosition.closeCommission} /></td>
-              </tr>
-              <tr>
-                <th>Sum</th>
-                <td><Money value={stockPosition.closeSum} /></td>
-              </tr>
-              <tr>
-                <th>PL</th>
-                <td><Money pl value={stockPosition.closePL} /></td>
-              </tr>
-              <tr>
-                <th>PL%</th>
-                <td><Percent pl value={stockPosition.closePLPercent} /></td>
-              </tr>
-              <tr>
-                <th>Annual PL%</th>
-                <td><Percent pl value={stockPosition.closePLAnnualPercent} /></td>
-              </tr>
+              <ListSubheader disableSticky>Close</ListSubheader>
+              <ListItem>
+                <ListItemText>Date</ListItemText>
+                <ListItemSecondaryAction>
+                  <PositionDate date={stockPosition.closeDate} />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemText>Price</ListItemText>
+                <ListItemSecondaryAction>
+                  <Money value={stockPosition.closePrice} />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemText>Commission</ListItemText>
+                <ListItemSecondaryAction>
+                  <Money value={stockPosition.closeCommission} />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemText>Sum</ListItemText>
+                <ListItemSecondaryAction>
+                  <Money value={stockPosition.closeSum} />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemText>PL</ListItemText>
+                <ListItemSecondaryAction>
+                  <Money pl value={stockPosition.closePL} />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemText>PL%</ListItemText>
+                <ListItemSecondaryAction>
+                  <Percent pl value={stockPosition.closePLPercent} />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemText>Annual PL%</ListItemText>
+                <ListItemSecondaryAction>
+                  <Percent pl value={stockPosition.closePLAnnualPercent} />
+                </ListItemSecondaryAction>
+              </ListItem>
 
             </React.Fragment>
           )}
@@ -102,15 +146,19 @@ const Position: React.FunctionComponent<Props> = ({
           {stockPosition.dailyPL !== null && stockPosition.dailyPLPercent !== null && (
             <React.Fragment>
 
-              <tr>
-                <th rowSpan={2}>Daily</th>
-                <th>PL</th>
-                <td><Money pl value={stockPosition.dailyPL} /></td>
-              </tr>
-              <tr>
-                <th>PL%</th>
-                <td><Percent pl value={stockPosition.dailyPLPercent} /></td>
-              </tr>
+              <ListSubheader disableSticky>Daily</ListSubheader>
+              <ListItem>
+                <ListItemText>PL</ListItemText>
+                <ListItemSecondaryAction>
+                  <Money pl value={stockPosition.dailyPL} />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemText>PL%</ListItemText>
+                <ListItemSecondaryAction>
+                  <Percent pl value={stockPosition.dailyPLPercent} />
+                </ListItemSecondaryAction>
+              </ListItem>
 
             </React.Fragment>
           )}
@@ -120,46 +168,47 @@ const Position: React.FunctionComponent<Props> = ({
           && stockPosition.marketPLAnnualPercent !== null && (
             <React.Fragment>
 
-              <tr>
-                <th rowSpan={5}>Market</th>
-                <th>Price</th>
-                <td><Money value={stockPosition.marketPrice} /></td>
-              </tr>
-              <tr>
-                <th>Sum</th>
-                <td><Money value={stockPosition.marketSum} /></td>
-              </tr>
-              <tr>
-                <th>PL</th>
-                <td><Money pl value={stockPosition.marketPL} /></td>
-              </tr>
-              <tr>
-                <th>PL%</th>
-                <td><Percent pl value={stockPosition.marketPLPercent} /></td>
-              </tr>
-              <tr>
-                <th>Annual PL%</th>
-                <td><Percent pl value={stockPosition.marketPLAnnualPercent} /></td>
-              </tr>
+              <ListSubheader disableSticky>Market</ListSubheader>
+              <ListItem>
+                <ListItemText>Price</ListItemText>
+                <ListItemSecondaryAction>
+                  <Money value={stockPosition.marketPrice} />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemText>Sum</ListItemText>
+                <ListItemSecondaryAction>
+                  <Money value={stockPosition.marketSum} />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemText>PL</ListItemText>
+                <ListItemSecondaryAction>
+                  <Money pl value={stockPosition.marketPL} />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemText>PL%</ListItemText>
+                <ListItemSecondaryAction>
+                  <Percent pl value={stockPosition.marketPLPercent} />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemText>Annual PL%</ListItemText>
+                <ListItemSecondaryAction>
+                  <Percent pl value={stockPosition.marketPLAnnualPercent} />
+                </ListItemSecondaryAction>
+              </ListItem>
 
             </React.Fragment>
           )}
 
-        </tbody>
-      </table>
-    )}
+        </List>
+      )}
 
-    {stockPosition && stockPosition.closeDate === null && (
-      <div>
-        <button onClick={handleCloseClick} type="button">Close</button>
-      </div>
-    )}
-
-    <div>
-      <button onClick={handleDeleteClick} type="button">Delete</button>
     </div>
 
-  </div>
+  </React.Fragment>
 );
 
 export default Position;
