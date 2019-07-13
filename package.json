@@ -39,6 +39,7 @@
     "recompose": "^0.30.0",
     "redux": "^4.0.2",
     "redux-firestore": "^0.8.0",
+    "redux-persist": "^5.10.0",
     "redux-repository": "^0.5.1",
     "redux-thunk": "^2.3.0",
     "typeface-roboto": "0.0.54",
