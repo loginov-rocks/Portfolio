@@ -7,7 +7,8 @@ export default withStyles(theme => ({
     width: '100%',
   },
   row: {
-    margin: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    marginTop: theme.spacing(1),
     textAlign: 'center',
   },
 }));

@@ -6,21 +6,21 @@ import { Props } from './CreatePosition';
 import withNavigationHandlers from '../../enhancers/withNavigationHandlers';
 import * as R from '../../routes';
 
-interface WithHandlersProps {
-  handlePositionClick: (position: Position) => void;
+interface WithNavigationHandlersProps {
+  handlePositionClick: (positionId: string) => void;
 }
 
-export default compose<Props & WithHandlersProps, {}>(
+export default compose<Props, {}>(
   withNavigationHandlers({
-    handlePositionClick: (props, position) => ({
-      params: { position: position.id },
+    handlePositionClick: (props, positionId) => ({
+      params: { position: positionId },
       route: R.POSITION,
     }),
   }),
-  withHandlers<WithHandlersProps, {}>({
+  withHandlers<WithNavigationHandlersProps, {}>({
 
     handleCreate: ({ handlePositionClick }) => (position: Position) => {
-      handlePositionClick(position);
+      handlePositionClick(position.id);
     },
 
   }),

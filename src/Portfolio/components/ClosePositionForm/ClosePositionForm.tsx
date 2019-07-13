@@ -1,7 +1,9 @@
+import classnames from 'classnames';
 import { Button, TextField } from '@material-ui/core';
 import * as React from 'react';
 
 export interface Props {
+  backButton?: React.ReactNode;
   classes: { [key: string]: string };
   commission: number;
   date: string;
@@ -13,7 +15,8 @@ export interface Props {
 }
 
 const ClosePositionForm: React.FunctionComponent<Props> = ({
-  classes, commission, date, handleCommissionChange, handleDateChange, handlePriceChange, handleSubmit, price,
+  backButton, classes, commission, date, handleCommissionChange, handleDateChange, handlePriceChange, handleSubmit,
+  price,
 }: Props) => (
   <form className={classes.root} onSubmit={handleSubmit}>
 
@@ -52,7 +55,8 @@ const ClosePositionForm: React.FunctionComponent<Props> = ({
       />
     </div>
 
-    <div className={classes.row}>
+    <div className={classnames(classes.row, backButton && classes.buttons)}>
+      {backButton}
       <Button color="primary" variant="contained" type="submit">Close</Button>
     </div>
 

@@ -4,15 +4,9 @@ exports[`matches snapshot 1`] = `
 <div
   className="root"
 >
-  <div
-    className="row"
-  >
-    <Logo />
-  </div>
-  <div
-    className="row"
-  >
-    <GoogleLoginButton />
-  </div>
+  <Logo
+    className="headline"
+  />
+  <GoogleLoginButton />
 </div>
 `;

@@ -1,7 +1,6 @@
 import { compose, withHandlers } from 'recompose';
 
 import withPositionById, { Props as WithPositionByIdProps } from 'Portfolio/enhancers/withPositionById';
-import { Position } from 'Portfolio/lib';
 
 import { Props } from './ClosePosition';
 import withNavigationHandlers from '../../enhancers/withNavigationHandlers';
@@ -10,13 +9,13 @@ import * as R from '../../routes';
 import { RouteParamsState } from '../../State';
 
 interface WithNavigationHandlersProps {
-  handlePositionClick: (position: Position) => void;
+  handlePositionClick: (positionId: string) => void;
 }
 
 export default compose<Props, {}>(
   withNavigationHandlers({
-    handlePositionClick: (props, position) => ({
-      params: { position: position.id },
+    handlePositionClick: (props, positionId) => ({
+      params: { position: positionId },
       route: R.POSITION,
     }),
   }),
@@ -26,7 +25,7 @@ export default compose<Props, {}>(
 
     handleBackClick: ({ handlePositionClick, position }) => () => {
       if (position) {
-        handlePositionClick(position);
+        handlePositionClick(position.id);
       }
     },
 

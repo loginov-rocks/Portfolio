@@ -1,13 +1,18 @@
 import { withStyles } from '@material-ui/core';
 
 export default withStyles(theme => ({
+  buttons: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
   root: {
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
   },
   row: {
-    margin: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    marginTop: theme.spacing(1),
     textAlign: 'center',
   },
 }));

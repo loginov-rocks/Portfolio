@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { compose, withHandlers, withStateHandlers } from 'recompose';
 
@@ -18,6 +19,7 @@ interface WithStateHandlersProps {
 }
 
 interface EnhancedProps {
+  backButton?: React.ReactNode;
   id: string;
   onClose?: (positionId: string) => void;
 }

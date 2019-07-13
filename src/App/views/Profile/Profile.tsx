@@ -12,18 +12,18 @@ interface Props {
 const Profile: React.FunctionComponent<Props> = ({ classes, profile }: Props) => (
   <div className={classes.root}>
 
-    <Typography className={classes.headline} variant="h2">Profile</Typography>
+    <Typography className={classes.headline} variant="h4">Profile</Typography>
 
     {profile.avatarUrl && (
       <Avatar className={classes.avatar} src={profile.avatarUrl} />
     )}
 
     {profile.displayName && (
-      <Typography className={classes.name} variant="h6">{profile.displayName}</Typography>
+      <Typography variant="h6">{profile.displayName}</Typography>
     )}
 
     {profile.email && (
-      <Typography className={classes.email}>{profile.email}</Typography>
+      <Typography>{profile.email}</Typography>
     )}
 
     <LogoutButton className={classes.signOut}>Sign Out</LogoutButton>

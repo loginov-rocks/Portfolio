@@ -1,27 +1,33 @@
 import { connect } from 'react-redux';
-import { compose, withHandlers } from 'recompose';
+import { compose, withHandlers, withStateHandlers } from 'recompose';
 
 import { deletePosition as deletePositionAction, DeletePositionAction } from 'Portfolio/actions';
-import withPositionById from 'Portfolio/enhancers/withPositionById';
-import { Position } from 'Portfolio/lib';
+import withPositionById, { Props as WithPositionByIdProps } from 'Portfolio/enhancers/withPositionById';
 
 import withNavigationHandlers from '../../enhancers/withNavigationHandlers';
 import withRouteParams from '../../enhancers/withRouteParams';
+import withStockPosition from '../../enhancers/withStockPosition';
 import { Props } from './Position';
 import * as R from '../../routes';
 import { RouteParamsState } from '../../State';
 
-interface WithHandlersProps {
-  deletePosition: DeletePositionAction;
-  handleClosePositionClick: (positionId: string) => void;
+interface WithNavigationHandlersProps {
+  handleCloseClick: () => void;
   handleHomeClick: () => void;
-  position: Position | null;
-  positionLoading: boolean;
+}
+
+interface DispatchProps {
+  deletePosition: DeletePositionAction;
+}
+
+interface WithStateHandlersProps {
+  handleWantToDelete: () => void;
+  wantToDelete: boolean;
 }
 
 const mapDispatchToProps = { deletePosition: deletePositionAction };
 
-export default compose<Props & WithHandlersProps, {}>(
+export default compose<Props, {}>(
   withNavigationHandlers({
     handleHomeClick: R.HOME,
   }),
@@ -34,16 +40,21 @@ export default compose<Props & WithHandlersProps, {}>(
     }),
   }),
   connect(null, mapDispatchToProps),
-  withHandlers<WithHandlersProps, {}>({
+  withStateHandlers(
+    { wantToDelete: false },
+    { handleWantToDelete: () => () => ({ wantToDelete: true }) },
+  ),
+  withHandlers<WithNavigationHandlersProps & WithPositionByIdProps & DispatchProps & WithStateHandlersProps, {}>({
 
     handleDeleteClick: ({
-      deletePosition, handleHomeClick, position,
+      deletePosition, handleHomeClick, position, wantToDelete,
     }) => () => {
-      if (position) {
+      if (position && wantToDelete) {
         deletePosition(position.id)
           .then(() => handleHomeClick());
       }
     },
 
   }),
+  withStockPosition,
 );

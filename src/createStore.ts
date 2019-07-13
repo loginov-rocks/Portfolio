@@ -7,6 +7,8 @@ import {
   applyMiddleware, compose, createStore, Reducer,
 } from 'redux';
 import { reduxFirestore } from 'redux-firestore';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 
 import * as C from 'Constants';
@@ -39,5 +41,15 @@ export default (reducer: Reducer) => {
     applyMiddleware(...middleware),
   );
 
-  return createStore(reducer, enhancer);
+  const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ['app', 'stocks'],
+  };
+
+  const persistedReducer = persistReducer(persistConfig, reducer);
+  const store = createStore(persistedReducer, enhancer);
+  const persistor = persistStore(store);
+
+  return { persistor, store };
 };

@@ -2,76 +2,104 @@
 
 exports[`matches snapshot 1`] = `
 <Fragment>
-  <div>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Home
-    </button>
-  </div>
-  <h1>
-    Position
-  </h1>
-  <div>
-    <withProps(PositionDetails)
-      position={
-        Object {
-          "amount": 1,
-          "closeCommission": null,
-          "closeDate": null,
-          "closePrice": null,
-          "id": "id",
-          "openCommission": 1,
-          "openDate": "2019-07-01",
-          "openPrice": 100,
-          "symbol": "AAPL",
-        }
-      }
+  <div
+    className="bar"
+  >
+    <Connect(lifecycle(mapProps(StockLogo)))
+      className="logo"
+      size={48}
+      symbol="AAPL"
     />
-  </div>
-  <div>
-    <button
+    <WithStyles(ForwardRef(IconButton))
       onClick={[Function]}
-      type="button"
     >
-      Close
-    </button>
-  </div>
-  <div>
-    <button
+      <MonetizationOnOutlinedIcon />
+    </WithStyles(ForwardRef(IconButton))>
+    <WithStyles(ForwardRef(IconButton))
       onClick={[Function]}
-      type="button"
     >
-      Delete
-    </button>
+      <DeleteOutlinedIcon />
+    </WithStyles(ForwardRef(IconButton))>
+  </div>
+  <div
+    className="root"
+  >
+    <WithStyles(ForwardRef(List))
+      className="list"
+      dense={true}
+    >
+      <WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItemText))>
+          Symbol
+        </WithStyles(ForwardRef(ListItemText))>
+        <WithStyles(ForwardRef(ListItemSecondaryAction))>
+          AAPL
+        </WithStyles(ForwardRef(ListItemSecondaryAction))>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItemText))>
+          Amount
+        </WithStyles(ForwardRef(ListItemText))>
+        <WithStyles(ForwardRef(ListItemSecondaryAction))>
+          1
+        </WithStyles(ForwardRef(ListItemSecondaryAction))>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(ListSubheader))
+        disableSticky={true}
+      >
+        Open
+      </WithStyles(ForwardRef(ListSubheader))>
+      <WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItemText))>
+          Date
+        </WithStyles(ForwardRef(ListItemText))>
+        <WithStyles(ForwardRef(ListItemSecondaryAction))>
+          <PositionDate
+            date="2019-07-01"
+          />
+        </WithStyles(ForwardRef(ListItemSecondaryAction))>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItemText))>
+          Price
+        </WithStyles(ForwardRef(ListItemText))>
+        <WithStyles(ForwardRef(ListItemSecondaryAction))>
+          <WithStyles(Money)
+            value={100}
+          />
+        </WithStyles(ForwardRef(ListItemSecondaryAction))>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItemText))>
+          Commission
+        </WithStyles(ForwardRef(ListItemText))>
+        <WithStyles(ForwardRef(ListItemSecondaryAction))>
+          <WithStyles(Money)
+            value={1}
+          />
+        </WithStyles(ForwardRef(ListItemSecondaryAction))>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItemText))>
+          Sum
+        </WithStyles(ForwardRef(ListItemText))>
+        <WithStyles(ForwardRef(ListItemSecondaryAction))>
+          <WithStyles(Money)
+            value={101}
+          />
+        </WithStyles(ForwardRef(ListItemSecondaryAction))>
+      </WithStyles(ForwardRef(ListItem))>
+    </WithStyles(ForwardRef(List))>
   </div>
 </Fragment>
 `;
 
 exports[`matches snapshot when loading 1`] = `
 <Fragment>
-  <div>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Home
-    </button>
-  </div>
-  <h1>
-    Position
-  </h1>
-  <div>
+  <div
+    className="root"
+  >
     <Progress />
-  </div>
-  <div>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Delete
-    </button>
   </div>
 </Fragment>
 `;

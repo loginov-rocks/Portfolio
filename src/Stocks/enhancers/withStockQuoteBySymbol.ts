@@ -12,7 +12,7 @@ import Quote from '../lib/IEX/Quote';
 // TODO: Tests.
 
 interface EnhancedProps {
-  symbol: string;
+  symbol: string | null;
 }
 
 interface StateProps {
@@ -56,7 +56,7 @@ export default compose<Props, EnhancedProps>(
   mapProps<Props, EnhancedProps & StateProps & DispatchProps>(({
     fetchQuote, quotes, symbol, ...props
   }) => {
-    const quote = getResourceById(quotes, symbol);
+    const quote = symbol ? getResourceById(quotes, symbol) : null;
 
     return {
       quote: extractData(quote),

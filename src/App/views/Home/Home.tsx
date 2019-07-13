@@ -1,4 +1,4 @@
-import { Tab, Tabs } from '@material-ui/core';
+import { Tab, Tabs, Typography } from '@material-ui/core';
 import * as React from 'react';
 
 import { Position } from 'Portfolio/lib';
@@ -12,42 +12,49 @@ import StockPositionsValue, {
 } from '../../components/StockPositionsValue';
 
 export interface Props {
-  handlePositionClick: (position: Position) => void;
-  handleTabChange: () => void;
+  classes: { [key: string]: string };
+  handlePositionClick: (positionId: string) => void;
+  handleTabChange: (tab: 'closed' | 'open' | 'summary') => void;
   positions: Position[];
   positionsLoading: boolean;
-  tab: number;
+  tab: 'closed' | 'open' | 'summary';
 }
 
 const Home: React.FunctionComponent<Props> = ({
-  handlePositionClick, handleTabChange, positions, positionsLoading, tab,
+  classes, handlePositionClick, handleTabChange, positions, positionsLoading, tab,
 }: Props) => (
   <React.Fragment>
 
-    <h1>Home</h1>
+    {!positionsLoading && (
+      <div className={classes.bar}>
 
-    <div>
-      {positionsLoading
-        ? <Progress />
-        : (
-          <StockPositionsValue positions={positions}>
-            {({ value }: StockPositionsValueRenderProps) => <Money value={value} />}
-          </StockPositionsValue>
-        )}
-    </div>
+        <StockPositionsValue positions={positions}>
+          {({ value }: StockPositionsValueRenderProps) => (
+            <Typography className={classes.headline} variant="h6"><Money value={value} /></Typography>
+          )}
+        </StockPositionsValue>
 
-    <Tabs onChange={handleTabChange} value={tab}>
-      <Tab label="Open" />
-      <Tab label="Closed" />
-    </Tabs>
+        <Tabs
+          indicatorColor="primary"
+          onChange={(event, newTab) => handleTabChange(newTab)}
+          value={tab}
+          variant="fullWidth"
+        >
+          <Tab label="Summary" value="summary" />
+          <Tab label="Open" value="open" />
+          <Tab label="Closed" value="closed" />
+        </Tabs>
 
-    <div>
+      </div>
+    )}
+
+    <div className={classes.root}>
       {positionsLoading
         ? <Progress />
         : (
           <React.Fragment>
-            {tab === 0 && <OpenPositionsList onClick={handlePositionClick} positions={positions} />}
-            {tab === 1 && <ClosedPositionsList onClick={handlePositionClick} positions={positions} />}
+            {tab === 'closed' && <ClosedPositionsList onPositionClick={handlePositionClick} positions={positions} />}
+            {tab === 'open' && <OpenPositionsList onPositionClick={handlePositionClick} positions={positions} />}
           </React.Fragment>
         )}
     </div>

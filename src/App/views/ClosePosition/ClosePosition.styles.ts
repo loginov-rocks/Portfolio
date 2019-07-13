@@ -1,23 +1,11 @@
 import { withStyles } from '@material-ui/core';
 
+import { viewHeadline, viewRoot } from 'Styles/mixins';
+
 export default withStyles(theme => ({
-  back: {
-    left: theme.spacing(6 - 3),
-    position: 'absolute',
-    top: theme.spacing(6 + 3) - (48 - 39) / 2, // Back button height - headline width.
-  },
-  headline: {
-    marginBottom: theme.spacing(3),
-    marginLeft: 48 - theme.spacing(3), // Back button width.
-    marginRight: 48 - theme.spacing(3), // Back button width.
-    marginTop: theme.spacing(3),
-    textAlign: 'center',
-  },
+  headline: viewHeadline(theme),
   root: {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    padding: theme.spacing(6),
+    ...viewRoot(theme),
     position: 'relative',
   },
 }));

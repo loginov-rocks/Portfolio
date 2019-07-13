@@ -11,13 +11,9 @@ interface Props {
 const Guest: React.FunctionComponent<Props> = ({ classes }: Props) => (
   <div className={classes.root}>
 
-    <div className={classes.row}>
-      <Logo />
-    </div>
+    <Logo className={classes.headline} />
 
-    <div className={classes.row}>
-      <GoogleLoginButton />
-    </div>
+    <GoogleLoginButton />
 
   </div>
 );

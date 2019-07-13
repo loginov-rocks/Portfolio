@@ -3,24 +3,32 @@ import * as React from 'react';
 // TODO: Tests.
 
 interface Props {
+  classes: { [key: string]: string };
+  highlighted?: boolean;
   pl?: boolean;
   value: number;
 }
 
-const Money: React.FunctionComponent<Props> = ({ pl, value }: Props) => {
-  const style: React.CSSProperties = {};
+const Money: React.FunctionComponent<Props> = ({
+  classes, highlighted, pl, value,
+}: Props) => {
+  let className;
 
   if (pl) {
     if (value === 0) {
-      style.color = 'gray';
+      className = classes.neutral;
     } else {
-      style.color = value > 0 ? 'green' : 'red';
+      className = value > 0 ? classes.positive : classes.negative;
     }
   }
 
-  return (
-    <span style={style}>{value.toLocaleString(undefined, { currency: 'USD', style: 'currency' })}</span>
-  );
+  const content = value.toLocaleString(undefined, { currency: 'USD', style: 'currency' });
+
+  if (highlighted) {
+    return <strong className={className}>{content}</strong>;
+  }
+
+  return <span className={className}>{content}</span>;
 };
 
 export default Money;

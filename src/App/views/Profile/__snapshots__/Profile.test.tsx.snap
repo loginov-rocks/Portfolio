@@ -6,7 +6,7 @@ exports[`matches snapshot 1`] = `
 >
   <WithStyles(ForwardRef(Typography))
     className="headline"
-    variant="h2"
+    variant="h4"
   >
     Profile
   </WithStyles(ForwardRef(Typography))>
@@ -15,14 +15,11 @@ exports[`matches snapshot 1`] = `
     src="http://example.com/avatar.png"
   />
   <WithStyles(ForwardRef(Typography))
-    className="name"
     variant="h6"
   >
     Dolph
   </WithStyles(ForwardRef(Typography))>
-  <WithStyles(ForwardRef(Typography))
-    className="email"
-  >
+  <WithStyles(ForwardRef(Typography))>
     dolph@example.com
   </WithStyles(ForwardRef(Typography))>
   <withFirebase(withHandlers(LogoutButton))

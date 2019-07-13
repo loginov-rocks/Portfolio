@@ -2,89 +2,128 @@
 
 exports[`matches snapshot when positions are loading 1`] = `
 <Fragment>
-  <h1>
-    Home
-  </h1>
-  <div>
-    <Progress />
-  </div>
-  <WithStyles(ForwardRef(Tabs))
-    onChange={[Function]}
-    value={0}
+  <div
+    className="root"
   >
-    <WithStyles(ForwardRef(Tab))
-      label="Open"
-    />
-    <WithStyles(ForwardRef(Tab))
-      label="Closed"
-    />
-  </WithStyles(ForwardRef(Tabs))>
-  <div>
     <Progress />
   </div>
 </Fragment>
 `;
 
-exports[`matches snapshot with the first tab 1`] = `
+exports[`matches snapshot with the Closed tab 1`] = `
 <Fragment>
-  <h1>
-    Home
-  </h1>
-  <div>
-    <withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))
+  <div
+    className="bar"
+  >
+    <withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))
       positions={Array []}
     >
       <Component />
-    </withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))>
+    </withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))>
+    <WithStyles(ForwardRef(Tabs))
+      indicatorColor="primary"
+      onChange={[Function]}
+      value="closed"
+      variant="fullWidth"
+    >
+      <WithStyles(ForwardRef(Tab))
+        label="Summary"
+        value="summary"
+      />
+      <WithStyles(ForwardRef(Tab))
+        label="Open"
+        value="open"
+      />
+      <WithStyles(ForwardRef(Tab))
+        label="Closed"
+        value="closed"
+      />
+    </WithStyles(ForwardRef(Tabs))>
   </div>
-  <WithStyles(ForwardRef(Tabs))
-    onChange={[Function]}
-    value={0}
+  <div
+    className="root"
   >
-    <WithStyles(ForwardRef(Tab))
-      label="Open"
-    />
-    <WithStyles(ForwardRef(Tab))
-      label="Closed"
-    />
-  </WithStyles(ForwardRef(Tabs))>
-  <div>
-    <withProps(OpenPositionsList)
-      onClick={[Function]}
+    <WithStyles(withProps(withProps(Connect(lifecycle(mapProps(mapProps(Connect(withProps(ClosedPositionsList)))))))))
+      onPositionClick={[Function]}
       positions={Array []}
     />
   </div>
 </Fragment>
 `;
 
-exports[`matches snapshot with the second tab 1`] = `
+exports[`matches snapshot with the Open tab 1`] = `
 <Fragment>
-  <h1>
-    Home
-  </h1>
-  <div>
-    <withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))
+  <div
+    className="bar"
+  >
+    <withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))
       positions={Array []}
     >
       <Component />
-    </withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue)))))>
+    </withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))>
+    <WithStyles(ForwardRef(Tabs))
+      indicatorColor="primary"
+      onChange={[Function]}
+      value="open"
+      variant="fullWidth"
+    >
+      <WithStyles(ForwardRef(Tab))
+        label="Summary"
+        value="summary"
+      />
+      <WithStyles(ForwardRef(Tab))
+        label="Open"
+        value="open"
+      />
+      <WithStyles(ForwardRef(Tab))
+        label="Closed"
+        value="closed"
+      />
+    </WithStyles(ForwardRef(Tabs))>
   </div>
-  <WithStyles(ForwardRef(Tabs))
-    onChange={[Function]}
-    value={1}
+  <div
+    className="root"
   >
-    <WithStyles(ForwardRef(Tab))
-      label="Open"
-    />
-    <WithStyles(ForwardRef(Tab))
-      label="Closed"
-    />
-  </WithStyles(ForwardRef(Tabs))>
-  <div>
-    <withProps(ClosedPositionsList)
-      onClick={[Function]}
+    <WithStyles(withProps(withProps(Connect(lifecycle(mapProps(mapProps(Connect(withProps(OpenPositionsList)))))))))
+      onPositionClick={[Function]}
       positions={Array []}
     />
   </div>
+</Fragment>
+`;
+
+exports[`matches snapshot with the Summary tab 1`] = `
+<Fragment>
+  <div
+    className="bar"
+  >
+    <withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))
+      positions={Array []}
+    >
+      <Component />
+    </withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))>
+    <WithStyles(ForwardRef(Tabs))
+      indicatorColor="primary"
+      onChange={[Function]}
+      value="summary"
+      variant="fullWidth"
+    >
+      <WithStyles(ForwardRef(Tab))
+        label="Summary"
+        value="summary"
+      />
+      <WithStyles(ForwardRef(Tab))
+        label="Open"
+        value="open"
+      />
+      <WithStyles(ForwardRef(Tab))
+        label="Closed"
+        value="closed"
+      />
+    </WithStyles(ForwardRef(Tabs))>
+  </div>
+  <div
+    className="root"
+  />
 </Fragment>
 `;

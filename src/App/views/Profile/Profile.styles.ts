@@ -1,5 +1,7 @@
 import { withStyles } from '@material-ui/core';
 
+import { viewHeadline, viewRoot } from 'Styles/mixins';
+
 export default withStyles(theme => ({
   avatar: {
     height: 128,
@@ -7,22 +9,10 @@ export default withStyles(theme => ({
     marginTop: theme.spacing(3),
     width: 128,
   },
-  email: {
-    //
-  },
-  headline: {
-    marginBottom: theme.spacing(3),
-    marginTop: theme.spacing(3),
-    textAlign: 'center',
-  },
-  name: {
-    //
-  },
+  headline: viewHeadline(theme),
   root: {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    padding: theme.spacing(6),
+    ...viewRoot(theme),
+    justifyContent: 'center',
   },
   signOut: {
     marginBottom: theme.spacing(3),

@@ -285,7 +285,12 @@ exports[`matches snapshot if authenticated 1`] = `
   }
 >
   <CssBaseline />
-  <WithStyles(Connect(Navigation)) />
+  <PersistGate
+    loading={<ForwardRef(WithStyles) />}
+    persistor={Object {}}
+  >
+    <WithStyles(Connect(Navigation)) />
+  </PersistGate>
 </ThemeProvider>
 `;
 
@@ -574,7 +579,12 @@ exports[`matches snapshot if loading 1`] = `
   }
 >
   <CssBaseline />
-  <WithStyles(Loading) />
+  <PersistGate
+    loading={<ForwardRef(WithStyles) />}
+    persistor={Object {}}
+  >
+    <WithStyles(Loading) />
+  </PersistGate>
 </ThemeProvider>
 `;
 
@@ -863,6 +873,11 @@ exports[`matches snapshot if unauthenticated 1`] = `
   }
 >
   <CssBaseline />
-  <WithStyles(Guest) />
+  <PersistGate
+    loading={<ForwardRef(WithStyles) />}
+    persistor={Object {}}
+  >
+    <WithStyles(Guest) />
+  </PersistGate>
 </ThemeProvider>
 `;

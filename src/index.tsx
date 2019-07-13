@@ -10,11 +10,11 @@ import createStore from './createStore';
 import reducer from './reducer';
 
 const container = document.getElementById('root');
-const store = createStore(reducer);
+const { persistor, store } = createStore(reducer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <App persistor={persistor} />
   </Provider>,
   container,
 );
