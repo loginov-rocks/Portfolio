@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run clean:build && npm run build:sources && npm run clean:tests",
     "build:sources": "babel src -d lib --extensions .ts",
-    "ci": "npm run lint && npm run typecheck && npm test && npm run build",
+    "ci": "npm run lint && npm run typecheck && npm test",
     "clean:build": "rimraf lib",
     "clean:coverage": "rimraf coverage",
     "clean:tests": "rimraf lib/**/*.test.js",
@@ -38,23 +38,23 @@
   "dependencies": {
     "actions-on-google": "^2.8.0",
     "firebase-admin": "^8.2.0",
-    "firebase-functions": "^3.0.2"
+    "firebase-functions": "^3.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",
-    "@babel/core": "^7.5.0",
-    "@babel/preset-env": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
     "@babel/preset-typescript": "^7.3.3",
     "@types/jest": "^24.0.15",
-    "@typescript-eslint/eslint-plugin": "^1.11.0",
-    "@typescript-eslint/parser": "^1.11.0",
-    "coveralls": "^3.0.4",
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
+    "coveralls": "^3.0.5",
     "eslint": "^6.0.1",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.0",
     "jest": "^24.8.0",
     "rimraf": "^2.6.3",
-    "typescript": "^3.5.2"
+    "typescript": "^3.5.3"
   },
   "jest": {
     "verbose": true
