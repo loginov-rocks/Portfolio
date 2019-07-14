@@ -2,8 +2,6 @@ import * as React from 'react';
 
 import Progress from 'Shared/components/Progress';
 
-// TODO: Tests.
-
 export interface Props {
   className?: string;
   logo: string | null;

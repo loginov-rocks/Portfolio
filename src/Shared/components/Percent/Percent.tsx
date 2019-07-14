@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-// TODO: Tests.
-
 interface Props {
   classes: { [key: string]: string };
   highlighted?: boolean;
