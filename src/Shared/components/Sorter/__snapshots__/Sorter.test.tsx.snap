@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Fragment>
+  <WithStyles(ForwardRef(ButtonGroup))>
+    <WithStyles(ForwardRef(Button))
+      onClick={[Function]}
+    >
+      Open Price
+    </WithStyles(ForwardRef(Button))>
+    <WithStyles(ForwardRef(Button))
+      onClick={[Function]}
+      size="small"
+    >
+      <SortOutlinedIcon
+        style={
+          Object {
+            "transform": "scaleY(-1)",
+          }
+        }
+      />
+    </WithStyles(ForwardRef(Button))>
+  </WithStyles(ForwardRef(ButtonGroup))>
+  <WithStyles(ForwardRef(Menu))
+    anchorEl={null}
+    anchorOrigin={
+      Object {
+        "horizontal": "left",
+        "vertical": "bottom",
+      }
+    }
+    getContentAnchorEl={null}
+    onClose={[Function]}
+    open={false}
+  >
+    <WithStyles(ForwardRef(MenuItem))
+      key="openPrice"
+      onClick={[Function]}
+    >
+      <strong>
+        Open Price
+      </strong>
+    </WithStyles(ForwardRef(MenuItem))>
+    <WithStyles(ForwardRef(MenuItem))
+      key="closePrice"
+      onClick={[Function]}
+    >
+      Close Price
+    </WithStyles(ForwardRef(MenuItem))>
+    <WithStyles(ForwardRef(MenuItem))
+      key="marketPrice"
+      onClick={[Function]}
+    >
+      Market Price
+    </WithStyles(ForwardRef(MenuItem))>
+  </WithStyles(ForwardRef(Menu))>
+</Fragment>
+`;

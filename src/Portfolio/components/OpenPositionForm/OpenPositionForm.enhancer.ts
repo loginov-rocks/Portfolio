@@ -49,11 +49,19 @@ export default compose<Props & DispatchProps & WithStateHandlersProps, EnhancedP
         };
       },
       handleDateChange: () => event => {
-        const date = new Date(event.target.value);
+        let date;
 
-        return {
-          date: formatDate(date || new Date()),
-        };
+        try {
+          date = formatDate(new Date(event.target.value));
+        } catch (error) {
+          //
+        }
+
+        if (!date) {
+          date = formatDate(new Date());
+        }
+
+        return { date };
       },
       handlePriceChange: () => event => {
         const price = parseFloat(event.target.value);

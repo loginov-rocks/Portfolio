@@ -4,8 +4,6 @@ import {
 import { SortOutlined } from '@material-ui/icons';
 import * as React from 'react';
 
-// TODO: Tests.
-
 export interface Props {
   anchor: HTMLElement | null;
   keyLabel: string;

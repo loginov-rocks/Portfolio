@@ -8,3 +8,9 @@ it('matches snapshot', () => {
 
   expect(wrapper).toMatchSnapshot();
 });
+
+it('matches snapshot when size is large', () => {
+  const wrapper = shallow(<Progress size="large" />);
+
+  expect(wrapper).toMatchSnapshot();
+});

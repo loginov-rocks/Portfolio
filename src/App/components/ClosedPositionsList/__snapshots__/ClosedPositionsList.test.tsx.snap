@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Fragment>
+  <withState(withProps(Sorter))
+    keys={
+      Array [
+        Object {
+          "key": "symbol",
+          "label": "Symbol",
+        },
+        Object {
+          "key": "openDate",
+          "label": "Open Date",
+        },
+        Object {
+          "key": "closeDate",
+          "label": "Close Date",
+        },
+        Object {
+          "key": "closePL",
+          "label": "PL",
+        },
+        Object {
+          "key": "closePLPercent",
+          "label": "PL%",
+        },
+        Object {
+          "key": "closePLAnnualPercent",
+          "label": "Annual PL%",
+        },
+      ]
+    }
+    onKeyChange={[Function]}
+    onOrderChange={[Function]}
+    sorterKey="openPrice"
+    sorterOrder="asc"
+  />
+  <WithStyles(ForwardRef(List))
+    className="list"
+    dense={true}
+  />
+</Fragment>
+`;

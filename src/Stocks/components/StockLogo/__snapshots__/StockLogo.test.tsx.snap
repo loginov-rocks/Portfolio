@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <img
+    alt=""
+    src="https://example.com/stock/logo.png"
+    style={
+      Object {
+        "height": 40,
+        "objectFit": "contain",
+        "verticalAlign": "top",
+        "width": 40,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`matches snapshot when loading 1`] = `<Progress />`;
+
+exports[`matches snapshot when logo is null 1`] = `""`;
