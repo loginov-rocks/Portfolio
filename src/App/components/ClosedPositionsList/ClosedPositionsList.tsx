@@ -39,14 +39,14 @@ const ClosedPositionsList: React.FunctionComponent<Props> = ({
 
     <List dense className={classes.list}>
       {stockPositions.map(({
-        amount, closeDate, closePL, closePLAnnualPercent, closePLPercent, id, openDate, quote, quoteProgress, symbol,
+        amount, closeDate, closePL, closePLAnnualPercent, closePLPercent, companyName, id, openDate, symbol,
       }) => (
         <ListItem button key={id} onClick={() => onPositionClick && onPositionClick(id)}>
 
           <ListItemIcon><StockLogo symbol={symbol} /></ListItemIcon>
 
           <ListItemText
-            primary={quoteProgress || quote === null ? symbol : quote && quote.companyName}
+            primary={companyName === null ? symbol : companyName}
             secondary={(
               <React.Fragment>
                 {amount}

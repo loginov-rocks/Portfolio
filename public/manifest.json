@@ -1,6 +1,6 @@
 {
-  "short_name": "Portfolio",
-  "name": "Portfolio",
+  "background_color": "#ffffff",
+  "display": "standalone",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,8 +8,10 @@
       "type": "image/x-icon"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff"
+  "lang": "en",
+  "name": "Portfolio",
+  "scope": "./",
+  "short_name": "Portfolio",
+  "start_url": "./",
+  "theme_color": "#ffffff"
 }

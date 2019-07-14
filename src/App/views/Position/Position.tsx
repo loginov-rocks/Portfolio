@@ -32,9 +32,7 @@ const Position: React.FunctionComponent<Props> = ({
 
         <StockLogo className={classes.logo} size={48} symbol={stockPosition.symbol} />
 
-        {stockPosition.quote && (
-          <Typography className={classes.companyName}>{stockPosition.quote.companyName}</Typography>
-        )}
+        <Typography className={classes.companyName}>{stockPosition.companyName}</Typography>
 
         {stockPosition.closeDate === null && (
           <IconButton onClick={handleCloseClick}>

@@ -15,6 +15,7 @@ export interface StockPosition extends Position {
   quote: Quote | null;
   quoteProgress: boolean;
 
+  companyName: string | null;
   dailyPL: number | null;
   dailyPLPercent: number | null;
 
@@ -40,10 +41,12 @@ export const createStockPosition = (position: Position, quote: Quote | null, quo
     closePLAnnualPercent = annualizePercent(closePLPercent, position.openDate, position.closeDate);
   }
 
+  let companyName = null;
   let dailyPL = null;
   let dailyPLPercent = null;
 
   if (quote) {
+    ({ companyName } = quote);
     dailyPL = position.amount * quote.change;
     dailyPLPercent = quote.changePercent;
   }
@@ -67,6 +70,7 @@ export const createStockPosition = (position: Position, quote: Quote | null, quo
     closePLAnnualPercent,
     closePLPercent,
     closeSum,
+    companyName,
     dailyPL,
     dailyPLPercent,
     marketPL,
