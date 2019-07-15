@@ -13,6 +13,9 @@ it('matches snapshot', () => {
       sorterKey="openPrice"
       sorterOrder="asc"
       stockPositions={[]}
+      totalClosePL={100}
+      totalClosePLPercent={1}
+      totalCloseSum={1000}
     />,
   );
 

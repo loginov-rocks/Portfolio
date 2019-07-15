@@ -13,6 +13,11 @@ it('matches snapshot', () => {
       sorterKey="openPrice"
       sorterOrder="asc"
       stockPositions={[]}
+      totalDailyPL={10}
+      totalDailyPLPercent={0.1}
+      totalMarketPL={100}
+      totalMarketPLPercent={1}
+      totalMarketSum={1000}
     />,
   );
 
