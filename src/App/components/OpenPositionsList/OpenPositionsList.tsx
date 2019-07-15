@@ -49,7 +49,7 @@ const OpenPositionsList: React.FunctionComponent<Props> = ({
       sorterOrder={sorterOrder}
     />
 
-    <List dense className={classes.list}>
+    <List className={classes.list} dense disablePadding>
       {stockPositions.map(({
         amount, companyName, dailyPL, dailyPLPercent, id, marketPL, marketPLAnnualPercent, marketPLPercent, openDate,
         symbol,

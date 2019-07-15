@@ -52,7 +52,7 @@ const Position: React.FunctionComponent<Props> = ({
       {positionLoading && <Progress />}
 
       {!positionLoading && stockPosition && (
-        <List className={classes.list} dense>
+        <List className={classes.list} disablePadding dense>
 
           <ListItem>
             <ListItemText>Symbol</ListItemText>

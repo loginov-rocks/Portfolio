@@ -45,7 +45,7 @@ const ClosedPositionsList: React.FunctionComponent<Props> = ({
       sorterOrder={sorterOrder}
     />
 
-    <List dense className={classes.list}>
+    <List className={classes.list} dense disablePadding>
       {stockPositions.map(({
         amount, closeDate, closePL, closePLAnnualPercent, closePLPercent, companyName, id, openDate, symbol,
       }) => (

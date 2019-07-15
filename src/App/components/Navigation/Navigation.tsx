@@ -44,9 +44,9 @@ const Navigation: React.FunctionComponent<Props> = ({ classes, navigate, route }
   return (
     <React.Fragment>
 
-      <Component />
-
-      <div className={classes.bottomMock} />
+      <div className={classes.container}>
+        <Component />
+      </div>
 
       <BottomNavigation
         className={classes.bottomNavigation}

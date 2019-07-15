@@ -7,10 +7,8 @@ export default withStyles(theme => ({
     alignItems: 'center',
     borderBottom: `1px solid ${theme.palette.divider}`,
     display: 'flex',
-    paddingBottom: theme.spacing(2),
-    paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(2.5),
-    paddingTop: theme.spacing(2),
+    padding: theme.spacing(2),
+    paddingRight: theme.spacing(0.5),
   },
   companyName: {
     flexGrow: 1,
@@ -21,8 +19,5 @@ export default withStyles(theme => ({
   logo: {
     marginRight: theme.spacing(1.5),
   },
-  root: {
-    ...viewRoot(theme),
-    padding: theme.spacing(2),
-  },
+  root: viewRoot(theme, { dense: true }),
 }));

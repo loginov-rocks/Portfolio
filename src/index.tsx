@@ -9,7 +9,7 @@ import 'Styles/index.css';
 import createStore from './createStore';
 import reducer from './reducer';
 
-const container = document.getElementById('root');
+const container = document.getElementById('app');
 const { persistor, store } = createStore(reducer);
 
 ReactDOM.render(
