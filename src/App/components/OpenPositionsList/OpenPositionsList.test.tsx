@@ -10,7 +10,7 @@ it('matches snapshot', () => {
       classes={classes}
       handleSorterKeyChange={() => undefined}
       handleSorterOrderChange={() => undefined}
-      sorterKey="openPrice"
+      sorterKey="companyName"
       sorterOrder="asc"
       stockPositions={[]}
       totalDailyPL={10}

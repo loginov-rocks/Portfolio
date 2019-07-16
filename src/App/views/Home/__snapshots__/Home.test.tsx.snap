@@ -124,6 +124,10 @@ exports[`matches snapshot with the Summary tab 1`] = `
   </div>
   <div
     className="root"
-  />
+  >
+    <WithStyles(withProps(withProps(Connect(lifecycle(mapProps(mapProps(withProps(Connect(withProps(OpenPositionsSummariesList))))))))))
+      positions={Array []}
+    />
+  </div>
 </Fragment>
 `;

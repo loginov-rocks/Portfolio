@@ -2,35 +2,12 @@
 
 exports[`matches snapshot 1`] = `
 <Fragment>
-  <WithStyles(Money)
-    value={1000}
-  />
-  <WithStyles(Money)
-    pl={true}
-    value={100}
-  />
-  <WithStyles(Percent)
-    pl={true}
-    value={1}
-  />
-  <WithStyles(Money)
-    pl={true}
-    value={10}
-  />
-  <WithStyles(Percent)
-    pl={true}
-    value={0.1}
-  />
   <withState(withProps(Sorter))
     keys={
       Array [
         Object {
           "key": "companyName",
           "label": "Company Name",
-        },
-        Object {
-          "key": "openDate",
-          "label": "Open Date",
         },
         Object {
           "key": "dailyPL",
@@ -47,10 +24,6 @@ exports[`matches snapshot 1`] = `
         Object {
           "key": "marketPLPercent",
           "label": "PL%",
-        },
-        Object {
-          "key": "marketPLAnnualPercent",
-          "label": "Annual PL%",
         },
       ]
     }

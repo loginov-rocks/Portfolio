@@ -2,20 +2,17 @@ import { shallow } from 'enzyme';
 import classes from 'identity-obj-proxy';
 import * as React from 'react';
 
-import ClosedPositionsList from './ClosedPositionsList';
+import OpenPositionsSummariesList from './OpenPositionsSummariesList';
 
 it('matches snapshot', () => {
   const wrapper = shallow(
-    <ClosedPositionsList
+    <OpenPositionsSummariesList
       classes={classes}
       handleSorterKeyChange={() => undefined}
       handleSorterOrderChange={() => undefined}
       sorterKey="companyName"
       sorterOrder="asc"
-      stockPositions={[]}
-      totalClosePL={100}
-      totalClosePLPercent={1}
-      totalCloseSum={1000}
+      summaries={[]}
     />,
   );
 

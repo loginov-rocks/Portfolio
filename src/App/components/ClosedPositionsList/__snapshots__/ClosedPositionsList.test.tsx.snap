@@ -44,12 +44,13 @@ exports[`matches snapshot 1`] = `
     }
     onKeyChange={[Function]}
     onOrderChange={[Function]}
-    sorterKey="openPrice"
+    sorterKey="companyName"
     sorterOrder="asc"
   />
   <WithStyles(ForwardRef(List))
     className="list"
     dense={true}
+    disablePadding={true}
   />
 </Fragment>
 `;

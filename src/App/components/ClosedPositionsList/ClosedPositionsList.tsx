@@ -12,8 +12,6 @@ import StockLogo from 'Stocks/components/StockLogo';
 
 import { StockPosition } from '../../lib';
 
-// TODO: Tests.
-
 export interface Props {
   classes: { [key: string]: string };
   handleSorterKeyChange: (key: string) => void;

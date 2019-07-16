@@ -2,10 +2,11 @@
 
 exports[`matches snapshot if on the close position page 1`] = `
 <Fragment>
-  <WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition))))))))) />
   <div
-    className="bottomMock"
-  />
+    className="container"
+  >
+    <WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition))))))))) />
+  </div>
   <WithStyles(ForwardRef(BottomNavigation))
     className="bottomNavigation"
     onChange={[Function]}
@@ -33,10 +34,11 @@ exports[`matches snapshot if on the close position page 1`] = `
 
 exports[`matches snapshot if on the create position page 1`] = `
 <Fragment>
-  <WithStyles(Connect(withHandlers(withHandlers(CreatePosition)))) />
   <div
-    className="bottomMock"
-  />
+    className="container"
+  >
+    <WithStyles(Connect(withHandlers(withHandlers(CreatePosition)))) />
+  </div>
   <WithStyles(ForwardRef(BottomNavigation))
     className="bottomNavigation"
     onChange={[Function]}
@@ -64,10 +66,11 @@ exports[`matches snapshot if on the create position page 1`] = `
 
 exports[`matches snapshot if on the home page 1`] = `
 <Fragment>
-  <WithStyles(Connect(withHandlers(Connect(branch(FirestoreConnect(Connect(Connect(Home)))))))) />
   <div
-    className="bottomMock"
-  />
+    className="container"
+  >
+    <WithStyles(Connect(withHandlers(Connect(branch(FirestoreConnect(Connect(Connect(Home)))))))) />
+  </div>
   <WithStyles(ForwardRef(BottomNavigation))
     className="bottomNavigation"
     onChange={[Function]}
@@ -95,10 +98,11 @@ exports[`matches snapshot if on the home page 1`] = `
 
 exports[`matches snapshot if on the position page 1`] = `
 <Fragment>
-  <WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(Connect(withHandlers(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Position)))))))))))))))))) />
   <div
-    className="bottomMock"
-  />
+    className="container"
+  >
+    <WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(Connect(withHandlers(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Position)))))))))))))))))) />
+  </div>
   <WithStyles(ForwardRef(BottomNavigation))
     className="bottomNavigation"
     onChange={[Function]}
@@ -126,10 +130,11 @@ exports[`matches snapshot if on the position page 1`] = `
 
 exports[`matches snapshot if on the profile page 1`] = `
 <Fragment>
-  <WithStyles(Connect(Profile)) />
   <div
-    className="bottomMock"
-  />
+    className="container"
+  >
+    <WithStyles(Connect(Profile)) />
+  </div>
   <WithStyles(ForwardRef(BottomNavigation))
     className="bottomNavigation"
     onChange={[Function]}
