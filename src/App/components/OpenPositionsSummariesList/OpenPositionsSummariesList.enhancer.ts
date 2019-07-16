@@ -6,7 +6,7 @@ import { sortCollection } from 'Shared/lib';
 
 import withSorter, { Props as WithSorterProps } from '../../enhancers/withSorter';
 import withStockPositions, { Props as WithStockPositionsProps } from '../../enhancers/withStockPositions';
-import { createOpenPositionsSummaries, OpenPositionsSummary } from '../../lib';
+import { calculateTotals, createOpenPositionsSummaries, OpenPositionsSummary } from '../../lib';
 import { Props } from './OpenPositionsSummariesList';
 
 interface EnhancedProps {
@@ -31,8 +31,9 @@ export default compose<Props, EnhancedProps>(
     C.OPEN_POSITIONS_SUMMARIES_LIST_SORTER_INITIAL_ORDER,
   ),
   withProps<Partial<Props>, EnhancedProps & WithStockPositionsProps & WithSorterProps & WithProps>(({
-    sorterKey, sorterOrder, summaries,
+    sorterKey, sorterOrder, stockPositions, summaries,
   }) => ({
     summaries: sortCollection(summaries, sorterKey as keyof OpenPositionsSummary, sorterOrder),
+    ...calculateTotals(stockPositions),
   })),
 );

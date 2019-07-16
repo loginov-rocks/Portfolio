@@ -15,11 +15,6 @@ exports[`matches snapshot with the Closed tab 1`] = `
   <div
     className="bar"
   >
-    <withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))
-      positions={Array []}
-    >
-      <Component />
-    </withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))>
     <WithStyles(ForwardRef(Tabs))
       indicatorColor="primary"
       onChange={[Function]}
@@ -56,11 +51,6 @@ exports[`matches snapshot with the Open tab 1`] = `
   <div
     className="bar"
   >
-    <withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))
-      positions={Array []}
-    >
-      <Component />
-    </withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))>
     <WithStyles(ForwardRef(Tabs))
       indicatorColor="primary"
       onChange={[Function]}
@@ -97,11 +87,6 @@ exports[`matches snapshot with the Summary tab 1`] = `
   <div
     className="bar"
   >
-    <withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))
-      positions={Array []}
-    >
-      <Component />
-    </withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))>
     <WithStyles(ForwardRef(Tabs))
       indicatorColor="primary"
       onChange={[Function]}

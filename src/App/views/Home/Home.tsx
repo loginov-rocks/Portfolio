@@ -1,16 +1,12 @@
-import { Tab, Tabs, Typography } from '@material-ui/core';
+import { Tab, Tabs } from '@material-ui/core';
 import * as React from 'react';
 
 import { Position } from 'Portfolio/lib';
-import Money from 'Shared/components/Money';
 import Progress from 'Shared/components/Progress';
 
 import ClosedPositionsList from '../../components/ClosedPositionsList';
 import OpenPositionsList from '../../components/OpenPositionsList';
 import OpenPositionsSummariesList from '../../components/OpenPositionsSummariesList';
-import StockPositionsValue, {
-  RenderProps as StockPositionsValueRenderProps,
-} from '../../components/StockPositionsValue';
 
 export interface Props {
   classes: { [key: string]: string };
@@ -28,12 +24,6 @@ const Home: React.FunctionComponent<Props> = ({
 
     {!positionsLoading && (
       <div className={classes.bar}>
-
-        <StockPositionsValue positions={positions}>
-          {({ value }: StockPositionsValueRenderProps) => (
-            <Typography className={classes.headline} variant="h6"><Money value={value} /></Typography>
-          )}
-        </StockPositionsValue>
 
         <Tabs
           indicatorColor="primary"

@@ -7,7 +7,7 @@ import { sortCollection } from 'Shared/lib';
 import { Props } from './ClosedPositionsList';
 import withSorter, { Props as WithSorterProps } from '../../enhancers/withSorter';
 import withStockPositions, { Props as WithStockPositionsProps } from '../../enhancers/withStockPositions';
-import { StockPosition } from '../../lib';
+import { calculateTotals, StockPosition } from '../../lib';
 
 interface EnhancedProps {
   onPositionClick?: (positionId: string) => void;
@@ -26,26 +26,8 @@ export default compose<Props, EnhancedProps>(
   ),
   withProps<Partial<Props>, EnhancedProps & WithStockPositionsProps & WithSorterProps>(({
     stockPositions, sorterKey, sorterOrder,
-  }) => {
-    let totalOpenSum = 0;
-    let totalCloseSum = 0;
-
-    stockPositions.forEach(position => {
-      totalOpenSum += position.openSum;
-
-      if (position.closeSum !== null) {
-        totalCloseSum += position.closeSum;
-      }
-    });
-
-    const totalClosePL = totalCloseSum - totalOpenSum;
-    const totalClosePLPercent = totalClosePL / totalOpenSum;
-
-    return {
-      stockPositions: sortCollection(stockPositions, sorterKey as keyof StockPosition, sorterOrder),
-      totalClosePL,
-      totalClosePLPercent,
-      totalCloseSum,
-    };
-  }),
+  }) => ({
+    stockPositions: sortCollection(stockPositions, sorterKey as keyof StockPosition, sorterOrder),
+    ...calculateTotals(stockPositions),
+  })),
 );

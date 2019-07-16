@@ -41,6 +41,21 @@ export interface OpenPositionsSummary {
   marketPLPercent: number | null;
 }
 
+export interface Totals {
+  totalOpenSum: number;
+
+  totalCloseSum: number;
+  totalClosePL: number;
+  totalClosePLPercent: number;
+
+  totalDailyPL: number;
+  totalDailyPLPercent: number;
+
+  totalMarketPL: number;
+  totalMarketPLPercent: number;
+  totalMarketSum: number;
+}
+
 export const createStockPosition = (position: Position, quote: Quote | null, quoteProgress: boolean): StockPosition => {
   const openSum = position.amount * position.openPrice + position.openCommission;
 
@@ -60,7 +75,7 @@ export const createStockPosition = (position: Position, quote: Quote | null, quo
   let dailyPL = null;
   let dailyPLPercent = null;
 
-  if (quote) {
+  if (quote !== null) {
     ({ companyName } = quote);
     dailyPL = position.amount * quote.change;
     dailyPLPercent = quote.changePercent;
@@ -72,7 +87,7 @@ export const createStockPosition = (position: Position, quote: Quote | null, quo
   let marketPLPercent = null;
   let marketPLAnnualPercent = null;
 
-  if (marketPrice) {
+  if (marketPrice !== null) {
     marketSum = position.amount * marketPrice;
     marketPL = marketSum - openSum;
     marketPLPercent = marketPL / openSum;
@@ -166,4 +181,49 @@ export const createOpenPositionsSummaries = (stockPositions: StockPosition[]): O
       symbol,
     };
   });
+};
+
+export const calculateTotals = (stockPositions: StockPosition[]): Totals => {
+  let totalOpenSum = 0;
+  let totalCloseSum = 0;
+  let totalDailyPL = 0;
+  let totalPreviousCloseSum = 0;
+  let totalMarketSum = 0;
+
+  stockPositions.forEach(position => {
+    totalOpenSum += position.openSum;
+
+    if (position.closeSum !== null) {
+      totalCloseSum += position.closeSum;
+    }
+
+    if (position.quote !== null) {
+      totalDailyPL += position.amount * position.quote.change;
+      totalPreviousCloseSum += position.amount * position.quote.close;
+    }
+
+    if (position.marketSum !== null) {
+      totalMarketSum += position.marketSum;
+    }
+  });
+
+  const totalClosePL = totalCloseSum - totalOpenSum;
+  const totalClosePLPercent = totalClosePL / totalOpenSum;
+
+  const totalDailyPLPercent = totalDailyPL / totalPreviousCloseSum;
+
+  const totalMarketPL = totalMarketSum - totalOpenSum;
+  const totalMarketPLPercent = totalMarketPL / totalOpenSum;
+
+  return {
+    totalClosePL,
+    totalClosePLPercent,
+    totalCloseSum,
+    totalDailyPL,
+    totalDailyPLPercent,
+    totalMarketPL,
+    totalMarketPLPercent,
+    totalMarketSum,
+    totalOpenSum,
+  };
 };

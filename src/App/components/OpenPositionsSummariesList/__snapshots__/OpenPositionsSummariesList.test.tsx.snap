@@ -2,6 +2,19 @@
 
 exports[`matches snapshot 1`] = `
 <Fragment>
+  <WithStyles(Money) />
+  <WithStyles(Money)
+    pl={true}
+  />
+  <WithStyles(Percent)
+    pl={true}
+  />
+  <WithStyles(Money)
+    pl={true}
+  />
+  <WithStyles(Percent)
+    pl={true}
+  />
   <withState(withProps(Sorter))
     keys={
       Array [
