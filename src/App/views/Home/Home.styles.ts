@@ -7,11 +7,5 @@ export default withStyles(theme => ({
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
   headline: viewHeadline(theme),
-  root: {
-    ...viewRoot(theme),
-    paddingBottom: theme.spacing(2),
-    paddingLeft: 0,
-    paddingRight: 0,
-    paddingTop: theme.spacing(2),
-  },
+  root: viewRoot(theme, { dense: true }),
 }));

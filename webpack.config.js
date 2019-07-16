@@ -11,7 +11,10 @@ module.exports = {
     historyApiFallback: true,
     port: 3000,
   },
-  entry: './src/index.tsx',
+  entry: {
+    bundle: './src/index.tsx',
+    serviceWorker: './src/serviceWorker.ts',
+  },
   module: {
     rules: [
       {
@@ -30,7 +33,7 @@ module.exports = {
     ],
   },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [

@@ -12,8 +12,6 @@ import StockLogo from 'Stocks/components/StockLogo';
 
 import { StockPosition } from '../../lib';
 
-// TODO: Tests.
-
 export interface Props {
   classes: { [key: string]: string };
   handleSorterKeyChange: (key: string) => void;
@@ -22,12 +20,24 @@ export interface Props {
   sorterKey: string;
   sorterOrder: 'asc' | 'desc';
   stockPositions: StockPosition[];
+  totalDailyPL: number;
+  totalDailyPLPercent: number;
+  totalMarketPL: number;
+  totalMarketPLPercent: number;
+  totalMarketSum: number;
 }
 
 const OpenPositionsList: React.FunctionComponent<Props> = ({
   classes, handleSorterKeyChange, handleSorterOrderChange, onPositionClick, stockPositions, sorterKey, sorterOrder,
+  totalDailyPL, totalDailyPLPercent, totalMarketPL, totalMarketPLPercent, totalMarketSum,
 }: Props) => (
   <React.Fragment>
+
+    <Money value={totalMarketSum} />
+    <Money pl value={totalMarketPL} />
+    <Percent pl value={totalMarketPLPercent} />
+    <Money pl value={totalDailyPL} />
+    <Percent pl value={totalDailyPLPercent} />
 
     <Sorter
       keys={C.OPEN_POSITIONS_LIST_SORTER_KEYS}
@@ -37,17 +47,17 @@ const OpenPositionsList: React.FunctionComponent<Props> = ({
       sorterOrder={sorterOrder}
     />
 
-    <List dense className={classes.list}>
+    <List className={classes.list} dense disablePadding>
       {stockPositions.map(({
-        amount, dailyPL, dailyPLPercent, id, marketPL, marketPLAnnualPercent, marketPLPercent, openDate, quote,
-        quoteProgress, symbol,
+        amount, companyName, dailyPL, dailyPLPercent, id, marketPL, marketPLAnnualPercent, marketPLPercent, openDate,
+        symbol,
       }) => (
         <ListItem button key={id} onClick={() => onPositionClick && onPositionClick(id)}>
 
           <ListItemIcon><StockLogo symbol={symbol} /></ListItemIcon>
 
           <ListItemText
-            primary={quoteProgress || quote === null ? symbol : quote && quote.companyName}
+            primary={companyName === null ? symbol : companyName}
             secondary={(
               <React.Fragment>
                 {amount}

@@ -7,6 +7,7 @@ import Progress from 'Shared/components/Progress';
 
 import ClosedPositionsList from '../../components/ClosedPositionsList';
 import OpenPositionsList from '../../components/OpenPositionsList';
+import OpenPositionsSummariesList from '../../components/OpenPositionsSummariesList';
 import StockPositionsValue, {
   RenderProps as StockPositionsValueRenderProps,
 } from '../../components/StockPositionsValue';
@@ -55,6 +56,7 @@ const Home: React.FunctionComponent<Props> = ({
           <React.Fragment>
             {tab === 'closed' && <ClosedPositionsList onPositionClick={handlePositionClick} positions={positions} />}
             {tab === 'open' && <OpenPositionsList onPositionClick={handlePositionClick} positions={positions} />}
+            {tab === 'summary' && <OpenPositionsSummariesList positions={positions} />}
           </React.Fragment>
         )}
     </div>

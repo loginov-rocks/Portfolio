@@ -1,15 +1,22 @@
 {
-  "short_name": "Portfolio",
-  "name": "Portfolio",
+  "background_color": "#03a9f4",
+  "display": "standalone",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "sizes": "192x192",
+      "src": "android-chrome-192x192.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "512x512",
+      "src": "android-chrome-512x512.png",
+      "type": "image/png"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff"
+  "lang": "en",
+  "name": "Portfolio",
+  "scope": "./",
+  "short_name": "Portfolio",
+  "start_url": "./",
+  "theme_color": "#03a9f4"
 }

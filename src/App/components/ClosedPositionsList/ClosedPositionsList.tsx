@@ -12,8 +12,6 @@ import StockLogo from 'Stocks/components/StockLogo';
 
 import { StockPosition } from '../../lib';
 
-// TODO: Tests.
-
 export interface Props {
   classes: { [key: string]: string };
   handleSorterKeyChange: (key: string) => void;
@@ -22,12 +20,20 @@ export interface Props {
   sorterKey: string;
   sorterOrder: 'asc' | 'desc';
   stockPositions: StockPosition[];
+  totalClosePL: number;
+  totalClosePLPercent: number;
+  totalCloseSum: number;
 }
 
 const ClosedPositionsList: React.FunctionComponent<Props> = ({
   classes, handleSorterKeyChange, handleSorterOrderChange, onPositionClick, stockPositions, sorterKey, sorterOrder,
+  totalClosePL, totalClosePLPercent, totalCloseSum,
 }: Props) => (
   <React.Fragment>
+
+    <Money value={totalCloseSum} />
+    <Money pl value={totalClosePL} />
+    <Percent pl value={totalClosePLPercent} />
 
     <Sorter
       keys={C.CLOSED_POSITIONS_LIST_SORTER_KEYS}
@@ -37,16 +43,16 @@ const ClosedPositionsList: React.FunctionComponent<Props> = ({
       sorterOrder={sorterOrder}
     />
 
-    <List dense className={classes.list}>
+    <List className={classes.list} dense disablePadding>
       {stockPositions.map(({
-        amount, closeDate, closePL, closePLAnnualPercent, closePLPercent, id, openDate, quote, quoteProgress, symbol,
+        amount, closeDate, closePL, closePLAnnualPercent, closePLPercent, companyName, id, openDate, symbol,
       }) => (
         <ListItem button key={id} onClick={() => onPositionClick && onPositionClick(id)}>
 
           <ListItemIcon><StockLogo symbol={symbol} /></ListItemIcon>
 
           <ListItemText
-            primary={quoteProgress || quote === null ? symbol : quote && quote.companyName}
+            primary={companyName === null ? symbol : companyName}
             secondary={(
               <React.Fragment>
                 {amount}

@@ -26,7 +26,26 @@ export default compose<Props, EnhancedProps>(
   ),
   withProps<Partial<Props>, EnhancedProps & WithStockPositionsProps & WithSorterProps>(({
     stockPositions, sorterKey, sorterOrder,
-  }) => ({
-    stockPositions: sortCollection(stockPositions, sorterKey as keyof StockPosition, sorterOrder),
-  })),
+  }) => {
+    let totalOpenSum = 0;
+    let totalCloseSum = 0;
+
+    stockPositions.forEach(position => {
+      totalOpenSum += position.openSum;
+
+      if (position.closeSum !== null) {
+        totalCloseSum += position.closeSum;
+      }
+    });
+
+    const totalClosePL = totalCloseSum - totalOpenSum;
+    const totalClosePLPercent = totalClosePL / totalOpenSum;
+
+    return {
+      stockPositions: sortCollection(stockPositions, sorterKey as keyof StockPosition, sorterOrder),
+      totalClosePL,
+      totalClosePLPercent,
+      totalCloseSum,
+    };
+  }),
 );

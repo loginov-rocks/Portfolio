@@ -10,10 +10,10 @@ export const STOCKS_QUOTES_TTL = 5 * 60 * 1000; // 5 min
 export const STOCKS_QUOTES_UPDATER_INTERVAL = 30 * 1000; // 30 sec
 
 export const CLOSED_POSITIONS_LIST_SORTER_NAME = 'closedPositionsList';
-export const CLOSED_POSITIONS_LIST_SORTER_INITIAL_KEY = 'symbol';
+export const CLOSED_POSITIONS_LIST_SORTER_INITIAL_KEY = 'companyName';
 export const CLOSED_POSITIONS_LIST_SORTER_INITIAL_ORDER = 'asc';
 export const CLOSED_POSITIONS_LIST_SORTER_KEYS = [
-  { key: 'symbol', label: 'Symbol' },
+  { key: 'companyName', label: 'Company Name' },
   { key: 'openDate', label: 'Open Date' },
   { key: 'closeDate', label: 'Close Date' },
   { key: 'closePL', label: 'PL' },
@@ -22,16 +22,27 @@ export const CLOSED_POSITIONS_LIST_SORTER_KEYS = [
 ];
 
 export const OPEN_POSITIONS_LIST_SORTER_NAME = 'openPositionsList';
-export const OPEN_POSITIONS_LIST_SORTER_INITIAL_KEY = 'symbol';
+export const OPEN_POSITIONS_LIST_SORTER_INITIAL_KEY = 'companyName';
 export const OPEN_POSITIONS_LIST_SORTER_INITIAL_ORDER = 'asc';
 export const OPEN_POSITIONS_LIST_SORTER_KEYS = [
-  { key: 'symbol', label: 'Symbol' },
+  { key: 'companyName', label: 'Company Name' },
   { key: 'openDate', label: 'Open Date' },
   { key: 'dailyPL', label: 'Daily PL' },
   { key: 'dailyPLPercent', label: 'Daily PL%' },
   { key: 'marketPL', label: 'PL' },
   { key: 'marketPLPercent', label: 'PL%' },
   { key: 'marketPLAnnualPercent', label: 'Annual PL%' },
+];
+
+export const OPEN_POSITIONS_SUMMARIES_LIST_SORTER_NAME = 'openPositionsSummariesList';
+export const OPEN_POSITIONS_SUMMARIES_LIST_SORTER_INITIAL_KEY = 'companyName';
+export const OPEN_POSITIONS_SUMMARIES_LIST_SORTER_INITIAL_ORDER = 'asc';
+export const OPEN_POSITIONS_SUMMARIES_LIST_SORTER_KEYS = [
+  { key: 'companyName', label: 'Company Name' },
+  { key: 'dailyPL', label: 'Daily PL' },
+  { key: 'dailyPLPercent', label: 'Daily PL%' },
+  { key: 'marketPL', label: 'PL' },
+  { key: 'marketPLPercent', label: 'PL%' },
 ];
 
 // These variables are taken from ENV, so we can't destructure them.

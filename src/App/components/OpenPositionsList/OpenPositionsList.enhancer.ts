@@ -26,7 +26,36 @@ export default compose<Props, EnhancedProps>(
   ),
   withProps<Partial<Props>, EnhancedProps & WithStockPositionsProps & WithSorterProps>(({
     stockPositions, sorterKey, sorterOrder,
-  }) => ({
-    stockPositions: sortCollection(stockPositions, sorterKey as keyof StockPosition, sorterOrder),
-  })),
+  }) => {
+    let totalOpenSum = 0;
+    let totalMarketSum = 0;
+    let totalDailyPL = 0;
+    let totalPreviousCloseSum = 0;
+
+    stockPositions.forEach(position => {
+      totalOpenSum += position.openSum;
+
+      if (position.marketSum !== null) {
+        totalMarketSum += position.marketSum;
+      }
+
+      if (position.quote !== null) {
+        totalDailyPL += position.amount * position.quote.change;
+        totalPreviousCloseSum += position.amount * position.quote.close;
+      }
+    });
+
+    const totalMarketPL = totalMarketSum - totalOpenSum;
+    const totalMarketPLPercent = totalMarketPL / totalOpenSum;
+    const totalDailyPLPercent = totalDailyPL / totalPreviousCloseSum;
+
+    return {
+      stockPositions: sortCollection(stockPositions, sorterKey as keyof StockPosition, sorterOrder),
+      totalDailyPL,
+      totalDailyPLPercent,
+      totalMarketPL,
+      totalMarketPLPercent,
+      totalMarketSum,
+    };
+  }),
 );

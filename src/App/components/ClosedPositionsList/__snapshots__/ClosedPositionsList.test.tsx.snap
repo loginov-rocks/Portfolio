@@ -2,12 +2,23 @@
 
 exports[`matches snapshot 1`] = `
 <Fragment>
+  <WithStyles(Money)
+    value={1000}
+  />
+  <WithStyles(Money)
+    pl={true}
+    value={100}
+  />
+  <WithStyles(Percent)
+    pl={true}
+    value={1}
+  />
   <withState(withProps(Sorter))
     keys={
       Array [
         Object {
-          "key": "symbol",
-          "label": "Symbol",
+          "key": "companyName",
+          "label": "Company Name",
         },
         Object {
           "key": "openDate",
@@ -33,12 +44,13 @@ exports[`matches snapshot 1`] = `
     }
     onKeyChange={[Function]}
     onOrderChange={[Function]}
-    sorterKey="openPrice"
+    sorterKey="companyName"
     sorterOrder="asc"
   />
   <WithStyles(ForwardRef(List))
     className="list"
     dense={true}
+    disablePadding={true}
   />
 </Fragment>
 `;

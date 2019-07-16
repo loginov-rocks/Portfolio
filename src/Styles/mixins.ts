@@ -7,10 +7,21 @@ export const viewHeadline = (theme: Theme): CSSProperties => ({
   textAlign: 'center',
 });
 
-export const viewRoot = (theme: Theme): CSSProperties => ({
+interface ViewRootOptions {
+  dense?: boolean;
+}
+
+export const viewRoot = (theme: Theme, options: ViewRootOptions = {}): CSSProperties => ({
   alignItems: 'center',
   display: 'flex',
   flexDirection: 'column',
   flexGrow: 1,
-  padding: theme.spacing(4),
+  ...(options.dense ? {
+    paddingBottom: theme.spacing(2),
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingTop: theme.spacing(2),
+  } : {
+    padding: theme.spacing(4),
+  }),
 });
