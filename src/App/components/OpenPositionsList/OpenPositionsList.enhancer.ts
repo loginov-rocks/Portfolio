@@ -5,20 +5,19 @@ import { Position } from 'Portfolio/lib';
 import { sortCollection } from 'Shared/lib';
 
 import withSorter, { Props as WithSorterProps } from '../../enhancers/withSorter';
-import withStockPositions, { Props as WithStockPositionsProps } from '../../enhancers/withStockPositions';
+import { Props as WithStockPositionsProps } from '../../enhancers/withStockPositions';
 import { calculateTotals, StockPosition } from '../../lib';
 import { Props } from './OpenPositionsList';
 
 interface EnhancedProps {
   onPositionClick?: (positionId: string) => void;
-  positions: Position[];
+  stockPositions: Position[];
 }
 
 export default compose<Props, EnhancedProps>(
-  withProps<EnhancedProps, EnhancedProps>(({ positions }) => ({
-    positions: positions.filter(position => position.closeDate === null),
+  withProps<EnhancedProps, EnhancedProps>(({ stockPositions }) => ({
+    stockPositions: stockPositions.filter(position => position.closeDate === null),
   })),
-  withStockPositions,
   withSorter(
     C.OPEN_POSITIONS_LIST_SORTER_NAME,
     C.OPEN_POSITIONS_LIST_SORTER_INITIAL_KEY,

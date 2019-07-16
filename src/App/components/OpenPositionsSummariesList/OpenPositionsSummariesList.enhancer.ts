@@ -1,16 +1,17 @@
 import { compose, withProps } from 'recompose';
 
 import * as C from 'Constants';
-import { Position } from 'Portfolio/lib';
 import { sortCollection } from 'Shared/lib';
 
 import withSorter, { Props as WithSorterProps } from '../../enhancers/withSorter';
-import withStockPositions, { Props as WithStockPositionsProps } from '../../enhancers/withStockPositions';
-import { calculateTotals, createOpenPositionsSummaries, OpenPositionsSummary } from '../../lib';
+import { Props as WithStockPositionsProps } from '../../enhancers/withStockPositions';
+import {
+  calculateTotals, createOpenPositionsSummaries, OpenPositionsSummary, StockPosition,
+} from '../../lib';
 import { Props } from './OpenPositionsSummariesList';
 
 interface EnhancedProps {
-  positions: Position[];
+  stockPositions: StockPosition[];
 }
 
 interface WithProps {
@@ -18,10 +19,9 @@ interface WithProps {
 }
 
 export default compose<Props, EnhancedProps>(
-  withProps<EnhancedProps, EnhancedProps>(({ positions }) => ({
-    positions: positions.filter(position => position.closeDate === null),
+  withProps<EnhancedProps, EnhancedProps>(({ stockPositions }) => ({
+    stockPositions: stockPositions.filter(position => position.closeDate === null),
   })),
-  withStockPositions,
   withProps<Partial<Props>, EnhancedProps & WithStockPositionsProps>(({ stockPositions }) => ({
     summaries: createOpenPositionsSummaries(stockPositions),
   })),

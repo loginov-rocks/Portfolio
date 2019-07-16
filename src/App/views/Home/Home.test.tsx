@@ -10,8 +10,8 @@ it('matches snapshot with the Closed tab', () => {
       classes={classes}
       handlePositionClick={() => undefined}
       handleTabChange={() => undefined}
-      positions={[]}
       positionsLoading={false}
+      stockPositions={[]}
       tab="closed"
     />,
   );
@@ -25,8 +25,8 @@ it('matches snapshot with the Open tab', () => {
       classes={classes}
       handlePositionClick={() => undefined}
       handleTabChange={() => undefined}
-      positions={[]}
       positionsLoading={false}
+      stockPositions={[]}
       tab="open"
     />,
   );
@@ -40,8 +40,8 @@ it('matches snapshot with the Summary tab', () => {
       classes={classes}
       handlePositionClick={() => undefined}
       handleTabChange={() => undefined}
-      positions={[]}
       positionsLoading={false}
+      stockPositions={[]}
       tab="summary"
     />,
   );
@@ -55,8 +55,8 @@ it('matches snapshot when positions are loading', () => {
       classes={classes}
       handlePositionClick={() => undefined}
       handleTabChange={() => undefined}
-      positions={[]}
       positionsLoading
+      stockPositions={[]}
       tab="summary"
     />,
   );

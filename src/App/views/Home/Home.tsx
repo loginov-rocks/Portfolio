@@ -1,24 +1,24 @@
 import { Tab, Tabs } from '@material-ui/core';
 import * as React from 'react';
 
-import { Position } from 'Portfolio/lib';
 import Progress from 'Shared/components/Progress';
 
 import ClosedPositionsList from '../../components/ClosedPositionsList';
 import OpenPositionsList from '../../components/OpenPositionsList';
 import OpenPositionsSummariesList from '../../components/OpenPositionsSummariesList';
+import { StockPosition } from '../../lib';
 
 export interface Props {
   classes: { [key: string]: string };
   handlePositionClick: (positionId: string) => void;
   handleTabChange: (tab: 'closed' | 'open' | 'summary') => void;
-  positions: Position[];
   positionsLoading: boolean;
+  stockPositions: StockPosition[];
   tab: 'closed' | 'open' | 'summary';
 }
 
 const Home: React.FunctionComponent<Props> = ({
-  classes, handlePositionClick, handleTabChange, positions, positionsLoading, tab,
+  classes, handlePositionClick, handleTabChange, positionsLoading, stockPositions, tab,
 }: Props) => (
   <React.Fragment>
 
@@ -44,9 +44,15 @@ const Home: React.FunctionComponent<Props> = ({
         ? <Progress />
         : (
           <React.Fragment>
-            {tab === 'closed' && <ClosedPositionsList onPositionClick={handlePositionClick} positions={positions} />}
-            {tab === 'open' && <OpenPositionsList onPositionClick={handlePositionClick} positions={positions} />}
-            {tab === 'summary' && <OpenPositionsSummariesList positions={positions} />}
+            {tab === 'closed' && (
+              <ClosedPositionsList onPositionClick={handlePositionClick} stockPositions={stockPositions} />
+            )}
+            {tab === 'open' && (
+              <OpenPositionsList onPositionClick={handlePositionClick} stockPositions={stockPositions} />
+            )}
+            {tab === 'summary' && (
+              <OpenPositionsSummariesList stockPositions={stockPositions} />
+            )}
           </React.Fragment>
         )}
     </div>

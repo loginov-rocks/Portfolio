@@ -6,6 +6,7 @@ import State from 'State';
 
 import { changeHomeTab } from '../../actions';
 import withNavigationHandlers from '../../enhancers/withNavigationHandlers';
+import withStockPositions from '../../enhancers/withStockPositions';
 import { Props } from './Home';
 import * as R from '../../routes';
 
@@ -24,6 +25,7 @@ export default compose<Props, {}>(
       route: R.POSITION,
     }),
   }),
-  withPositions,
   connect(mapStateToProps, mapDispatchToProps),
+  withPositions,
+  withStockPositions,
 );
