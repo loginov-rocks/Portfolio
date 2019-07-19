@@ -31,6 +31,7 @@ const OpenPositionsSummariesList: React.FunctionComponent<Props> = ({
 }: Props) => (
   <React.Fragment>
 
+    {/* TODO: Lift the following to the Home component */}
     <Money value={totalMarketSum} />
     <Money pl value={totalMarketPL} />
     <Percent pl value={totalMarketPLPercent} />

@@ -31,6 +31,7 @@ const ClosedPositionsList: React.FunctionComponent<Props> = ({
 }: Props) => (
   <React.Fragment>
 
+    {/* TODO: Lift the following to the Home component */}
     <Money value={totalCloseSum} />
     <Money pl value={totalClosePL} />
     <Percent pl value={totalClosePLPercent} />

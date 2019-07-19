@@ -2,9 +2,9 @@ import { Button, TextField } from '@material-ui/core';
 import * as React from 'react';
 
 export interface Props {
-  amount: number;
+  amount: number | '';
   classes: { [key: string]: string };
-  commission: number;
+  commission: number | '';
   date: string;
   handleAmountChange: (event: React.SyntheticEvent) => void;
   handleCommissionChange: (event: React.SyntheticEvent) => void;
@@ -12,7 +12,7 @@ export interface Props {
   handlePriceChange: (event: React.SyntheticEvent) => void;
   handleSymbolChange: (event: React.SyntheticEvent) => void;
   handleSubmit: (event: React.SyntheticEvent) => void;
-  price: number;
+  price: number | '';
   symbol: string;
 }
 

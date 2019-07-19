@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { compose, withHandlers, withStateHandlers } from 'recompose';
+import {
+  compose, StateHandler, withHandlers, withStateHandlers,
+} from 'recompose';
 
 import { Props } from './ClosePositionForm';
 import { closePosition as closePositionAction, ClosePositionAction } from '../../actions';
@@ -12,10 +14,14 @@ interface DispatchProps {
   closePosition: ClosePositionAction;
 }
 
-interface WithStateHandlersProps {
-  commission: number;
+interface WithStateHandlersState {
+  commission: number | '';
   date: string;
-  price: number;
+  price: number | '';
+}
+
+interface WithStateHandlersUpdaters {
+  [key: string]: StateHandler<WithStateHandlersState>;
 }
 
 interface EnhancedProps {
@@ -24,44 +30,57 @@ interface EnhancedProps {
   onClose?: (positionId: string) => void;
 }
 
-export default compose<Props & DispatchProps & WithStateHandlersProps, EnhancedProps>(
+export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedProps>(
   connect(null, mapDispatchToProps),
-  withStateHandlers(
+  withStateHandlers<WithStateHandlersState, WithStateHandlersUpdaters>(
     {
-      commission: 0,
+      commission: '',
       date: formatDate(new Date()),
-      price: 0,
+      price: '',
     },
     {
       handleCommissionChange: () => event => {
-        const price = parseFloat(event.target.value);
+        const commission = parseFloat(event.target.value);
 
         return {
-          commission: price >= 0 ? price : 0,
+          commission: commission >= 0 ? commission : '',
         };
       },
       handleDateChange: () => event => {
-        const date = new Date(event.target.value);
+        let date;
 
-        return {
-          date: formatDate(date || new Date()),
-        };
+        try {
+          date = formatDate(new Date(event.target.value));
+        } catch (error) {
+          //
+        }
+
+        if (!date) {
+          date = formatDate(new Date());
+        }
+
+        return { date };
       },
       handlePriceChange: () => event => {
         const price = parseFloat(event.target.value);
 
         return {
-          price: price >= 0 ? price : 0,
+          price: price >= 0 ? price : '',
         };
       },
     },
   ),
-  withHandlers<EnhancedProps & DispatchProps & WithStateHandlersProps, {}>({
+  withHandlers<EnhancedProps & DispatchProps & WithStateHandlersState & WithStateHandlersUpdaters, {}>({
 
     handleSubmit: ({
       closePosition, commission, date, id, onClose, price,
     }) => (event: React.SyntheticEvent) => {
       event.preventDefault();
+
+      if (commission === '' || price === '') {
+        // TODO: Display the following error in UI.
+        throw new Error('Invalid values');
+      }
 
       closePosition(id, price, commission, date)
         .then(positionId => {
