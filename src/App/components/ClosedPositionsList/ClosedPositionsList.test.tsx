@@ -13,9 +13,6 @@ it('matches snapshot', () => {
       sorterKey="companyName"
       sorterOrder="asc"
       stockPositions={[]}
-      totalClosePL={100}
-      totalClosePLPercent={1}
-      totalCloseSum={1000}
     />,
   );
 

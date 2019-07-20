@@ -6,6 +6,7 @@ import Progress from 'Shared/components/Progress';
 import ClosedPositionsList from '../../components/ClosedPositionsList';
 import OpenPositionsList from '../../components/OpenPositionsList';
 import OpenPositionsSummariesList from '../../components/OpenPositionsSummariesList';
+import Totals from '../../components/Totals';
 import { StockPosition } from '../../lib';
 
 export interface Props {
@@ -25,6 +26,8 @@ const Home: React.FunctionComponent<Props> = ({
     {!positionsLoading && (
       <div className={classes.bar}>
 
+        <Totals showClosed={tab === 'closed'} stockPositions={stockPositions} />
+
         <Tabs
           indicatorColor="primary"
           onChange={(event, newTab) => handleTabChange(newTab)}
@@ -40,21 +43,19 @@ const Home: React.FunctionComponent<Props> = ({
     )}
 
     <div className={classes.root}>
-      {positionsLoading
-        ? <Progress />
-        : (
-          <React.Fragment>
-            {tab === 'closed' && (
-              <ClosedPositionsList onPositionClick={handlePositionClick} stockPositions={stockPositions} />
-            )}
-            {tab === 'open' && (
-              <OpenPositionsList onPositionClick={handlePositionClick} stockPositions={stockPositions} />
-            )}
-            {tab === 'summary' && (
-              <OpenPositionsSummariesList stockPositions={stockPositions} />
-            )}
-          </React.Fragment>
-        )}
+      {positionsLoading ? <Progress /> : (
+        <React.Fragment>
+          {tab === 'closed' && (
+            <ClosedPositionsList onPositionClick={handlePositionClick} stockPositions={stockPositions} />
+          )}
+          {tab === 'open' && (
+            <OpenPositionsList onPositionClick={handlePositionClick} stockPositions={stockPositions} />
+          )}
+          {tab === 'summary' && (
+            <OpenPositionsSummariesList stockPositions={stockPositions} />
+          )}
+        </React.Fragment>
+      )}
     </div>
 
   </React.Fragment>

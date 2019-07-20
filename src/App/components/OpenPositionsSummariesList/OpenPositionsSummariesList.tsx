@@ -18,25 +18,12 @@ export interface Props {
   sorterKey: string;
   sorterOrder: 'asc' | 'desc';
   summaries: OpenPositionsSummary[];
-  totalDailyPL: number;
-  totalDailyPLPercent: number;
-  totalMarketPL: number;
-  totalMarketPLPercent: number;
-  totalMarketSum: number;
 }
 
 const OpenPositionsSummariesList: React.FunctionComponent<Props> = ({
-  classes, handleSorterKeyChange, handleSorterOrderChange, summaries, sorterKey, sorterOrder, totalDailyPL,
-  totalDailyPLPercent, totalMarketPL, totalMarketPLPercent, totalMarketSum,
+  classes, handleSorterKeyChange, handleSorterOrderChange, summaries, sorterKey, sorterOrder,
 }: Props) => (
   <React.Fragment>
-
-    {/* TODO: Lift the following to the Home component */}
-    <Money value={totalMarketSum} />
-    <Money pl value={totalMarketPL} />
-    <Percent pl value={totalMarketPLPercent} />
-    <Money pl value={totalDailyPL} />
-    <Percent pl value={totalDailyPLPercent} />
 
     <Sorter
       keys={C.OPEN_POSITIONS_SUMMARIES_LIST_SORTER_KEYS}

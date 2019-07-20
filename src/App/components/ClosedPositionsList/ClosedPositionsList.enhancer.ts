@@ -6,7 +6,7 @@ import { sortCollection } from 'Shared/lib';
 import { Props } from './ClosedPositionsList';
 import withSorter, { Props as WithSorterProps } from '../../enhancers/withSorter';
 import { Props as WithStockPositionsProps } from '../../enhancers/withStockPositions';
-import { calculateTotals, StockPosition } from '../../lib';
+import { StockPosition } from '../../lib';
 
 interface EnhancedProps {
   onPositionClick?: (positionId: string) => void;
@@ -26,6 +26,5 @@ export default compose<Props, EnhancedProps>(
     stockPositions, sorterKey, sorterOrder,
   }) => ({
     stockPositions: sortCollection(stockPositions, sorterKey as keyof StockPosition, sorterOrder),
-    ...calculateTotals(stockPositions),
   })),
 );

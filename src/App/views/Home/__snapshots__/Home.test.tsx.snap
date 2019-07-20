@@ -15,6 +15,10 @@ exports[`matches snapshot with the Closed tab 1`] = `
   <div
     className="bar"
   >
+    <WithStyles(withProps(Totals))
+      showClosed={true}
+      stockPositions={Array []}
+    />
     <WithStyles(ForwardRef(Tabs))
       indicatorColor="primary"
       onChange={[Function]}
@@ -51,6 +55,10 @@ exports[`matches snapshot with the Open tab 1`] = `
   <div
     className="bar"
   >
+    <WithStyles(withProps(Totals))
+      showClosed={false}
+      stockPositions={Array []}
+    />
     <WithStyles(ForwardRef(Tabs))
       indicatorColor="primary"
       onChange={[Function]}
@@ -87,6 +95,10 @@ exports[`matches snapshot with the Summary tab 1`] = `
   <div
     className="bar"
   >
+    <WithStyles(withProps(Totals))
+      showClosed={false}
+      stockPositions={Array []}
+    />
     <WithStyles(ForwardRef(Tabs))
       indicatorColor="primary"
       onChange={[Function]}

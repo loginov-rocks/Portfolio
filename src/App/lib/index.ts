@@ -42,18 +42,16 @@ export interface OpenPositionsSummary {
 }
 
 export interface Totals {
-  totalOpenSum: number;
-
-  totalCloseSum: number;
-  totalClosePL: number;
-  totalClosePLPercent: number;
-
   totalDailyPL: number;
   totalDailyPLPercent: number;
 
   totalMarketPL: number;
   totalMarketPLPercent: number;
   totalMarketSum: number;
+
+  totalCloseSum: number;
+  totalClosePL: number;
+  totalClosePLPercent: number;
 }
 
 export const createStockPosition = (position: Position, quote: Quote | null, quoteProgress: boolean): StockPosition => {
@@ -184,36 +182,39 @@ export const createOpenPositionsSummaries = (stockPositions: StockPosition[]): O
 };
 
 export const calculateTotals = (stockPositions: StockPosition[]): Totals => {
-  let totalOpenSum = 0;
+  let totalCloseOpenSum = 0;
   let totalCloseSum = 0;
+
+  let totalMarketOpenSum = 0;
   let totalDailyPL = 0;
   let totalPreviousCloseSum = 0;
   let totalMarketSum = 0;
 
   stockPositions.forEach(position => {
-    totalOpenSum += position.openSum;
-
     if (position.closeSum !== null) {
+      totalCloseOpenSum += position.openSum;
       totalCloseSum += position.closeSum;
-    }
+    } else {
+      totalMarketOpenSum += position.openSum;
 
-    if (position.quote !== null) {
-      totalDailyPL += position.amount * position.quote.change;
-      totalPreviousCloseSum += position.amount * position.quote.close;
-    }
+      if (position.quote !== null) {
+        totalDailyPL += position.amount * position.quote.change;
+        totalPreviousCloseSum += position.amount * position.quote.close;
+      }
 
-    if (position.marketSum !== null) {
-      totalMarketSum += position.marketSum;
+      if (position.marketSum !== null) {
+        totalMarketSum += position.marketSum;
+      }
     }
   });
 
-  const totalClosePL = totalCloseSum - totalOpenSum;
-  const totalClosePLPercent = totalClosePL / totalOpenSum;
+  const totalClosePL = totalCloseSum - totalCloseOpenSum;
+  const totalClosePLPercent = totalClosePL / totalCloseOpenSum;
 
   const totalDailyPLPercent = totalDailyPL / totalPreviousCloseSum;
 
-  const totalMarketPL = totalMarketSum - totalOpenSum;
-  const totalMarketPLPercent = totalMarketPL / totalOpenSum;
+  const totalMarketPL = totalMarketSum - totalMarketOpenSum;
+  const totalMarketPLPercent = totalMarketPL / totalMarketOpenSum;
 
   return {
     totalClosePL,
@@ -224,6 +225,5 @@ export const calculateTotals = (stockPositions: StockPosition[]): Totals => {
     totalMarketPL,
     totalMarketPLPercent,
     totalMarketSum,
-    totalOpenSum,
   };
 };

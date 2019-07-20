@@ -20,21 +20,12 @@ export interface Props {
   sorterKey: string;
   sorterOrder: 'asc' | 'desc';
   stockPositions: StockPosition[];
-  totalClosePL: number;
-  totalClosePLPercent: number;
-  totalCloseSum: number;
 }
 
 const ClosedPositionsList: React.FunctionComponent<Props> = ({
   classes, handleSorterKeyChange, handleSorterOrderChange, onPositionClick, stockPositions, sorterKey, sorterOrder,
-  totalClosePL, totalClosePLPercent, totalCloseSum,
 }: Props) => (
   <React.Fragment>
-
-    {/* TODO: Lift the following to the Home component */}
-    <Money value={totalCloseSum} />
-    <Money pl value={totalClosePL} />
-    <Percent pl value={totalClosePLPercent} />
 
     <Sorter
       keys={C.CLOSED_POSITIONS_LIST_SORTER_KEYS}

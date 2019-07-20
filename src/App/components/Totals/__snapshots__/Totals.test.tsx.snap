@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="root"
+>
+  <div>
+    <WithStyles(Money)
+      value={1000}
+    />
+    <WithStyles(Money)
+      pl={true}
+      value={100}
+    />
+    <WithStyles(Percent)
+      pl={true}
+      value={1}
+    />
+    <WithStyles(Money)
+      pl={true}
+      value={10}
+    />
+    <WithStyles(Percent)
+      pl={true}
+      value={0.1}
+    />
+  </div>
+</div>
+`;
+
+exports[`matches snapshot when showing closed 1`] = `
+<div
+  className="root"
+>
+  <div>
+    <WithStyles(Money)
+      value={1000}
+    />
+    <WithStyles(Money)
+      pl={true}
+      value={100}
+    />
+    <WithStyles(Percent)
+      pl={true}
+      value={1}
+    />
+  </div>
+</div>
+`;
