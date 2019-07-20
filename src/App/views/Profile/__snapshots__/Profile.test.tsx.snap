@@ -24,6 +24,7 @@ exports[`matches snapshot 1`] = `
   </WithStyles(ForwardRef(Typography))>
   <withFirebase(withHandlers(LogoutButton))
     className="signOut"
+    onLogout={[Function]}
   >
     Sign Out
   </withFirebase(withHandlers(LogoutButton))>

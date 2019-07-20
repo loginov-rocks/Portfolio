@@ -5,12 +5,21 @@ import { WithFirebaseHocProps } from 'Firebase/lib';
 
 import { Props } from './LogoutButton';
 
-export default compose<Props & WithFirebaseHocProps, Partial<Props>>(
-  withFirebase,
-  withHandlers<WithFirebaseHocProps, {}>({
+interface EnhancedProps {
+  className?: string;
+  onLogout?: () => void;
+}
 
-    handleClick: ({ firebase }) => () => {
+export default compose<Props & WithFirebaseHocProps, EnhancedProps>(
+  withFirebase,
+  withHandlers<EnhancedProps & WithFirebaseHocProps, {}>({
+
+    handleClick: ({ firebase, onLogout }) => () => {
       firebase.auth().signOut();
+
+      if (onLogout) {
+        onLogout();
+      }
     },
 
   }),
