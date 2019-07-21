@@ -1,6 +1,10 @@
 import { Theme } from '@material-ui/core';
 import { CSSProperties } from '@material-ui/styles/withStyles/withStyles';
 
+export const viewBar = (theme: Theme): CSSProperties => ({
+  borderBottom: `1px solid ${theme.palette.divider}`,
+});
+
 export const viewHeadline = (theme: Theme): CSSProperties => ({
   marginBottom: theme.spacing(2),
   marginTop: theme.spacing(2),

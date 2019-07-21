@@ -15,11 +15,10 @@ exports[`matches snapshot with the Closed tab 1`] = `
   <div
     className="bar"
   >
-    <withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))
-      positions={Array []}
-    >
-      <Component />
-    </withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))>
+    <WithStyles(withProps(Totals))
+      showClosed={true}
+      stockPositions={Array []}
+    />
     <WithStyles(ForwardRef(Tabs))
       indicatorColor="primary"
       onChange={[Function]}
@@ -43,9 +42,9 @@ exports[`matches snapshot with the Closed tab 1`] = `
   <div
     className="root"
   >
-    <WithStyles(withProps(withProps(Connect(lifecycle(mapProps(mapProps(Connect(withProps(ClosedPositionsList)))))))))
+    <WithStyles(withProps(Connect(withProps(ClosedPositionsList))))
       onPositionClick={[Function]}
-      positions={Array []}
+      stockPositions={Array []}
     />
   </div>
 </Fragment>
@@ -56,11 +55,10 @@ exports[`matches snapshot with the Open tab 1`] = `
   <div
     className="bar"
   >
-    <withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))
-      positions={Array []}
-    >
-      <Component />
-    </withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))>
+    <WithStyles(withProps(Totals))
+      showClosed={false}
+      stockPositions={Array []}
+    />
     <WithStyles(ForwardRef(Tabs))
       indicatorColor="primary"
       onChange={[Function]}
@@ -84,9 +82,9 @@ exports[`matches snapshot with the Open tab 1`] = `
   <div
     className="root"
   >
-    <WithStyles(withProps(withProps(Connect(lifecycle(mapProps(mapProps(Connect(withProps(OpenPositionsList)))))))))
+    <WithStyles(withProps(Connect(withProps(OpenPositionsList))))
       onPositionClick={[Function]}
-      positions={Array []}
+      stockPositions={Array []}
     />
   </div>
 </Fragment>
@@ -97,11 +95,10 @@ exports[`matches snapshot with the Summary tab 1`] = `
   <div
     className="bar"
   >
-    <withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))
-      positions={Array []}
-    >
-      <Component />
-    </withProps(withProps(Connect(lifecycle(mapProps(withProps(StockPositionsValue))))))>
+    <WithStyles(withProps(Totals))
+      showClosed={false}
+      stockPositions={Array []}
+    />
     <WithStyles(ForwardRef(Tabs))
       indicatorColor="primary"
       onChange={[Function]}
@@ -125,8 +122,8 @@ exports[`matches snapshot with the Summary tab 1`] = `
   <div
     className="root"
   >
-    <WithStyles(withProps(withProps(Connect(lifecycle(mapProps(mapProps(withProps(Connect(withProps(OpenPositionsSummariesList))))))))))
-      positions={Array []}
+    <WithStyles(withProps(withProps(Connect(withProps(OpenPositionsSummariesList)))))
+      stockPositions={Array []}
     />
   </div>
 </Fragment>

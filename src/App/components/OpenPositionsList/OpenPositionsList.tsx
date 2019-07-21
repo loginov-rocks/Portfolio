@@ -20,26 +20,15 @@ export interface Props {
   sorterKey: string;
   sorterOrder: 'asc' | 'desc';
   stockPositions: StockPosition[];
-  totalDailyPL: number;
-  totalDailyPLPercent: number;
-  totalMarketPL: number;
-  totalMarketPLPercent: number;
-  totalMarketSum: number;
 }
 
 const OpenPositionsList: React.FunctionComponent<Props> = ({
   classes, handleSorterKeyChange, handleSorterOrderChange, onPositionClick, stockPositions, sorterKey, sorterOrder,
-  totalDailyPL, totalDailyPLPercent, totalMarketPL, totalMarketPLPercent, totalMarketSum,
 }: Props) => (
   <React.Fragment>
 
-    <Money value={totalMarketSum} />
-    <Money pl value={totalMarketPL} />
-    <Percent pl value={totalMarketPLPercent} />
-    <Money pl value={totalDailyPL} />
-    <Percent pl value={totalDailyPLPercent} />
-
     <Sorter
+      className={classes.sorter}
       keys={C.OPEN_POSITIONS_LIST_SORTER_KEYS}
       onKeyChange={handleSorterKeyChange}
       onOrderChange={handleSorterOrderChange}

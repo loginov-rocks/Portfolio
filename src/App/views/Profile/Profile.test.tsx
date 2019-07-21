@@ -15,6 +15,8 @@ it('matches snapshot', () => {
         isEmpty: false,
         isLoaded: true,
       }}
+      resetLogos={() => undefined}
+      resetQuotes={() => undefined}
     />,
   );
 

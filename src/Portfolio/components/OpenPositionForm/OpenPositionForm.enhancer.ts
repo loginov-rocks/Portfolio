@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import { compose, withHandlers, withStateHandlers } from 'recompose';
+import {
+  compose, StateHandler, withHandlers, withStateHandlers,
+} from 'recompose';
 
 import { openPosition as openPositionAction, OpenPositionAction } from '../../actions';
 import { formatDate, Position } from '../../lib';
@@ -11,26 +13,30 @@ interface DispatchProps {
   openPosition: OpenPositionAction;
 }
 
-interface WithStateHandlersProps {
-  amount: number;
-  commission: number;
+interface WithStateHandlersState {
+  amount: number | '';
+  commission: number | '';
   date: string;
-  price: number;
+  price: number | '';
   symbol: string;
+}
+
+interface WithStateHandlersUpdaters {
+  [key: string]: StateHandler<WithStateHandlersState>;
 }
 
 interface EnhancedProps {
   onCreate?: (position: Position) => void;
 }
 
-export default compose<Props & DispatchProps & WithStateHandlersProps, EnhancedProps>(
+export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedProps>(
   connect(null, mapDispatchToProps),
-  withStateHandlers(
+  withStateHandlers<WithStateHandlersState, WithStateHandlersUpdaters>(
     {
       amount: 1,
-      commission: 0,
+      commission: '',
       date: formatDate(new Date()),
-      price: 0,
+      price: '',
       symbol: '',
     },
     {
@@ -38,14 +44,14 @@ export default compose<Props & DispatchProps & WithStateHandlersProps, EnhancedP
         const amount = parseInt(event.target.value, 10);
 
         return {
-          amount: amount > 0 ? amount : 1,
+          amount: amount > 0 ? amount : '',
         };
       },
       handleCommissionChange: () => event => {
-        const price = parseFloat(event.target.value);
+        const commission = parseFloat(event.target.value);
 
         return {
-          commission: price >= 0 ? price : 0,
+          commission: commission >= 0 ? commission : '',
         };
       },
       handleDateChange: () => event => {
@@ -67,7 +73,7 @@ export default compose<Props & DispatchProps & WithStateHandlersProps, EnhancedP
         const price = parseFloat(event.target.value);
 
         return {
-          price: price >= 0 ? price : 0,
+          price: price >= 0 ? price : '',
         };
       },
       handleSymbolChange: () => event => ({
@@ -75,12 +81,17 @@ export default compose<Props & DispatchProps & WithStateHandlersProps, EnhancedP
       }),
     },
   ),
-  withHandlers<EnhancedProps & DispatchProps & WithStateHandlersProps, {}>({
+  withHandlers<EnhancedProps & DispatchProps & WithStateHandlersState & WithStateHandlersUpdaters, {}>({
 
     handleSubmit: ({
       amount, commission, date, onCreate, openPosition, price, symbol,
     }) => (event: React.SyntheticEvent) => {
       event.preventDefault();
+
+      if (amount === '' || commission === '' || price === '') {
+        // TODO: Display the following error in UI.
+        throw new Error('Invalid values');
+      }
 
       openPosition(symbol, amount, price, commission, date)
         .then(position => {

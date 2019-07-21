@@ -5,13 +5,13 @@ import * as React from 'react';
 export interface Props {
   backButton?: React.ReactNode;
   classes: { [key: string]: string };
-  commission: number;
+  commission: number | '';
   date: string;
   handleCommissionChange: (event: React.SyntheticEvent) => void;
   handleDateChange: (event: React.SyntheticEvent) => void;
   handlePriceChange: (event: React.SyntheticEvent) => void;
   handleSubmit: (event: React.SyntheticEvent) => void;
-  price: number;
+  price: number | '';
 }
 
 const ClosePositionForm: React.FunctionComponent<Props> = ({

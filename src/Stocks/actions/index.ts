@@ -1,4 +1,4 @@
-import { createFetchResource } from 'redux-repository/lib/actions';
+import { createFetchResource, createResetResources } from 'redux-repository/lib/actions';
 import { Action } from 'redux-repository/lib/types';
 import { ThunkAction } from 'redux-thunk';
 
@@ -23,7 +23,15 @@ export const fetchLogo = (
       .then(data => dispatchReceived(data))
       .catch(error => dispatchFailed(error.toString()));
   },
-  { ttl: C.STOCKS_LOGOS_TTL },
+  { silentAlready: true, ttl: C.STOCKS_LOGOS_TTL },
+);
+
+export interface ResetLogos {
+  (): void;
+}
+
+export const resetLogos = (): ThunkAction<void, State, null, Action<string, string>> => (
+  createResetResources(C.STOCKS_LOGOS_RESOURCE_NAME)
 );
 
 export interface FetchQuote {
@@ -41,5 +49,13 @@ export const fetchQuote = (
       .then(data => dispatchReceived(data))
       .catch(error => dispatchFailed(error.toString()));
   },
-  { ttl: C.STOCKS_QUOTES_TTL },
+  { silentAlready: true, ttl: C.STOCKS_QUOTES_TTL },
+);
+
+export interface ResetQuotes {
+  (): void;
+}
+
+export const resetQuotes = (): ThunkAction<void, State, null, Action<Quote, string>> => (
+  createResetResources(C.STOCKS_QUOTES_RESOURCE_NAME)
 );

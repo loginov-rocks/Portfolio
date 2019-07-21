@@ -2,26 +2,8 @@
 
 exports[`matches snapshot 1`] = `
 <Fragment>
-  <WithStyles(Money)
-    value={1000}
-  />
-  <WithStyles(Money)
-    pl={true}
-    value={100}
-  />
-  <WithStyles(Percent)
-    pl={true}
-    value={1}
-  />
-  <WithStyles(Money)
-    pl={true}
-    value={10}
-  />
-  <WithStyles(Percent)
-    pl={true}
-    value={0.1}
-  />
   <withState(withProps(Sorter))
+    className="sorter"
     keys={
       Array [
         Object {

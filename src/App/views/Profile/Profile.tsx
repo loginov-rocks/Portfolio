@@ -2,14 +2,19 @@ import { Avatar, Typography } from '@material-ui/core';
 import * as React from 'react';
 
 import { ProfileState } from 'Firebase/State';
+import { ResetLogos, ResetQuotes } from 'Stocks/actions';
 import LogoutButton from 'User/components/LogoutButton';
 
 interface Props {
   classes: { [key: string]: string };
   profile: ProfileState;
+  resetLogos: ResetLogos;
+  resetQuotes: ResetQuotes;
 }
 
-const Profile: React.FunctionComponent<Props> = ({ classes, profile }: Props) => (
+const Profile: React.FunctionComponent<Props> = ({
+  classes, profile, resetLogos, resetQuotes,
+}: Props) => (
   <div className={classes.root}>
 
     <Typography className={classes.headline} variant="h4">Profile</Typography>
@@ -26,7 +31,15 @@ const Profile: React.FunctionComponent<Props> = ({ classes, profile }: Props) =>
       <Typography>{profile.email}</Typography>
     )}
 
-    <LogoutButton className={classes.signOut}>Sign Out</LogoutButton>
+    <LogoutButton
+      className={classes.signOut}
+      onLogout={() => {
+        resetLogos();
+        resetQuotes();
+      }}
+    >
+      Sign Out
+    </LogoutButton>
 
   </div>
 );
