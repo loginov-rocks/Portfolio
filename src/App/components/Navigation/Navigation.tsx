@@ -12,11 +12,14 @@ import Profile from '../../views/Profile';
 
 export interface Props {
   classes: { [key: string]: string };
+  containerRef?: React.RefObject<HTMLDivElement>;
   navigate: NavigateAction;
   route: R.Route;
 }
 
-const Navigation: React.FunctionComponent<Props> = ({ classes, navigate, route }: Props) => {
+const Navigation: React.FunctionComponent<Props> = ({
+  classes, containerRef, navigate, route,
+}: Props) => {
   let Component = null;
 
   switch (route) {
@@ -44,7 +47,7 @@ const Navigation: React.FunctionComponent<Props> = ({ classes, navigate, route }
   return (
     <React.Fragment>
 
-      <div className={classes.container}>
+      <div className={classes.container} ref={containerRef}>
         <Component />
       </div>
 
