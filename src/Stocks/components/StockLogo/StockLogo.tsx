@@ -1,8 +1,10 @@
+import classNames from 'classnames';
 import * as React from 'react';
 
 import Progress from 'Shared/components/Progress';
 
 export interface Props {
+  classes: { [key: string]: string };
   className?: string;
   logo: string | null;
   logoProgress: boolean;
@@ -10,7 +12,7 @@ export interface Props {
 }
 
 const StockLogo: React.FunctionComponent<Props> = ({
-  className, logo, logoProgress, size,
+  classes, className, logo, logoProgress, size,
 }: Props) => {
   if (logoProgress) {
     return <Progress className={className} />;
@@ -21,18 +23,7 @@ const StockLogo: React.FunctionComponent<Props> = ({
   }
 
   return (
-    <div className={className}>
-      <img
-        alt=""
-        src={logo}
-        style={{
-          height: size,
-          objectFit: 'contain',
-          verticalAlign: 'top',
-          width: size,
-        }}
-      />
-    </div>
+    <img alt="" className={classNames(classes.root, className)} src={logo} style={{ height: size, width: size }} />
   );
 };
 

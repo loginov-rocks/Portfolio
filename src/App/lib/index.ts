@@ -209,12 +209,24 @@ export const calculateTotals = (stockPositions: StockPosition[]): Totals => {
   });
 
   const totalClosePL = totalCloseSum - totalCloseOpenSum;
-  const totalClosePLPercent = totalClosePL / totalCloseOpenSum;
+  let totalClosePLPercent = totalClosePL / totalCloseOpenSum;
 
-  const totalDailyPLPercent = totalDailyPL / totalPreviousCloseSum;
+  let totalDailyPLPercent = totalDailyPL / totalPreviousCloseSum;
 
   const totalMarketPL = totalMarketSum - totalMarketOpenSum;
-  const totalMarketPLPercent = totalMarketPL / totalMarketOpenSum;
+  let totalMarketPLPercent = totalMarketPL / totalMarketOpenSum;
+
+  if (Number.isNaN(totalClosePLPercent)) {
+    totalClosePLPercent = 0;
+  }
+
+  if (Number.isNaN(totalDailyPLPercent)) {
+    totalDailyPLPercent = 0;
+  }
+
+  if (Number.isNaN(totalMarketPLPercent)) {
+    totalMarketPLPercent = 0;
+  }
 
   return {
     totalClosePL,
