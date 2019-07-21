@@ -8,8 +8,20 @@ import State from 'State';
 import iex from '../lib/IEX';
 import Quote from '../lib/IEX/Quote';
 
-export interface FetchLogo {
+export interface FetchLogoAction {
   (symbol: string): void;
+}
+
+export interface ResetLogosAction {
+  (): void;
+}
+
+export interface FetchQuoteAction {
+  (symbol: string): void;
+}
+
+export interface ResetQuotesAction {
+  (): void;
 }
 
 export const fetchLogo = (
@@ -26,17 +38,9 @@ export const fetchLogo = (
   { silentAlready: true, ttl: C.STOCKS_LOGOS_TTL },
 );
 
-export interface ResetLogos {
-  (): void;
-}
-
 export const resetLogos = (): ThunkAction<void, State, null, Action<string, string>> => (
   createResetResources(C.STOCKS_LOGOS_RESOURCE_NAME)
 );
-
-export interface FetchQuote {
-  (symbol: string): void;
-}
 
 export const fetchQuote = (
   symbol: string,
@@ -51,10 +55,6 @@ export const fetchQuote = (
   },
   { silentAlready: true, ttl: C.STOCKS_QUOTES_TTL },
 );
-
-export interface ResetQuotes {
-  (): void;
-}
 
 export const resetQuotes = (): ThunkAction<void, State, null, Action<Quote, string>> => (
   createResetResources(C.STOCKS_QUOTES_RESOURCE_NAME)

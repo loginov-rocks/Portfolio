@@ -7,7 +7,7 @@ import { extractData, isRequested } from 'redux-repository/lib/resource';
 import { areArraysEqual } from 'Shared/lib';
 import State from 'State';
 
-import { FetchQuote, fetchQuote as fetchQuoteAction } from '../actions';
+import { fetchQuote as fetchQuoteAction, FetchQuoteAction } from '../actions';
 import Quote from '../lib/IEX/Quote';
 
 // TODO: Tests.
@@ -21,7 +21,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  fetchQuote: FetchQuote;
+  fetchQuote: FetchQuoteAction;
 }
 
 interface QuotesBySymbols {

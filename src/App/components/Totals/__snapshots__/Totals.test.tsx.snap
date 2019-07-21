@@ -17,18 +17,7 @@ exports[`matches snapshot 1`] = `
   >
     <div
       className="group"
-    >
-      <WithStyles(Money)
-        pl={true}
-        value={100}
-      />
-      <WithStyles(Percent)
-        pl={true}
-        value={1}
-      />
-    </div>
-    <div
-      className="group"
+      key="daily"
     >
       <WithStyles(Money)
         pl={true}
@@ -37,6 +26,19 @@ exports[`matches snapshot 1`] = `
       <WithStyles(Percent)
         pl={true}
         value={0.1}
+      />
+    </div>
+    <div
+      className="group"
+      key="market"
+    >
+      <WithStyles(Money)
+        pl={true}
+        value={100}
+      />
+      <WithStyles(Percent)
+        pl={true}
+        value={1}
       />
     </div>
   </div>
@@ -60,6 +62,7 @@ exports[`matches snapshot when showing closed 1`] = `
   >
     <div
       className="group"
+      key="closed"
     >
       <WithStyles(Money)
         pl={true}

@@ -15,7 +15,7 @@ const initialState: State = {
   quotes: createInitialState(),
 };
 
-export default (state = initialState, action: Action): State => {
+export default (state: State = initialState, action: Action): State => {
   // Custom state reconciliation.
   if (action.type === REHYDRATE) {
     const { payload } = action as RehydrateAction<RootState>;

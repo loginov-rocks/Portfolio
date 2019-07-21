@@ -20,34 +20,33 @@ export interface Props {
 const Totals: React.FunctionComponent<Props> = ({
   classes, showClosed, totalClosePL, totalClosePLPercent, totalCloseSum, totalDailyPL, totalDailyPLPercent,
   totalMarketPL, totalMarketPLPercent, totalMarketSum,
-}: Props) => (
-  <div className={classes.root}>
-    {showClosed ? (
-      <React.Fragment>
-        <Typography className={classes.sum} variant="h5"><Money value={totalCloseSum} /></Typography>
-        <div className={classes.secondary}>
-          <div className={classes.group}>
-            <Money pl value={totalClosePL} />
-            <Percent pl value={totalClosePLPercent} />
-          </div>
-        </div>
-      </React.Fragment>
-    ) : (
-      <React.Fragment>
-        <Typography className={classes.sum} variant="h5"><Money value={totalMarketSum} /></Typography>
-        <div className={classes.secondary}>
-          <div className={classes.group}>
-            <Money pl value={totalMarketPL} />
-            <Percent pl value={totalMarketPLPercent} />
-          </div>
-          <div className={classes.group}>
-            <Money pl value={totalDailyPL} />
-            <Percent pl value={totalDailyPLPercent} />
-          </div>
-        </div>
-      </React.Fragment>
-    )}
-  </div>
-);
+}: Props) => {
+  const sum = showClosed ? totalCloseSum : totalMarketSum;
+
+  const groups = showClosed ? [
+    <div className={classes.group} key="closed">
+      <Money pl value={totalClosePL} />
+      <Percent pl value={totalClosePLPercent} />
+    </div>,
+  ] : [
+    <div className={classes.group} key="daily">
+      <Money pl value={totalDailyPL} />
+      <Percent pl value={totalDailyPLPercent} />
+    </div>,
+    <div className={classes.group} key="market">
+      <Money pl value={totalMarketPL} />
+      <Percent pl value={totalMarketPLPercent} />
+    </div>,
+  ];
+
+  return (
+    <div className={classes.root}>
+      <Typography className={classes.sum} variant="h5"><Money value={sum} /></Typography>
+      <div className={classes.secondary}>
+        {groups}
+      </div>
+    </div>
+  );
+};
 
 export default Totals;
