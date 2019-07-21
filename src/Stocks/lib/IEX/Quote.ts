@@ -7,4 +7,4 @@ export default interface Quote {
   iexRealtimePrice?: number;
   change: number;
   changePercent: number;
-} // eslint-disable-line semi
+}

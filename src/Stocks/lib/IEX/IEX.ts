@@ -13,12 +13,12 @@ export default class IEX {
   }
 
   public getStockLogo(symbol: string): Promise<string> {
-    return axios.get(`${this.baseUrl}/stock/${symbol.toLocaleLowerCase()}/logo?token=${this.token}`)
+    return axios.get(`${this.baseUrl}/stock/${symbol.toLowerCase()}/logo?token=${this.token}`)
       .then(({ data }) => data.url);
   }
 
   public getStockQuote(symbol: string): Promise<Quote> {
-    return axios.get(`${this.baseUrl}/stock/${symbol.toLocaleLowerCase()}/quote?token=${this.token}`)
+    return axios.get(`${this.baseUrl}/stock/${symbol.toLowerCase()}/quote?token=${this.token}`)
       .then(({ data }) => data);
   }
 }

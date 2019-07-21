@@ -6,4 +6,4 @@ export default interface State {
   app: AppState;
   firebase: FirebaseState;
   stocks: StocksState;
-} // eslint-disable-line semi
+}
