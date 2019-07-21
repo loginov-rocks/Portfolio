@@ -6,6 +6,7 @@ import * as React from 'react';
 
 export interface Props {
   anchor: HTMLElement | null;
+  className?: string;
   keyLabel: string;
   keys: { key: string; label: string }[];
   onKeyChange: (key: string) => void;
@@ -16,11 +17,11 @@ export interface Props {
 }
 
 const Sorter: React.FunctionComponent<Props> = ({
-  anchor, keyLabel, keys, onKeyChange, onOrderChange, sorterKey, sorterOrder, updateAnchor,
+  anchor, className, keyLabel, keys, onKeyChange, onOrderChange, sorterKey, sorterOrder, updateAnchor,
 }: Props) => (
   <React.Fragment>
 
-    <ButtonGroup>
+    <ButtonGroup className={className}>
       <Button onClick={event => updateAnchor(event.currentTarget)}>
         {keyLabel}
       </Button>

@@ -28,6 +28,7 @@ const OpenPositionsList: React.FunctionComponent<Props> = ({
   <React.Fragment>
 
     <Sorter
+      className={classes.sorter}
       keys={C.OPEN_POSITIONS_LIST_SORTER_KEYS}
       onKeyChange={handleSorterKeyChange}
       onOrderChange={handleSorterOrderChange}

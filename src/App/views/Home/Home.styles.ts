@@ -1,11 +1,8 @@
 import { withStyles } from '@material-ui/core';
 
-import { viewHeadline, viewRoot } from 'Styles/mixins';
+import { viewBar, viewRoot } from 'Styles/mixins';
 
 export default withStyles(theme => ({
-  bar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
-  },
-  headline: viewHeadline(theme),
+  bar: viewBar(theme),
   root: viewRoot(theme, { dense: true }),
 }));

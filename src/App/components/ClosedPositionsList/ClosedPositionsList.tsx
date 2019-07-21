@@ -28,6 +28,7 @@ const ClosedPositionsList: React.FunctionComponent<Props> = ({
   <React.Fragment>
 
     <Sorter
+      className={classes.sorter}
       keys={C.CLOSED_POSITIONS_LIST_SORTER_KEYS}
       onKeyChange={handleSorterKeyChange}
       onOrderChange={handleSorterOrderChange}

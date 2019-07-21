@@ -3,6 +3,7 @@ import { compose, withProps, withState } from 'recompose';
 import { Props } from './Sorter';
 
 interface EnhancerProps {
+  className?: string;
   keys: { key: string; label: string }[];
   onKeyChange: (key: string) => void;
   onOrderChange: (order: 'asc' | 'desc') => void;

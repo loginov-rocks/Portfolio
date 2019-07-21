@@ -3,6 +3,7 @@
 exports[`matches snapshot 1`] = `
 <Fragment>
   <withState(withProps(Sorter))
+    className="sorter"
     keys={
       Array [
         Object {
