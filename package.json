@@ -71,7 +71,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
-    "eslint": "^6.0.1",
+    "eslint": "^6.1.0",
     "eslint-config-airbnb-typescript": "^4.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -87,6 +87,11 @@
     "webpack": "^4.36.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "react-redux"
+    ]
   },
   "jest": {
     "modulePaths": [

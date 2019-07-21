@@ -15,27 +15,36 @@ export interface Props {
   positionsLoading: boolean;
 }
 
-const mapStateToProps = ({ firebase: { firestore: { ordered } } }: State, { auth }: WithAuthProps): Props => {
+const mapStateToProps = ({ firebase: { firestore: { data } } }: State, { auth }: WithAuthProps): Props => {
+  // `as string` used here because UID will be present at this point when using `withAuth`.
+  const userId = auth.uid as string;
+
   let positions: Position[] = [];
 
-  if (ordered.users) {
-    const user = ordered.users.find(({ id }) => id === auth.uid);
+  if (data.users) {
+    const user = data.users[userId];
 
     if (user && user.positions) {
-      ({ positions } = user);
+      positions = Object.keys(user.positions).map(positionId => {
+        if (!user.positions || user.positions[positionId] === null) {
+          return null;
+        }
+
+        return Object.assign({ id: positionId }, user.positions[positionId]);
+      }).filter(position => position !== null) as Position[];
     }
   }
 
-  return ({
+  return {
     positions,
-    // `as string` used because uid should be present at this point when using withAuth.
-    positionsLoading: !isLoaded(getPositionsCollectionPath(auth.uid as string)),
-  });
+    positionsLoading: !isLoaded(getPositionsCollectionPath(userId)),
+  };
 };
 
 export default compose(
   withAuth,
   firestoreConnect(({ auth }: WithAuthProps) => [
+    // `as string` used here because UID will be present at this point when using `withAuth`.
     getPositionsCollectionPath(auth.uid as string),
   ]),
   connect(mapStateToProps),
