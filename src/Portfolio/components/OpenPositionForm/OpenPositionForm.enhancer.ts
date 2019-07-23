@@ -3,8 +3,10 @@ import {
   compose, StateHandler, withHandlers, withStateHandlers,
 } from 'recompose';
 
+import { formatDate } from 'Shared/lib';
+
 import { openPosition as openPositionAction, OpenPositionAction } from '../../actions';
-import { formatDate, Position } from '../../lib';
+import { Position } from '../../lib';
 import { Props } from './OpenPositionForm';
 
 const mapDispatchToProps = { openPosition: openPositionAction };

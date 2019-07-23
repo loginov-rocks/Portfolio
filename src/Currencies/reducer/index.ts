@@ -1,7 +1,10 @@
+import * as C from 'Constants';
+
 import * as T from '../actions/types';
 import State from '../State';
 
 const initialState: State = {
+  currency: C.DEFAULT_CURRENCY,
   date: null,
   error: null,
   loading: false,
@@ -10,6 +13,12 @@ const initialState: State = {
 
 export default (state: State = initialState, action: T.Action): State => {
   switch (action.type) {
+    case T.CURRENCY_CHANGED:
+      return {
+        ...state,
+        currency: action.payload,
+      };
+
     case T.RATES_REQUESTED:
       return {
         ...state,

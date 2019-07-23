@@ -1,11 +1,11 @@
 import AppState from 'App/State';
+import CurrenciesState from 'Currencies/State';
 import FirebaseState from 'Firebase/State';
-import RatesState from 'Rates/State';
 import StocksState from 'Stocks/State';
 
 export default interface State {
   app: AppState;
+  currencies: CurrenciesState;
   firebase: FirebaseState;
-  rates: RatesState;
   stocks: StocksState;
 }

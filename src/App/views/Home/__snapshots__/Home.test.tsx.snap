@@ -15,7 +15,7 @@ exports[`matches snapshot with the Closed tab 1`] = `
   <div
     className="bar"
   >
-    <WithStyles(withProps(Totals))
+    <WithStyles(withProps(Connect(lifecycle(Totals))))
       showClosed={true}
       stockPositions={Array []}
     />
@@ -55,7 +55,7 @@ exports[`matches snapshot with the Open tab 1`] = `
   <div
     className="bar"
   >
-    <WithStyles(withProps(Totals))
+    <WithStyles(withProps(Connect(lifecycle(Totals))))
       showClosed={false}
       stockPositions={Array []}
     />
@@ -95,7 +95,7 @@ exports[`matches snapshot with the Summary tab 1`] = `
   <div
     className="bar"
   >
-    <WithStyles(withProps(Totals))
+    <WithStyles(withProps(Connect(lifecycle(Totals))))
       showClosed={false}
       stockPositions={Array []}
     />

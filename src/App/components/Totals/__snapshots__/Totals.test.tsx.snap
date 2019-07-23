@@ -9,6 +9,8 @@ exports[`matches snapshot 1`] = `
     variant="h5"
   >
     <WithStyles(Money)
+      currency="USD"
+      multiplier={1}
       value={1000}
     />
   </WithStyles(ForwardRef(Typography))>
@@ -20,6 +22,8 @@ exports[`matches snapshot 1`] = `
       key="daily"
     >
       <WithStyles(Money)
+        currency="USD"
+        multiplier={1}
         pl={true}
         value={10}
       />
@@ -33,6 +37,8 @@ exports[`matches snapshot 1`] = `
       key="market"
     >
       <WithStyles(Money)
+        currency="USD"
+        multiplier={1}
         pl={true}
         value={100}
       />
@@ -54,6 +60,8 @@ exports[`matches snapshot when showing closed 1`] = `
     variant="h5"
   >
     <WithStyles(Money)
+      currency="USD"
+      multiplier={1}
       value={1000}
     />
   </WithStyles(ForwardRef(Typography))>
@@ -65,6 +73,8 @@ exports[`matches snapshot when showing closed 1`] = `
       key="closed"
     >
       <WithStyles(Money)
+        currency="USD"
+        multiplier={1}
         pl={true}
         value={100}
       />

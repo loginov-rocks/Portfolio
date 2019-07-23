@@ -1,6 +1,11 @@
 import { Rates } from '../State';
 import * as T from './types';
 
+export const currencyChanged = (currency: string): T.Action => ({
+  payload: currency,
+  type: T.CURRENCY_CHANGED,
+});
+
 export const ratesRequested = (): T.Action => ({
   type: T.RATES_REQUESTED,
 });

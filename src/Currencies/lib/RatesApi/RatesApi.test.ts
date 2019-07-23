@@ -3,7 +3,7 @@ import axios from 'axios';
 import latestFixture from './__fixtures__/latest';
 import RatesApi from './RatesApi';
 
-const instance = new RatesApi('https://example.com');
+const instance = new RatesApi('https://example.com', 'USD');
 
 describe('getLatest', () => {
   it('makes request to Rates API to obtain latest rates', () => {

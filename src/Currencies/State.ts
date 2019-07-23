@@ -3,6 +3,7 @@ export interface Rates {
 }
 
 export default interface State {
+  currency: string;
   date: string | null;
   error: string | null;
   loading: boolean;

@@ -1,14 +1,18 @@
 import * as React from 'react';
 
+import * as C from 'Constants';
+
 interface Props {
   classes: { [key: string]: string };
+  currency?: string;
   highlighted?: boolean;
+  multiplier?: number | null;
   pl?: boolean;
   value: number;
 }
 
 const Money: React.FunctionComponent<Props> = ({
-  classes, highlighted, pl, value,
+  classes, currency, highlighted, multiplier, pl, value,
 }: Props) => {
   let className;
 
@@ -20,7 +24,15 @@ const Money: React.FunctionComponent<Props> = ({
     }
   }
 
-  const content = value.toLocaleString(undefined, { currency: 'USD', style: 'currency' });
+  let resultCurrency = C.DEFAULT_CURRENCY;
+  let resultValue = value;
+
+  if (currency && multiplier) {
+    resultCurrency = currency;
+    resultValue = multiplier * value;
+  }
+
+  const content = resultValue.toLocaleString(undefined, { currency: resultCurrency, style: 'currency' });
 
   if (highlighted) {
     return <strong className={className}>{content}</strong>;

@@ -8,6 +8,8 @@ it('matches snapshot', () => {
   const wrapper = shallow(
     <Totals
       classes={classes}
+      currency="USD"
+      currencyMultiplier={1}
       totalClosePL={100}
       totalClosePLPercent={1}
       totalCloseSum={1000}
@@ -26,6 +28,8 @@ it('matches snapshot when showing closed', () => {
   const wrapper = shallow(
     <Totals
       classes={classes}
+      currency="USD"
+      currencyMultiplier={1}
       showClosed
       totalClosePL={100}
       totalClosePLPercent={1}

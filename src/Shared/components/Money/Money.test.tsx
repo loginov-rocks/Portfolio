@@ -10,6 +10,12 @@ it('matches snapshot', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
+it('matches snapshot using non default currency', () => {
+  const wrapper = shallow(<Money classes={classes} currency="RUB" multiplier={63.1532265282} value={12.3} />);
+
+  expect(wrapper).toMatchSnapshot();
+});
+
 it('matches snapshot when highlighted', () => {
   const wrapper = shallow(<Money classes={classes} highlighted value={12.3} />);
 

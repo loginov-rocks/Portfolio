@@ -27,8 +27,8 @@ const mapDispatchToProps = { navigate };
 const containerRef = React.createRef();
 
 export default compose<Props, {}>(
-  connect<StateProps, DispatchProps, {}, State>(mapStateToProps, mapDispatchToProps),
   withProps(() => ({ containerRef })),
+  connect<StateProps, DispatchProps, {}, State>(mapStateToProps, mapDispatchToProps),
   lifecycle<StateProps & DispatchProps & WithProps, {}>({
 
     componentDidUpdate(prevProps) {

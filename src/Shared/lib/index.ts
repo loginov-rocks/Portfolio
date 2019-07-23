@@ -54,6 +54,8 @@ export const firebaseCollectionToArray = <T>(object: { [key: string]: T }): (T &
   }))
 );
 
+export const formatDate = (date: Date): string => date.toISOString().slice(0, 10);
+
 export const sortCollection = <T>(collection: T[], key: keyof T, order: 'asc' | 'desc'): T[] => collection.sort(
   ({ [key]: a }, { [key]: b }) => {
     const result = compareProperties(a, b);
