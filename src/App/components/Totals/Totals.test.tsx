@@ -7,7 +7,11 @@ import Totals from './Totals';
 it('matches snapshot', () => {
   const wrapper = shallow(
     <Totals
+      anchor={null}
+      changeCurrency={() => undefined}
       classes={classes}
+      currency="USD"
+      currencyMultiplier={1}
       totalClosePL={100}
       totalClosePLPercent={1}
       totalCloseSum={1000}
@@ -16,6 +20,7 @@ it('matches snapshot', () => {
       totalMarketPL={100}
       totalMarketPLPercent={1}
       totalMarketSum={1000}
+      updateAnchor={() => undefined}
     />,
   );
 
@@ -25,7 +30,11 @@ it('matches snapshot', () => {
 it('matches snapshot when showing closed', () => {
   const wrapper = shallow(
     <Totals
+      anchor={null}
+      changeCurrency={() => undefined}
       classes={classes}
+      currency="USD"
+      currencyMultiplier={1}
       showClosed
       totalClosePL={100}
       totalClosePLPercent={1}
@@ -35,6 +44,7 @@ it('matches snapshot when showing closed', () => {
       totalMarketPL={100}
       totalMarketPLPercent={1}
       totalMarketSum={1000}
+      updateAnchor={() => undefined}
     />,
   );
 

@@ -1,6 +1,5 @@
 import * as T from '../actions/types';
 import * as R from '../routes';
-
 import State from '../State';
 
 const initialState: State = {
@@ -10,7 +9,7 @@ const initialState: State = {
   sorters: {},
 };
 
-export default (state = initialState, action: T.Action) => {
+export default (state: State = initialState, action: T.Action): State => {
   switch (action.type) {
     case T.HOME_TAB_CHANGED:
       return {

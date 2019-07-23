@@ -33,8 +33,6 @@ export const annualizePercent = (percent: number, fromDate: string, toDate?: str
   return percent / years;
 };
 
-export const formatDate = (date: Date): string => date.toISOString().slice(0, 10);
-
 export const getUniqueSymbolsFromPositions = (positions: Position[]): string[] => Array.from(
   new Set(positions.map(position => position.symbol)),
 );

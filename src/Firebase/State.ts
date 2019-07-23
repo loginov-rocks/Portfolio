@@ -20,11 +20,15 @@ export default interface State {
     profile: ProfileState;
   };
   firestore: {
-    ordered: {
+    data: {
       users?: {
-        id: string;
-        positions?: Position[];
-      }[];
+        [userId: string]: {
+          positions?: {
+            // `null` used by `react-redux-firebase` when document deleted.
+            [positionId: string]: Omit<Position, 'id'> | null;
+          };
+        };
+      };
     };
   };
-} // eslint-disable-line semi
+}

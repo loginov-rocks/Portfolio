@@ -2,14 +2,14 @@ import { Avatar, Typography } from '@material-ui/core';
 import * as React from 'react';
 
 import { ProfileState } from 'Firebase/State';
-import { ResetLogos, ResetQuotes } from 'Stocks/actions';
+import { ResetLogosAction, ResetQuotesAction } from 'Stocks/actions';
 import LogoutButton from 'User/components/LogoutButton';
 
 interface Props {
   classes: { [key: string]: string };
   profile: ProfileState;
-  resetLogos: ResetLogos;
-  resetQuotes: ResetQuotes;
+  resetLogos: ResetLogosAction;
+  resetQuotes: ResetQuotesAction;
 }
 
 const Profile: React.FunctionComponent<Props> = ({

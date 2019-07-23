@@ -156,7 +156,7 @@ export const createOpenPositionsSummaries = (stockPositions: StockPosition[]): O
 
     const referencePosition = bySymbols[symbol][0];
 
-    if (dailyPL !== null && referencePosition.quote !== null) {
+    if (dailyPL !== null && referencePosition.quote !== null && referencePosition.quote.close !== null) {
       dailyPLPercent = dailyPL / amount / referencePosition.quote.close;
     }
 
@@ -199,7 +199,10 @@ export const calculateTotals = (stockPositions: StockPosition[]): Totals => {
 
       if (position.quote !== null) {
         totalDailyPL += position.amount * position.quote.change;
-        totalPreviousCloseSum += position.amount * position.quote.close;
+
+        if (position.quote.close !== null) {
+          totalPreviousCloseSum += position.amount * position.quote.close;
+        }
       }
 
       if (position.marketSum !== null) {
@@ -209,12 +212,24 @@ export const calculateTotals = (stockPositions: StockPosition[]): Totals => {
   });
 
   const totalClosePL = totalCloseSum - totalCloseOpenSum;
-  const totalClosePLPercent = totalClosePL / totalCloseOpenSum;
+  let totalClosePLPercent = totalClosePL / totalCloseOpenSum;
 
-  const totalDailyPLPercent = totalDailyPL / totalPreviousCloseSum;
+  let totalDailyPLPercent = totalDailyPL / totalPreviousCloseSum;
 
   const totalMarketPL = totalMarketSum - totalMarketOpenSum;
-  const totalMarketPLPercent = totalMarketPL / totalMarketOpenSum;
+  let totalMarketPLPercent = totalMarketPL / totalMarketOpenSum;
+
+  if (!Number.isFinite(totalClosePLPercent)) {
+    totalClosePLPercent = 0;
+  }
+
+  if (!Number.isFinite(totalDailyPLPercent)) {
+    totalDailyPLPercent = 0;
+  }
+
+  if (!Number.isFinite(totalMarketPLPercent)) {
+    totalMarketPLPercent = 0;
+  }
 
   return {
     totalClosePL,

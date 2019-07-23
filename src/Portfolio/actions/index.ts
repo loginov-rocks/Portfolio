@@ -1,4 +1,3 @@
-import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 import * as C from 'Constants';
@@ -7,9 +6,18 @@ import State from 'State';
 
 import { positionOpened, positionClosed, positionDeleted } from './creators';
 import { Position } from '../lib';
+import { Action } from './types';
 
 export interface OpenPositionAction {
   (symbol: string, amount: number, price: number, commission: number, date: string): Promise<Position>;
+}
+
+export interface ClosePositionAction {
+  (id: string, price: number, commission: number, date: string): Promise<string>;
+}
+
+export interface DeletePositionAction {
+  (id: string): Promise<string>;
 }
 
 export const openPosition = (
@@ -45,10 +53,6 @@ export const openPosition = (
     });
 };
 
-export interface ClosePositionAction {
-  (id: string, price: number, commission: number, date: string): Promise<string>;
-}
-
 export const closePosition = (
   id: string, price: number, commission: number, date: string,
 ): ThunkAction<Promise<string>, State, GetFirebaseExtraArgument, Action> => (dispatch, getState, getFirebase) => {
@@ -75,10 +79,6 @@ export const closePosition = (
       return id;
     });
 };
-
-export interface DeletePositionAction {
-  (id: string): Promise<string>;
-}
 
 export const deletePosition = (
   id: string,

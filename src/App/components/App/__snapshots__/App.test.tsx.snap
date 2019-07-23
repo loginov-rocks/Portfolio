@@ -289,7 +289,7 @@ exports[`matches snapshot if authenticated 1`] = `
     loading={<ForwardRef(WithStyles) />}
     persistor={Object {}}
   >
-    <WithStyles(Connect(Navigation)) />
+    <WithStyles(withProps(Connect(lifecycle(Navigation)))) />
   </PersistGate>
 </ThemeProvider>
 `;

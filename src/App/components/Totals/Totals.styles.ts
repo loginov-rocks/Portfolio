@@ -1,6 +1,11 @@
 import { withStyles } from '@material-ui/core';
 
 export default withStyles(theme => ({
+  currencyButton: {
+    position: 'absolute',
+    right: theme.spacing(0.5),
+    top: theme.spacing(2),
+  },
   group: {
     alignItems: 'center',
     display: 'flex',
@@ -13,6 +18,7 @@ export default withStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     padding: theme.spacing(2),
+    position: 'relative',
   },
   secondary: {
     display: 'flex',

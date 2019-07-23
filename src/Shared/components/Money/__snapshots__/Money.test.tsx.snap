@@ -6,6 +6,12 @@ exports[`matches snapshot 1`] = `
 </span>
 `;
 
+exports[`matches snapshot using non default currency 1`] = `
+<span>
+  RUB 776.78
+</span>
+`;
+
 exports[`matches snapshot when highlighted 1`] = `
 <strong>
   $12.30

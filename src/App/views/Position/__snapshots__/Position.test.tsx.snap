@@ -5,7 +5,7 @@ exports[`matches snapshot 1`] = `
   <div
     className="bar"
   >
-    <Connect(lifecycle(mapProps(StockLogo)))
+    <WithStyles(Connect(lifecycle(mapProps(StockLogo))))
       className="logo"
       size={48}
       symbol="AAPL"

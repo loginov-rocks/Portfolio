@@ -2,9 +2,7 @@ import * as R from '../routes';
 import { RouteParamsState } from '../State';
 
 export const HOME_TAB_CHANGED = 'app/HOME_TAB_CHANGED';
-
 export const NAVIGATION_HAPPENED = 'app/NAVIGATION_HAPPENED';
-
 export const SORTER_KEY_CHANGED = 'app/SORTER_KEY_CHANGED';
 export const SORTER_ORDER_CHANGED = 'app/SORTER_ORDER_CHANGED';
 

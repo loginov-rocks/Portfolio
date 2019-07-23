@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { ProfileState } from 'Firebase/State';
 import State from 'State';
 import {
-  ResetLogos, resetLogos, ResetQuotes, resetQuotes,
+  resetLogos, ResetLogosAction, resetQuotes, ResetQuotesAction,
 } from 'Stocks/actions';
 
 interface StateProps {
@@ -11,8 +11,8 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  resetLogos: ResetLogos;
-  resetQuotes: ResetQuotes;
+  resetLogos: ResetLogosAction;
+  resetQuotes: ResetQuotesAction;
 }
 
 const mapStateToProps = ({ firebase: { firebase: { profile } } }: State): StateProps => ({ profile });

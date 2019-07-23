@@ -6,7 +6,7 @@ import { extractData, isRequested } from 'redux-repository/lib/resource';
 
 import State from 'State';
 
-import { FetchLogo, fetchLogo as fetchLogoAction } from '../actions';
+import { fetchLogo as fetchLogoAction, FetchLogoAction } from '../actions';
 
 // TODO: Tests.
 
@@ -19,7 +19,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  fetchLogo: FetchLogo;
+  fetchLogo: FetchLogoAction;
 }
 
 export interface Props extends EnhancedProps {

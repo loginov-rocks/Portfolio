@@ -2,9 +2,9 @@ import { shallow } from 'enzyme';
 import classes from 'identity-obj-proxy';
 import * as React from 'react';
 
-import ClosePositionForm from './ClosePositionForm';
+import { formatDate } from 'Shared/lib';
 
-import { formatDate } from '../../lib';
+import ClosePositionForm from './ClosePositionForm';
 
 it('matches snapshot', () => {
   const wrapper = shallow(

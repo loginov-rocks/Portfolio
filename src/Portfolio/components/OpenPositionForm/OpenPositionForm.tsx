@@ -27,6 +27,7 @@ const OpenPositionForm: React.FunctionComponent<Props> = ({
         fullWidth
         label="Symbol"
         onChange={handleSymbolChange}
+        required
         type="text"
         value={symbol}
         variant="outlined"
@@ -39,6 +40,7 @@ const OpenPositionForm: React.FunctionComponent<Props> = ({
         inputProps={{ min: 1 }}
         label="Amount"
         onChange={handleAmountChange}
+        required
         type="number"
         value={amount}
         variant="outlined"
@@ -51,6 +53,7 @@ const OpenPositionForm: React.FunctionComponent<Props> = ({
         inputProps={{ min: 0, step: 0.01 }}
         label="Price"
         onChange={handlePriceChange}
+        required
         type="number"
         value={price}
         variant="outlined"
@@ -63,6 +66,7 @@ const OpenPositionForm: React.FunctionComponent<Props> = ({
         inputProps={{ min: 0, step: 0.01 }}
         label="Commission"
         onChange={handleCommissionChange}
+        required
         type="number"
         value={commission}
         variant="outlined"
@@ -74,6 +78,7 @@ const OpenPositionForm: React.FunctionComponent<Props> = ({
         fullWidth
         label="Date"
         onChange={handleDateChange}
+        required
         type="date"
         value={date}
         variant="outlined"
