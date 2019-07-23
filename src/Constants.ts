@@ -1,3 +1,10 @@
+export const AVAILABLE_CURRENCIES = [
+  { key: 'USD', label: 'U.S. Dollar' },
+  { key: 'EUR', label: 'Euro' },
+  { key: 'JPY', label: 'Japanese Yen' },
+  { key: 'GBP', label: 'Pound Sterling' },
+  { key: 'RUB', label: 'Russian Ruble' },
+];
 export const DEFAULT_CURRENCY = 'USD';
 
 export const FIRESTORE_POSITIONS_COLLECTION = 'positions';

@@ -39,13 +39,14 @@ const Sorter: React.FunctionComponent<Props> = ({
     >
       {keys.map(({ key, label }) => (
         <MenuItem
+          disabled={key === sorterKey}
           key={key}
           onClick={() => {
             onKeyChange(key);
             updateAnchor(null);
           }}
         >
-          {key === sorterKey ? <strong>{label}</strong> : label}
+          {label}
         </MenuItem>
       ))}
     </Menu>

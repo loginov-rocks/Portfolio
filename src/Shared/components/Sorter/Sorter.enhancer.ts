@@ -2,7 +2,7 @@ import { compose, withProps, withState } from 'recompose';
 
 import { Props } from './Sorter';
 
-interface EnhancerProps {
+interface EnhancedProps {
   className?: string;
   keys: { key: string; label: string }[];
   onKeyChange: (key: string) => void;
@@ -11,9 +11,9 @@ interface EnhancerProps {
   sorterOrder: 'asc' | 'desc';
 }
 
-export default compose<Props, EnhancerProps>(
-  withState<Partial<Props>, HTMLElement | null, 'anchor', 'updateAnchor'>('anchor', 'updateAnchor', null),
-  withProps<Partial<Props>, EnhancerProps>(({ keys, sorterKey }) => {
+export default compose<Props, EnhancedProps>(
+  withState<EnhancedProps, HTMLElement | null, 'anchor', 'updateAnchor'>('anchor', 'updateAnchor', null),
+  withProps<Partial<Props>, EnhancedProps>(({ keys, sorterKey }) => {
     const selectedKey = keys.find(({ key }) => key === sorterKey);
 
     return {

@@ -1,10 +1,17 @@
-import { Typography } from '@material-ui/core';
+import {
+  IconButton, Menu, MenuItem, Typography,
+} from '@material-ui/core';
+import { MonetizationOnOutlined } from '@material-ui/icons';
 import * as React from 'react';
 
+import * as C from 'Constants';
+import { ChangeCurrencyAction } from 'Currencies/actions';
 import Money from 'Shared/components/Money';
 import Percent from 'Shared/components/Percent';
 
 export interface Props {
+  anchor: HTMLElement | null;
+  changeCurrency: ChangeCurrencyAction;
   classes: { [key: string]: string };
   currency: string;
   currencyMultiplier: number | null;
@@ -17,11 +24,12 @@ export interface Props {
   totalMarketPL: number;
   totalMarketPLPercent: number;
   totalMarketSum: number;
+  updateAnchor: (anchor: HTMLElement | null) => void;
 }
 
 const Totals: React.FunctionComponent<Props> = ({
-  classes, currency, currencyMultiplier, showClosed, totalClosePL, totalClosePLPercent, totalCloseSum, totalDailyPL,
-  totalDailyPLPercent, totalMarketPL, totalMarketPLPercent, totalMarketSum,
+  anchor, changeCurrency, classes, currency, currencyMultiplier, showClosed, totalClosePL, totalClosePLPercent,
+  totalCloseSum, totalDailyPL, totalDailyPLPercent, totalMarketPL, totalMarketPLPercent, totalMarketSum, updateAnchor,
 }: Props) => {
   const sum = showClosed ? totalCloseSum : totalMarketSum;
 
@@ -43,12 +51,32 @@ const Totals: React.FunctionComponent<Props> = ({
 
   return (
     <div className={classes.root}>
+
       <Typography className={classes.sum} variant="h5">
         <Money currency={currency} multiplier={currencyMultiplier} value={sum} />
       </Typography>
-      <div className={classes.secondary}>
-        {groups}
-      </div>
+
+      <div className={classes.secondary}>{groups}</div>
+
+      <IconButton className={classes.currencyButton} onClick={event => updateAnchor(event.currentTarget)}>
+        <MonetizationOnOutlined />
+      </IconButton>
+
+      <Menu anchorEl={anchor} onClose={() => updateAnchor(null)} open={Boolean(anchor)}>
+        {C.AVAILABLE_CURRENCIES.map(({ key, label }) => (
+          <MenuItem
+            disabled={key === currency}
+            key={key}
+            onClick={() => {
+              changeCurrency(key);
+              updateAnchor(null);
+            }}
+          >
+            {label}
+          </MenuItem>
+        ))}
+      </Menu>
+
     </div>
   );
 };

@@ -3,7 +3,9 @@ import { compose, lifecycle } from 'recompose';
 
 import State from 'State';
 
-import { fetchRates, FetchRatesAction } from '../actions';
+import {
+  changeCurrency, ChangeCurrencyAction, fetchRates, FetchRatesAction,
+} from '../actions';
 
 // TODO: Tests.
 
@@ -13,7 +15,8 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  currencyFetchRates: FetchRatesAction;
+  changeCurrency: ChangeCurrencyAction;
+  fetchCurrenciesRates: FetchRatesAction;
 }
 
 export interface Props extends StateProps, DispatchProps {
@@ -33,14 +36,14 @@ const mapStateToProps = ({ currencies: { currency, rates } }: State): StateProps
   };
 };
 
-const mapDispatchToProps = { currencyFetchRates: fetchRates };
+const mapDispatchToProps = { changeCurrency, fetchCurrenciesRates: fetchRates };
 
 export default compose<Props, {}>(
   connect(mapStateToProps, mapDispatchToProps),
   lifecycle<StateProps & DispatchProps, {}>({
 
     componentDidMount() {
-      this.props.currencyFetchRates();
+      this.props.fetchCurrenciesRates();
     },
 
   }),
