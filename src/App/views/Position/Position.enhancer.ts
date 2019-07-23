@@ -14,6 +14,7 @@ import { RouteParamsState } from '../../State';
 interface WithNavigationHandlersProps {
   handleCloseClick: () => void;
   handleHomeClick: () => void;
+  handleUpdateClick: () => void;
 }
 
 interface DispatchProps {
@@ -37,6 +38,10 @@ export default compose<Props, {}>(
     handleCloseClick: ({ position }) => ({
       params: { position: position.id },
       route: R.CLOSE_POSITION,
+    }),
+    handleUpdateClick: ({ position }) => ({
+      params: { position: position.id },
+      route: R.UPDATE_POSITION,
     }),
   }),
   connect(null, mapDispatchToProps),

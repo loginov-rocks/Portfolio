@@ -1,7 +1,9 @@
 import {
   IconButton, List, ListItem, ListItemSecondaryAction, ListItemText, ListSubheader, Typography,
 } from '@material-ui/core';
-import { MonetizationOnOutlined, DeleteForeverOutlined, DeleteOutlined } from '@material-ui/icons';
+import {
+  MonetizationOnOutlined, DeleteForeverOutlined, DeleteOutlined, EditOutlined,
+} from '@material-ui/icons';
 import * as React from 'react';
 
 import PositionDate from 'Portfolio/components/PositionDate';
@@ -16,6 +18,7 @@ export interface Props {
   classes: { [key: string]: string };
   handleCloseClick: () => void;
   handleDeleteClick: () => void;
+  handleUpdateClick: () => void;
   handleWantToDelete: () => void;
   positionLoading: boolean;
   stockPosition: StockPosition | null;
@@ -23,7 +26,8 @@ export interface Props {
 }
 
 const Position: React.FunctionComponent<Props> = ({
-  classes, handleCloseClick, handleDeleteClick, handleWantToDelete, positionLoading, stockPosition, wantToDelete,
+  classes, handleCloseClick, handleDeleteClick, handleUpdateClick, handleWantToDelete, positionLoading, stockPosition,
+  wantToDelete,
 }: Props) => (
   <React.Fragment>
 
@@ -39,6 +43,10 @@ const Position: React.FunctionComponent<Props> = ({
             <MonetizationOnOutlined />
           </IconButton>
         )}
+
+        <IconButton onClick={handleUpdateClick}>
+          <EditOutlined />
+        </IconButton>
 
         {wantToDelete
           ? <IconButton onClick={handleDeleteClick}><DeleteForeverOutlined /></IconButton>

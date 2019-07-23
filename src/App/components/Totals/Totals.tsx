@@ -1,7 +1,7 @@
 import {
   IconButton, Menu, MenuItem, Typography,
 } from '@material-ui/core';
-import { MonetizationOnOutlined } from '@material-ui/icons';
+import { AccountBalanceWalletOutlined } from '@material-ui/icons';
 import * as React from 'react';
 
 import * as C from 'Constants';
@@ -59,7 +59,7 @@ const Totals: React.FunctionComponent<Props> = ({
       <div className={classes.secondary}>{groups}</div>
 
       <IconButton className={classes.currencyButton} onClick={event => updateAnchor(event.currentTarget)}>
-        <MonetizationOnOutlined />
+        <AccountBalanceWalletOutlined />
       </IconButton>
 
       <Menu anchorEl={anchor} onClose={() => updateAnchor(null)} open={Boolean(anchor)}>

@@ -1,3 +1,4 @@
+import { Position } from '../lib';
 import * as T from './types';
 
 export const positionOpened = (
@@ -29,4 +30,9 @@ export const positionClosed = (
 export const positionDeleted = (id: string): T.Action => ({
   payload: id,
   type: T.POSITION_DELETED,
+});
+
+export const positionUpdated = (position: Position): T.Action => ({
+  payload: position,
+  type: T.POSITION_UPDATED,
 });

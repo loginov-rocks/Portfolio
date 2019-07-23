@@ -23,6 +23,11 @@ exports[`matches snapshot 1`] = `
     <WithStyles(ForwardRef(IconButton))
       onClick={[Function]}
     >
+      <EditOutlinedIcon />
+    </WithStyles(ForwardRef(IconButton))>
+    <WithStyles(ForwardRef(IconButton))
+      onClick={[Function]}
+    >
       <DeleteOutlinedIcon />
     </WithStyles(ForwardRef(IconButton))>
   </div>

@@ -6,13 +6,14 @@ import {
 
 import { formatDate } from 'Shared/lib';
 
-import { Props } from './ClosePositionForm';
-import { closePosition as closePositionAction, ClosePositionAction } from '../../actions';
+import { updatePosition as updatePositionAction, UpdatePositionAction } from '../../actions';
+import { Position } from '../../lib';
+import { Props } from './UpdatePositionForm';
 
-const mapDispatchToProps = { closePosition: closePositionAction };
+const mapDispatchToProps = { updatePosition: updatePositionAction };
 
 interface DispatchProps {
-  closePosition: ClosePositionAction;
+  updatePosition: UpdatePositionAction;
 }
 
 interface WithStateHandlersState {
@@ -29,6 +30,7 @@ interface EnhancedProps {
   backButton?: React.ReactNode;
   id: string;
   onClose?: () => void;
+  position: Position;
 }
 
 export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedProps>(
@@ -74,7 +76,7 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
   withHandlers<EnhancedProps & DispatchProps & WithStateHandlersState & WithStateHandlersUpdaters, {}>({
 
     handleSubmit: ({
-      closePosition, commission, date, id, onClose, price,
+      commission, date, onClose, position, price, updatePosition,
     }) => (event: React.SyntheticEvent) => {
       event.preventDefault();
 
@@ -83,7 +85,9 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
         throw new Error('Invalid values');
       }
 
-      closePosition(id, price, commission, date)
+      updatePosition({
+        ...position, closeCommission: commission, closeDate: date, closePrice: price,
+      })
         .then(() => {
           if (onClose) {
             onClose();

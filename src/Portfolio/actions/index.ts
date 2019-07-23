@@ -4,7 +4,9 @@ import * as C from 'Constants';
 import { GetFirebaseExtraArgument } from 'Firebase/lib';
 import State from 'State';
 
-import { positionOpened, positionClosed, positionDeleted } from './creators';
+import {
+  positionOpened, positionClosed, positionDeleted, positionUpdated,
+} from './creators';
 import { Position } from '../lib';
 import { Action } from './types';
 
@@ -18,6 +20,10 @@ export interface ClosePositionAction {
 
 export interface DeletePositionAction {
   (id: string): Promise<string>;
+}
+
+export interface UpdatePositionAction {
+  (position: Position): Promise<Position>;
 }
 
 export const openPosition = (
@@ -100,5 +106,30 @@ export const deletePosition = (
       dispatch(positionDeleted(id));
 
       return id;
+    });
+};
+
+export const updatePosition = (
+  position: Position,
+): ThunkAction<Promise<Position>, State, GetFirebaseExtraArgument, Action> => (dispatch, getState, getFirebase) => {
+  const firebase = getFirebase();
+  const user = firebase.auth().currentUser;
+
+  if (!user) {
+    throw new Error('Trying to update position when unauthorized');
+  }
+
+  const { id, ...positionData } = position;
+
+  return firebase.firestore()
+    .collection(C.FIRESTORE_USERS_COLLECTION)
+    .doc(user.uid)
+    .collection(C.FIRESTORE_POSITIONS_COLLECTION)
+    .doc(position.id)
+    .update(positionData)
+    .then(() => {
+      dispatch(positionUpdated(position));
+
+      return position;
     });
 };
