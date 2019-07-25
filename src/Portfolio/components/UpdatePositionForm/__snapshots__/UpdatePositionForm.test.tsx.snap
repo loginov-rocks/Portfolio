@@ -10,13 +10,44 @@ exports[`matches snapshot 1`] = `
   >
     <WithStyles(ForwardRef(TextField))
       fullWidth={true}
+      label="Symbol"
+      onChange={[Function]}
+      required={true}
+      type="text"
+      value="AAPL"
+      variant="outlined"
+    />
+  </div>
+  <div
+    className="row"
+  >
+    <WithStyles(ForwardRef(TextField))
+      fullWidth={true}
+      inputProps={
+        Object {
+          "min": 1,
+        }
+      }
+      label="Amount"
+      onChange={[Function]}
+      required={true}
+      type="number"
+      value={1}
+      variant="outlined"
+    />
+  </div>
+  <div
+    className="row"
+  >
+    <WithStyles(ForwardRef(TextField))
+      fullWidth={true}
       inputProps={
         Object {
           "min": 0,
           "step": 0.01,
         }
       }
-      label="Price"
+      label="Open Price"
       onChange={[Function]}
       required={true}
       type="number"
@@ -35,7 +66,7 @@ exports[`matches snapshot 1`] = `
           "step": 0.01,
         }
       }
-      label="Commission"
+      label="Open Commission"
       onChange={[Function]}
       required={true}
       type="number"
@@ -48,11 +79,59 @@ exports[`matches snapshot 1`] = `
   >
     <WithStyles(ForwardRef(TextField))
       fullWidth={true}
-      label="Date"
+      label="Open Date"
       onChange={[Function]}
       required={true}
       type="date"
       value="2019-07-02"
+      variant="outlined"
+    />
+  </div>
+  <div
+    className="row"
+  >
+    <WithStyles(ForwardRef(TextField))
+      fullWidth={true}
+      inputProps={
+        Object {
+          "min": 0,
+          "step": 0.01,
+        }
+      }
+      label="Close Price"
+      onChange={[Function]}
+      type="number"
+      value={100}
+      variant="outlined"
+    />
+  </div>
+  <div
+    className="row"
+  >
+    <WithStyles(ForwardRef(TextField))
+      fullWidth={true}
+      inputProps={
+        Object {
+          "min": 0,
+          "step": 0.01,
+        }
+      }
+      label="Close Commission"
+      onChange={[Function]}
+      type="number"
+      value={1}
+      variant="outlined"
+    />
+  </div>
+  <div
+    className="row"
+  >
+    <WithStyles(ForwardRef(TextField))
+      fullWidth={true}
+      label="Close Date"
+      onChange={[Function]}
+      type="date"
+      value="2019-07-25"
       variant="outlined"
     />
   </div>

@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import { Button, TextField } from '@material-ui/core';
 import * as React from 'react';
 
+// TODO: Refactor to universal form for Position control.
+
 export interface Props {
   backButton?: React.ReactNode;
   classes: { [key: string]: string };

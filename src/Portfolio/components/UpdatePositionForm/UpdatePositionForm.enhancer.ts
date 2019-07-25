@@ -17,9 +17,16 @@ interface DispatchProps {
 }
 
 interface WithStateHandlersState {
-  commission: number | '';
-  date: string;
-  price: number | '';
+  symbol: string;
+  amount: number | '';
+
+  openPrice: number | '';
+  openCommission: number | '';
+  openDate: string;
+
+  closePrice: number | '';
+  closeCommission: number | '';
+  closeDate: string;
 }
 
 interface WithStateHandlersUpdaters {
@@ -35,21 +42,33 @@ interface EnhancedProps {
 
 export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedProps>(
   connect(null, mapDispatchToProps),
-  withStateHandlers<WithStateHandlersState, WithStateHandlersUpdaters>(
+  withStateHandlers<WithStateHandlersState, WithStateHandlersUpdaters, EnhancedProps>(
+    ({ position }) => ({
+      amount: position.amount,
+      closeCommission: position.closeCommission === null ? '' : position.closeCommission,
+      closeDate: position.closeDate === null ? formatDate(new Date()) : position.closeDate,
+      closePrice: position.closePrice === null ? '' : position.closePrice,
+      openCommission: position.openCommission,
+      openDate: position.openDate,
+      openPrice: position.openPrice,
+      symbol: position.symbol,
+    }),
     {
-      commission: '',
-      date: formatDate(new Date()),
-      price: '',
-    },
-    {
-      handleCommissionChange: () => event => {
+      handleAmountChange: () => event => {
+        const amount = parseInt(event.target.value, 10);
+
+        return {
+          amount: amount > 0 ? amount : '',
+        };
+      },
+      handleCloseCommissionChange: () => event => {
         const commission = parseFloat(event.target.value);
 
         return {
-          commission: commission >= 0 ? commission : '',
+          closeCommission: commission >= 0 ? commission : '',
         };
       },
-      handleDateChange: () => event => {
+      handleCloseDateChange: () => event => {
         let date;
 
         try {
@@ -62,31 +81,72 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
           date = formatDate(new Date());
         }
 
-        return { date };
+        return { closeDate: date };
       },
-      handlePriceChange: () => event => {
+      handleClosePriceChange: () => event => {
         const price = parseFloat(event.target.value);
 
         return {
-          price: price >= 0 ? price : '',
+          closePrice: price >= 0 ? price : '',
         };
       },
+      handleOpenCommissionChange: () => event => {
+        const commission = parseFloat(event.target.value);
+
+        return {
+          openCommission: commission >= 0 ? commission : '',
+        };
+      },
+      handleOpenDateChange: () => event => {
+        let date;
+
+        try {
+          date = formatDate(new Date(event.target.value));
+        } catch (error) {
+          //
+        }
+
+        if (!date) {
+          date = formatDate(new Date());
+        }
+
+        return { openDate: date };
+      },
+      handleOpenPriceChange: () => event => {
+        const price = parseFloat(event.target.value);
+
+        return {
+          openPrice: price >= 0 ? price : '',
+        };
+      },
+      handleSymbolChange: () => event => ({
+        symbol: event.target.value.toUpperCase(),
+      }),
     },
   ),
   withHandlers<EnhancedProps & DispatchProps & WithStateHandlersState & WithStateHandlersUpdaters, {}>({
 
     handleSubmit: ({
-      commission, date, onClose, position, price, updatePosition,
+      amount, closeCommission, closeDate, closePrice, onClose, openCommission, openDate, openPrice, position, symbol,
+      updatePosition,
     }) => (event: React.SyntheticEvent) => {
       event.preventDefault();
 
-      if (commission === '' || price === '') {
+      if (amount === '' || openCommission === '' || openPrice === '' || symbol === '') {
         // TODO: Display the following error in UI.
         throw new Error('Invalid values');
       }
 
       updatePosition({
-        ...position, closeCommission: commission, closeDate: date, closePrice: price,
+        ...position,
+        amount,
+        closeCommission: closeCommission === '' || closePrice === '' ? null : closeCommission,
+        closeDate: closeCommission === '' || closePrice === '' ? null : closeDate,
+        closePrice: closeCommission === '' || closePrice === '' ? null : closePrice,
+        openCommission,
+        openDate,
+        openPrice,
+        symbol,
       })
         .then(() => {
           if (onClose) {

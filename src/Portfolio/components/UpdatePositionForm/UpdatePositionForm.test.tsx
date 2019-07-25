@@ -9,14 +9,24 @@ import UpdatePositionForm from './UpdatePositionForm';
 it('matches snapshot', () => {
   const wrapper = shallow(
     <UpdatePositionForm
+      amount={1}
       classes={classes}
-      commission={1}
-      date={formatDate(new Date('2019-07-02'))}
-      handleCommissionChange={() => undefined}
-      handleDateChange={() => undefined}
-      handlePriceChange={() => undefined}
+      closeCommission={1}
+      closeDate={formatDate(new Date('2019-07-25'))}
+      closePrice={100}
+      handleAmountChange={() => undefined}
+      handleCloseCommissionChange={() => undefined}
+      handleCloseDateChange={() => undefined}
+      handleClosePriceChange={() => undefined}
+      handleOpenCommissionChange={() => undefined}
+      handleOpenDateChange={() => undefined}
+      handleOpenPriceChange={() => undefined}
       handleSubmit={() => undefined}
-      price={100}
+      handleSymbolChange={() => undefined}
+      openCommission={1}
+      openDate={formatDate(new Date('2019-07-02'))}
+      openPrice={100}
+      symbol="AAPL"
     />,
   );
 

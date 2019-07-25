@@ -90,7 +90,7 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
     }) => (event: React.SyntheticEvent) => {
       event.preventDefault();
 
-      if (amount === '' || commission === '' || price === '') {
+      if (amount === '' || commission === '' || price === '' || symbol === '') {
         // TODO: Display the following error in UI.
         throw new Error('Invalid values');
       }
