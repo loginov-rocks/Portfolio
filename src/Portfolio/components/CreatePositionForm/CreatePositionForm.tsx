@@ -18,7 +18,7 @@ export interface Props {
   symbol: string;
 }
 
-const OpenPositionForm: React.FunctionComponent<Props> = ({
+const CreatePositionForm: React.FunctionComponent<Props> = ({
   amount, classes, commission, date, handleAmountChange, handleCommissionChange, handleDateChange, handlePriceChange,
   handleSymbolChange, handleSubmit, price, symbol,
 }: Props) => (
@@ -94,4 +94,4 @@ const OpenPositionForm: React.FunctionComponent<Props> = ({
   </form>
 );
 
-export default OpenPositionForm;
+export default CreatePositionForm;

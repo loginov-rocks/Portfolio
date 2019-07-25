@@ -1,12 +1,12 @@
 import { Position } from '../lib';
 
-export const POSITION_OPENED = 'portfolio/POSITION_OPENED';
+export const POSITION_CREATED = 'portfolio/POSITION_CREATED';
 export const POSITION_CLOSED = 'portfolio/POSITION_CLOSED';
-export const POSITION_DELETED = 'portfolio/POSITION_DELETED';
 export const POSITION_UPDATED = 'portfolio/POSITION_UPDATED';
+export const POSITION_DELETED = 'portfolio/POSITION_DELETED';
 
-interface PositionOpened {
-  type: typeof POSITION_OPENED;
+interface PositionCreated {
+  type: typeof POSITION_CREATED;
   payload: {
     id: string;
     symbol: string;
@@ -27,14 +27,14 @@ interface PositionClosed {
   };
 }
 
-interface PositionDeleted {
-  type: typeof POSITION_DELETED;
-  payload: string;
-}
-
 interface PositionUpdated {
   type: typeof POSITION_UPDATED;
   payload: Position;
 }
 
-export type Action = PositionOpened | PositionClosed | PositionDeleted | PositionUpdated;
+interface PositionDeleted {
+  type: typeof POSITION_DELETED;
+  payload: string;
+}
+
+export type Action = PositionCreated | PositionClosed | PositionUpdated | PositionDeleted;

@@ -5,14 +5,14 @@ import {
 
 import { formatDate } from 'Shared/lib';
 
-import { openPosition as openPositionAction, OpenPositionAction } from '../../actions';
+import { createPosition as createPositionAction, CreatePositionAction } from '../../actions';
+import { Props } from './CreatePositionForm';
 import { Position } from '../../lib';
-import { Props } from './OpenPositionForm';
 
-const mapDispatchToProps = { openPosition: openPositionAction };
+const mapDispatchToProps = { createPosition: createPositionAction };
 
 interface DispatchProps {
-  openPosition: OpenPositionAction;
+  createPosition: CreatePositionAction;
 }
 
 interface WithStateHandlersState {
@@ -86,7 +86,7 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
   withHandlers<EnhancedProps & DispatchProps & WithStateHandlersState & WithStateHandlersUpdaters, {}>({
 
     handleSubmit: ({
-      amount, commission, date, onCreate, openPosition, price, symbol,
+      amount, commission, createPosition, date, onCreate, price, symbol,
     }) => (event: React.SyntheticEvent) => {
       event.preventDefault();
 
@@ -95,7 +95,7 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
         throw new Error('Invalid values');
       }
 
-      openPosition(symbol, amount, price, commission, date)
+      createPosition(symbol, amount, price, commission, date)
         .then(position => {
           if (onCreate) {
             onCreate(position);

@@ -1,7 +1,7 @@
 import { Position } from '../lib';
 import * as T from './types';
 
-export const positionOpened = (
+export const positionCreated = (
   id: string,
   symbol: string,
   amount: number,
@@ -12,7 +12,7 @@ export const positionOpened = (
   payload: {
     amount, commission, date, id, price, symbol,
   },
-  type: T.POSITION_OPENED,
+  type: T.POSITION_CREATED,
 });
 
 export const positionClosed = (
@@ -27,12 +27,12 @@ export const positionClosed = (
   type: T.POSITION_CLOSED,
 });
 
-export const positionDeleted = (id: string): T.Action => ({
-  payload: id,
-  type: T.POSITION_DELETED,
-});
-
 export const positionUpdated = (position: Position): T.Action => ({
   payload: position,
   type: T.POSITION_UPDATED,
+});
+
+export const positionDeleted = (id: string): T.Action => ({
+  payload: id,
+  type: T.POSITION_DELETED,
 });
