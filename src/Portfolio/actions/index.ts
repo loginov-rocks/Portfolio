@@ -1,7 +1,6 @@
 import { ThunkAction } from 'redux-thunk';
 
-import * as C from 'Constants';
-import { GetFirebaseExtraArgument } from 'Firebase/lib';
+import { GetFirebaseExtraArgument, getPositionDocument, getPositionsCollection } from 'Firebase/lib';
 import State from 'State';
 
 import {
@@ -47,10 +46,7 @@ export const openPosition = (
     symbol,
   };
 
-  return firebase.firestore()
-    .collection(C.FIRESTORE_USERS_COLLECTION)
-    .doc(user.uid)
-    .collection(C.FIRESTORE_POSITIONS_COLLECTION)
+  return getPositionsCollection(firebase, user.uid)
     .add(positionData)
     .then(({ id }) => {
       dispatch(positionOpened(id, symbol, amount, price, commission, date));
@@ -69,11 +65,7 @@ export const closePosition = (
     throw new Error('Trying to close position when unauthorized');
   }
 
-  return firebase.firestore()
-    .collection(C.FIRESTORE_USERS_COLLECTION)
-    .doc(user.uid)
-    .collection(C.FIRESTORE_POSITIONS_COLLECTION)
-    .doc(id)
+  return getPositionDocument(firebase, user.uid, id)
     .update({
       closeCommission: commission,
       closeDate: date,
@@ -96,11 +88,7 @@ export const deletePosition = (
     throw new Error('Trying to delete position when unauthorized');
   }
 
-  return firebase.firestore()
-    .collection(C.FIRESTORE_USERS_COLLECTION)
-    .doc(user.uid)
-    .collection(C.FIRESTORE_POSITIONS_COLLECTION)
-    .doc(id)
+  return getPositionDocument(firebase, user.uid, id)
     .delete()
     .then(() => {
       dispatch(positionDeleted(id));
@@ -121,11 +109,7 @@ export const updatePosition = (
 
   const { id, ...positionData } = position;
 
-  return firebase.firestore()
-    .collection(C.FIRESTORE_USERS_COLLECTION)
-    .doc(user.uid)
-    .collection(C.FIRESTORE_POSITIONS_COLLECTION)
-    .doc(position.id)
+  return getPositionDocument(firebase, user.uid, id)
     .update(positionData)
     .then(() => {
       dispatch(positionUpdated(position));
