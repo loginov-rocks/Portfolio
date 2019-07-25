@@ -28,3 +28,19 @@ export const getPositionsCollectionPath = (userId: string): string => (
 export const getPositionDocumentPath = (userId: string, positionId: string): string => (
   `${C.FIRESTORE_USERS_COLLECTION}/${userId}/${C.FIRESTORE_POSITIONS_COLLECTION}/${positionId}`
 );
+
+export const getPositionsCollection = (
+  firebaseInstance: firebase.app.App,
+  userId: string,
+): firebase.firestore.CollectionReference => (
+  firebaseInstance.firestore()
+    .collection(C.FIRESTORE_USERS_COLLECTION)
+    .doc(userId)
+    .collection(C.FIRESTORE_POSITIONS_COLLECTION)
+);
+
+export const getPositionDocument = (
+  firebaseInstance: firebase.app.App,
+  userId: string,
+  positionId: string,
+): firebase.firestore.DocumentReference => getPositionsCollection(firebaseInstance, userId).doc(positionId);

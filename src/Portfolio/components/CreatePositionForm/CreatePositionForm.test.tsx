@@ -4,11 +4,11 @@ import * as React from 'react';
 
 import { formatDate } from 'Shared/lib';
 
-import OpenPositionForm from './OpenPositionForm';
+import CreatePositionForm from './CreatePositionForm';
 
 it('matches snapshot', () => {
   const wrapper = shallow(
-    <OpenPositionForm
+    <CreatePositionForm
       amount={1}
       classes={classes}
       commission={1}

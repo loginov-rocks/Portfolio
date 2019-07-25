@@ -10,6 +10,7 @@ it('matches snapshot', () => {
       classes={classes}
       handleCloseClick={() => undefined}
       handleDeleteClick={() => undefined}
+      handleUpdateClick={() => undefined}
       handleWantToDelete={() => undefined}
       positionLoading={false}
       stockPosition={{
@@ -51,6 +52,7 @@ it('matches snapshot when loading', () => {
       classes={classes}
       handleCloseClick={() => undefined}
       handleDeleteClick={() => undefined}
+      handleUpdateClick={() => undefined}
       handleWantToDelete={() => undefined}
       positionLoading
       stockPosition={null}

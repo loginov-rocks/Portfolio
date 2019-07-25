@@ -1,14 +1,15 @@
 import { ThunkAction } from 'redux-thunk';
 
-import * as C from 'Constants';
-import { GetFirebaseExtraArgument } from 'Firebase/lib';
+import { GetFirebaseExtraArgument, getPositionDocument, getPositionsCollection } from 'Firebase/lib';
 import State from 'State';
 
-import { positionOpened, positionClosed, positionDeleted } from './creators';
+import {
+  positionCreated, positionClosed, positionDeleted, positionUpdated,
+} from './creators';
 import { Position } from '../lib';
 import { Action } from './types';
 
-export interface OpenPositionAction {
+export interface CreatePositionAction {
   (symbol: string, amount: number, price: number, commission: number, date: string): Promise<Position>;
 }
 
@@ -16,11 +17,15 @@ export interface ClosePositionAction {
   (id: string, price: number, commission: number, date: string): Promise<string>;
 }
 
+export interface UpdatePositionAction {
+  (position: Position): Promise<Position>;
+}
+
 export interface DeletePositionAction {
   (id: string): Promise<string>;
 }
 
-export const openPosition = (
+export const createPosition = (
   symbol: string, amount: number, price: number, commission: number, date: string,
 ): ThunkAction<Promise<Position>, State, GetFirebaseExtraArgument, Action> => (dispatch, getState, getFirebase) => {
   const firebase = getFirebase();
@@ -41,13 +46,10 @@ export const openPosition = (
     symbol,
   };
 
-  return firebase.firestore()
-    .collection(C.FIRESTORE_USERS_COLLECTION)
-    .doc(user.uid)
-    .collection(C.FIRESTORE_POSITIONS_COLLECTION)
+  return getPositionsCollection(firebase, user.uid)
     .add(positionData)
     .then(({ id }) => {
-      dispatch(positionOpened(id, symbol, amount, price, commission, date));
+      dispatch(positionCreated(id, symbol, amount, price, commission, date));
 
       return { ...positionData, id };
     });
@@ -63,11 +65,7 @@ export const closePosition = (
     throw new Error('Trying to close position when unauthorized');
   }
 
-  return firebase.firestore()
-    .collection(C.FIRESTORE_USERS_COLLECTION)
-    .doc(user.uid)
-    .collection(C.FIRESTORE_POSITIONS_COLLECTION)
-    .doc(id)
+  return getPositionDocument(firebase, user.uid, id)
     .update({
       closeCommission: commission,
       closeDate: date,
@@ -77,6 +75,27 @@ export const closePosition = (
       dispatch(positionClosed(id, price, commission, date));
 
       return id;
+    });
+};
+
+export const updatePosition = (
+  position: Position,
+): ThunkAction<Promise<Position>, State, GetFirebaseExtraArgument, Action> => (dispatch, getState, getFirebase) => {
+  const firebase = getFirebase();
+  const user = firebase.auth().currentUser;
+
+  if (!user) {
+    throw new Error('Trying to update position when unauthorized');
+  }
+
+  const { id, ...positionData } = position;
+
+  return getPositionDocument(firebase, user.uid, id)
+    .update(positionData)
+    .then(() => {
+      dispatch(positionUpdated(position));
+
+      return position;
     });
 };
 
@@ -90,11 +109,7 @@ export const deletePosition = (
     throw new Error('Trying to delete position when unauthorized');
   }
 
-  return firebase.firestore()
-    .collection(C.FIRESTORE_USERS_COLLECTION)
-    .doc(user.uid)
-    .collection(C.FIRESTORE_POSITIONS_COLLECTION)
-    .doc(id)
+  return getPositionDocument(firebase, user.uid, id)
     .delete()
     .then(() => {
       dispatch(positionDeleted(id));

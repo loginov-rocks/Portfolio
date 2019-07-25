@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="root"
+>
+  <WithStyles(ForwardRef(Typography))
+    className="headline"
+    variant="h4"
+  >
+    Update position
+  </WithStyles(ForwardRef(Typography))>
+  <WithStyles(Connect(withStateHandlers(withHandlers(UpdatePositionForm))))
+    backButton={
+      <ForwardRef(WithStyles)
+        color="primary"
+        onClick={[Function]}
+      >
+        Cancel
+      </ForwardRef(WithStyles)>
+    }
+    id="id"
+    onClose={[Function]}
+    position={
+      Object {
+        "amount": 1,
+        "closeCommission": null,
+        "closeDate": null,
+        "closePrice": null,
+        "id": "id",
+        "openCommission": 1,
+        "openDate": "2019-07-01",
+        "openPrice": 100,
+        "symbol": "AAPL",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`matches snapshot when loading 1`] = `
+<div
+  className="root"
+>
+  <WithStyles(ForwardRef(Typography))
+    className="headline"
+    variant="h4"
+  >
+    Update position
+  </WithStyles(ForwardRef(Typography))>
+  <Progress />
+</div>
+`;

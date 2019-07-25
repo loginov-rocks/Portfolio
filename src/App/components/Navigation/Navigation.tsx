@@ -9,6 +9,7 @@ import CreatePosition from '../../views/CreatePosition';
 import Home from '../../views/Home';
 import Position from '../../views/Position';
 import Profile from '../../views/Profile';
+import UpdatePosition from '../../views/UpdatePosition';
 
 export interface Props {
   classes: { [key: string]: string };
@@ -37,6 +38,10 @@ const Navigation: React.FunctionComponent<Props> = ({
 
     case R.PROFILE:
       Component = Profile;
+      break;
+
+    case R.UPDATE_POSITION:
+      Component = UpdatePosition;
       break;
 
     default:

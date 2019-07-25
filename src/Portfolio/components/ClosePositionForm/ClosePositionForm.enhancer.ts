@@ -28,7 +28,7 @@ interface WithStateHandlersUpdaters {
 interface EnhancedProps {
   backButton?: React.ReactNode;
   id: string;
-  onClose?: (positionId: string) => void;
+  onClose?: () => void;
 }
 
 export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedProps>(
@@ -84,9 +84,9 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
       }
 
       closePosition(id, price, commission, date)
-        .then(positionId => {
+        .then(() => {
           if (onClose) {
-            onClose(positionId);
+            onClose();
           }
         });
     },

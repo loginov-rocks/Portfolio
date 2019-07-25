@@ -26,6 +26,10 @@ exports[`matches snapshot 1`] = `
           "key": "marketPLPercent",
           "label": "PL%",
         },
+        Object {
+          "key": "marketSum",
+          "label": "Market Value",
+        },
       ]
     }
     onKeyChange={[Function]}

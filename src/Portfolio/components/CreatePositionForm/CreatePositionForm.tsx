@@ -1,6 +1,8 @@
 import { Button, TextField } from '@material-ui/core';
 import * as React from 'react';
 
+// TODO: Refactor to universal form for Position control.
+
 export interface Props {
   amount: number | '';
   classes: { [key: string]: string };
@@ -16,7 +18,7 @@ export interface Props {
   symbol: string;
 }
 
-const OpenPositionForm: React.FunctionComponent<Props> = ({
+const CreatePositionForm: React.FunctionComponent<Props> = ({
   amount, classes, commission, date, handleAmountChange, handleCommissionChange, handleDateChange, handlePriceChange,
   handleSymbolChange, handleSubmit, price, symbol,
 }: Props) => (
@@ -92,4 +94,4 @@ const OpenPositionForm: React.FunctionComponent<Props> = ({
   </form>
 );
 
-export default OpenPositionForm;
+export default CreatePositionForm;
