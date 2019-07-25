@@ -36,7 +36,8 @@ const OpenPositionsSummariesList: React.FunctionComponent<Props> = ({
 
     <List className={classes.list} dense disablePadding>
       {summaries.map(({
-        amount, companyName, dailyPL, dailyPLPercent, marketPL, marketPLPercent, openPriceAverage, symbol,
+        amount, companyName, dailyPL, dailyPLPercent, marketPL, marketPLPercent, marketPrice, marketSum,
+        openPriceAverage, symbol,
       }) => (
         <ListItem key={symbol}>
 
@@ -45,11 +46,21 @@ const OpenPositionsSummariesList: React.FunctionComponent<Props> = ({
           <ListItemText
             primary={companyName === null ? symbol : companyName}
             secondary={(
-              <React.Fragment>
-                <Money value={openPriceAverage} />
-                {' x '}
-                {amount}
-              </React.Fragment>
+              sorterKey === 'marketSum' ? (
+                marketSum !== null && <Money highlighted value={marketSum} />
+              ) : (
+                <React.Fragment>
+                  <Money value={openPriceAverage} />
+                  {marketPrice !== null && (
+                    <React.Fragment>
+                      {' \u2192 '}
+                      <Money value={marketPrice} />
+                    </React.Fragment>
+                  )}
+                  {' x '}
+                  {amount}
+                </React.Fragment>
+              )
             )}
           />
 

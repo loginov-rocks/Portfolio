@@ -37,6 +37,8 @@ export interface OpenPositionsSummary {
   dailyPL: number | null;
   dailyPLPercent: number | null;
 
+  marketPrice: number | null;
+  marketSum: number | null;
   marketPL: number | null;
   marketPLPercent: number | null;
 }
@@ -128,7 +130,7 @@ export const createOpenPositionsSummaries = (stockPositions: StockPosition[]): O
     let openPrice = 0;
     let openSum = 0;
     let dailyPL: number | null = null;
-    let dailyPLPercent: number | null = null;
+    let marketSum: number | null = null;
     let marketPL: number | null = null;
     let marketPLPercent: number | null = null;
 
@@ -145,6 +147,14 @@ export const createOpenPositionsSummaries = (stockPositions: StockPosition[]): O
         dailyPL += stockPosition.dailyPL;
       }
 
+      if (stockPosition.marketSum !== null) {
+        if (marketSum === null) {
+          marketSum = 0;
+        }
+
+        marketSum += stockPosition.marketSum;
+      }
+
       if (stockPosition.marketPL !== null) {
         if (marketPL === null) {
           marketPL = 0;
@@ -156,16 +166,12 @@ export const createOpenPositionsSummaries = (stockPositions: StockPosition[]): O
 
     const referencePosition = bySymbols[symbol][0];
 
-    if (dailyPL !== null && referencePosition.quote !== null && referencePosition.quote.close !== null) {
-      dailyPLPercent = dailyPL / amount / referencePosition.quote.close;
-    }
-
     if (marketPL !== null) {
       marketPLPercent = marketPL / openSum;
     }
 
     const openPriceAverage = openPrice / amount;
-    const { companyName } = referencePosition;
+    const { companyName, dailyPLPercent, marketPrice } = referencePosition;
 
     return {
       amount,
@@ -174,6 +180,8 @@ export const createOpenPositionsSummaries = (stockPositions: StockPosition[]): O
       dailyPLPercent,
       marketPL,
       marketPLPercent,
+      marketPrice,
+      marketSum,
       openPriceAverage,
       openSum,
       symbol,
@@ -199,10 +207,9 @@ export const calculateTotals = (stockPositions: StockPosition[]): Totals => {
 
       if (position.quote !== null) {
         totalDailyPL += position.amount * position.quote.change;
-
-        if (position.quote.close !== null) {
-          totalPreviousCloseSum += position.amount * position.quote.close;
-        }
+        // TODO: Check if the `previousClose` prop can be null.
+        totalPreviousCloseSum += position.amount
+          * (position.quote.close === null ? position.quote.previousClose : position.quote.close);
       }
 
       if (position.marketSum !== null) {
