@@ -2,6 +2,7 @@
 import { dialogflow } from 'actions-on-google';
 // Import the firebase-functions package for deployment.
 import * as functions from 'firebase-functions';
+import Vibrant from 'node-vibrant';
 
 // Instantiate the Dialogflow client.
 const app = dialogflow({ debug: true });
@@ -16,4 +17,18 @@ app.intent('favorite color', (conv, { color }) => {
 });
 
 // Set the DialogflowApp object to handle the HTTPS POST request.
-exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
+const dialogflowFirebaseFulfillment = functions.https.onRequest(app);
+
+const vibrantPalette = functions.https.onRequest((request, response) => {
+  const { img } = request.query;
+
+  Vibrant.from(img).getPalette()
+    .then(palette => {
+      response.send(palette);
+    });
+});
+
+export {
+  dialogflowFirebaseFulfillment,
+  vibrantPalette,
+};
