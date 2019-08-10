@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 
+import { resetVibrantPalettes, ResetVibrantPalettesAction } from 'Firebase/actions';
 import { ProfileState } from 'Firebase/State';
 import State from 'State';
 import {
@@ -13,10 +14,11 @@ interface StateProps {
 interface DispatchProps {
   resetLogos: ResetLogosAction;
   resetQuotes: ResetQuotesAction;
+  resetVibrantPalettes: ResetVibrantPalettesAction;
 }
 
 const mapStateToProps = ({ firebase: { firebase: { profile } } }: State): StateProps => ({ profile });
 
-const mapDispatchToProps = { resetLogos, resetQuotes };
+const mapDispatchToProps = { resetLogos, resetQuotes, resetVibrantPalettes };
 
 export default connect<StateProps, DispatchProps, {}, State>(mapStateToProps, mapDispatchToProps);

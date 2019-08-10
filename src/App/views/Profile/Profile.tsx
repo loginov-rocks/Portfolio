@@ -1,6 +1,7 @@
 import { Avatar, Typography } from '@material-ui/core';
 import * as React from 'react';
 
+import { ResetVibrantPalettesAction } from 'Firebase/actions';
 import { ProfileState } from 'Firebase/State';
 import { ResetLogosAction, ResetQuotesAction } from 'Stocks/actions';
 import LogoutButton from 'User/components/LogoutButton';
@@ -10,10 +11,11 @@ interface Props {
   profile: ProfileState;
   resetLogos: ResetLogosAction;
   resetQuotes: ResetQuotesAction;
+  resetVibrantPalettes: ResetVibrantPalettesAction;
 }
 
 const Profile: React.FunctionComponent<Props> = ({
-  classes, profile, resetLogos, resetQuotes,
+  classes, profile, resetLogos, resetQuotes, resetVibrantPalettes,
 }: Props) => (
   <div className={classes.root}>
 
@@ -36,6 +38,7 @@ const Profile: React.FunctionComponent<Props> = ({
       onLogout={() => {
         resetLogos();
         resetQuotes();
+        resetVibrantPalettes();
       }}
     >
       Sign Out
