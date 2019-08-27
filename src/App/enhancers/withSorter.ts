@@ -1,4 +1,6 @@
-import { connect, MapDispatchToProps } from 'react-redux';
+import {
+  connect, InferableComponentEnhancerWithProps, MapDispatchToProps, ResolveThunks,
+} from 'react-redux';
 
 import State from 'State';
 
@@ -46,6 +48,10 @@ const mapDispatchToProps = (name: string): MapDispatchToProps<DispatchProps, {}>
   handleSorterOrderChange: changeSorterOrderCurried(name),
 });
 
-export default (name: string, initialKey: string, initialOrder: 'asc' | 'desc') => (
+export default (
+  name: string,
+  initialKey: string,
+  initialOrder: 'asc' | 'desc',
+): InferableComponentEnhancerWithProps<StateProps & ResolveThunks<DispatchProps>, {}> => (
   connect(mapStateToProps(name, initialKey, initialOrder), mapDispatchToProps(name))
 );

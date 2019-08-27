@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { firestoreConnect, isLoaded } from 'react-redux-firebase';
-import { compose } from 'recompose';
+import { ComponentEnhancer, compose } from 'recompose';
 
 import { getPositionsCollectionPath } from 'Firebase/lib';
 import State from 'State';
@@ -42,7 +42,9 @@ const mapStateToProps = <OwnProps>(positionIdExtractor: PositionIdExtractor<OwnP
   };
 };
 
-export default <OwnProps>(positionIdExtractor: PositionIdExtractor<OwnProps>) => compose(
+export default <OwnProps>(
+  positionIdExtractor: PositionIdExtractor<OwnProps>,
+): ComponentEnhancer<Props, OwnProps> => compose(
   withAuth,
   firestoreConnect(({ auth }: WithAuthProps) => [
     // `getPositionDocumentPath` is not used here, because it leads to listeners switching and DOCUMENT_ADDED events
