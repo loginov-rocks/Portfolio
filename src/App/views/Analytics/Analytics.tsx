@@ -1,5 +1,6 @@
 import { Typography } from '@material-ui/core';
 import * as React from 'react';
+import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts';
 
 import Money from 'Shared/components/Money';
 import Percent from 'Shared/components/Percent';
@@ -28,8 +29,30 @@ const Analytics: React.FunctionComponent<Props> = ({
 
   const maxShare = summaries[0].marketSum / totalMarketSum;
 
+  const data = [];
+
+  summaries.forEach(summary => {
+    if (summary.marketSum === null) {
+      return;
+    }
+
+    data.push({ value: summary.marketSum });
+  });
+
   return (
     <div className={classes.root}>
+
+      <div className={classes.chartWrapper}>
+        <ResponsiveContainer>
+          <PieChart>
+            <Pie dataKey="value" data={data} label innerRadius="70%">
+              {data.map((entry, index) => (
+                <Cell key={index} fill={getUniqueColor(summaries[index].symbol)} />
+              ))}
+            </Pie>
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
 
       <div><Money value={totalMarketSum} /></div>
 
