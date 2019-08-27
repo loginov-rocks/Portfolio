@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import { compose, HandleCreators, withHandlers } from 'recompose';
+import {
+  ComponentEnhancer, compose, HandleCreators, withHandlers,
+} from 'recompose';
 
 import { navigate as navigateAction, NavigateAction } from '../actions';
 import * as R from '../routes';
@@ -24,7 +26,9 @@ interface NavigationHandlersMapper {
 
 const mapDispatchToProps = { navigate: navigateAction };
 
-export default <TInner, TOutter>(handlersMapper: NavigationHandlersMapper) => compose<TInner, TOutter>(
+export default <TInner, TOutter>(
+  handlersMapper: NavigationHandlersMapper,
+): ComponentEnhancer<TInner, TOutter> => compose<TInner, TOutter>(
   // Connect to get navigate action.
   connect(null, mapDispatchToProps),
   // Add handlers using recompose.
