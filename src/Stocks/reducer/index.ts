@@ -18,7 +18,7 @@ const initialState: State = {
 export default (state: State = initialState, action: Action): State => {
   // Custom state reconciliation.
   if (action.type === REHYDRATE) {
-    const { payload } = action as RehydrateAction<RootState>;
+    const { payload } = action as RehydrateAction;
 
     if (!payload) {
       return state;
@@ -26,8 +26,8 @@ export default (state: State = initialState, action: Action): State => {
 
     return {
       ...state,
-      logos: mergeRepositories(state.logos, payload.stocks.logos),
-      quotes: mergeRepositories(state.quotes, payload.stocks.quotes),
+      logos: mergeRepositories(state.logos, (payload as RootState).stocks.logos),
+      quotes: mergeRepositories(state.quotes, (payload as RootState).stocks.quotes),
     };
   }
 
