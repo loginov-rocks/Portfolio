@@ -23,7 +23,7 @@ export interface Props {
 const OpenPositionsSummariesList: React.FunctionComponent<Props> = ({
   classes, handleSorterKeyChange, handleSorterOrderChange, summaries, sorterKey, sorterOrder,
 }: Props) => (
-  <React.Fragment>
+  <>
 
     <Sorter
       className={classes.sorter}
@@ -49,17 +49,17 @@ const OpenPositionsSummariesList: React.FunctionComponent<Props> = ({
               sorterKey === 'marketSum' ? (
                 marketSum !== null && <Money highlighted value={marketSum} />
               ) : (
-                <React.Fragment>
+                <>
                   <Money value={openPriceAverage} />
                   {marketPrice !== null && (
-                    <React.Fragment>
+                    <>
                       {' \u2192 '}
                       <Money value={marketPrice} />
-                    </React.Fragment>
+                    </>
                   )}
                   {' x '}
                   {amount}
-                </React.Fragment>
+                </>
               )
             )}
           />
@@ -87,7 +87,7 @@ const OpenPositionsSummariesList: React.FunctionComponent<Props> = ({
       ))}
     </List>
 
-  </React.Fragment>
+  </>
 );
 
 export default OpenPositionsSummariesList;

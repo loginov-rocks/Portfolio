@@ -19,7 +19,7 @@ export interface Props {
 const Sorter: React.FunctionComponent<Props> = ({
   anchor, className, keyLabel, keys, onKeyChange, onOrderChange, sorterKey, sorterOrder, updateAnchor,
 }: Props) => (
-  <React.Fragment>
+  <>
 
     <ButtonGroup className={className}>
       <Button onClick={event => updateAnchor(event.currentTarget)}>
@@ -51,7 +51,7 @@ const Sorter: React.FunctionComponent<Props> = ({
       ))}
     </Menu>
 
-  </React.Fragment>
+  </>
 );
 
 export default Sorter;

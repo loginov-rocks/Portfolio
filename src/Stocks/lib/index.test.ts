@@ -23,7 +23,7 @@ describe('getQuotePrice', () => {
   });
 
   it('returns quote IEX realtime price if present', () => {
-    expect(getQuotePrice(Object.assign({ iexRealtimePrice: 777 }, quoteFixture))).toBe(777);
+    expect(getQuotePrice({ iexRealtimePrice: 777, ...quoteFixture })).toBe(777);
   });
 
   it('returns null if quote is null', () => {

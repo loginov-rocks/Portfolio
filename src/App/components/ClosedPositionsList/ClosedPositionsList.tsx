@@ -25,7 +25,7 @@ export interface Props {
 const ClosedPositionsList: React.FunctionComponent<Props> = ({
   classes, handleSorterKeyChange, handleSorterOrderChange, onPositionClick, stockPositions, sorterKey, sorterOrder,
 }: Props) => (
-  <React.Fragment>
+  <>
 
     <Sorter
       className={classes.sorter}
@@ -47,13 +47,13 @@ const ClosedPositionsList: React.FunctionComponent<Props> = ({
           <ListItemText
             primary={companyName === null ? symbol : companyName}
             secondary={(
-              <React.Fragment>
+              <>
                 {amount}
                 {' @ '}
                 {sorterKey === 'openDate' || closeDate === null
                   ? <PositionDate highlighted={sorterKey === 'openDate'} date={openDate} />
                   : <PositionDate highlighted={sorterKey === 'closeDate'} date={closeDate} />}
-              </React.Fragment>
+              </>
             )}
           />
 
@@ -76,7 +76,7 @@ const ClosedPositionsList: React.FunctionComponent<Props> = ({
       ))}
     </List>
 
-  </React.Fragment>
+  </>
 );
 
 export default ClosedPositionsList;

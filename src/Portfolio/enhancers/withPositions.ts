@@ -30,7 +30,7 @@ const mapStateToProps = ({ firebase: { firestore: { data } } }: State, { auth }:
           return null;
         }
 
-        return Object.assign({ id: positionId }, user.positions[positionId]);
+        return { id: positionId, ...user.positions[positionId] };
       }).filter(position => position !== null) as Position[];
     }
   }

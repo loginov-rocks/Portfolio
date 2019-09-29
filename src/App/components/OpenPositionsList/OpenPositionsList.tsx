@@ -25,7 +25,7 @@ export interface Props {
 const OpenPositionsList: React.FunctionComponent<Props> = ({
   classes, handleSorterKeyChange, handleSorterOrderChange, onPositionClick, stockPositions, sorterKey, sorterOrder,
 }: Props) => (
-  <React.Fragment>
+  <>
 
     <Sorter
       className={classes.sorter}
@@ -48,11 +48,11 @@ const OpenPositionsList: React.FunctionComponent<Props> = ({
           <ListItemText
             primary={companyName === null ? symbol : companyName}
             secondary={(
-              <React.Fragment>
+              <>
                 {amount}
                 {' @ '}
                 <PositionDate highlighted={sorterKey === 'openDate'} date={openDate} />
-              </React.Fragment>
+              </>
             )}
           />
 
@@ -86,7 +86,7 @@ const OpenPositionsList: React.FunctionComponent<Props> = ({
       ))}
     </List>
 
-  </React.Fragment>
+  </>
 );
 
 export default OpenPositionsList;
