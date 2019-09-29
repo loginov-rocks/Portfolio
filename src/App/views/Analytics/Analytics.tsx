@@ -1,6 +1,8 @@
 import { Typography } from '@material-ui/core';
 import * as React from 'react';
-import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts';
+import {
+  Cell, Pie, PieChart, ResponsiveContainer,
+} from 'recharts';
 
 import Money from 'Shared/components/Money';
 import Percent from 'Shared/components/Percent';
@@ -47,7 +49,10 @@ const Analytics: React.FunctionComponent<Props> = ({
           <PieChart>
             <Pie dataKey="value" data={data} label innerRadius="70%">
               {data.map((entry, index) => (
-                <Cell key={index} fill={getUniqueColor(summaries[index].symbol)} />
+                <Cell
+                  key={index} // eslint-disable-line react/no-array-index-key
+                  fill={getUniqueColor(summaries[index].symbol)}
+                />
               ))}
             </Pie>
           </PieChart>
@@ -64,7 +69,7 @@ const Analytics: React.FunctionComponent<Props> = ({
 
           const color = getUniqueColor(summary.symbol);
           const percent = summary.marketSum / totalMarketSum;
-          const share = percent / maxShare * 100;
+          const share = (percent / maxShare) * 100;
 
           // TODO: Extract share bar to Shared components.
           return (

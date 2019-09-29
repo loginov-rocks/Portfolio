@@ -10,4 +10,4 @@ export default interface VibrantPalette {
   Muted: Color;
   LightMuted: Color;
   DarkMuted: Color;
-}
+} // eslint-disable-line semi

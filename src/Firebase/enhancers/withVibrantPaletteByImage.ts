@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import { compose, lifecycle, mapProps } from 'recompose';
+import {
+  ComponentEnhancer, compose, lifecycle, mapProps,
+} from 'recompose';
 import { Repository } from 'redux-repository/lib/interfaces';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
@@ -36,7 +38,9 @@ const mapStateToProps = ({ firebase: { functions: { vibrantPalettes } } }: State
 
 const mapDispatchToProps = { fetchVibrantPalette: fetchVibrantPaletteAction };
 
-export default <OwnProps>(imageExtractor: ImageExtractor<OwnProps>) => compose<Props, OwnProps & EnhancedProps>(
+export default <OwnProps>(
+  imageExtractor: ImageExtractor<OwnProps>,
+): ComponentEnhancer<Props, OwnProps & EnhancedProps> => compose<Props, OwnProps & EnhancedProps>(
   connect(mapStateToProps, mapDispatchToProps),
   lifecycle<OwnProps & EnhancedProps & StateProps & DispatchProps, {}>({
 
@@ -60,7 +64,7 @@ export default <OwnProps>(imageExtractor: ImageExtractor<OwnProps>) => compose<P
 
   }),
   mapProps<Props, OwnProps & EnhancedProps & StateProps & DispatchProps>(({
-    fetchVibrantPalette, vibrantPalettes, ...props
+    fetchVibrantPalette, vibrantPalettes, ...props // eslint-disable-line @typescript-eslint/no-unused-vars
   }) => {
     // Ignore because rest props should be enough for image extractor.
     // @ts-ignore

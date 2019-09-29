@@ -50,7 +50,7 @@ export const getPositionDocument = (
 export const getVibrantColor = (
   vibrantPalette: VibrantPalette | null,
   type: 'vibrant' | 'light' | 'dark' | 'muted' | 'lightMuted' | 'darkMuted' = 'vibrant',
-  opacity: number = 1,
+  opacity = 1,
 ): string => {
   if (vibrantPalette === null) {
     return 'none';

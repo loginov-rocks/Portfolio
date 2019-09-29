@@ -25,6 +25,11 @@ exports[`matches snapshot if on the close position page 1`] = `
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
       icon={<Memo />}
+      label="Analytics"
+      value="ANALYTICS"
+    />
+    <WithStyles(ForwardRef(BottomNavigationAction))
+      icon={<Memo />}
       label="Profile"
       value="PROFILE"
     />
@@ -54,6 +59,11 @@ exports[`matches snapshot if on the create position page 1`] = `
       icon={<Memo />}
       label="Portfolio"
       value="HOME"
+    />
+    <WithStyles(ForwardRef(BottomNavigationAction))
+      icon={<Memo />}
+      label="Analytics"
+      value="ANALYTICS"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
       icon={<Memo />}
@@ -89,6 +99,11 @@ exports[`matches snapshot if on the home page 1`] = `
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
       icon={<Memo />}
+      label="Analytics"
+      value="ANALYTICS"
+    />
+    <WithStyles(ForwardRef(BottomNavigationAction))
+      icon={<Memo />}
       label="Profile"
       value="PROFILE"
     />
@@ -101,7 +116,7 @@ exports[`matches snapshot if on the position page 1`] = `
   <div
     className="container"
   >
-    <WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(Connect(withHandlers(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Position)))))))))))))))))) />
+    <WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(Connect(withHandlers(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position)))))))))))))))))))))))) />
   </div>
   <WithStyles(ForwardRef(BottomNavigation))
     className="bottomNavigation"
@@ -118,6 +133,11 @@ exports[`matches snapshot if on the position page 1`] = `
       icon={<Memo />}
       label="Portfolio"
       value="HOME"
+    />
+    <WithStyles(ForwardRef(BottomNavigationAction))
+      icon={<Memo />}
+      label="Analytics"
+      value="ANALYTICS"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
       icon={<Memo />}
@@ -150,6 +170,11 @@ exports[`matches snapshot if on the profile page 1`] = `
       icon={<Memo />}
       label="Portfolio"
       value="HOME"
+    />
+    <WithStyles(ForwardRef(BottomNavigationAction))
+      icon={<Memo />}
+      label="Analytics"
+      value="ANALYTICS"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
       icon={<Memo />}

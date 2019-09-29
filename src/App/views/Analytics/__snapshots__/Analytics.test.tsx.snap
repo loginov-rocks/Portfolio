@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="root"
+>
+  <Progress />
+</div>
+`;
+
+exports[`matches snapshot when positions are loading 1`] = `
+<div
+  className="root"
+>
+  <Progress />
+</div>
+`;
