@@ -4,16 +4,17 @@ import 'firebase/database';
 import 'firebase/firestore';
 import { getFirebase, reactReduxFirebase } from 'react-redux-firebase';
 import {
-  applyMiddleware, compose, createStore, Reducer,
+  applyMiddleware, compose, createStore, Reducer, Store,
 } from 'redux';
 import { reduxFirestore } from 'redux-firestore';
 import { persistStore, persistReducer } from 'redux-persist';
+import { Persistor } from 'redux-persist/es/types';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 
 import * as C from 'Constants';
 
-export default (reducer: Reducer) => {
+export default (reducer: Reducer): { persistor: Persistor; store: Store } => {
   firebase.initializeApp({
     apiKey: C.FIREBASE_API_KEY,
     authDomain: C.FIREBASE_AUTH_DOMAIN,

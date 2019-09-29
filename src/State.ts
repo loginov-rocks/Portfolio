@@ -8,4 +8,4 @@ export default interface State {
   currencies: CurrenciesState;
   firebase: FirebaseState;
   stocks: StocksState;
-}
+} // eslint-disable-line semi

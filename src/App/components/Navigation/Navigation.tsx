@@ -57,7 +57,7 @@ const Navigation: React.FunctionComponent<Props> = ({
   }
 
   return (
-    <React.Fragment>
+    <>
 
       <div className={classes.container} ref={containerRef}>
         <Component />
@@ -75,7 +75,7 @@ const Navigation: React.FunctionComponent<Props> = ({
         <BottomNavigationAction icon={<AccountCircleOutlined />} label="Profile" value={R.PROFILE} />
       </BottomNavigation>
 
-    </React.Fragment>
+    </>
   );
 };
 

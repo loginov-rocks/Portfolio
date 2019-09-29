@@ -59,7 +59,7 @@ export default compose<Props, EnhancedProps>(
 
   }),
   mapProps<Props, EnhancedProps & StateProps & DispatchProps>(({
-    fetchQuote, quotes, symbols, ...props
+    fetchQuote, quotes, symbols, ...props // eslint-disable-line @typescript-eslint/no-unused-vars
   }) => {
     const quotesBySymbols: QuotesBySymbols = {};
 

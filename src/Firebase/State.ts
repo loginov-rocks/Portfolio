@@ -40,4 +40,4 @@ export default interface State {
     };
   };
   functions: FunctionsState;
-}
+} // eslint-disable-line semi

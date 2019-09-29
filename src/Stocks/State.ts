@@ -5,4 +5,4 @@ import Quote from './lib/IEX/Quote';
 export default interface State {
   logos: Repository<string, string>;
   quotes: Repository<Quote, string>;
-}
+} // eslint-disable-line semi

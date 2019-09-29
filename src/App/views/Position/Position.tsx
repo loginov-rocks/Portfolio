@@ -32,7 +32,7 @@ const Position: React.FunctionComponent<Props> = ({
   classes, handleCloseClick, handleDeleteClick, handleUpdateClick, handleWantToDelete, positionLoading, stockPosition,
   vibrantPalette, wantToDelete,
 }: Props) => (
-  <React.Fragment>
+  <>
 
     {!positionLoading && stockPosition && (
       <div className={classes.bar} style={{ backgroundColor: getVibrantColor(vibrantPalette, 'darkMuted') }}>
@@ -103,7 +103,7 @@ const Position: React.FunctionComponent<Props> = ({
           {stockPosition.closeDate !== null && stockPosition.closeCommission !== null
           && stockPosition.closePrice !== null && stockPosition.closeSum !== null && stockPosition.closePL !== null
           && stockPosition.closePLPercent !== null && stockPosition.closePLAnnualPercent !== null && (
-            <React.Fragment>
+            <>
 
               <ListSubheader disableSticky>Close</ListSubheader>
               <ListItem>
@@ -149,11 +149,11 @@ const Position: React.FunctionComponent<Props> = ({
                 </ListItemSecondaryAction>
               </ListItem>
 
-            </React.Fragment>
+            </>
           )}
 
           {stockPosition.dailyPL !== null && stockPosition.dailyPLPercent !== null && (
-            <React.Fragment>
+            <>
 
               <ListSubheader disableSticky>Daily</ListSubheader>
               <ListItem>
@@ -169,13 +169,13 @@ const Position: React.FunctionComponent<Props> = ({
                 </ListItemSecondaryAction>
               </ListItem>
 
-            </React.Fragment>
+            </>
           )}
 
           {stockPosition.marketPrice !== null && stockPosition.marketSum !== null
           && stockPosition.marketPL !== null && stockPosition.marketPLPercent !== null
           && stockPosition.marketPLAnnualPercent !== null && (
-            <React.Fragment>
+            <>
 
               <ListSubheader disableSticky>Market</ListSubheader>
               <ListItem>
@@ -209,7 +209,7 @@ const Position: React.FunctionComponent<Props> = ({
                 </ListItemSecondaryAction>
               </ListItem>
 
-            </React.Fragment>
+            </>
           )}
 
         </List>
@@ -217,7 +217,7 @@ const Position: React.FunctionComponent<Props> = ({
 
     </div>
 
-  </React.Fragment>
+  </>
 );
 
 export default Position;

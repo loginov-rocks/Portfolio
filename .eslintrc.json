@@ -6,10 +6,14 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "airbnb-typescript"
+    "airbnb"
   ],
   "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
+    "@typescript-eslint/ban-ts-ignore": "warn",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
@@ -18,13 +22,33 @@
         "allowTypedFunctionExpressions": true
       }
     ],
+    "@typescript-eslint/indent": [
+      "error",
+      2
+    ],
     "@typescript-eslint/no-explicit-any": "error",
-    "import/prefer-default-export": "warn",
+    "@typescript-eslint/no-unused-vars": "error",
+    "arrow-parens": [
+      "error",
+      "as-needed",
+      {
+        "requireForBlockBody": false
+      }
+    ],
     "max-len": [
       "error",
       {
         "code": 120,
         "ignoreTemplateLiterals": true
+      }
+    ],
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".jsx",
+          ".tsx"
+        ]
       }
     ],
     "sort-keys": [
@@ -39,6 +63,12 @@
   "settings": {
     "import/resolver": {
       "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ],
         "paths": [
           "src"
         ]

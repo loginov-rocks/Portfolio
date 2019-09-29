@@ -53,7 +53,7 @@ export default compose<Props, EnhancedProps>(
 
   }),
   mapProps<Props, EnhancedProps & StateProps & DispatchProps>(({
-    fetchLogo, logos, symbol, ...props
+    fetchLogo, logos, symbol, ...props // eslint-disable-line @typescript-eslint/no-unused-vars
   }) => {
     const logo = getResourceById(logos, symbol);
 
