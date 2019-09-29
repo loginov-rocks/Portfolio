@@ -31,4 +31,4 @@ export default interface State {
       };
     };
   };
-}
+} // eslint-disable-line semi

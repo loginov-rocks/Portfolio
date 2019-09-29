@@ -8,4 +8,4 @@ export default interface State {
   error: string | null;
   loading: boolean;
   rates: Rates | null;
-}
+} // eslint-disable-line semi

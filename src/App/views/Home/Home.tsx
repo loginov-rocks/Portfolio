@@ -21,7 +21,7 @@ export interface Props {
 const Home: React.FunctionComponent<Props> = ({
   classes, handlePositionClick, handleTabChange, positionsLoading, stockPositions, tab,
 }: Props) => (
-  <React.Fragment>
+  <>
 
     {!positionsLoading && (
       <div className={classes.bar}>
@@ -44,7 +44,7 @@ const Home: React.FunctionComponent<Props> = ({
 
     <div className={classes.root}>
       {positionsLoading ? <Progress /> : (
-        <React.Fragment>
+        <>
           {tab === 'closed' && (
             <ClosedPositionsList onPositionClick={handlePositionClick} stockPositions={stockPositions} />
           )}
@@ -54,11 +54,11 @@ const Home: React.FunctionComponent<Props> = ({
           {tab === 'summary' && (
             <OpenPositionsSummariesList stockPositions={stockPositions} />
           )}
-        </React.Fragment>
+        </>
       )}
     </div>
 
-  </React.Fragment>
+  </>
 );
 
 export default Home;

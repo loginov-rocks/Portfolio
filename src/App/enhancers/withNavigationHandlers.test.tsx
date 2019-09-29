@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 import { mount } from 'enzyme';
 import * as React from 'react';
 import configureStore, { MockStore } from 'redux-mock-store';

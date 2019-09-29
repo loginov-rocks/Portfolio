@@ -27,7 +27,7 @@ export default compose<Props, EnhancedProps>(
   })),
   withStockQuotesBySymbols,
   mapProps<Props, EnhancedProps & WithProps & WithStockQuotesBySymbolsProps>(({
-    positions, quotesBySymbols, symbols, ...props
+    positions, quotesBySymbols, symbols, ...props // eslint-disable-line @typescript-eslint/no-unused-vars
   }) => ({
     positions,
     stockPositions: positions.map(position => createStockPosition(

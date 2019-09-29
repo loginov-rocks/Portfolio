@@ -32,7 +32,7 @@ const mapStateToProps = <OwnProps>(positionIdExtractor: PositionIdExtractor<OwnP
     const user = data.users[userId];
 
     if (user && user.positions && user.positions[positionId]) {
-      position = Object.assign({ id: positionId }, user.positions[positionId]);
+      position = { id: positionId, ...user.positions[positionId] } as Position;
     }
   }
 

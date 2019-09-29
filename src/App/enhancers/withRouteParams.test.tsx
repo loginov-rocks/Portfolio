@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 import { shallow } from 'enzyme';
 import * as React from 'react';
 import configureStore from 'redux-mock-store';

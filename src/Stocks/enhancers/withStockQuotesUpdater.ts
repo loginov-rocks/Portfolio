@@ -53,5 +53,7 @@ export default compose(
     },
 
   }),
-  mapProps<{}, StateProps & DispatchProps>(({ fetchQuote, quotes, ...props }) => props),
+  mapProps<{}, StateProps & DispatchProps>(({
+    fetchQuote, quotes, ...props // eslint-disable-line @typescript-eslint/no-unused-vars
+  }) => props),
 );

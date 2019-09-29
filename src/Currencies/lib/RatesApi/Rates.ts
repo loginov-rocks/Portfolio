@@ -4,4 +4,4 @@ export default interface Rates {
   rates: {
     [currency: string]: number;
   };
-}
+} // eslint-disable-line semi
