@@ -7,7 +7,7 @@ before_install:
   - cd functions
 
 script:
-  - npm run ci
+  - npm run check
   - npm run build
 
 after_script:

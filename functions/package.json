@@ -1,12 +1,12 @@
 {
   "name": "portfolio-firebase",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Portfolio Firebase",
   "main": "lib/index.js",
   "scripts": {
     "build": "npm run clean:build && npm run build:sources && npm run clean:tests",
     "build:sources": "babel src -d lib --extensions .ts",
-    "ci": "npm run lint && npm run typecheck && npm test",
+    "check": "npm run lint && npm run typecheck && npm test",
     "clean:build": "rimraf lib",
     "clean:coverage": "rimraf coverage",
     "clean:tests": "rimraf lib/**/*.test.js",
@@ -36,26 +36,29 @@
     "node": "8"
   },
   "dependencies": {
-    "actions-on-google": "^2.9.1",
-    "firebase-admin": "^8.2.0",
-    "firebase-functions": "^3.1.0",
-    "node-vibrant": "^3.1.3"
+    "actions-on-google": "^2.12.0",
+    "cors": "^2.8.5",
+    "firebase-admin": "^8.6.0",
+    "firebase-functions": "^3.2.0",
+    "node-vibrant": "^3.1.4"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-typescript": "^7.3.3",
-    "@types/jest": "^24.0.15",
-    "@typescript-eslint/eslint-plugin": "^2.0.0",
-    "@typescript-eslint/parser": "^2.0.0",
-    "coveralls": "^3.0.5",
-    "eslint": "^6.0.1",
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/cors": "^2.8.6",
+    "@types/jest": "^24.0.18",
+    "@typescript-eslint/eslint-plugin": "^2.3.2",
+    "@typescript-eslint/parser": "^2.3.2",
+    "coveralls": "^3.0.6",
+    "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "jest": "^24.8.0",
+    "jest": "^24.9.0",
+    "jest-express": "^1.10.1",
     "rimraf": "^3.0.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.6.3"
   },
   "jest": {
     "verbose": true
