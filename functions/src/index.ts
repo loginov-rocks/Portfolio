@@ -3,7 +3,8 @@ import { dialogflow } from 'actions-on-google';
 import cors from 'cors';
 // Import the firebase-functions package for deployment.
 import * as functions from 'firebase-functions';
-import Vibrant from 'node-vibrant';
+
+import vibrantPaletteHandler from './handlers/vibrantPalette';
 
 const corsHandler = cors({ origin: true });
 
@@ -23,12 +24,9 @@ app.intent('favorite color', (conv, { color }) => {
 const dialogflowFirebaseFulfillment = functions.https.onRequest(app);
 
 const vibrantPalette = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
-  const { img } = req.query;
-
-  Vibrant.from(img).getPalette()
-    .then(palette => {
-      res.send(palette);
-    });
+  vibrantPaletteHandler(req).then(palette => {
+    res.send(palette);
+  });
 }));
 
 export {
