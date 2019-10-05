@@ -4,6 +4,11 @@ exports[`matches snapshot 1`] = `
 <Fragment>
   <div
     className="bar"
+    style={
+      Object {
+        "backgroundColor": "none",
+      }
+    }
   >
     <WithStyles(Connect(lifecycle(mapProps(StockLogo))))
       className="logo"

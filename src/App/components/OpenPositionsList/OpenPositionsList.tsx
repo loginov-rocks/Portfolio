@@ -50,7 +50,9 @@ const OpenPositionsList: React.FunctionComponent<Props> = ({
             secondary={(
               <>
                 {amount}
-                {' @ '}
+                {' '}
+                @
+                {' '}
                 <PositionDate highlighted={sorterKey === 'openDate'} date={openDate} />
               </>
             )}

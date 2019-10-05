@@ -41,6 +41,7 @@ it('matches snapshot', () => {
         quoteProgress: false,
         symbol: 'AAPL',
       }}
+      vibrantPalette={null}
       wantToDelete={false}
     />,
   );
@@ -58,6 +59,7 @@ it('matches snapshot when loading', () => {
       handleWantToDelete={() => undefined}
       positionLoading
       stockPosition={null}
+      vibrantPalette={null}
       wantToDelete={false}
     />,
   );

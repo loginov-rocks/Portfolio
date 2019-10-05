@@ -31,6 +31,7 @@ const Analytics: React.FunctionComponent<Props> = ({
 
   const maxShare = summaries[0].marketSum / totalMarketSum;
 
+  // @ts-ignore
   const data = [];
 
   summaries.forEach(summary => {
@@ -47,7 +48,9 @@ const Analytics: React.FunctionComponent<Props> = ({
       <div className={classes.chartWrapper}>
         <ResponsiveContainer>
           <PieChart>
+            // @ts-ignore
             <Pie dataKey="value" data={data} label innerRadius="70%">
+              // @ts-ignore
               {data.map((entry, index) => (
                 <Cell
                   key={index} // eslint-disable-line react/no-array-index-key

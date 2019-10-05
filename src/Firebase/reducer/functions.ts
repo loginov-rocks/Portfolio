@@ -17,7 +17,7 @@ const initialState: State = {
 export default (state: State = initialState, action: Action): State => {
   // Custom state reconciliation.
   if (action.type === REHYDRATE) {
-    const { payload } = action as RehydrateAction<RootState>;
+    const { payload } = action as RehydrateAction;
 
     if (!payload) {
       return state;
@@ -25,7 +25,8 @@ export default (state: State = initialState, action: Action): State => {
 
     return {
       ...state,
-      vibrantPalettes: mergeRepositories(state.vibrantPalettes, payload.firebase.functions.vibrantPalettes),
+      vibrantPalettes: mergeRepositories(state.vibrantPalettes,
+        (payload as RootState).firebase.functions.vibrantPalettes),
     };
   }
 
