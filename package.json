@@ -37,7 +37,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^5.1.1",
-    "react-redux-firebase": "^2.3.0",
+    "react-redux-firebase": "^2.5.0",
     "recompose": "^0.30.0",
     "redux": "^4.0.4",
     "redux-firestore": "^0.9.0",
@@ -90,7 +90,8 @@
   },
   "greenkeeper": {
     "ignore": [
-      "react-redux"
+      "react-redux",
+      "react-redux-firebase"
     ]
   },
   "jest": {
