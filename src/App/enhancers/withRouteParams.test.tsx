@@ -13,9 +13,7 @@ const EnhancedComponent = withRouteParams(BaseComponent);
 it('adds prop with route params', () => {
   const wrapper = shallow(
     // @ts-ignore
-    <EnhancedComponent
-      store={mockStore({ app: { routeParams: { param: 'value' } } })}
-    />,
+    <EnhancedComponent store={mockStore({ app: { routeParams: { param: 'value' } } })} />,
   );
 
   expect(wrapper.find(BaseComponent).prop('routeParams')).toStrictEqual({
