@@ -1,9 +1,12 @@
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
-import { AccountCircleOutlined, AddCircleOutlineOutlined, BusinessCenterOutlined } from '@material-ui/icons';
+import {
+  AccountCircleOutlined, AddCircleOutlineOutlined, BusinessCenterOutlined, PieChartOutlined,
+} from '@material-ui/icons';
 import * as React from 'react';
 
 import { NavigateAction } from '../../actions';
 import * as R from '../../routes';
+import Analytics from '../../views/Analytics';
 import ClosePosition from '../../views/ClosePosition';
 import CreatePosition from '../../views/CreatePosition';
 import Home from '../../views/Home';
@@ -24,6 +27,10 @@ const Navigation: React.FunctionComponent<Props> = ({
   let Component = null;
 
   switch (route) {
+    case R.ANALYTICS:
+      Component = Analytics;
+      break;
+
     case R.CLOSE_POSITION:
       Component = ClosePosition;
       break;
@@ -64,6 +71,7 @@ const Navigation: React.FunctionComponent<Props> = ({
       >
         <BottomNavigationAction icon={<AddCircleOutlineOutlined />} label="Open" value={R.CREATE_POSITION} />
         <BottomNavigationAction icon={<BusinessCenterOutlined />} label="Portfolio" value={R.HOME} />
+        <BottomNavigationAction icon={<PieChartOutlined />} label="Analytics" value={R.ANALYTICS} />
         <BottomNavigationAction icon={<AccountCircleOutlined />} label="Profile" value={R.PROFILE} />
       </BottomNavigation>
 

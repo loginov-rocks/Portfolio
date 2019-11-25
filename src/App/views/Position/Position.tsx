@@ -6,6 +6,8 @@ import {
 } from '@material-ui/icons';
 import * as React from 'react';
 
+import { getVibrantColor } from 'Firebase/lib';
+import VibrantPalette from 'Firebase/lib/Functions/VibrantPalette';
 import PositionDate from 'Portfolio/components/PositionDate';
 import Money from 'Shared/components/Money';
 import Percent from 'Shared/components/Percent';
@@ -22,17 +24,18 @@ export interface Props {
   handleWantToDelete: () => void;
   positionLoading: boolean;
   stockPosition: StockPosition | null;
+  vibrantPalette: VibrantPalette | null;
   wantToDelete: boolean;
 }
 
 const Position: React.FunctionComponent<Props> = ({
   classes, handleCloseClick, handleDeleteClick, handleUpdateClick, handleWantToDelete, positionLoading, stockPosition,
-  wantToDelete,
+  vibrantPalette, wantToDelete,
 }: Props) => (
   <>
 
     {!positionLoading && stockPosition && (
-      <div className={classes.bar}>
+      <div className={classes.bar} style={{ backgroundColor: getVibrantColor(vibrantPalette, 'darkMuted') }}>
 
         <StockLogo className={classes.logo} size={48} symbol={stockPosition.symbol} />
 

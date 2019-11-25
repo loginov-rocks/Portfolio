@@ -14,9 +14,7 @@ const EnhancedComponent = withAuth(BaseComponent);
 it('does not render children if unauthenticated', () => {
   const wrapper = mount(
     // @ts-ignore
-    <EnhancedComponent
-      store={mockStore({ firebase: { firebase: { auth: { isEmpty: true, isLoaded: false } } } })}
-    />,
+    <EnhancedComponent store={mockStore({ firebase: { firebase: { auth: { isEmpty: true, isLoaded: false } } } })} />,
   );
 
   expect(wrapper.contains(node)).toBeFalsy();
@@ -25,9 +23,7 @@ it('does not render children if unauthenticated', () => {
 it('renders children if authenticated', () => {
   const wrapper = mount(
     // @ts-ignore
-    <EnhancedComponent
-      store={mockStore({ firebase: { firebase: { auth: { isEmpty: false, isLoaded: true } } } })}
-    />,
+    <EnhancedComponent store={mockStore({ firebase: { firebase: { auth: { isEmpty: false, isLoaded: true } } } })} />,
   );
 
   expect(wrapper.contains(node)).toBeTruthy();

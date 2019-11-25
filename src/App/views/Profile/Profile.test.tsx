@@ -19,6 +19,7 @@ it('matches snapshot', () => {
       }}
       resetLogos={() => undefined}
       resetQuotes={() => undefined}
+      resetVibrantPalettes={() => undefined}
     />,
   );
 

@@ -7,6 +7,9 @@ export const AVAILABLE_CURRENCIES = [
 ];
 export const DEFAULT_CURRENCY = 'USD';
 
+export const FIREBASE_FUNCTIONS_VIBRANT_PALETTES_RESOURCE_NAME = 'firebaseFunctions/vibrantPalettes';
+export const FIREBASE_FUNCTIONS_VIBRANT_PALETTES_TTL = 7 * 24 * 60 * 60 * 1000; // 1 week
+
 export const FIRESTORE_POSITIONS_COLLECTION = 'positions';
 export const FIRESTORE_USERS_COLLECTION = 'users';
 
@@ -63,6 +66,8 @@ export const FIREBASE_DATABASE_URL = process.env.FIREBASE_DATABASE_URL;
 export const FIREBASE_MESSAGING_SENDER_ID = process.env.FIREBASE_MESSAGING_SENDER_ID;
 export const FIREBASE_PROJECT_ID = process.env.FIREBASE_PROJECT_ID;
 export const FIREBASE_STORAGE_BUCKET = process.env.FIREBASE_STORAGE_BUCKET;
+
+export const FIREBASE_FUNCTIONS_URL = process.env.FIREBASE_FUNCTIONS_URL as string;
 
 export const RATES_API_URL = process.env.RATES_API_URL as string;
 

@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import { compose, withHandlers, withStateHandlers } from 'recompose';
 
+import withVibrantPaletteByImage from 'Firebase/enhancers/withVibrantPaletteByImage';
 import { deletePosition as deletePositionAction, DeletePositionAction } from 'Portfolio/actions';
 import withPositionById, { Props as WithPositionByIdProps } from 'Portfolio/enhancers/withPositionById';
+import withStockLogoBySymbol, { Props as WithStockLogoBySymbolProps } from 'Stocks/enhancers/withStockLogoBySymbol';
 
 import withNavigationHandlers from '../../enhancers/withNavigationHandlers';
 import withRouteParams from '../../enhancers/withRouteParams';
@@ -62,4 +64,6 @@ export default compose<Props, {}>(
 
   }),
   withStockPosition,
+  withStockLogoBySymbol,
+  withVibrantPaletteByImage<WithStockLogoBySymbolProps>(({ logo }) => logo),
 );

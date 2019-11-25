@@ -1,9 +1,17 @@
+import { Repository } from 'redux-repository/lib/interfaces';
+
 import { Position } from 'Portfolio/lib';
+
+import VibrantPalette from './lib/Functions/VibrantPalette';
 
 export interface AuthState {
   isEmpty: boolean;
   isLoaded: boolean;
   uid?: string;
+}
+
+export interface FunctionsState {
+  vibrantPalettes: Repository<VibrantPalette, string>;
 }
 
 export interface ProfileState {
@@ -31,4 +39,5 @@ export default interface State {
       };
     };
   };
+  functions: FunctionsState;
 } // eslint-disable-line semi
