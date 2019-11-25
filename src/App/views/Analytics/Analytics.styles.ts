@@ -7,13 +7,18 @@ export default withStyles(theme => ({
     height: '50%',
     width: '100%',
   },
-  root: viewRoot(theme),
+  root: viewRoot(theme, { dense: true }),
   row: {
     alignItems: 'center',
     display: 'flex',
+    paddingBottom: theme.spacing(0.5),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    paddingTop: theme.spacing(0.5),
   },
   rowCompanyName: {
-    width: '30%',
+    paddingRight: theme.spacing(),
+    width: '40%',
   },
   rowPercent: {
     textAlign: 'right',
@@ -21,16 +26,16 @@ export default withStyles(theme => ({
   },
   rowShare: {
     backgroundColor: theme.palette.background.paper,
-    borderRadius: 3,
-    height: 6,
+    borderRadius: theme.spacing(0.5),
+    height: theme.spacing(),
     position: 'relative',
-    width: '50%',
+    width: '40%',
   },
   rowsWrapper: {
     width: '100%',
   },
   shareBar: {
-    borderRadius: 3,
+    borderRadius: theme.spacing(0.5),
     bottom: 0,
     left: 0,
     position: 'absolute',

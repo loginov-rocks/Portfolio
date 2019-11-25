@@ -4,10 +4,10 @@ import {
   Cell, Pie, PieChart, ResponsiveContainer,
 } from 'recharts';
 
-import Money from 'Shared/components/Money';
+import { getVibrantColor } from 'Firebase/lib';
+import VibrantPalette from 'Firebase/lib/Functions/VibrantPalette';
 import Percent from 'Shared/components/Percent';
 import Progress from 'Shared/components/Progress';
-import getUniqueColor from 'Styles/getUniqueColor';
 
 import { OpenPositionsSummary } from '../../lib';
 
@@ -16,10 +16,11 @@ export interface Props {
   positionsLoading: boolean;
   summaries: OpenPositionsSummary[];
   totalMarketSum: number;
+  vibrantPalettesBySymbols: { [key: string]: VibrantPalette | null };
 }
 
 const Analytics: React.FunctionComponent<Props> = ({
-  classes, positionsLoading, summaries, totalMarketSum,
+  classes, positionsLoading, summaries, totalMarketSum, vibrantPalettesBySymbols,
 }: Props) => {
   if (positionsLoading || summaries.length === 0 || summaries[0].marketSum === null) {
     return (
@@ -30,9 +31,7 @@ const Analytics: React.FunctionComponent<Props> = ({
   }
 
   const maxShare = summaries[0].marketSum / totalMarketSum;
-
-  // @ts-ignore
-  const data = [];
+  const data: { value: number }[] = [];
 
   summaries.forEach(summary => {
     if (summary.marketSum === null) {
@@ -48,13 +47,19 @@ const Analytics: React.FunctionComponent<Props> = ({
       <div className={classes.chartWrapper}>
         <ResponsiveContainer>
           <PieChart>
-            // @ts-ignore
-            <Pie dataKey="value" data={data} label innerRadius="70%">
-              // @ts-ignore
+            <Pie
+              dataKey="value"
+              data={data}
+              endAngle={-270}
+              innerRadius="70%"
+              isAnimationActive={false}
+              startAngle={90}
+              stroke="none"
+            >
               {data.map((entry, index) => (
                 <Cell
+                  fill={getVibrantColor(vibrantPalettesBySymbols[summaries[index].symbol])}
                   key={index} // eslint-disable-line react/no-array-index-key
-                  fill={getUniqueColor(summaries[index].symbol)}
                 />
               ))}
             </Pie>
@@ -62,15 +67,13 @@ const Analytics: React.FunctionComponent<Props> = ({
         </ResponsiveContainer>
       </div>
 
-      <div><Money value={totalMarketSum} /></div>
-
       <div className={classes.rowsWrapper}>
         {summaries.map(summary => {
           if (summary.marketSum === null) {
             return null;
           }
 
-          const color = getUniqueColor(summary.symbol);
+          const color = getVibrantColor(vibrantPalettesBySymbols[summary.symbol]);
           const percent = summary.marketSum / totalMarketSum;
           const share = (percent / maxShare) * 100;
 

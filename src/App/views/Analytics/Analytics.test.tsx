@@ -13,6 +13,7 @@ it('matches snapshot', () => {
       positionsLoading={false}
       summaries={[]}
       totalMarketSum={1000}
+      vibrantPalettesBySymbols={{}}
     />,
   );
 
@@ -26,6 +27,7 @@ it('matches snapshot when positions are loading', () => {
       positionsLoading
       summaries={[]}
       totalMarketSum={1000}
+      vibrantPalettesBySymbols={{}}
     />,
   );
 
