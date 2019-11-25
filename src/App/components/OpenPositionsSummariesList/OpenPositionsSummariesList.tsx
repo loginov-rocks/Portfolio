@@ -57,7 +57,9 @@ const OpenPositionsSummariesList: React.FunctionComponent<Props> = ({
                       <Money value={marketPrice} />
                     </>
                   )}
-                  {' x '}
+                  {' '}
+                  x
+                  {' '}
                   {amount}
                 </>
               )

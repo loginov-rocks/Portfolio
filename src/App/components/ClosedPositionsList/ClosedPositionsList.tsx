@@ -49,7 +49,9 @@ const ClosedPositionsList: React.FunctionComponent<Props> = ({
             secondary={(
               <>
                 {amount}
-                {' @ '}
+                {' '}
+                @
+                {' '}
                 {sorterKey === 'openDate' || closeDate === null
                   ? <PositionDate highlighted={sorterKey === 'openDate'} date={openDate} />
                   : <PositionDate highlighted={sorterKey === 'closeDate'} date={closeDate} />}
