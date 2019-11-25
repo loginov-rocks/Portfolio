@@ -6,12 +6,17 @@ import { Repository } from 'redux-repository/lib/interfaces';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
 
+import { areArraysEqual } from 'Shared/lib';
 import State from 'State';
 
 import { fetchVibrantPalette as fetchVibrantPaletteAction, FetchVibrantPaletteAction } from '../actions';
 import VibrantPalette from '../lib/Functions/VibrantPalette';
 
 // TODO: Tests.
+
+interface ImagesExtractor<OwnProps> {
+  (ownProps: OwnProps): string[];
+}
 
 interface StateProps {
   vibrantPalettes: Repository<VibrantPalette, string>;
@@ -21,13 +26,15 @@ interface DispatchProps {
   fetchVibrantPalette: FetchVibrantPaletteAction;
 }
 
-interface ImageExtractor<OwnProps> {
-  (ownProps: OwnProps): string | null;
+interface VibrantPalettesByImages {
+  [key: string]: {
+    vibrantPalette: VibrantPalette | null;
+    progress: boolean;
+  };
 }
 
 export interface Props {
-  vibrantPalette: VibrantPalette | null;
-  vibrantPaletteProgress: boolean;
+  vibrantPalettesByImages: VibrantPalettesByImages;
 }
 
 const mapStateToProps = ({ firebase: { functions: { vibrantPalettes } } }: State): StateProps => ({ vibrantPalettes });
@@ -35,26 +42,24 @@ const mapStateToProps = ({ firebase: { functions: { vibrantPalettes } } }: State
 const mapDispatchToProps = { fetchVibrantPalette: fetchVibrantPaletteAction };
 
 export default <OwnProps>(
-  imageExtractor: ImageExtractor<OwnProps>,
+  imagesExtractor: ImagesExtractor<OwnProps>,
 ): ComponentEnhancer<Props, OwnProps> => compose<Props, OwnProps>(
   connect(mapStateToProps, mapDispatchToProps),
   lifecycle<OwnProps & StateProps & DispatchProps, {}>({
 
     componentDidMount() {
       const { fetchVibrantPalette } = this.props;
-      const image = imageExtractor(this.props);
+      const images = imagesExtractor(this.props);
 
-      if (image !== null) {
-        fetchVibrantPalette(image);
-      }
+      images.forEach(image => fetchVibrantPalette(image));
     },
 
     componentDidUpdate(prevProps) {
       const { fetchVibrantPalette } = this.props;
-      const image = imageExtractor(this.props);
+      const images = imagesExtractor(this.props);
 
-      if (image !== null && image !== imageExtractor(prevProps)) {
-        fetchVibrantPalette(image);
+      if (!areArraysEqual(images, imagesExtractor(prevProps))) {
+        images.forEach(image => fetchVibrantPalette(image));
       }
     },
 
@@ -62,12 +67,20 @@ export default <OwnProps>(
   mapProps<Props, OwnProps & StateProps & DispatchProps>(props => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { fetchVibrantPalette, vibrantPalettes, ...returnedProps } = props;
-    const image = imageExtractor(props);
-    const vibrantPalette = image !== null ? getResourceById(vibrantPalettes, image) : null;
+    const vibrantPalettesByImages: VibrantPalettesByImages = {};
+    const images = imagesExtractor(props);
+
+    images.forEach(image => {
+      const resource = getResourceById(vibrantPalettes, image);
+
+      vibrantPalettesByImages[image] = {
+        progress: isRequested(resource),
+        vibrantPalette: extractData(resource),
+      };
+    });
 
     return {
-      vibrantPalette: extractData(vibrantPalette),
-      vibrantPaletteProgress: isRequested(vibrantPalette),
+      vibrantPalettesByImages,
       ...returnedProps,
     };
   }),
