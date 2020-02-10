@@ -14,22 +14,22 @@ exports[`matches snapshot if on the close position page 1`] = `
     value="CLOSE_POSITION"
   >
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(AddCircleOutlineOutlinedIcon) />}
       label="Open"
       value="CREATE_POSITION"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(BusinessCenterOutlinedIcon) />}
       label="Portfolio"
       value="HOME"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(PieChartOutlinedIcon) />}
       label="Analytics"
       value="ANALYTICS"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(AccountCircleOutlinedIcon) />}
       label="Profile"
       value="PROFILE"
     />
@@ -51,22 +51,22 @@ exports[`matches snapshot if on the create position page 1`] = `
     value="CREATE_POSITION"
   >
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(AddCircleOutlineOutlinedIcon) />}
       label="Open"
       value="CREATE_POSITION"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(BusinessCenterOutlinedIcon) />}
       label="Portfolio"
       value="HOME"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(PieChartOutlinedIcon) />}
       label="Analytics"
       value="ANALYTICS"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(AccountCircleOutlinedIcon) />}
       label="Profile"
       value="PROFILE"
     />
@@ -88,22 +88,22 @@ exports[`matches snapshot if on the home page 1`] = `
     value="HOME"
   >
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(AddCircleOutlineOutlinedIcon) />}
       label="Open"
       value="CREATE_POSITION"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(BusinessCenterOutlinedIcon) />}
       label="Portfolio"
       value="HOME"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(PieChartOutlinedIcon) />}
       label="Analytics"
       value="ANALYTICS"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(AccountCircleOutlinedIcon) />}
       label="Profile"
       value="PROFILE"
     />
@@ -125,22 +125,22 @@ exports[`matches snapshot if on the position page 1`] = `
     value="POSITION"
   >
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(AddCircleOutlineOutlinedIcon) />}
       label="Open"
       value="CREATE_POSITION"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(BusinessCenterOutlinedIcon) />}
       label="Portfolio"
       value="HOME"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(PieChartOutlinedIcon) />}
       label="Analytics"
       value="ANALYTICS"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(AccountCircleOutlinedIcon) />}
       label="Profile"
       value="PROFILE"
     />
@@ -162,22 +162,22 @@ exports[`matches snapshot if on the profile page 1`] = `
     value="PROFILE"
   >
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(AddCircleOutlineOutlinedIcon) />}
       label="Open"
       value="CREATE_POSITION"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(BusinessCenterOutlinedIcon) />}
       label="Portfolio"
       value="HOME"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(PieChartOutlinedIcon) />}
       label="Analytics"
       value="ANALYTICS"
     />
     <WithStyles(ForwardRef(BottomNavigationAction))
-      icon={<UNDEFINED />}
+      icon={<Memo(AccountCircleOutlinedIcon) />}
       label="Profile"
       value="PROFILE"
     />
