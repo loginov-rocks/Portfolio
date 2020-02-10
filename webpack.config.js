@@ -40,7 +40,9 @@ module.exports = {
     new CopyPlugin([
       {
         from: 'public',
-        ignore: 'index.html',
+        ignore: [
+          'index.html',
+        ],
       },
     ]),
     new Dotenv({

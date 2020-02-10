@@ -12,12 +12,12 @@ exports[`matches snapshot 1`] = `
   </WithStyles(ForwardRef(Typography))>
   <WithStyles(Connect(withStateHandlers(withHandlers(ClosePositionForm))))
     backButton={
-      <ForwardRef(WithStyles)
+      <WithStyles(ForwardRef(Button))
         color="primary"
         onClick={[Function]}
       >
         Cancel
-      </ForwardRef(WithStyles)>
+      </WithStyles(ForwardRef(Button))>
     }
     id="id"
     onClose={[Function]}

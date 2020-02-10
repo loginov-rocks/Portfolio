@@ -44,9 +44,10 @@ exports[`matches snapshot if authenticated 1`] = `
           "active": "#fff",
           "disabled": "rgba(255, 255, 255, 0.3)",
           "disabledBackground": "rgba(255, 255, 255, 0.12)",
-          "hover": "rgba(255, 255, 255, 0.1)",
-          "hoverOpacity": 0.1,
-          "selected": "rgba(255, 255, 255, 0.2)",
+          "hover": "rgba(255, 255, 255, 0.08)",
+          "hoverOpacity": 0.08,
+          "selected": "rgba(255, 255, 255, 0.16)",
+          "selectedOpacity": 0.16,
         },
         "augmentColor": [Function],
         "background": Object {
@@ -82,6 +83,12 @@ exports[`matches snapshot if authenticated 1`] = `
           "A400": "#303030",
           "A700": "#616161",
         },
+        "info": Object {
+          "contrastText": "#fff",
+          "dark": "#1976d2",
+          "light": "#64b5f6",
+          "main": "#2196f3",
+        },
         "primary": Object {
           "100": "#b3e5fc",
           "200": "#81d4fa",
@@ -108,6 +115,12 @@ exports[`matches snapshot if authenticated 1`] = `
           "light": "#ff4081",
           "main": "#f50057",
         },
+        "success": Object {
+          "contrastText": "rgba(0, 0, 0, 0.87)",
+          "dark": "#388e3c",
+          "light": "#81c784",
+          "main": "#4caf50",
+        },
         "text": Object {
           "disabled": "rgba(255, 255, 255, 0.5)",
           "hint": "rgba(255, 255, 255, 0.5)",
@@ -117,6 +130,12 @@ exports[`matches snapshot if authenticated 1`] = `
         },
         "tonalOffset": 0.2,
         "type": "dark",
+        "warning": Object {
+          "contrastText": "rgba(0, 0, 0, 0.87)",
+          "dark": "#f57c00",
+          "light": "#ffb74d",
+          "main": "#ff9800",
+        },
       },
       "props": Object {},
       "shadows": Array [
@@ -210,35 +229,35 @@ exports[`matches snapshot if authenticated 1`] = `
           "fontSize": "6rem",
           "fontWeight": 300,
           "letterSpacing": "-0.01562em",
-          "lineHeight": 1,
+          "lineHeight": 1.167,
         },
         "h2": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
           "fontSize": "3.75rem",
           "fontWeight": 300,
           "letterSpacing": "-0.00833em",
-          "lineHeight": 1,
+          "lineHeight": 1.2,
         },
         "h3": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
           "fontSize": "3rem",
           "fontWeight": 400,
           "letterSpacing": "0em",
-          "lineHeight": 1.04,
+          "lineHeight": 1.167,
         },
         "h4": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
           "fontSize": "2.125rem",
           "fontWeight": 400,
           "letterSpacing": "0.00735em",
-          "lineHeight": 1.17,
+          "lineHeight": 1.235,
         },
         "h5": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
           "fontSize": "1.5rem",
           "fontWeight": 400,
           "letterSpacing": "0em",
-          "lineHeight": 1.33,
+          "lineHeight": 1.334,
         },
         "h6": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
@@ -287,7 +306,7 @@ exports[`matches snapshot if authenticated 1`] = `
 >
   <CssBaseline />
   <PersistGate
-    loading={<ForwardRef(WithStyles) />}
+    loading={<WithStyles(Loading) />}
     persistor={Object {}}
   >
     <WithStyles(withProps(Connect(lifecycle(Navigation)))) />
@@ -339,9 +358,10 @@ exports[`matches snapshot if loading 1`] = `
           "active": "#fff",
           "disabled": "rgba(255, 255, 255, 0.3)",
           "disabledBackground": "rgba(255, 255, 255, 0.12)",
-          "hover": "rgba(255, 255, 255, 0.1)",
-          "hoverOpacity": 0.1,
-          "selected": "rgba(255, 255, 255, 0.2)",
+          "hover": "rgba(255, 255, 255, 0.08)",
+          "hoverOpacity": 0.08,
+          "selected": "rgba(255, 255, 255, 0.16)",
+          "selectedOpacity": 0.16,
         },
         "augmentColor": [Function],
         "background": Object {
@@ -377,6 +397,12 @@ exports[`matches snapshot if loading 1`] = `
           "A400": "#303030",
           "A700": "#616161",
         },
+        "info": Object {
+          "contrastText": "#fff",
+          "dark": "#1976d2",
+          "light": "#64b5f6",
+          "main": "#2196f3",
+        },
         "primary": Object {
           "100": "#b3e5fc",
           "200": "#81d4fa",
@@ -403,6 +429,12 @@ exports[`matches snapshot if loading 1`] = `
           "light": "#ff4081",
           "main": "#f50057",
         },
+        "success": Object {
+          "contrastText": "rgba(0, 0, 0, 0.87)",
+          "dark": "#388e3c",
+          "light": "#81c784",
+          "main": "#4caf50",
+        },
         "text": Object {
           "disabled": "rgba(255, 255, 255, 0.5)",
           "hint": "rgba(255, 255, 255, 0.5)",
@@ -412,6 +444,12 @@ exports[`matches snapshot if loading 1`] = `
         },
         "tonalOffset": 0.2,
         "type": "dark",
+        "warning": Object {
+          "contrastText": "rgba(0, 0, 0, 0.87)",
+          "dark": "#f57c00",
+          "light": "#ffb74d",
+          "main": "#ff9800",
+        },
       },
       "props": Object {},
       "shadows": Array [
@@ -505,35 +543,35 @@ exports[`matches snapshot if loading 1`] = `
           "fontSize": "6rem",
           "fontWeight": 300,
           "letterSpacing": "-0.01562em",
-          "lineHeight": 1,
+          "lineHeight": 1.167,
         },
         "h2": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
           "fontSize": "3.75rem",
           "fontWeight": 300,
           "letterSpacing": "-0.00833em",
-          "lineHeight": 1,
+          "lineHeight": 1.2,
         },
         "h3": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
           "fontSize": "3rem",
           "fontWeight": 400,
           "letterSpacing": "0em",
-          "lineHeight": 1.04,
+          "lineHeight": 1.167,
         },
         "h4": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
           "fontSize": "2.125rem",
           "fontWeight": 400,
           "letterSpacing": "0.00735em",
-          "lineHeight": 1.17,
+          "lineHeight": 1.235,
         },
         "h5": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
           "fontSize": "1.5rem",
           "fontWeight": 400,
           "letterSpacing": "0em",
-          "lineHeight": 1.33,
+          "lineHeight": 1.334,
         },
         "h6": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
@@ -582,7 +620,7 @@ exports[`matches snapshot if loading 1`] = `
 >
   <CssBaseline />
   <PersistGate
-    loading={<ForwardRef(WithStyles) />}
+    loading={<WithStyles(Loading) />}
     persistor={Object {}}
   >
     <WithStyles(Loading) />
@@ -634,9 +672,10 @@ exports[`matches snapshot if unauthenticated 1`] = `
           "active": "#fff",
           "disabled": "rgba(255, 255, 255, 0.3)",
           "disabledBackground": "rgba(255, 255, 255, 0.12)",
-          "hover": "rgba(255, 255, 255, 0.1)",
-          "hoverOpacity": 0.1,
-          "selected": "rgba(255, 255, 255, 0.2)",
+          "hover": "rgba(255, 255, 255, 0.08)",
+          "hoverOpacity": 0.08,
+          "selected": "rgba(255, 255, 255, 0.16)",
+          "selectedOpacity": 0.16,
         },
         "augmentColor": [Function],
         "background": Object {
@@ -672,6 +711,12 @@ exports[`matches snapshot if unauthenticated 1`] = `
           "A400": "#303030",
           "A700": "#616161",
         },
+        "info": Object {
+          "contrastText": "#fff",
+          "dark": "#1976d2",
+          "light": "#64b5f6",
+          "main": "#2196f3",
+        },
         "primary": Object {
           "100": "#b3e5fc",
           "200": "#81d4fa",
@@ -698,6 +743,12 @@ exports[`matches snapshot if unauthenticated 1`] = `
           "light": "#ff4081",
           "main": "#f50057",
         },
+        "success": Object {
+          "contrastText": "rgba(0, 0, 0, 0.87)",
+          "dark": "#388e3c",
+          "light": "#81c784",
+          "main": "#4caf50",
+        },
         "text": Object {
           "disabled": "rgba(255, 255, 255, 0.5)",
           "hint": "rgba(255, 255, 255, 0.5)",
@@ -707,6 +758,12 @@ exports[`matches snapshot if unauthenticated 1`] = `
         },
         "tonalOffset": 0.2,
         "type": "dark",
+        "warning": Object {
+          "contrastText": "rgba(0, 0, 0, 0.87)",
+          "dark": "#f57c00",
+          "light": "#ffb74d",
+          "main": "#ff9800",
+        },
       },
       "props": Object {},
       "shadows": Array [
@@ -800,35 +857,35 @@ exports[`matches snapshot if unauthenticated 1`] = `
           "fontSize": "6rem",
           "fontWeight": 300,
           "letterSpacing": "-0.01562em",
-          "lineHeight": 1,
+          "lineHeight": 1.167,
         },
         "h2": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
           "fontSize": "3.75rem",
           "fontWeight": 300,
           "letterSpacing": "-0.00833em",
-          "lineHeight": 1,
+          "lineHeight": 1.2,
         },
         "h3": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
           "fontSize": "3rem",
           "fontWeight": 400,
           "letterSpacing": "0em",
-          "lineHeight": 1.04,
+          "lineHeight": 1.167,
         },
         "h4": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
           "fontSize": "2.125rem",
           "fontWeight": 400,
           "letterSpacing": "0.00735em",
-          "lineHeight": 1.17,
+          "lineHeight": 1.235,
         },
         "h5": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
           "fontSize": "1.5rem",
           "fontWeight": 400,
           "letterSpacing": "0em",
-          "lineHeight": 1.33,
+          "lineHeight": 1.334,
         },
         "h6": Object {
           "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
@@ -877,7 +934,7 @@ exports[`matches snapshot if unauthenticated 1`] = `
 >
   <CssBaseline />
   <PersistGate
-    loading={<ForwardRef(WithStyles) />}
+    loading={<WithStyles(Loading) />}
     persistor={Object {}}
   >
     <WithStyles(Guest) />
