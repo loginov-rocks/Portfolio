@@ -46,7 +46,7 @@
     "redux-repository": "^0.6.1",
     "redux-thunk": "^2.3.0",
     "typeface-roboto": "0.0.75",
-    "uuid": "^3.4.0"
+    "uuid": "^7.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
