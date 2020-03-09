@@ -41,9 +41,13 @@ exports[`matches snapshot if authenticated 1`] = `
       "overrides": Object {},
       "palette": Object {
         "action": Object {
+          "activatedOpacity": 0.24,
           "active": "#fff",
           "disabled": "rgba(255, 255, 255, 0.3)",
           "disabledBackground": "rgba(255, 255, 255, 0.12)",
+          "disabledOpacity": 0.38,
+          "focus": "rgba(255, 255, 255, 0.12)",
+          "focusOpacity": 0.12,
           "hover": "rgba(255, 255, 255, 0.08)",
           "hoverOpacity": 0.08,
           "selected": "rgba(255, 255, 255, 0.16)",
@@ -304,7 +308,7 @@ exports[`matches snapshot if authenticated 1`] = `
     }
   }
 >
-  <CssBaseline />
+  <WithStyles(CssBaseline) />
   <PersistGate
     loading={<WithStyles(Loading) />}
     persistor={Object {}}
@@ -355,9 +359,13 @@ exports[`matches snapshot if loading 1`] = `
       "overrides": Object {},
       "palette": Object {
         "action": Object {
+          "activatedOpacity": 0.24,
           "active": "#fff",
           "disabled": "rgba(255, 255, 255, 0.3)",
           "disabledBackground": "rgba(255, 255, 255, 0.12)",
+          "disabledOpacity": 0.38,
+          "focus": "rgba(255, 255, 255, 0.12)",
+          "focusOpacity": 0.12,
           "hover": "rgba(255, 255, 255, 0.08)",
           "hoverOpacity": 0.08,
           "selected": "rgba(255, 255, 255, 0.16)",
@@ -618,7 +626,7 @@ exports[`matches snapshot if loading 1`] = `
     }
   }
 >
-  <CssBaseline />
+  <WithStyles(CssBaseline) />
   <PersistGate
     loading={<WithStyles(Loading) />}
     persistor={Object {}}
@@ -669,9 +677,13 @@ exports[`matches snapshot if unauthenticated 1`] = `
       "overrides": Object {},
       "palette": Object {
         "action": Object {
+          "activatedOpacity": 0.24,
           "active": "#fff",
           "disabled": "rgba(255, 255, 255, 0.3)",
           "disabledBackground": "rgba(255, 255, 255, 0.12)",
+          "disabledOpacity": 0.38,
+          "focus": "rgba(255, 255, 255, 0.12)",
+          "focusOpacity": 0.12,
           "hover": "rgba(255, 255, 255, 0.08)",
           "hoverOpacity": 0.08,
           "selected": "rgba(255, 255, 255, 0.16)",
@@ -932,7 +944,7 @@ exports[`matches snapshot if unauthenticated 1`] = `
     }
   }
 >
-  <CssBaseline />
+  <WithStyles(CssBaseline) />
   <PersistGate
     loading={<WithStyles(Loading) />}
     persistor={Object {}}
