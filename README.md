@@ -1,5 +1,6 @@
 # Portfolio Firebase
 
+![CI](https://github.com/loginov-rocks/Portfolio-Firebase/workflows/CI/badge.svg)
 [![Build Status](https://travis-ci.com/loginov-rocks/Portfolio-Firebase.svg?branch=master)](https://travis-ci.com/loginov-rocks/Portfolio-Firebase)
 [![Coverage Status](https://coveralls.io/repos/github/loginov-rocks/Portfolio-Firebase/badge.svg?branch=master)](https://coveralls.io/github/loginov-rocks/Portfolio-Firebase?branch=master)
 [![dependencies Status](https://david-dm.org/loginov-rocks/Portfolio-Firebase/status.svg)](https://david-dm.org/loginov-rocks/Portfolio-Firebase)
