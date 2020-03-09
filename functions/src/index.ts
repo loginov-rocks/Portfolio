@@ -4,6 +4,7 @@ import cors from 'cors';
 // Import the firebase-functions package for deployment.
 import * as functions from 'firebase-functions';
 
+import updateStockHandler from './handlers/updateStock';
 import vibrantPaletteHandler from './handlers/vibrantPalette';
 
 const corsHandler = cors({ origin: true });
@@ -23,19 +24,18 @@ app.intent('favorite color', (conv, { color }) => {
 // Set the DialogflowApp object to handle the HTTPS POST request.
 const dialogflowFirebaseFulfillment = functions.https.onRequest(app);
 
+const updateStock = functions.https.onRequest(() => {
+  updateStockHandler();
+});
+
 const vibrantPalette = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
   vibrantPaletteHandler(req).then(palette => {
     res.send(palette);
   });
 }));
 
-const scheduledFunction = functions.pubsub.schedule('every 1 minute').onRun(() => {
-  console.log('This will be run every 1 minute!');
-  return null;
-});
-
 export {
   dialogflowFirebaseFulfillment,
-  scheduledFunction,
+  updateStock,
   vibrantPalette,
 };
