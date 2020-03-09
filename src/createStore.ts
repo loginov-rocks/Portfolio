@@ -17,6 +17,7 @@ import * as C from 'Constants';
 export default (reducer: Reducer): { persistor: Persistor; store: Store } => {
   firebase.initializeApp({
     apiKey: C.FIREBASE_API_KEY,
+    appId: C.FIREBASE_APP_ID,
     authDomain: C.FIREBASE_AUTH_DOMAIN,
     databaseURL: C.FIREBASE_DATABASE_URL,
     messagingSenderId: C.FIREBASE_MESSAGING_SENDER_ID,
