@@ -34,6 +34,13 @@
         "requireForBlockBody": false
       }
     ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never"
+      }
+    ],
     "import/prefer-default-export": "warn",
     "max-len": [
       "error",
