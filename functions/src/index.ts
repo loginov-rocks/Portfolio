@@ -1,11 +1,15 @@
 // Import the Dialogflow module from the Actions on Google client library.
 import { dialogflow } from 'actions-on-google';
 import cors from 'cors';
+import * as admin from 'firebase-admin';
 // Import the firebase-functions package for deployment.
 import * as functions from 'firebase-functions';
 
 import updateStockHandler from './handlers/updateStock';
 import vibrantPaletteHandler from './handlers/vibrantPalette';
+
+admin.initializeApp(functions.config().firebase);
+const db = admin.firestore();
 
 const corsHandler = cors({ origin: true });
 
@@ -24,8 +28,10 @@ app.intent('favorite color', (conv, { color }) => {
 // Set the DialogflowApp object to handle the HTTPS POST request.
 const dialogflowFirebaseFulfillment = functions.https.onRequest(app);
 
-const updateStock = functions.https.onRequest(() => {
-  updateStockHandler();
+const updateStock = functions.https.onRequest((req, res) => {
+  updateStockHandler(db, req).then(response => {
+    res.send(response);
+  });
 });
 
 const vibrantPalette = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
