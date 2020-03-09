@@ -61,6 +61,7 @@ export const OPEN_POSITIONS_SUMMARIES_LIST_SORTER_KEYS = [
 // These variables are taken from ENV, so we can't destructure them.
 /* eslint-disable prefer-destructuring */
 export const FIREBASE_API_KEY = process.env.FIREBASE_API_KEY;
+export const FIREBASE_APP_ID = process.env.FIREBASE_APP_ID;
 export const FIREBASE_AUTH_DOMAIN = process.env.FIREBASE_AUTH_DOMAIN;
 export const FIREBASE_DATABASE_URL = process.env.FIREBASE_DATABASE_URL;
 export const FIREBASE_MESSAGING_SENDER_ID = process.env.FIREBASE_MESSAGING_SENDER_ID;
