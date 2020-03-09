@@ -29,7 +29,13 @@ const vibrantPalette = functions.https.onRequest((req, res) => corsHandler(req, 
   });
 }));
 
+const scheduledFunction = functions.pubsub.schedule('every 1 minute').onRun(() => {
+  console.log('This will be run every 1 minute!');
+  return null;
+});
+
 export {
   dialogflowFirebaseFulfillment,
+  scheduledFunction,
   vibrantPalette,
 };
