@@ -9,6 +9,8 @@
 
 ## Solution Architecture
 
+![Solution Architecture Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/master/docs/diagrams/Solution-Architecture.png)
+
 Solution Architecture described in the
-[Solution Architecture](https://github.com/loginov-rocks/Portfolio#1-solution-architecture) section in the
-[Portfolio](https://github.com/loginov-rocks/Portfolio) repository.
+[Solution Architecture](https://github.com/loginov-rocks/Portfolio/blob/master/docs/Solution-Architecture.md#solution-architecture)
+document in the [Portfolio](https://github.com/loginov-rocks/Portfolio) repository.
