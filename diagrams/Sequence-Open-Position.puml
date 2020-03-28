@@ -1,0 +1,14 @@
+@startuml
+
+title Open Position Sequence Diagram
+
+actor User
+participant Portfolio
+database "Cloud\nFirestore" as CloudFirestore
+
+User -> Portfolio: Open new position
+Portfolio -> CloudFirestore: Publish new position data
+CloudFirestore -> Portfolio: Update positions list
+Portfolio --> User: Show new position screen
+
+@enduml
