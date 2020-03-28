@@ -10,5 +10,5 @@
 ## Solution Architecture
 
 Solution Architecture described in the
-[Solution Architecture](https://github.com/loginov-rocks/Portfolio-Firebase#1-solution-architecture) section in the
-[Portfolio](https://girhub.com/loginov-rocks/Portfolio) repository.
+[Solution Architecture](https://github.com/loginov-rocks/Portfolio#1-solution-architecture) section in the
+[Portfolio](https://github.com/loginov-rocks/Portfolio) repository.
