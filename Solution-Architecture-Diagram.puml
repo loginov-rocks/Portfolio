@@ -18,7 +18,7 @@ cloud Firebase {
     }
 
     package Hosting {
-        component "Portfolio\nApp" as App
+        component Portfolio
     }
 
     package Storage {
@@ -26,7 +26,7 @@ cloud Firebase {
     }
 }
 
-cloud "Cloud ?" {
+cloud "?" {
     component "Quotes\nService" as QuotesService
 }
 
@@ -34,23 +34,23 @@ cloud "IEX Cloud" {
     component "IEX API" as IexApi
 }
 
-User ---> App
-User ---> GoogleAuth
+User ..> Portfolio
+User ..> GoogleAuth
 
-App ---> GoogleAuth
-App ---> CloudFirestore
-App ---> ImagesBucket
+Portfolio --> GoogleAuth : INT01
+Portfolio --> CloudFirestore : INT02
+Portfolio --> ImagesBucket : INT03
 
-QuotesService ---> getSymbols
-QuotesService ---> IexApi
-QuotesService ---> updateQuotes
-QuotesService ---> updateImages
+QuotesService --> getSymbols : INT04
+QuotesService --> IexApi : INT05
+QuotesService --> updateQuotes : INT06
+QuotesService --> updateImages : INT07
 
-getSymbols ---> CloudFirestore
+getSymbols --> CloudFirestore : INT08
 
-updateQuotes ---> CloudFirestore
+updateQuotes --> CloudFirestore : INT09
 
-updateImages ---> ImagesBucket
-updateImages ---> CloudFirestore
+updateImages --> ImagesBucket : INT10
+updateImages --> CloudFirestore : INT11
 
 @enduml
