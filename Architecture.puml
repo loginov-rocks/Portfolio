@@ -1,0 +1,56 @@
+@startuml
+
+actor User
+
+cloud Firebase {
+    package Authentication {
+        component "Google\nAuthentication" as GoogleAuth
+    }
+
+    package Database {
+        database "Cloud\nFirestore" as CloudFirestore
+    }
+
+    package Functions {
+        component getSymbols
+        component updateImages
+        component updateQuotes
+    }
+
+    package Hosting {
+        component "Portfolio\nApp" as App
+    }
+
+    package Storage {
+        storage "Images\nBucket" as ImagesBucket
+    }
+}
+
+cloud "Cloud ?" {
+    component "Quotes\nService" as QuotesService
+}
+
+cloud "IEX Cloud" {
+    component "IEX API" as IexApi
+}
+
+User ---> App
+User ---> GoogleAuth
+
+App ---> GoogleAuth
+App ---> CloudFirestore
+App ---> ImagesBucket
+
+QuotesService ---> getSymbols
+QuotesService ---> IexApi
+QuotesService ---> updateQuotes
+QuotesService ---> updateImages
+
+getSymbols ---> CloudFirestore
+
+updateQuotes ---> CloudFirestore
+
+updateImages ---> ImagesBucket
+updateImages ---> CloudFirestore
+
+@enduml
