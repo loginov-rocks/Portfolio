@@ -1,20 +1,31 @@
 # Solution Architecture
 
+[WORK IN PROGRESS]
+
 ![Solution Architecture Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/master/docs/diagrams/Solution-Architecture.png)
 
 ## 1. Components
 
 | ID | Name | Type | Hosted | Description |
 | --- | --- | --- | --- | --- |
-| SYS01 | Portfolio | Web Page | Firebase Hosting | Single page application |
-| SYS02 | Google Authentication | Application | Firebase Authentication | Authentication service |
-| SYS03 | Cloud Firestore | Database | Firebase Database | NoSQL cloud database |
-| SYS04 | Images Bucket | Storage | Firebase Storage | Cloud storage |
-| SYS05 | getSymbols | Application | Firebase Functions | Node.js based cloud function |
-| SYS06 | updateImages | Application | Firebase Functions | Node.js based cloud function |
-| SYS07 | updateQuotes | Application | Firebase Functions | Node.js based cloud function |
-| SYS08 | Stocks Service | Application | TODO | TODO |
-| SYS09 | IEX API | Application | IEX Cloud | Third-party REST service providing financial data |
+| CMP01 | Portfolio | Web Page | Firebase Hosting | Single page application |
+| CMP02 | Google Authentication | Application | Firebase Authentication | Authentication service |
+| CMP03 | Cloud Firestore | Database | Firebase Database | NoSQL cloud database |
+| CMP04 | Images Bucket | Storage | Firebase Storage | Cloud storage |
+| CMP05 | getSymbols | Application | Firebase Functions | Node.js based cloud function |
+| CMP06 | updateImages | Application | Firebase Functions | Node.js based cloud function |
+| CMP07 | updateQuotes | Application | Firebase Functions | Node.js based cloud function |
+| CMP08 | Stocks Service | Application | TODO | TODO |
+| CMP09 | IEX API | Application | IEX Cloud | Third-party REST service providing financial data |
+
+### 1.1. Overview
+
+* **Portfolio** uses **Firebase SDK** to communicate with Firebase services and implement serverless approach.
+* **Portfolio** send and receive data in an asynchronous manner.
+* All data stored in the **Cloud Firestore**.
+* **Stocks Service** uses **IEX API** to fetch all stocks data and pass it to the **Cloud Firestore** through the **Firebase Functions**.
+* **Stocks Service** used to avoid **Firebase Functions** limitation of making external in a Free Tier.
+* **Firebase Functions** use HMAC mechanism to authenticate **Stocks Service** requests.
 
 ## 2. Interfaces
 
