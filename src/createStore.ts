@@ -2,11 +2,11 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/firestore';
-import { getFirebase, reactReduxFirebase } from 'react-redux-firebase';
+import { getFirebase, ReactReduxFirebaseProviderProps } from 'react-redux-firebase';
 import {
   applyMiddleware, compose, createStore, Reducer, Store,
 } from 'redux';
-import { reduxFirestore } from 'redux-firestore';
+import { createFirestoreInstance } from 'redux-firestore';
 import { persistStore, persistReducer } from 'redux-persist';
 import { Persistor } from 'redux-persist/es/types';
 import storage from 'redux-persist/lib/storage';
@@ -14,7 +14,11 @@ import thunk from 'redux-thunk';
 
 import * as C from 'Constants';
 
-export default (reducer: Reducer): { persistor: Persistor; store: Store } => {
+export default (reducer: Reducer): {
+  persistor: Persistor;
+  reactReduxFirebaseProviderProps: ReactReduxFirebaseProviderProps;
+  store: Store;
+} => {
   firebase.initializeApp({
     apiKey: C.FIREBASE_API_KEY,
     appId: C.FIREBASE_APP_ID,
@@ -38,8 +42,6 @@ export default (reducer: Reducer): { persistor: Persistor; store: Store } => {
   /* eslint-enable @typescript-eslint/no-explicit-any, no-underscore-dangle */
 
   const enhancer = composeEnhancers(
-    reactReduxFirebase(firebase, { useFirestoreForProfile: true, userProfile: C.FIRESTORE_USERS_COLLECTION }),
-    reduxFirestore(firebase),
     applyMiddleware(...middleware),
   );
 
@@ -53,5 +55,15 @@ export default (reducer: Reducer): { persistor: Persistor; store: Store } => {
   const store = createStore(persistedReducer, enhancer);
   const persistor = persistStore(store);
 
-  return { persistor, store };
+  const reactReduxFirebaseProviderProps = {
+    config: {
+      useFirestoreForProfile: true,
+      userProfile: C.FIRESTORE_USERS_COLLECTION,
+    },
+    createFirestoreInstance,
+    dispatch: store.dispatch,
+    firebase,
+  };
+
+  return { persistor, reactReduxFirebaseProviderProps, store };
 };
