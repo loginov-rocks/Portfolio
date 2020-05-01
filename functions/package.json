@@ -10,7 +10,6 @@
     "check": "npm run lint && npm run typecheck && npm test",
     "clean:build": "rimraf lib",
     "clean:coverage": "rimraf coverage",
-    "clean:docs": "rimraf ../docs",
     "clean:tests": "rimraf lib/**/*.test.js",
     "coverage": "npm run clean:coverage && npm run test:coverage",
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
