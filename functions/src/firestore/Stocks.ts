@@ -1,6 +1,6 @@
 export interface StockDocument {
   // Inherited from IEX API.
-  logo: string;
+  // Quote fields.
   companyName: string;
   close: number | null;
   // TODO: Check if the `previousClose` prop can be null.
@@ -9,8 +9,10 @@ export interface StockDocument {
   iexRealtimePrice?: number;
   change: number;
   changePercent: number;
+  // Logo fields.
+  logo: string;
 }
 
 export interface StocksCollection {
-  [key: string]: StockDocument;
+  [symbol: string]: StockDocument;
 }

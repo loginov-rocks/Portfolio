@@ -12,10 +12,11 @@ export interface UserDocument {
   avatarUrl: string;
   displayName: string;
   email: string;
+  // TODO: Remove positions in favor of usersPortfolios collection.
   positions: PositionsCollection;
   providerData: ProviderData[];
 }
 
 export interface UsersCollection {
-  [key: string]: UserDocument;
+  [userId: string]: UserDocument;
 }

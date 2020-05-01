@@ -1,14 +1,14 @@
 export interface PositionDocument {
+  symbol: string;
   amount: number;
-  closeCommission: number | null;
-  closeDate: string | null;
-  closePrice: number | null;
-  openCommission: number;
   openDate: string;
   openPrice: number;
-  symbol: string;
+  openCommission: number;
+  closeDate: string | null;
+  closePrice: number | null;
+  closeCommission: number | null;
 }
 
 export interface PositionsCollection {
-  [key: string]: PositionDocument;
+  [positionId: string]: PositionDocument;
 }
