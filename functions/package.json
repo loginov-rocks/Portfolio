@@ -5,7 +5,6 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "npm run clean:build && npm run build:sources && npm run clean:tests",
-    "build:docs": "typedoc --out ../docs src",
     "build:sources": "babel src -d lib --extensions .ts",
     "check": "npm run lint && npm run typecheck && npm test",
     "clean:build": "rimraf lib",
@@ -59,7 +58,6 @@
     "jest": "^25.5.3",
     "jest-express": "^1.12.0",
     "rimraf": "^3.0.2",
-    "typedoc": "^0.17.6",
     "typescript": "^3.8.3"
   },
   "jest": {

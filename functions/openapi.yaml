@@ -1,0 +1,132 @@
+openapi: 3.0.0
+
+info:
+  title: Portfolio-Firebase
+  version: 0.2.2
+
+externalDocs:
+  description: GitHub
+  url: https://github.com/loginov-rocks/Portfolio-Firebase
+
+servers:
+  - url: https://us-central1-loginov-rocks-portfolio.cloudfunctions.net
+    description: Production
+  - url: http://localhost:5000/loginov-rocks-portfolio/us-central1
+    description: Development
+
+tags:
+  - name: Stocks
+
+paths:
+
+  /getSymbols:
+    get:
+      summary: Get Symbols
+      tags:
+        - Stocks
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Symbols'
+        500:
+          description: Internal Server Error
+
+  /updateImages:
+    patch:
+      summary: Update Images
+      tags:
+        - Stocks
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Images'
+      responses:
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        500:
+          description: Internal Server Error
+
+  /updateQuotes:
+    patch:
+      summary: Update Quotes
+      tags:
+        - Stocks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Quote'
+      responses:
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        500:
+          description: Internal Server Error
+
+components:
+  schemas:
+
+    Symbols:
+      type: array
+      items:
+        type: string
+
+    Images:
+      type: object
+      properties:
+        symbols:
+          type: array
+          items:
+            type: string
+        images:
+          type: array
+          items:
+            type: string
+            format: binary
+      required:
+        - symbols
+        - images
+
+    Quote:
+      type: object
+      properties:
+        symbol:
+          type: string
+        companyName:
+          type: string
+        close:
+          type: number
+          format: float
+          nullable: true
+        previousClose:
+          type: number
+          format: float
+        latestPrice:
+          type: number
+          format: float
+        iexRealtimePrice:
+          type: number
+          format: float
+        change:
+          type: number
+          format: float
+        changePercent:
+          type: number
+          format: float
+      required:
+        - symbol
+        - companyName
+        - close
+        - previousClose
+        - latestPrice
+        - change
+        - changePercent
