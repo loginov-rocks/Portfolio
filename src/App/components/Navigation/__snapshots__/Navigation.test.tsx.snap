@@ -10,7 +10,13 @@ exports[`matches snapshot if on the close position page 1`] = `
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
-            "Naked": [Function],
+            "Naked": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics))))))))))))))))))",
+              "type": [Function],
+            },
             "WrappedComponent": [Function],
             "displayName": "WithStyles(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics)))))))))))))))))))",
             "options": Object {
@@ -318,7 +324,13 @@ exports[`matches snapshot if on the close position page 1`] = `
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
-            "Naked": [Function],
+            "Naked": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Profile)",
+              "type": [Function],
+            },
             "WrappedComponent": [Function],
             "displayName": "WithStyles(Connect(Profile))",
             "options": Object {
@@ -2267,7 +2279,13 @@ exports[`matches snapshot if on the create position page 1`] = `
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
-            "Naked": [Function],
+            "Naked": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics))))))))))))))))))",
+              "type": [Function],
+            },
             "WrappedComponent": [Function],
             "displayName": "WithStyles(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics)))))))))))))))))))",
             "options": Object {
@@ -2575,7 +2593,13 @@ exports[`matches snapshot if on the create position page 1`] = `
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
-            "Naked": [Function],
+            "Naked": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Profile)",
+              "type": [Function],
+            },
             "WrappedComponent": [Function],
             "displayName": "WithStyles(Connect(Profile))",
             "options": Object {
@@ -4524,7 +4548,13 @@ exports[`matches snapshot if on the home page 1`] = `
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
-            "Naked": [Function],
+            "Naked": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics))))))))))))))))))",
+              "type": [Function],
+            },
             "WrappedComponent": [Function],
             "displayName": "WithStyles(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics)))))))))))))))))))",
             "options": Object {
@@ -4832,7 +4862,13 @@ exports[`matches snapshot if on the home page 1`] = `
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
-            "Naked": [Function],
+            "Naked": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Profile)",
+              "type": [Function],
+            },
             "WrappedComponent": [Function],
             "displayName": "WithStyles(Connect(Profile))",
             "options": Object {
@@ -6781,7 +6817,13 @@ exports[`matches snapshot if on the position page 1`] = `
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
-            "Naked": [Function],
+            "Naked": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics))))))))))))))))))",
+              "type": [Function],
+            },
             "WrappedComponent": [Function],
             "displayName": "WithStyles(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics)))))))))))))))))))",
             "options": Object {
@@ -7089,7 +7131,13 @@ exports[`matches snapshot if on the position page 1`] = `
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
-            "Naked": [Function],
+            "Naked": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Profile)",
+              "type": [Function],
+            },
             "WrappedComponent": [Function],
             "displayName": "WithStyles(Connect(Profile))",
             "options": Object {
@@ -9038,7 +9086,13 @@ exports[`matches snapshot if on the profile page 1`] = `
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
-            "Naked": [Function],
+            "Naked": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics))))))))))))))))))",
+              "type": [Function],
+            },
             "WrappedComponent": [Function],
             "displayName": "WithStyles(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics)))))))))))))))))))",
             "options": Object {
@@ -9346,7 +9400,13 @@ exports[`matches snapshot if on the profile page 1`] = `
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
-            "Naked": [Function],
+            "Naked": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Profile)",
+              "type": [Function],
+            },
             "WrappedComponent": [Function],
             "displayName": "WithStyles(Connect(Profile))",
             "options": Object {

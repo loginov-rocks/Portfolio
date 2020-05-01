@@ -58,6 +58,8 @@ export const OPEN_POSITIONS_SUMMARIES_LIST_SORTER_KEYS = [
   { key: 'marketSum', label: 'Market Value' },
 ];
 
+export const STATE_FIREBASE_POSITIONS_KEY = 'positions';
+
 // These variables are taken from ENV, so we can't destructure them.
 /* eslint-disable prefer-destructuring */
 export const FIREBASE_API_KEY = process.env.FIREBASE_API_KEY;

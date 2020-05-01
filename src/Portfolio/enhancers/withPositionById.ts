@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect, isLoaded } from 'react-redux-firebase';
 import { ComponentEnhancer, compose } from 'recompose';
 
+import * as C from 'Constants';
 import { getPositionsCollectionPath } from 'Firebase/lib';
 import State from 'State';
 import withAuth, { Props as WithAuthProps } from 'User/enhancers/withAuth';
@@ -22,18 +23,15 @@ interface PositionIdExtractor<OwnProps> {
 const mapStateToProps = <OwnProps>(positionIdExtractor: PositionIdExtractor<OwnProps>) => (
   { firebase: { firestore: { data } } }: State, ownProps: OwnProps & WithAuthProps,
 ): Props => {
+  const rawPositions = data[C.STATE_FIREBASE_POSITIONS_KEY];
   // `as string` used here because UID will be present at this point when using `withAuth`.
   const userId = ownProps.auth.uid as string;
 
   const positionId = positionIdExtractor(ownProps);
   let position: Position | null = null;
 
-  if (data.users) {
-    const user = data.users[userId];
-
-    if (user && user.positions && user.positions[positionId]) {
-      position = { id: positionId, ...user.positions[positionId] } as Position;
-    }
+  if (rawPositions && rawPositions[positionId]) {
+    position = { id: positionId, ...rawPositions[positionId] } as Position;
   }
 
   return {
@@ -49,7 +47,10 @@ export default <OwnProps>(
   firestoreConnect(({ auth }: WithAuthProps) => [
     // `getPositionDocumentPath` is not used here, because it leads to listeners switching and DOCUMENT_ADDED events
     // flood. `as string` used here because UID will be present at this point when using `withAuth`.
-    getPositionsCollectionPath(auth.uid as string),
+    {
+      collection: getPositionsCollectionPath(auth.uid as string),
+      storeAs: C.STATE_FIREBASE_POSITIONS_KEY,
+    },
   ]),
   connect(mapStateToProps(positionIdExtractor)),
 );
