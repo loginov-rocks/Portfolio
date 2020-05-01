@@ -10,7 +10,7 @@
     "check": "npm run lint && npm run typecheck && npm test",
     "clean:build": "rimraf lib",
     "clean:coverage": "rimraf coverage",
-    "clean:docs": "rimraf lib",
+    "clean:docs": "rimraf ../docs",
     "clean:tests": "rimraf lib/**/*.test.js",
     "coverage": "npm run clean:coverage && npm run test:coverage",
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
@@ -61,7 +61,6 @@
     "jest-express": "^1.12.0",
     "rimraf": "^3.0.2",
     "typedoc": "^0.17.6",
-    "typedoc-plugin-markdown": "^2.2.17",
     "typescript": "^3.8.3"
   },
   "jest": {
