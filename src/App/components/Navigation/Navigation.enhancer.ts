@@ -1,41 +1,30 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { compose, lifecycle, withProps } from 'recompose';
 
-import State from 'State';
-
-import { navigate, NavigateAction } from '../../actions';
 import { Props } from './Navigation';
 import * as R from '../../routes';
 
-interface StateProps {
-  route: R.Route;
-}
-
-interface DispatchProps {
-  navigate: NavigateAction;
-}
-
 interface WithProps {
   containerRef: React.RefObject<HTMLDivElement>;
+  currentRoute: R.Route;
 }
-
-const mapStateToProps = ({ app: { route } }: State): StateProps => ({ route });
-
-const mapDispatchToProps = { navigate };
 
 const containerRef = React.createRef();
 
 export default compose<Props, {}>(
-  withProps(() => ({ containerRef })),
-  connect<StateProps, DispatchProps, {}, State>(mapStateToProps, mapDispatchToProps),
-  lifecycle<StateProps & DispatchProps & WithProps, {}>({
+  withRouter,
+  withProps<{}, RouteComponentProps>(({ location }) => ({
+    containerRef,
+    currentRoute: location.pathname,
+  })),
+  lifecycle<RouteComponentProps & WithProps, {}>({
 
     componentDidUpdate(prevProps) {
       const { current } = this.props.containerRef;
 
       // Scroll container to the top when route changes.
-      if (this.props.route !== prevProps.route && current && current.scrollTop > 0) {
+      if (this.props.currentRoute !== prevProps.currentRoute && current && current.scrollTop > 0) {
         current.scrollTo(0, 0);
       }
     },
