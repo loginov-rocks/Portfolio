@@ -51,7 +51,7 @@ TODO
 
 ### 3.2. Open Position
 
-TODO
+![Open Position Sequence Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/master/docs/diagrams/Sequence-Open-Position.png)
 
 ### 3.3. Show Position
 
@@ -81,10 +81,6 @@ TODO
 
 TODO
 
-### 3.10. Update Quotes
+### 3.10. Update Quotes and Images
 
-TODO
-
-### 3.11. Update Images
-
-TODO
+![Update Quotes and Images Sequence Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/master/docs/diagrams/Sequence-Update-Quotes-and-Images.png)

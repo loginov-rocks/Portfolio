@@ -1,14 +1,22 @@
 @startuml
 
+autonumber
 title Open Position Sequence Diagram
 
 actor User
-participant Portfolio
-database "Cloud\nFirestore" as CloudFirestore
+box Firebase
+    participant Portfolio <<Hosting>>
+    database "Cloud Firestore" as CloudFirestore <<Database>>
+end box
 
-User -> Portfolio: Open new position
-Portfolio -> CloudFirestore: Publish new position data
-CloudFirestore -> Portfolio: Update positions list
-Portfolio --> User: Show new position screen
+User -> Portfolio: open new position
+Portfolio -> CloudFirestore: publish new position data
+CloudFirestore -> Portfolio: update positions list
+Portfolio --> User: show new position screen
+note right
+    If stock symbol is not present
+    in the database, its image and
+    quote appear within 1 minute
+end note
 
 @enduml
