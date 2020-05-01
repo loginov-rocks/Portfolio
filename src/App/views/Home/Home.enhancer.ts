@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
+import { RouteComponentProps as WithRouterProps, withRouter } from 'react-router-dom';
+import { compose, withHandlers } from 'recompose';
 
 import withPositions from 'Portfolio/enhancers/withPositions';
 import State from 'State';
 
 import { changeHomeTab } from '../../actions';
-import withNavigationHandlers from '../../enhancers/withNavigationHandlers';
 import withStockPositions from '../../enhancers/withStockPositions';
 import { Props } from './Home';
 import * as R from '../../routes';
@@ -19,11 +19,13 @@ const mapStateToProps = ({ app: { homeTab } }: State): StateProps => ({ tab: hom
 const mapDispatchToProps = { handleTabChange: changeHomeTab };
 
 export default compose<Props, {}>(
-  withNavigationHandlers({
-    handlePositionClick: (props, positionId) => ({
-      params: { position: positionId },
-      route: R.POSITION,
-    }),
+  withRouter,
+  withHandlers<WithRouterProps, {}>({
+
+    handlePositionClick: ({ history }) => (positionId: string) => {
+      history.push(R.toPosition(positionId));
+    },
+
   }),
   connect(mapStateToProps, mapDispatchToProps),
   withPositions,

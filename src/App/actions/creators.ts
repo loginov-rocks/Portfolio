@@ -1,15 +1,8 @@
-import * as R from '../routes';
-import { RouteParamsState } from '../State';
 import * as T from './types';
 
 export const homeTabChanged = (tab: 'closed' | 'open' | 'summary'): T.Action => ({
   payload: tab,
   type: T.HOME_TAB_CHANGED,
-});
-
-export const navigationHappened = (route: R.Route, params?: RouteParamsState): T.Action => ({
-  payload: { params, route },
-  type: T.NAVIGATION_HAPPENED,
 });
 
 export const sorterKeyChanged = (name: string, key: string): T.Action => ({

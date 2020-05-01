@@ -628,7 +628,7 @@ exports[`matches snapshot if on the close position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -936,7 +936,7 @@ exports[`matches snapshot if on the close position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -1244,7 +1244,7 @@ exports[`matches snapshot if on the close position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(Connect(withHandlers(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -1552,7 +1552,7 @@ exports[`matches snapshot if on the close position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(withHandlers(CreatePosition))))",
+            "displayName": "WithStyles(withRouter(withHandlers(CreatePosition)))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -2885,7 +2885,7 @@ exports[`matches snapshot if on the create position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -3193,7 +3193,7 @@ exports[`matches snapshot if on the create position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -3501,7 +3501,7 @@ exports[`matches snapshot if on the create position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(Connect(withHandlers(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -3809,7 +3809,7 @@ exports[`matches snapshot if on the create position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(withHandlers(CreatePosition))))",
+            "displayName": "WithStyles(withRouter(withHandlers(CreatePosition)))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -5142,7 +5142,7 @@ exports[`matches snapshot if on the home page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -5450,7 +5450,7 @@ exports[`matches snapshot if on the home page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -5758,7 +5758,7 @@ exports[`matches snapshot if on the home page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(Connect(withHandlers(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -6066,7 +6066,7 @@ exports[`matches snapshot if on the home page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(withHandlers(CreatePosition))))",
+            "displayName": "WithStyles(withRouter(withHandlers(CreatePosition)))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -7399,7 +7399,7 @@ exports[`matches snapshot if on the position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -7707,7 +7707,7 @@ exports[`matches snapshot if on the position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -8015,7 +8015,7 @@ exports[`matches snapshot if on the position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(Connect(withHandlers(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -8323,7 +8323,7 @@ exports[`matches snapshot if on the position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(withHandlers(CreatePosition))))",
+            "displayName": "WithStyles(withRouter(withHandlers(CreatePosition)))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -9656,7 +9656,7 @@ exports[`matches snapshot if on the profile page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -9964,7 +9964,7 @@ exports[`matches snapshot if on the profile page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -10272,7 +10272,7 @@ exports[`matches snapshot if on the profile page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(Connect(withHandlers(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))))))",
+            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -10580,7 +10580,7 @@ exports[`matches snapshot if on the profile page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(withHandlers(withHandlers(CreatePosition))))",
+            "displayName": "WithStyles(withRouter(withHandlers(CreatePosition)))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
