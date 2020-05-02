@@ -1,7 +1,7 @@
 openapi: 3.0.0
 
 info:
-  title: Portfolio-Firebase
+  title: Portfolio Firebase Functions
   version: 0.2.2
 
 externalDocs:
@@ -13,6 +13,10 @@ servers:
     description: Production
   - url: http://localhost:5000/loginov-rocks-portfolio/us-central1
     description: Development
+
+security:
+  - ApiKey: []
+    Signature: []
 
 tags:
   - name: Stocks
@@ -31,8 +35,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Symbols'
+        401:
+          $ref: '#/components/responses/Unauthorized'
         500:
-          description: Internal Server Error
+          $ref: '#/components/responses/InternalServerError'
 
   /updateImages:
     patch:
@@ -46,11 +52,13 @@ paths:
               $ref: '#/components/schemas/Images'
       responses:
         204:
-          description: No Content
+          $ref: '#/components/responses/NoContent'
         400:
-          description: Bad Request
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
         500:
-          description: Internal Server Error
+          $ref: '#/components/responses/InternalServerError'
 
   /updateQuotes:
     patch:
@@ -66,13 +74,16 @@ paths:
                 $ref: '#/components/schemas/Quote'
       responses:
         204:
-          description: No Content
+          $ref: '#/components/responses/NoContent'
         400:
-          description: Bad Request
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
         500:
-          description: Internal Server Error
+          $ref: '#/components/responses/InternalServerError'
 
 components:
+
   schemas:
 
     Symbols:
@@ -130,3 +141,29 @@ components:
         - latestPrice
         - change
         - changePercent
+
+  securitySchemes:
+
+    ApiKey:
+      name: x-api-key
+      type: apiKey
+      in: header
+
+    Signature:
+      name: x-signature
+      type: apiKey
+      in: header
+
+  responses:
+
+    NoContent:
+      description: No Content
+
+    BadRequest:
+      description: Bad Request
+
+    Unauthorized:
+      description: Unauthorized
+
+    InternalServerError:
+      description: Internal Server Error
