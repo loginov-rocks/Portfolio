@@ -93,13 +93,6 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   },
-  "greenkeeper": {
-    "ignore": [
-      "react-redux",
-      "react-redux-firebase",
-      "redux-firestore"
-    ]
-  },
   "jest": {
     "modulePaths": [
       "src"
