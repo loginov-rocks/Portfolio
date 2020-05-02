@@ -5,7 +5,10 @@ import * as admin from 'firebase-admin';
 // Import the firebase-functions package for deployment.
 import * as functions from 'firebase-functions';
 
-import updateStockHandler from './handlers/updateStock';
+import getSymbolsHandler from './handlers/getSymbols';
+import updateImagesHandler from './handlers/updateImages';
+import updateQuotesHandler from './handlers/updateQuotes';
+
 import vibrantPaletteHandler from './handlers/vibrantPalette';
 
 admin.initializeApp(functions.config().firebase);
@@ -28,11 +31,26 @@ app.intent('favorite color', (conv, { color }) => {
 // Set the DialogflowApp object to handle the HTTPS POST request.
 const dialogflowFirebaseFulfillment = functions.https.onRequest(app);
 
-const updateStock = functions.https.onRequest((req, res) => {
-  updateStockHandler(db, req).then(response => {
+// TODO: Remove CORS, check auth.
+const getSymbols = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
+  getSymbolsHandler().then(response => {
     res.send(response);
   });
-});
+}));
+
+// TODO: Remove CORS, check auth.
+const updateImages = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
+  updateImagesHandler().then(() => {
+    res.status(204).send();
+  });
+}));
+
+// TODO: Remove CORS, check auth.
+const updateQuotes = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
+  updateQuotesHandler(db, req).then(() => {
+    res.status(204).send();
+  });
+}));
 
 const vibrantPalette = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
   vibrantPaletteHandler(req).then(palette => {
@@ -42,6 +60,8 @@ const vibrantPalette = functions.https.onRequest((req, res) => corsHandler(req, 
 
 export {
   dialogflowFirebaseFulfillment,
-  updateStock,
+  getSymbols,
+  updateImages,
+  updateQuotes,
   vibrantPalette,
 };
