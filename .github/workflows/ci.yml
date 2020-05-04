@@ -38,6 +38,6 @@ jobs:
         working-directory: functions
       - name: Push coverage report to Coveralls
         uses: coverallsapp/github-action@master
-        working-directory: functions
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./functions/coverage/lcov.info
