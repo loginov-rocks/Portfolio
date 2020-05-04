@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches:
-    - master
+      - master
   pull_request:
     branches:
-    - master
+      - master
 
 jobs:
   build:
@@ -15,17 +15,27 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version:
+          - 10
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-      working-directory: functions
-    - run: npm run check
-      working-directory: functions
-    - run: npm run build
-      working-directory: functions
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Clean install of dependencies
+        run: npm ci
+        working-directory: functions
+      - name: Run checks
+        run: npm run check
+        working-directory: functions
+      - name: Test build
+        run: npm run build
+        working-directory: functions
+      - name: Create coverage report
+        run: npm run coverage
+      - name: Push coverage report to Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

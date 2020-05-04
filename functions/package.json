@@ -33,7 +33,7 @@
   },
   "homepage": "https://loginov.rocks/Portfolio",
   "engines": {
-    "node": "8"
+    "node": "10"
   },
   "dependencies": {
     "actions-on-google": "^2.12.0",
