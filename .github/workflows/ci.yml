@@ -39,4 +39,5 @@ jobs:
       - name: Push coverage report to Coveralls
         uses: coverallsapp/github-action@master
         with:
+          base-path: functions
           github-token: ${{ secrets.GITHUB_TOKEN }}
