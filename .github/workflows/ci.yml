@@ -35,6 +35,7 @@ jobs:
         working-directory: functions
       - name: Create coverage report
         run: npm run coverage
+        working-directory: functions
       - name: Push coverage report to Coveralls
         uses: coverallsapp/github-action@master
         with:
