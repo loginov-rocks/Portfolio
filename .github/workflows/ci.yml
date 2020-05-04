@@ -38,6 +38,6 @@ jobs:
         working-directory: functions
       - name: Push coverage report to Coveralls
         uses: coverallsapp/github-action@master
+        working-directory: functions
         with:
-          base-path: functions
           github-token: ${{ secrets.GITHUB_TOKEN }}
