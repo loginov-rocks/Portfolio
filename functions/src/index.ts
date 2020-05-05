@@ -6,8 +6,8 @@ import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
 
 import * as C from './constants';
-import { AggregateStocksSymbolsFunction } from './functions/AggregateStocksSymbolsFunction';
-import { GetSymbolsFunction } from './functions/GetSymbolsFunction';
+import { AggregateStocksSymbols } from './functions/AggregateStocksSymbols';
+import { GetOutdated } from './functions/GetOutdated';
 
 import updateImagesHandler from './handlers/updateImages';
 import updateQuotesHandler from './handlers/updateQuotes';
@@ -15,10 +15,18 @@ import updateQuotesHandler from './handlers/updateQuotes';
 import vibrantPaletteHandler from './handlers/vibrantPalette';
 
 admin.initializeApp(functions.config().firebase);
-const db = admin.firestore();
+const firestore = admin.firestore();
 
-const aggregateStocksSymbolsFunction = new AggregateStocksSymbolsFunction({ db });
-const getSymbolsFunction = new GetSymbolsFunction({ db, delay: C.GET_SYMBOLS_DELAY });
+const aggregateStocksSymbolsFunction = new AggregateStocksSymbols({
+  firestore,
+  pattern: C.AGGREGATE_STOCKS_SYMBOLS_PATTERN,
+});
+
+const getOutdatedFunction = new GetOutdated({
+  firestore,
+  logosDelay: C.GET_OUTDATED_LOGOS_DELAY,
+  quotesDelay: C.GET_OUTDATED_QUOTES_DELAY,
+});
 
 const corsHandler = cors({ origin: true });
 
@@ -38,16 +46,20 @@ app.intent('favorite color', (conv, { color }) => {
 const dialogflowFirebaseFulfillment = functions.https.onRequest(app);
 
 const aggregateStocksSymbolsOnCreate = functions.firestore
-  .document(AggregateStocksSymbolsFunction.pattern)
-  .onCreate(snapshot => aggregateStocksSymbolsFunction.trigger(snapshot));
+  .document(aggregateStocksSymbolsFunction.getPattern())
+  .onCreate(aggregateStocksSymbolsFunction.onCreate);
 
 const aggregateStocksSymbolsOnUpdate = functions.firestore
-  .document(AggregateStocksSymbolsFunction.pattern)
-  .onUpdate(change => aggregateStocksSymbolsFunction.trigger(change.after));
+  .document(aggregateStocksSymbolsFunction.getPattern())
+  .onUpdate(aggregateStocksSymbolsFunction.onUpdate);
 
 // TODO: Remove CORS, check auth.
-const getSymbols = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
-  getSymbolsFunction.trigger().then(response => {
+const getOutdated = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
+  if (req.method !== 'GET') {
+    return res.status(405).send();
+  }
+
+  return getOutdatedFunction.get().then(response => {
     res.send(response);
   });
 }));
@@ -61,7 +73,7 @@ const updateImages = functions.https.onRequest((req, res) => corsHandler(req, re
 
 // TODO: Remove CORS, check auth.
 const updateQuotes = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
-  updateQuotesHandler(db, req).then(() => {
+  updateQuotesHandler(firestore, req).then(() => {
     res.status(204).send();
   });
 }));
@@ -76,7 +88,7 @@ export {
   aggregateStocksSymbolsOnCreate,
   aggregateStocksSymbolsOnUpdate,
   dialogflowFirebaseFulfillment,
-  getSymbols,
+  getOutdated,
   updateImages,
   updateQuotes,
   vibrantPalette,

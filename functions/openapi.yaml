@@ -23,9 +23,9 @@ tags:
 
 paths:
 
-  /getSymbols:
+  /getOutdated:
     get:
-      summary: Get Symbols
+      summary: Get Outdated
       tags:
         - Stocks
       responses:
@@ -34,7 +34,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Symbols'
+                $ref: '#/components/schemas/Outdated'
         401:
           $ref: '#/components/responses/Unauthorized'
         500:
@@ -86,11 +86,6 @@ components:
 
   schemas:
 
-    Symbols:
-      type: array
-      items:
-        type: string
-
     Images:
       type: object
       properties:
@@ -106,6 +101,21 @@ components:
       required:
         - symbols
         - images
+
+    Outdated:
+      type: object
+      properties:
+        logos:
+          type: array
+          items:
+            type: string
+        quotes:
+          type: array
+          items:
+            type: string
+      required:
+        - logos
+        - quotes
 
     Quote:
       type: object
@@ -127,6 +137,7 @@ components:
         iexRealtimePrice:
           type: number
           format: float
+          nullable: true
         change:
           type: number
           format: float
@@ -139,6 +150,7 @@ components:
         - close
         - previousClose
         - latestPrice
+        - iexRealtimePrice
         - change
         - changePercent
 

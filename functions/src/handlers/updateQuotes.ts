@@ -8,8 +8,19 @@ export default (db: admin.firestore.Firestore, request: Request): Promise<void> 
     change, changePercent, close, companyName, iexRealtimePrice, latestPrice, logo, previousClose, symbol,
   } = request.body;
 
+  const millis = Date.now();
+
   const data: StockDocument = {
-    _updated: Date.now(), change, changePercent, close, companyName, iexRealtimePrice, latestPrice, logo, previousClose,
+    _logoUpdated: millis,
+    _quoteUpdated: millis,
+    change,
+    changePercent,
+    close,
+    companyName,
+    iexRealtimePrice,
+    latestPrice,
+    logo,
+    previousClose,
   };
 
   return db.collection('stocks').doc(symbol).set(data)
