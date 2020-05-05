@@ -1,6 +1,7 @@
 export interface StockDocument {
-  // Inherited from IEX API.
-  // Quote fields.
+  // Meta fields.
+  _updated: number | null;
+  // Quote fields, inherited from IEX API.
   companyName: string;
   close: number | null;
   // TODO: Check if the `previousClose` prop can be null.
@@ -10,7 +11,7 @@ export interface StockDocument {
   change: number;
   changePercent: number;
   // Logo fields.
-  logo: string;
+  logo: string | null;
 }
 
 export interface StocksCollection {
