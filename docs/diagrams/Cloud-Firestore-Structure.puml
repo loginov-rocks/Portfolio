@@ -1,0 +1,62 @@
+@startuml
+
+title Cloud Firestore Structure Diagram
+
+object "Cloud Firestore" as CloudFirestore <<Document>> {
+    stocks: StocksCollection
+    users: UsersCollection
+    usersPortfolios: UsersPortfoliosCollection
+}
+
+object StocksCollection <<Collection>> {
+    [symbol]: StockDocument
+}
+
+object StockDocument <<Document>> {
+}
+
+object UsersCollection <<Collection>> {
+    [userId]: UserDocument
+}
+
+object UserDocument <<Document>> {
+}
+
+object UsersPortfoliosCollection <<Collection>> {
+    [userId]: UserPortfoliosDocument
+}
+
+object UserPortfoliosDocument <<Document>> {
+    portfolios: PortfoliosCollection
+}
+
+object PortfoliosCollection <<Collection>> {
+    [portfolioId]: PortfolioDocument
+}
+
+object PortfolioDocument <<Document>> {
+    openPositions: PositionsCollection
+    closedPositions: PositionsCollection
+}
+
+object PositionsCollection <<Collection>> {
+    [positionId]: PositionDocument
+}
+
+object PositionDocument <<Document>> {
+}
+
+CloudFirestore --> StocksCollection
+StocksCollection --> StockDocument
+
+CloudFirestore --> UsersCollection
+UsersCollection --> UserDocument
+
+CloudFirestore --> UsersPortfoliosCollection
+UsersPortfoliosCollection --> UserPortfoliosDocument
+UserPortfoliosDocument --> PortfoliosCollection
+PortfoliosCollection --> PortfolioDocument
+PortfolioDocument --> PositionsCollection
+PositionsCollection --> PositionDocument
+
+@enduml
