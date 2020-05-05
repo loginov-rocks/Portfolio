@@ -34,22 +34,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Outdated'
+                $ref: '#/components/schemas/GetOutdatedResponse'
         401:
           $ref: '#/components/responses/Unauthorized'
         500:
           $ref: '#/components/responses/InternalServerError'
 
-  /updateImages:
+  /updateLogos:
     patch:
-      summary: Update Images
+      summary: Update Logos
       tags:
         - Stocks
       requestBody:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Images'
+              $ref: '#/components/schemas/UpdateLogosRequest'
       responses:
         204:
           $ref: '#/components/responses/NoContent'
@@ -69,9 +69,7 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/Quote'
+              $ref: '#/components/schemas/UpdateQuotesRequest'
       responses:
         204:
           $ref: '#/components/responses/NoContent'
@@ -86,7 +84,22 @@ components:
 
   schemas:
 
-    Images:
+    GetOutdatedResponse:
+      type: object
+      properties:
+        logos:
+          type: array
+          items:
+            type: string
+        quotes:
+          type: array
+          items:
+            type: string
+      required:
+        - logos
+        - quotes
+
+    UpdateLogosRequest:
       type: object
       properties:
         symbols:
@@ -102,57 +115,44 @@ components:
         - symbols
         - images
 
-    Outdated:
-      type: object
-      properties:
-        logos:
-          type: array
-          items:
+    UpdateQuotesRequest:
+      type: array
+      items:
+        type: object
+        properties:
+          symbol:
             type: string
-        quotes:
-          type: array
-          items:
+          companyName:
             type: string
-      required:
-        - logos
-        - quotes
-
-    Quote:
-      type: object
-      properties:
-        symbol:
-          type: string
-        companyName:
-          type: string
-        close:
-          type: number
-          format: float
-          nullable: true
-        previousClose:
-          type: number
-          format: float
-        latestPrice:
-          type: number
-          format: float
-        iexRealtimePrice:
-          type: number
-          format: float
-          nullable: true
-        change:
-          type: number
-          format: float
-        changePercent:
-          type: number
-          format: float
-      required:
-        - symbol
-        - companyName
-        - close
-        - previousClose
-        - latestPrice
-        - iexRealtimePrice
-        - change
-        - changePercent
+          close:
+            type: number
+            format: float
+            nullable: true
+          previousClose:
+            type: number
+            format: float
+          latestPrice:
+            type: number
+            format: float
+          iexRealtimePrice:
+            type: number
+            format: float
+            nullable: true
+          change:
+            type: number
+            format: float
+          changePercent:
+            type: number
+            format: float
+        required:
+          - symbol
+          - companyName
+          - close
+          - previousClose
+          - latestPrice
+          - iexRealtimePrice
+          - change
+          - changePercent
 
   securitySchemes:
 

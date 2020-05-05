@@ -1,9 +1,10 @@
-export interface StockDocument {
-  // Meta fields.
+export interface StockLogoPartialDocument {
   _logoUpdated: number;
-  _quoteUpdated: number;
-  // Logo fields.
   logo: string | null;
+}
+
+export interface StockQuotePartialDocument {
+  _quoteUpdated: number;
   // Quote fields, inherited from IEX API.
   companyName: string;
   close: number | null;
@@ -13,6 +14,10 @@ export interface StockDocument {
   iexRealtimePrice: number | null;
   change: number;
   changePercent: number;
+}
+
+export interface StockDocument extends StockLogoPartialDocument, StockQuotePartialDocument {
+  //
 }
 
 export interface StocksCollection {

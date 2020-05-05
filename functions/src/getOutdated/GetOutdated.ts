@@ -1,14 +1,11 @@
 import * as admin from 'firebase-admin';
 
+import { GetOutdatedResponse } from './GetOutdatedResponse';
+
 interface GetOutdatedOptions {
   firestore: admin.firestore.Firestore;
   logosDelay: number;
   quotesDelay: number;
-}
-
-interface GetOutdatedResult {
-  logos: Array<string>;
-  quotes: Array<string>;
 }
 
 export class GetOutdated {
@@ -24,7 +21,7 @@ export class GetOutdated {
     this.quotesDelay = options.quotesDelay;
   }
 
-  public get(): Promise<GetOutdatedResult> {
+  public get(): Promise<GetOutdatedResponse> {
     const stocks = this.firestore.collection('stocks');
     const millis = Date.now();
     const logosQuery = stocks.where('_logoUpdated', '<', millis - this.logosDelay).get();

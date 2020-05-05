@@ -6,11 +6,10 @@ import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
 
 import * as C from './constants';
-import { AggregateStocksSymbols } from './functions/AggregateStocksSymbols';
-import { GetOutdated } from './functions/GetOutdated';
-
-import updateImagesHandler from './handlers/updateImages';
-import updateQuotesHandler from './handlers/updateQuotes';
+import { AggregateStocksSymbols } from './aggregateStocksSymbols/AggregateStocksSymbols';
+import { GetOutdated } from './getOutdated/GetOutdated';
+import { UpdateLogos } from './updateLogos/UpdateLogos';
+import { UpdateQuotes } from './updateQuotes/UpdateQuotes';
 
 import vibrantPaletteHandler from './handlers/vibrantPalette';
 
@@ -26,6 +25,12 @@ const getOutdatedFunction = new GetOutdated({
   firestore,
   logosDelay: C.GET_OUTDATED_LOGOS_DELAY,
   quotesDelay: C.GET_OUTDATED_QUOTES_DELAY,
+});
+
+const updateLogosFunction = new UpdateLogos();
+
+const updateQuotesFunction = new UpdateQuotes({
+  firestore,
 });
 
 const corsHandler = cors({ origin: true });
@@ -65,15 +70,23 @@ const getOutdated = functions.https.onRequest((req, res) => corsHandler(req, res
 }));
 
 // TODO: Remove CORS, check auth.
-const updateImages = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
-  updateImagesHandler().then(() => {
+const updateLogos = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
+  if (req.method !== 'PATCH') {
+    return res.status(405).send();
+  }
+
+  return updateLogosFunction.patch(req.body).then(() => {
     res.status(204).send();
   });
 }));
 
 // TODO: Remove CORS, check auth.
 const updateQuotes = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
-  updateQuotesHandler(firestore, req).then(() => {
+  if (req.method !== 'PATCH') {
+    return res.status(405).send();
+  }
+
+  return updateQuotesFunction.patch(req.body).then(() => {
     res.status(204).send();
   });
 }));
@@ -89,7 +102,7 @@ export {
   aggregateStocksSymbolsOnUpdate,
   dialogflowFirebaseFulfillment,
   getOutdated,
-  updateImages,
+  updateLogos,
   updateQuotes,
   vibrantPalette,
 };
