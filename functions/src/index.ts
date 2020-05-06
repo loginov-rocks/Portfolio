@@ -1,7 +1,7 @@
 // Import the Dialogflow module from the Actions on Google client library.
 import { dialogflow } from 'actions-on-google';
 import cors from 'cors';
-import * as admin from 'firebase-admin';
+import admin from 'firebase-admin';
 // Import the firebase-functions package for deployment.
 import * as functions from 'firebase-functions';
 
@@ -75,8 +75,9 @@ const updateLogos = functions.https.onRequest((req, res) => corsHandler(req, res
     return res.status(405).send();
   }
 
-  return updateLogosFunction.patch(req.body).then(() => {
-    res.status(204).send();
+  return updateLogosFunction.patch(req.headers, req.rawBody).then(response => {
+    // TODO: Send 204 No Content instead of response.
+    res.send(response);
   });
 }));
 

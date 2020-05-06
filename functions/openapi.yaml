@@ -43,6 +43,7 @@ paths:
   /updateLogos:
     patch:
       summary: Update Logos
+      description: 'Accepts an unlimited number of logo & symbol pairs. Max uncompressed HTTP request size: 10 MB.'
       tags:
         - Stocks
       requestBody:
@@ -102,18 +103,14 @@ components:
     UpdateLogosRequest:
       type: object
       properties:
-        symbols:
-          type: array
-          items:
-            type: string
-        images:
-          type: array
-          items:
-            type: string
-            format: binary
+        logo:
+          type: string
+          format: binary
+        symbol:
+          type: string
       required:
-        - symbols
-        - images
+        - logo
+        - symbol
 
     UpdateQuotesRequest:
       type: array
