@@ -1,0 +1,44 @@
+@startuml
+
+title Components Diagram
+
+component App
+
+component Loading
+component Guest
+component Navigation
+
+component CreatePosition <<Page>>
+component Home <<Page>>
+component Analytics <<Page>>
+component Profile <<Page>>
+
+component Summary
+component OpenPositions
+component ClosedPositions
+
+component Position <<Page>>
+component ClosePosition <<Page>>
+component UpdatePosition <<Page>>
+
+App --> Loading
+App --> Guest
+App --> Navigation
+
+Navigation --> CreatePosition
+Navigation --> Home
+Navigation --> Analytics
+Navigation --> Profile
+
+Home --> Summary
+Home --> OpenPositions
+Home --> ClosedPositions
+
+CreatePosition ..> Position
+OpenPositions ..> Position
+ClosedPositions ..> Position
+
+Position ..> ClosePosition
+Position ..> UpdatePosition
+
+@enduml
