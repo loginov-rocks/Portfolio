@@ -1,9 +1,0 @@
-version: 1
-update_configs:
-  - default_assignees:
-      - loginov-rocks
-    default_reviewers:
-      - loginov-rocks
-    directory: functions
-    package_manager: javascript
-    update_schedule: weekly
