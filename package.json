@@ -1,15 +1,13 @@
 {
-  "name": "portfolio",
+  "name": "@loginov-rocks/portfolio",
   "version": "1.1.1",
   "description": "Portfolio App",
   "scripts": {
     "build": "npm run clean:build && webpack --mode production",
     "build:dev": "npm run clean:build && webpack --mode development",
-    "check": "npm run lint && npm run typecheck && npm test",
     "clean:build": "rimraf dist",
     "clean:coverage": "rimraf coverage",
     "coverage": "npm run clean:coverage && npm run test:coverage",
-    "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
     "lint": "eslint --ext js,ts,tsx src types webpack.config.js",
     "start": "webpack-dev-server --open",
     "test": "jest",
@@ -23,10 +21,11 @@
   },
   "author": "Danila Loginov <danila@loginov.rocks> (https://loginov.rocks)",
   "license": "MIT",
+  "private": true,
   "bugs": {
     "url": "https://github.com/loginov-rocks/Portfolio/issues"
   },
-  "homepage": "https://loginov.rocks/Portfolio",
+  "homepage": "https://loginov-rocks.github.io/Portfolio/",
   "dependencies": {
     "@material-ui/core": "^4.9.7",
     "@material-ui/icons": "^4.9.1",
@@ -67,7 +66,6 @@
     "babel-jest": "^25.2.3",
     "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^5.1.1",
-    "coveralls": "^3.0.11",
     "css-loader": "^3.4.2",
     "dotenv-webpack": "^1.7.0",
     "enzyme": "^3.11.0",
@@ -91,23 +89,15 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   },
-  "greenkeeper": {
-    "ignore": [
-      "react-redux",
-      "react-redux-firebase",
-      "redux-firestore"
-    ]
-  },
   "jest": {
     "modulePaths": [
-      "src"
+      "<rootDir>/src/"
     ],
     "setupFilesAfterEnv": [
-      "<rootDir>src/setupTests.js"
+      "<rootDir>/src/setupTests.js"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ],
-    "verbose": true
+    ]
   }
 }
