@@ -23,8 +23,12 @@ const App: React.FunctionComponent<Props> = ({ isAuthenticated, persistor, progr
   let component = null;
 
   if (progress) {
+    // TODO: Pending fix from the Material UI library.
+    // @ts-ignore
     component = <Loading />;
   } else if (!isAuthenticated) {
+    // TODO: Pending fix from the Material UI library.
+    // @ts-ignore
     component = <Guest />;
   } else {
     component = <BrowserRouter><Navigation /></BrowserRouter>;
@@ -33,6 +37,8 @@ const App: React.FunctionComponent<Props> = ({ isAuthenticated, persistor, progr
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
+      {/* TODO: Pending fix from the Material UI library. */}
+      {/* @ts-ignore */}
       <PersistGate loading={<Loading />} persistor={persistor}>
         {component}
       </PersistGate>

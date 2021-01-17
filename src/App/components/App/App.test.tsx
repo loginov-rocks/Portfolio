@@ -7,6 +7,7 @@ import App from './App';
 
 it('matches snapshot if loading', () => {
   const wrapper = shallow(
+    // For test purposes.
     // @ts-ignore
     <App isAuthenticated={false} persistor={{}} progress />,
   );
@@ -16,6 +17,7 @@ it('matches snapshot if loading', () => {
 
 it('matches snapshot if unauthenticated', () => {
   const wrapper = shallow(
+    // For test purposes.
     // @ts-ignore
     <App isAuthenticated={false} persistor={{}} progress={false} />,
   );
@@ -25,6 +27,7 @@ it('matches snapshot if unauthenticated', () => {
 
 it('matches snapshot if authenticated', () => {
   const wrapper = shallow(
+    // For test purposes.
     // @ts-ignore
     <App isAuthenticated persistor={{}} progress={false} />,
   );
