@@ -8,11 +8,17 @@ const path = require('path');
 module.exports = (env, argv) => ({
   devServer: {
     contentBase: path.join(__dirname, 'public'),
-    historyApiFallback: true,
+    // Imitates GitHub Pages behavior instead of just having historyApiFallback = true.
+    historyApiFallback: {
+      rewrites: [
+        { from: /./, to: '/404.html' },
+      ],
+    },
     port: 3000,
   },
   devtool: false,
   entry: {
+    404: './src/404.ts',
     bundle: './src/index.tsx',
     serviceWorker: './src/serviceWorker.ts',
   },
@@ -58,6 +64,12 @@ module.exports = (env, argv) => ({
       base: argv.mode === 'production' ? '/Portfolio/' : '/',
       inject: false,
       template: 'public/index.html',
+    }),
+    new HtmlPlugin({
+      base: argv.mode === 'production' ? '/Portfolio/' : '/',
+      filename: '404.html',
+      inject: false,
+      template: 'public/404.html',
     }),
   ],
   resolve: {
