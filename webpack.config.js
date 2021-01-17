@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack');
 const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
 
-module.exports = {
+module.exports = (env, argv) => ({
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true,
@@ -55,6 +55,7 @@ module.exports = {
       systemvars: true,
     }),
     new HtmlPlugin({
+      base: argv.mode === 'production' ? '/Portfolio/' : '/',
       inject: false,
       template: 'public/index.html',
     }),
@@ -70,4 +71,4 @@ module.exports = {
       path.resolve(__dirname, 'src'),
     ],
   },
-};
+});

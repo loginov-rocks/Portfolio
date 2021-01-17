@@ -1,6 +1,6 @@
 # Portfolio
 
-![CI](https://github.com/loginov-rocks/Portfolio/workflows/CI/badge.svg)
+[![CI](https://github.com/loginov-rocks/Portfolio/workflows/CI/badge.svg)](https://github.com/loginov-rocks/Portfolio/actions)
 [![Coverage Status](https://coveralls.io/repos/github/loginov-rocks/Portfolio/badge.svg?branch=main)](https://coveralls.io/github/loginov-rocks/Portfolio?branch=main)
 
 ## Solution Architecture
