@@ -12,7 +12,7 @@ exports[`matches snapshot 1`] = `
       onClick={[Function]}
       size="small"
     >
-      <SortOutlinedIcon
+      <Memo([object Object])
         style={
           Object {
             "transform": "scaleY(-1)",

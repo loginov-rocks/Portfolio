@@ -23,17 +23,17 @@ exports[`matches snapshot 1`] = `
     <WithStyles(ForwardRef(IconButton))
       onClick={[Function]}
     >
-      <MonetizationOnOutlinedIcon />
+      <Memo([object Object]) />
     </WithStyles(ForwardRef(IconButton))>
     <WithStyles(ForwardRef(IconButton))
       onClick={[Function]}
     >
-      <EditOutlinedIcon />
+      <Memo([object Object]) />
     </WithStyles(ForwardRef(IconButton))>
     <WithStyles(ForwardRef(IconButton))
       onClick={[Function]}
     >
-      <DeleteOutlinedIcon />
+      <Memo([object Object]) />
     </WithStyles(ForwardRef(IconButton))>
   </div>
   <div

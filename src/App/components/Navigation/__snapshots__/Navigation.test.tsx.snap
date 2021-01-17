@@ -14,11 +14,9 @@ exports[`matches snapshot if on the close position page 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics))))))))))))))))))",
               "type": [Function],
             },
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics)))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -328,11 +326,9 @@ exports[`matches snapshot if on the close position page 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(Profile)",
               "type": [Function],
             },
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(Profile))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -640,7 +636,6 @@ exports[`matches snapshot if on the close position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -948,7 +943,6 @@ exports[`matches snapshot if on the close position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -1256,7 +1250,6 @@ exports[`matches snapshot if on the close position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -1564,7 +1557,6 @@ exports[`matches snapshot if on the close position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(withHandlers(CreatePosition)))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -1872,7 +1864,6 @@ exports[`matches snapshot if on the close position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(Home)))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -2185,7 +2176,6 @@ exports[`matches snapshot if on the close position page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -2196,7 +2186,7 @@ exports[`matches snapshot if on the close position page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(AddCircleOutlineOutlinedIcon) />}
+      icon={<Memo />}
       key="/position"
       label="Open"
       to="/position"
@@ -2206,7 +2196,6 @@ exports[`matches snapshot if on the close position page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -2217,7 +2206,7 @@ exports[`matches snapshot if on the close position page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(BusinessCenterOutlinedIcon) />}
+      icon={<Memo />}
       key="/"
       label="Portfolio"
       to="/"
@@ -2227,7 +2216,6 @@ exports[`matches snapshot if on the close position page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -2238,7 +2226,7 @@ exports[`matches snapshot if on the close position page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(PieChartOutlinedIcon) />}
+      icon={<Memo />}
       key="/analytics"
       label="Analytics"
       to="/analytics"
@@ -2248,7 +2236,6 @@ exports[`matches snapshot if on the close position page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -2259,7 +2246,7 @@ exports[`matches snapshot if on the close position page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(AccountCircleOutlinedIcon) />}
+      icon={<Memo />}
       key="/profile"
       label="Profile"
       to="/profile"
@@ -2283,11 +2270,9 @@ exports[`matches snapshot if on the create position page 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics))))))))))))))))))",
               "type": [Function],
             },
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics)))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -2597,11 +2582,9 @@ exports[`matches snapshot if on the create position page 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(Profile)",
               "type": [Function],
             },
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(Profile))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -2909,7 +2892,6 @@ exports[`matches snapshot if on the create position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -3217,7 +3199,6 @@ exports[`matches snapshot if on the create position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -3525,7 +3506,6 @@ exports[`matches snapshot if on the create position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -3833,7 +3813,6 @@ exports[`matches snapshot if on the create position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(withHandlers(CreatePosition)))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -4141,7 +4120,6 @@ exports[`matches snapshot if on the create position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(Home)))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -4454,7 +4432,6 @@ exports[`matches snapshot if on the create position page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -4465,7 +4442,7 @@ exports[`matches snapshot if on the create position page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(AddCircleOutlineOutlinedIcon) />}
+      icon={<Memo />}
       key="/position"
       label="Open"
       to="/position"
@@ -4475,7 +4452,6 @@ exports[`matches snapshot if on the create position page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -4486,7 +4462,7 @@ exports[`matches snapshot if on the create position page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(BusinessCenterOutlinedIcon) />}
+      icon={<Memo />}
       key="/"
       label="Portfolio"
       to="/"
@@ -4496,7 +4472,6 @@ exports[`matches snapshot if on the create position page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -4507,7 +4482,7 @@ exports[`matches snapshot if on the create position page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(PieChartOutlinedIcon) />}
+      icon={<Memo />}
       key="/analytics"
       label="Analytics"
       to="/analytics"
@@ -4517,7 +4492,6 @@ exports[`matches snapshot if on the create position page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -4528,7 +4502,7 @@ exports[`matches snapshot if on the create position page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(AccountCircleOutlinedIcon) />}
+      icon={<Memo />}
       key="/profile"
       label="Profile"
       to="/profile"
@@ -4552,11 +4526,9 @@ exports[`matches snapshot if on the home page 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics))))))))))))))))))",
               "type": [Function],
             },
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics)))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -4866,11 +4838,9 @@ exports[`matches snapshot if on the home page 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(Profile)",
               "type": [Function],
             },
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(Profile))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -5178,7 +5148,6 @@ exports[`matches snapshot if on the home page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -5486,7 +5455,6 @@ exports[`matches snapshot if on the home page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -5794,7 +5762,6 @@ exports[`matches snapshot if on the home page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -6102,7 +6069,6 @@ exports[`matches snapshot if on the home page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(withHandlers(CreatePosition)))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -6410,7 +6376,6 @@ exports[`matches snapshot if on the home page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(Home)))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -6723,7 +6688,6 @@ exports[`matches snapshot if on the home page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -6734,7 +6698,7 @@ exports[`matches snapshot if on the home page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(AddCircleOutlineOutlinedIcon) />}
+      icon={<Memo />}
       key="/position"
       label="Open"
       to="/position"
@@ -6744,7 +6708,6 @@ exports[`matches snapshot if on the home page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -6755,7 +6718,7 @@ exports[`matches snapshot if on the home page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(BusinessCenterOutlinedIcon) />}
+      icon={<Memo />}
       key="/"
       label="Portfolio"
       to="/"
@@ -6765,7 +6728,6 @@ exports[`matches snapshot if on the home page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -6776,7 +6738,7 @@ exports[`matches snapshot if on the home page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(PieChartOutlinedIcon) />}
+      icon={<Memo />}
       key="/analytics"
       label="Analytics"
       to="/analytics"
@@ -6786,7 +6748,6 @@ exports[`matches snapshot if on the home page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -6797,7 +6758,7 @@ exports[`matches snapshot if on the home page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(AccountCircleOutlinedIcon) />}
+      icon={<Memo />}
       key="/profile"
       label="Profile"
       to="/profile"
@@ -6821,11 +6782,9 @@ exports[`matches snapshot if on the position page 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics))))))))))))))))))",
               "type": [Function],
             },
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics)))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -7135,11 +7094,9 @@ exports[`matches snapshot if on the position page 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(Profile)",
               "type": [Function],
             },
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(Profile))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -7447,7 +7404,6 @@ exports[`matches snapshot if on the position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -7755,7 +7711,6 @@ exports[`matches snapshot if on the position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -8063,7 +8018,6 @@ exports[`matches snapshot if on the position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -8371,7 +8325,6 @@ exports[`matches snapshot if on the position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(withHandlers(CreatePosition)))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -8679,7 +8632,6 @@ exports[`matches snapshot if on the position page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(Home)))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -8992,7 +8944,6 @@ exports[`matches snapshot if on the position page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -9003,7 +8954,7 @@ exports[`matches snapshot if on the position page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(AddCircleOutlineOutlinedIcon) />}
+      icon={<Memo />}
       key="/position"
       label="Open"
       to="/position"
@@ -9013,7 +8964,6 @@ exports[`matches snapshot if on the position page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -9024,7 +8974,7 @@ exports[`matches snapshot if on the position page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(BusinessCenterOutlinedIcon) />}
+      icon={<Memo />}
       key="/"
       label="Portfolio"
       to="/"
@@ -9034,7 +8984,6 @@ exports[`matches snapshot if on the position page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -9045,7 +8994,7 @@ exports[`matches snapshot if on the position page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(PieChartOutlinedIcon) />}
+      icon={<Memo />}
       key="/analytics"
       label="Analytics"
       to="/analytics"
@@ -9055,7 +9004,6 @@ exports[`matches snapshot if on the position page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -9066,7 +9014,7 @@ exports[`matches snapshot if on the position page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(AccountCircleOutlinedIcon) />}
+      icon={<Memo />}
       key="/profile"
       label="Profile"
       to="/profile"
@@ -9090,11 +9038,9 @@ exports[`matches snapshot if on the profile page 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics))))))))))))))))))",
               "type": [Function],
             },
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(withProps(withProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(withProps(Analytics)))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -9404,11 +9350,9 @@ exports[`matches snapshot if on the profile page 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(Profile)",
               "type": [Function],
             },
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(Connect(Profile))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -9716,7 +9660,6 @@ exports[`matches snapshot if on the profile page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(ClosePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -10024,7 +9967,6 @@ exports[`matches snapshot if on the profile page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(withHandlers(UpdatePosition)))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -10332,7 +10274,6 @@ exports[`matches snapshot if on the profile page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(Connect(branch(FirestoreConnect(Connect(Connect(withStateHandlers(withHandlers(withProps(Connect(lifecycle(mapProps(mapProps(Connect(lifecycle(mapProps(Connect(lifecycle(mapProps(Position))))))))))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -10640,7 +10581,6 @@ exports[`matches snapshot if on the profile page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(withHandlers(CreatePosition)))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -10948,7 +10888,6 @@ exports[`matches snapshot if on the profile page 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "Naked": [Function],
             "WrappedComponent": [Function],
-            "displayName": "WithStyles(withRouter(withHandlers(Connect(Connect(branch(FirestoreConnect(Connect(withProps(Connect(lifecycle(mapProps(mapProps(Home)))))))))))))",
             "options": Object {
               "defaultTheme": Object {
                 "breakpoints": Object {
@@ -11261,7 +11200,6 @@ exports[`matches snapshot if on the profile page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -11272,7 +11210,7 @@ exports[`matches snapshot if on the profile page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(AddCircleOutlineOutlinedIcon) />}
+      icon={<Memo />}
       key="/position"
       label="Open"
       to="/position"
@@ -11282,7 +11220,6 @@ exports[`matches snapshot if on the profile page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -11293,7 +11230,7 @@ exports[`matches snapshot if on the profile page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(BusinessCenterOutlinedIcon) />}
+      icon={<Memo />}
       key="/"
       label="Portfolio"
       to="/"
@@ -11303,7 +11240,6 @@ exports[`matches snapshot if on the profile page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -11314,7 +11250,7 @@ exports[`matches snapshot if on the profile page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(PieChartOutlinedIcon) />}
+      icon={<Memo />}
       key="/analytics"
       label="Analytics"
       to="/analytics"
@@ -11324,7 +11260,6 @@ exports[`matches snapshot if on the profile page 1`] = `
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "displayName": "Link",
           "propTypes": Object {
             "innerRef": [Function],
             "onClick": [Function],
@@ -11335,7 +11270,7 @@ exports[`matches snapshot if on the profile page 1`] = `
           "render": [Function],
         }
       }
-      icon={<Memo(AccountCircleOutlinedIcon) />}
+      icon={<Memo />}
       key="/profile"
       label="Profile"
       to="/profile"

@@ -22,6 +22,8 @@ const Profile: React.FunctionComponent<Props> = ({
     <Typography className={classes.headline} variant="h4">Profile</Typography>
 
     {profile.avatarUrl && (
+      // TODO: rel="no-referrer" should be passed to the Image object created in background to download the image and
+      //  avoid 403. Pending fix from the Material UI library.
       <Avatar className={classes.avatar} src={profile.avatarUrl} />
     )}
 
