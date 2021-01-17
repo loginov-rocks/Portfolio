@@ -38,14 +38,18 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
-    new CopyPlugin([
-      {
-        from: 'public',
-        ignore: [
-          'index.html',
-        ],
-      },
-    ]),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'public',
+          globOptions: {
+            ignore: [
+              '**/index.html',
+            ],
+          },
+        },
+      ],
+    }),
     new Dotenv({
       safe: false,
       systemvars: true,
