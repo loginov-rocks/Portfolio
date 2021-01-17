@@ -41,4 +41,11 @@ const Money: React.FunctionComponent<Props> = ({
   return <span className={className}>{content}</span>;
 };
 
+Money.defaultProps = {
+  currency: undefined,
+  highlighted: undefined,
+  multiplier: undefined,
+  pl: undefined,
+};
+
 export default Money;

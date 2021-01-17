@@ -44,7 +44,7 @@ export default <OwnProps>(
   symbolsExtractor: SymbolsExtractor<OwnProps>,
 ): ComponentEnhancer<Props, OwnProps> => compose<Props, OwnProps>(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle<OwnProps & StateProps & DispatchProps, {}>({
+  lifecycle<OwnProps & StateProps & DispatchProps, Record<string, never>>({
 
     componentDidMount() {
       const { fetchLogo } = this.props;

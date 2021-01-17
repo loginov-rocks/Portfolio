@@ -15,4 +15,8 @@ const PositionDate: React.FunctionComponent<Props> = ({ highlighted, date }: Pro
   return <span>{content}</span>;
 };
 
+PositionDate.defaultProps = {
+  highlighted: undefined,
+};
+
 export default PositionDate;

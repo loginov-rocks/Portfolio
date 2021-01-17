@@ -14,13 +14,17 @@ interface StateProps {
   tab: 'closed' | 'open' | 'summary';
 }
 
+interface WithHandlersProps {
+  handlePositionClick: (positionId: string) => void;
+}
+
 const mapStateToProps = ({ app: { homeTab } }: State): StateProps => ({ tab: homeTab });
 
 const mapDispatchToProps = { handleTabChange: changeHomeTab };
 
-export default compose<Props, {}>(
+export default compose<Props, Record<string, never>>(
   withRouter,
-  withHandlers<WithRouterProps, {}>({
+  withHandlers<WithRouterProps, WithHandlersProps>({
 
     handlePositionClick: ({ history }) => (positionId: string) => {
       history.push(R.toPosition(positionId));

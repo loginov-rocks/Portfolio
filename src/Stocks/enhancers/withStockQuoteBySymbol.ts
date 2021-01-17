@@ -34,7 +34,7 @@ const mapDispatchToProps = { fetchQuote: fetchQuoteAction };
 
 export default compose<Props, EnhancedProps>(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle<EnhancedProps & StateProps & DispatchProps, {}>({
+  lifecycle<EnhancedProps & StateProps & DispatchProps, Record<string, never>>({
 
     componentDidMount() {
       const { fetchQuote, symbol } = this.props;

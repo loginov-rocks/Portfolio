@@ -14,4 +14,8 @@ const Logo: React.FunctionComponent<Props> = ({ className }: Props) => (
   </Typography>
 );
 
+Logo.defaultProps = {
+  className: undefined,
+};
+
 export default Logo;

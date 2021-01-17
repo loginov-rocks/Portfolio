@@ -28,7 +28,7 @@ let digest: number;
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle<StateProps & DispatchProps, {}>({
+  lifecycle<StateProps & DispatchProps, Record<string, never>>({
 
     componentDidMount() {
       digest = window.setInterval(() => {
@@ -53,7 +53,7 @@ export default compose(
     },
 
   }),
-  mapProps<{}, StateProps & DispatchProps>(({
+  mapProps<Record<string, unknown>, StateProps & DispatchProps>(({
     fetchQuote, quotes, ...props // eslint-disable-line @typescript-eslint/no-unused-vars
-  }) => props),
+  }) => ({ ...props })),
 );

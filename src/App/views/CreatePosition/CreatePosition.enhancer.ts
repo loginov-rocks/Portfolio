@@ -6,9 +6,13 @@ import { Position } from 'Portfolio/lib';
 import { Props } from './CreatePosition';
 import * as R from '../../routes';
 
-export default compose<Props, {}>(
+interface WithHandlersProps {
+  handleCreate: (position: Position) => void;
+}
+
+export default compose<Props, Record<string, never>>(
   withRouter,
-  withHandlers<WithRouterProps, {}>({
+  withHandlers<WithRouterProps, WithHandlersProps>({
 
     handleCreate: ({ history }) => (position: Position) => {
       history.push(R.toPosition(position.id));

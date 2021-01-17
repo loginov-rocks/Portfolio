@@ -20,9 +20,15 @@ interface WithStateHandlersProps {
   wantToDelete: boolean;
 }
 
+interface WithHandlersProps {
+  handleCloseClick: () => void;
+  handleDeleteClick: () => void;
+  handleUpdateClick: () => void;
+}
+
 const mapDispatchToProps = { deletePosition: deletePositionAction };
 
-export default compose<Props, {}>(
+export default compose<Props, Record<string, never>>(
   withRouter,
   withPositionById<WithRouterProps<{ id: string }>>(({ match: { params: { id } } }) => id),
   connect(null, mapDispatchToProps),
@@ -30,7 +36,7 @@ export default compose<Props, {}>(
     { wantToDelete: false },
     { handleWantToDelete: () => () => ({ wantToDelete: true }) },
   ),
-  withHandlers<WithRouterProps & WithPositionByIdProps & DispatchProps & WithStateHandlersProps, {}>({
+  withHandlers<WithRouterProps & WithPositionByIdProps & DispatchProps & WithStateHandlersProps, WithHandlersProps>({
 
     handleCloseClick: ({ history, position }) => () => {
       if (position) {

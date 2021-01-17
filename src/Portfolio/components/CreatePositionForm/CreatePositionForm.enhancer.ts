@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { connect } from 'react-redux';
 import {
   compose, StateHandler, withHandlers, withStateHandlers,
@@ -29,6 +30,10 @@ interface WithStateHandlersUpdaters {
 
 interface EnhancedProps {
   onCreate?: (position: Position) => void;
+}
+
+interface WithHandlersProps {
+  handleSubmit: (event: React.SyntheticEvent) => void;
 }
 
 export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedProps>(
@@ -83,7 +88,7 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
       }),
     },
   ),
-  withHandlers<EnhancedProps & DispatchProps & WithStateHandlersState & WithStateHandlersUpdaters, {}>({
+  withHandlers<EnhancedProps & DispatchProps & WithStateHandlersState & WithStateHandlersUpdaters, WithHandlersProps>({
 
     handleSubmit: ({
       amount, commission, createPosition, date, onCreate, price, symbol,

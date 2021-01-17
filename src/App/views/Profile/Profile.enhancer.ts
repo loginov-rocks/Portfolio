@@ -21,4 +21,4 @@ const mapStateToProps = ({ firebase: { firebase: { profile } } }: State): StateP
 
 const mapDispatchToProps = { resetLogos, resetQuotes, resetVibrantPalettes };
 
-export default connect<StateProps, DispatchProps, {}, State>(mapStateToProps, mapDispatchToProps);
+export default connect<StateProps, DispatchProps, Record<string, never>, State>(mapStateToProps, mapDispatchToProps);

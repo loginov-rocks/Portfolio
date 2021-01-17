@@ -33,7 +33,7 @@ const mapDispatchToProps = { fetchLogo: fetchLogoAction };
 
 export default compose<Props, EnhancedProps>(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle<EnhancedProps & StateProps & DispatchProps, {}>({
+  lifecycle<EnhancedProps & StateProps & DispatchProps, Record<string, never>>({
 
     componentDidMount() {
       const { fetchLogo, symbol } = this.props;

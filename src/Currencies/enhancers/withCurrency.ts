@@ -38,9 +38,9 @@ const mapStateToProps = ({ currencies: { currency, rates } }: State): StateProps
 
 const mapDispatchToProps = { changeCurrency, fetchCurrenciesRates: fetchRates };
 
-export default compose<Props, {}>(
+export default compose<Props, Record<string, never>>(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle<StateProps & DispatchProps, {}>({
+  lifecycle<StateProps & DispatchProps, Record<string, never>>({
 
     componentDidMount() {
       this.props.fetchCurrenciesRates();

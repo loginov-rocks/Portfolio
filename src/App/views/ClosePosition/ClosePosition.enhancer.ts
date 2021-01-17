@@ -6,10 +6,14 @@ import withPositionById, { Props as WithPositionByIdProps } from 'Portfolio/enha
 import { Props } from './ClosePosition';
 import * as R from '../../routes';
 
-export default compose<Props, {}>(
+interface WithHandlersProps {
+  handleBackClick: () => void;
+}
+
+export default compose<Props, Record<string, never>>(
   withRouter,
   withPositionById<WithRouterProps<{ id: string }>>(({ match: { params: { id } } }) => id),
-  withHandlers<WithRouterProps & WithPositionByIdProps, {}>({
+  withHandlers<WithRouterProps & WithPositionByIdProps, WithHandlersProps>({
 
     handleBackClick: ({ history, position }) => () => {
       if (position) {

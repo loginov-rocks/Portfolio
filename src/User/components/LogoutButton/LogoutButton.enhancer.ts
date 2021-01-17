@@ -10,9 +10,13 @@ interface EnhancedProps {
   onLogout?: () => void;
 }
 
+interface WithHandlersProps {
+  handleClick: () => void;
+}
+
 export default compose<Props & WithFirebaseHocProps, EnhancedProps>(
   withFirebase,
-  withHandlers<EnhancedProps & WithFirebaseHocProps, {}>({
+  withHandlers<EnhancedProps & WithFirebaseHocProps, WithHandlersProps>({
 
     handleClick: ({ firebase, onLogout }) => () => {
       firebase.auth().signOut();

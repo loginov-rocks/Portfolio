@@ -14,7 +14,7 @@ import { Props } from './Analytics';
 import withStockPositions, { Props as WithStockPositionsProps } from '../../enhancers/withStockPositions';
 import { calculateTotals, createOpenPositionsSummaries } from '../../lib';
 
-export default compose<Props, {}>(
+export default compose<Props, Record<string, never>>(
   withPositions,
   withStockPositions,
   withProps<Partial<WithStockPositionsProps>, WithStockPositionsProps>(({ stockPositions }) => ({

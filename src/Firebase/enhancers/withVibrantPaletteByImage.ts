@@ -38,7 +38,7 @@ export default <OwnProps>(
   imageExtractor: ImageExtractor<OwnProps>,
 ): ComponentEnhancer<Props, OwnProps> => compose<Props, OwnProps>(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle<OwnProps & StateProps & DispatchProps, {}>({
+  lifecycle<OwnProps & StateProps & DispatchProps, Record<string, never>>({
 
     componentDidMount() {
       const { fetchVibrantPalette } = this.props;

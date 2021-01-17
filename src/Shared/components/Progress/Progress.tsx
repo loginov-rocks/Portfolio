@@ -16,4 +16,9 @@ const Progress: React.FunctionComponent<Props> = ({ className, size }: Props) =>
   return <CircularProgress className={className} size={sizeProp} />;
 };
 
+Progress.defaultProps = {
+  className: undefined,
+  size: undefined,
+};
+
 export default Progress;

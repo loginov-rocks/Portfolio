@@ -9,9 +9,13 @@ interface EnhancedProps {
   provider: string;
 }
 
+interface WithHandlersProps {
+  handleClick: () => void;
+}
+
 export default compose<Props & WithFirebaseHocProps & EnhancedProps, EnhancedProps>(
   withFirebase,
-  withHandlers<EnhancedProps & WithFirebaseHocProps, {}>({
+  withHandlers<EnhancedProps & WithFirebaseHocProps, WithHandlersProps>({
 
     handleClick: ({ firebase, provider }) => () => {
       firebase.auth().signInWithRedirect(getAuthProvider(provider));

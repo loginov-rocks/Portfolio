@@ -29,4 +29,9 @@ const Percent: React.FunctionComponent<Props> = ({
   return <span className={className}>{content}</span>;
 };
 
+Percent.defaultProps = {
+  highlighted: undefined,
+  pl: undefined,
+};
+
 export default Percent;

@@ -31,6 +31,10 @@ interface EnhancedProps {
   onClose?: () => void;
 }
 
+interface WithHandlersProps {
+  handleSubmit: (event: React.SyntheticEvent) => void;
+}
+
 export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedProps>(
   connect(null, mapDispatchToProps),
   withStateHandlers<WithStateHandlersState, WithStateHandlersUpdaters>(
@@ -71,7 +75,7 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
       },
     },
   ),
-  withHandlers<EnhancedProps & DispatchProps & WithStateHandlersState & WithStateHandlersUpdaters, {}>({
+  withHandlers<EnhancedProps & DispatchProps & WithStateHandlersState & WithStateHandlersUpdaters, WithHandlersProps>({
 
     handleSubmit: ({
       closePosition, commission, date, id, onClose, price,

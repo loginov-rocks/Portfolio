@@ -43,7 +43,7 @@ const mapStateToProps = (name: string, initialKey: string, initialOrder: 'asc' |
   return { sorterKey, sorterOrder };
 };
 
-const mapDispatchToProps = (name: string): MapDispatchToProps<DispatchProps, {}> => ({
+const mapDispatchToProps = (name: string): MapDispatchToProps<DispatchProps, Record<string, never>> => ({
   handleSorterKeyChange: changeSorterKeyCurried(name),
   handleSorterOrderChange: changeSorterOrderCurried(name),
 });
@@ -52,6 +52,6 @@ export default (
   name: string,
   initialKey: string,
   initialOrder: 'asc' | 'desc',
-): InferableComponentEnhancerWithProps<StateProps & ResolveThunks<DispatchProps>, {}> => (
+): InferableComponentEnhancerWithProps<StateProps & ResolveThunks<DispatchProps>, Record<string, never>> => (
   connect(mapStateToProps(name, initialKey, initialOrder), mapDispatchToProps(name))
 );

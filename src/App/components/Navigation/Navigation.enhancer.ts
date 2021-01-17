@@ -12,13 +12,13 @@ interface WithProps {
 
 const containerRef = React.createRef();
 
-export default compose<Props, {}>(
+export default compose<Props, Record<string, never>>(
   withRouter,
-  withProps<{}, RouteComponentProps>(({ location }) => ({
+  withProps<{ containerRef: React.RefObject<unknown>, currentRoute: string }, RouteComponentProps>(({ location }) => ({
     containerRef,
     currentRoute: location.pathname,
   })),
-  lifecycle<RouteComponentProps & WithProps, {}>({
+  lifecycle<RouteComponentProps & WithProps, Record<string, never>>({
 
     componentDidUpdate(prevProps) {
       const { current } = this.props.containerRef;
