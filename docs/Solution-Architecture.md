@@ -2,7 +2,7 @@
 
 [WORK IN PROGRESS]
 
-![Solution Architecture Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/master/docs/diagrams/Solution-Architecture.png)
+![Solution Architecture Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/main/docs/diagrams/Solution-Architecture.png)
 
 ## 1. Components
 
@@ -51,7 +51,7 @@ TODO
 
 ### 3.2. Open Position
 
-![Open Position Sequence Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/master/docs/diagrams/Sequence-Open-Position.png)
+![Open Position Sequence Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/main/docs/diagrams/Sequence-Open-Position.png)
 
 ### 3.3. Show Position
 
@@ -83,8 +83,8 @@ TODO
 
 ### 3.10. Update Quotes and Images
 
-![Update Quotes and Images Sequence Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/master/docs/diagrams/Sequence-Update-Quotes-and-Images.png)
+![Update Quotes and Images Sequence Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/main/docs/diagrams/Sequence-Update-Quotes-and-Images.png)
 
 ## 4. Cloud Firestore
 
-![Cloud Firestore Structure Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/master/docs/diagrams/Cloud-Firestore-Structure.png)
+![Cloud Firestore Structure Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/main/docs/diagrams/Cloud-Firestore-Structure.png)
