@@ -84,3 +84,7 @@ TODO
 ### 3.10. Update Quotes and Images
 
 ![Update Quotes and Images Sequence Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/master/docs/diagrams/Sequence-Update-Quotes-and-Images.png)
+
+## 4. Cloud Firestore
+
+![Cloud Firestore Structure Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/master/docs/diagrams/Cloud-Firestore-Structure.png)

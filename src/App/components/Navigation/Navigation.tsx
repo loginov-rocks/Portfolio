@@ -3,8 +3,8 @@ import {
   AccountCircleOutlined, AddCircleOutlineOutlined, BusinessCenterOutlined, PieChartOutlined,
 } from '@material-ui/icons';
 import * as React from 'react';
+import { Link, Route, Switch } from 'react-router-dom';
 
-import { NavigateAction } from '../../actions';
 import * as R from '../../routes';
 import Analytics from '../../views/Analytics';
 import ClosePosition from '../../views/ClosePosition';
@@ -17,66 +17,58 @@ import UpdatePosition from '../../views/UpdatePosition';
 export interface Props {
   classes: { [key: string]: string };
   containerRef?: React.RefObject<HTMLDivElement>;
-  navigate: NavigateAction;
-  route: R.Route;
+  currentRoute: R.Route;
 }
 
+const routes = [
+  // Order matters!
+  { component: Analytics, route: R.ANALYTICS },
+  { component: Profile, route: R.PROFILE },
+  { component: ClosePosition, route: R.CLOSE_POSITION },
+  { component: UpdatePosition, route: R.UPDATE_POSITION },
+  { component: Position, route: R.POSITION },
+  { component: CreatePosition, route: R.CREATE_POSITION },
+  { component: Home, route: R.HOME },
+];
+
+const navigation = [
+  { icon: <AddCircleOutlineOutlined />, label: 'Open', route: R.CREATE_POSITION },
+  { icon: <BusinessCenterOutlined />, label: 'Portfolio', route: R.HOME },
+  { icon: <PieChartOutlined />, label: 'Analytics', route: R.ANALYTICS },
+  { icon: <AccountCircleOutlined />, label: 'Profile', route: R.PROFILE },
+];
+
 const Navigation: React.FunctionComponent<Props> = ({
-  classes, containerRef, navigate, route,
-}: Props) => {
-  let Component = null;
+  classes, containerRef, currentRoute,
+}: Props) => (
+  <>
 
-  switch (route) {
-    case R.ANALYTICS:
-      Component = Analytics;
-      break;
+    <div className={classes.container} ref={containerRef}>
+      <Switch>
+        {routes.map(({ component, route }) => (
+          <Route component={component} key={route} path={route} />
+        ))}
+      </Switch>
+    </div>
 
-    case R.CLOSE_POSITION:
-      Component = ClosePosition;
-      break;
+    <BottomNavigation
+      className={classes.bottomNavigation}
+      showLabels
+      value={currentRoute}
+    >
+      {navigation.map(({ icon, label, route }) => (
+        <BottomNavigationAction
+          component={Link}
+          icon={icon}
+          key={route}
+          label={label}
+          to={route}
+          value={route}
+        />
+      ))}
+    </BottomNavigation>
 
-    case R.CREATE_POSITION:
-      Component = CreatePosition;
-      break;
-
-    case R.POSITION:
-      Component = Position;
-      break;
-
-    case R.PROFILE:
-      Component = Profile;
-      break;
-
-    case R.UPDATE_POSITION:
-      Component = UpdatePosition;
-      break;
-
-    default:
-      Component = Home;
-      break;
-  }
-
-  return (
-    <>
-
-      <div className={classes.container} ref={containerRef}>
-        <Component />
-      </div>
-
-      <BottomNavigation
-        className={classes.bottomNavigation}
-        onChange={(event, newRoute) => navigate(newRoute)}
-        showLabels
-        value={route}
-      >
-        <BottomNavigationAction icon={<AddCircleOutlineOutlined />} label="Open" value={R.CREATE_POSITION} />
-        <BottomNavigationAction icon={<BusinessCenterOutlined />} label="Portfolio" value={R.HOME} />
-        <BottomNavigationAction icon={<PieChartOutlined />} label="Analytics" value={R.ANALYTICS} />
-        <BottomNavigationAction icon={<AccountCircleOutlined />} label="Profile" value={R.PROFILE} />
-      </BottomNavigation>
-
-    </>
-  );
-};
+  </>
+);
 
 export default Navigation;

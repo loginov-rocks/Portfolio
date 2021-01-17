@@ -1,5 +1,6 @@
 import { Repository } from 'redux-repository/lib/interfaces';
 
+import * as C from 'Constants';
 import { Position } from 'Portfolio/lib';
 
 import VibrantPalette from './lib/Functions/VibrantPalette';
@@ -29,13 +30,9 @@ export default interface State {
   };
   firestore: {
     data: {
-      users?: {
-        [userId: string]: {
-          positions?: {
-            // `null` used by `react-redux-firebase` when document deleted.
-            [positionId: string]: Omit<Position, 'id'> | null;
-          };
-        };
+      [C.STATE_FIREBASE_POSITIONS_KEY]?: {
+        // `null` used by `react-redux-firebase` when document deleted.
+        [positionId: string]: Omit<Position, 'id'> | null;
       };
     };
   };

@@ -1,11 +1,8 @@
 import * as T from '../actions/types';
-import * as R from '../routes';
 import State from '../State';
 
 const initialState: State = {
   homeTab: 'summary',
-  route: R.HOME,
-  routeParams: {},
   sorters: {},
 };
 
@@ -15,13 +12,6 @@ export default (state: State = initialState, action: T.Action): State => {
       return {
         ...state,
         homeTab: action.payload,
-      };
-
-    case T.NAVIGATION_HAPPENED:
-      return {
-        ...state,
-        route: action.payload.route,
-        routeParams: action.payload.params ? action.payload.params : {},
       };
 
     case T.SORTER_KEY_CHANGED:

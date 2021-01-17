@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import 'typeface-roboto';
 
 import App from 'App/components/App';
@@ -10,11 +11,18 @@ import createStore from './createStore';
 import reducer from './reducer';
 
 const container = document.getElementById('app');
-const { persistor, store } = createStore(reducer);
+const { persistor, reactReduxFirebaseProviderProps, store } = createStore(reducer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App persistor={persistor} />
+    <ReactReduxFirebaseProvider
+      config={reactReduxFirebaseProviderProps.config}
+      createFirestoreInstance={reactReduxFirebaseProviderProps.createFirestoreInstance}
+      dispatch={reactReduxFirebaseProviderProps.dispatch}
+      firebase={reactReduxFirebaseProviderProps.firebase}
+    >
+      <App persistor={persistor} />
+    </ReactReduxFirebaseProvider>
   </Provider>,
   container,
 );

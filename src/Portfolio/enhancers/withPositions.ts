@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect, isLoaded } from 'react-redux-firebase';
 import { compose } from 'recompose';
 
+import * as C from 'Constants';
 import { getPositionsCollectionPath } from 'Firebase/lib';
 import State from 'State';
 import withAuth, { Props as WithAuthProps } from 'User/enhancers/withAuth';
@@ -16,23 +17,19 @@ export interface Props {
 }
 
 const mapStateToProps = ({ firebase: { firestore: { data } } }: State, { auth }: WithAuthProps): Props => {
+  const rawPositions = data[C.STATE_FIREBASE_POSITIONS_KEY];
   // `as string` used here because UID will be present at this point when using `withAuth`.
   const userId = auth.uid as string;
-
   let positions: Position[] = [];
 
-  if (data.users) {
-    const user = data.users[userId];
+  if (rawPositions) {
+    positions = Object.keys(rawPositions).map(positionId => {
+      if (!rawPositions || rawPositions[positionId] === null) {
+        return null;
+      }
 
-    if (user && user.positions) {
-      positions = Object.keys(user.positions).map(positionId => {
-        if (!user.positions || user.positions[positionId] === null) {
-          return null;
-        }
-
-        return { id: positionId, ...user.positions[positionId] };
-      }).filter(position => position !== null) as Position[];
-    }
+      return { id: positionId, ...rawPositions[positionId] };
+    }).filter(position => position !== null) as Position[];
   }
 
   return {
@@ -45,7 +42,10 @@ export default compose(
   withAuth,
   firestoreConnect(({ auth }: WithAuthProps) => [
     // `as string` used here because UID will be present at this point when using `withAuth`.
-    getPositionsCollectionPath(auth.uid as string),
+    {
+      collection: getPositionsCollectionPath(auth.uid as string),
+      storeAs: C.STATE_FIREBASE_POSITIONS_KEY,
+    },
   ]),
   connect(mapStateToProps),
 );

@@ -2,19 +2,11 @@ import { ThunkAction } from 'redux-thunk';
 
 import State from 'State';
 
-import {
-  homeTabChanged, navigationHappened, sorterKeyChanged, sorterOrderChanged,
-} from './creators';
-import * as R from '../routes';
-import { RouteParamsState } from '../State';
+import { homeTabChanged, sorterKeyChanged, sorterOrderChanged } from './creators';
 import { Action } from './types';
 
 export interface ChangeHomeTabAction {
   (tab: 'closed' | 'open' | 'summary'): void;
-}
-
-export interface NavigateAction {
-  (route: R.Route, params?: RouteParamsState): void;
 }
 
 export interface ChangeSorterKeyAction {
@@ -29,13 +21,6 @@ export const changeHomeTab = (
   tab: 'closed' | 'open' | 'summary',
 ): ThunkAction<void, State, null, Action> => dispatch => {
   dispatch(homeTabChanged(tab));
-};
-
-export const navigate = (
-  route: R.Route,
-  params?: RouteParamsState,
-): ThunkAction<void, State, null, Action> => dispatch => {
-  dispatch(navigationHappened(route, params));
 };
 
 export const changeSorterKeyCurried = (name: string) => (
