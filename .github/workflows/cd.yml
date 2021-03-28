@@ -6,9 +6,13 @@ on:
       - v[0-9].[0-9]+.[0-9]+
 
 jobs:
-  deploy:
 
-    runs-on: ubuntu-latest
+  web-app-cd:
+    name: Web App CD
+
+    defaults:
+      run:
+        working-directory: web-app
 
     env:
       # Firebase Configuration
@@ -29,6 +33,8 @@ jobs:
       # IEX API
       IEX_API_URL: ${{ secrets.IEX_API_URL }}
       IEX_PUBLISHABLE_TOKEN: ${{ secrets.IEX_PUBLISHABLE_TOKEN }}
+
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2

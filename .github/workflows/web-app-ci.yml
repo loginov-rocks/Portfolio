@@ -1,15 +1,24 @@
-name: CI
+name: Web App CI
 
 on:
   push:
     branches:
       - main
+    paths:
+      - web-app/**
   pull_request:
     branches:
       - main
+    paths:
+      - web-app/**
 
 jobs:
-  build:
+  ci:
+    name: CI
+
+    defaults:
+      run:
+        working-directory: web-app
 
     runs-on: ubuntu-latest
 
@@ -28,8 +37,5 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
-      - run: npm run test:coverage
+      - run: npm test
       - run: npm run build
-      - uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
