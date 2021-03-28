@@ -35,12 +35,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-        working-directory: functions
+        working-directory: firebase/functions
       - run: npm run lint
-        working-directory: functions
+        working-directory: firebase/functions
       - run: npm run typecheck
-        working-directory: functions
+        working-directory: firebase/functions
       - run: npm test
-        working-directory: functions
+        working-directory: firebase/functions
       - run: npm run build
-        working-directory: functions
+        working-directory: firebase/functions
