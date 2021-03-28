@@ -6,7 +6,6 @@
   "scripts": {
     "build": "npm run clean:build && npm run build:sources && npm run clean:tests",
     "build:sources": "babel src -d lib --extensions .ts",
-    "check": "npm run lint && npm run typecheck && npm test",
     "clean:build": "rimraf lib",
     "clean:coverage": "rimraf coverage",
     "clean:tests": "rimraf lib/**/*.test.js",
@@ -23,12 +22,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/loginov-rocks/Portfolio-Firebase.git"
+    "url": "git+https://github.com/loginov-rocks/Portfolio.git"
   },
   "author": "Danila Loginov <danila@loginov.rocks> (https://loginov.rocks)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/loginov-rocks/Portfolio-Firebase/issues"
+    "url": "https://github.com/loginov-rocks/Portfolio/issues"
   },
   "homepage": "https://loginov.rocks/Portfolio",
   "engines": {

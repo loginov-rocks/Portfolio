@@ -1,0 +1,46 @@
+name: Firebase CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - firebase/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - firebase/**
+
+jobs:
+  ci:
+    name: CI
+
+    defaults:
+      run:
+        working-directory: firebase
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version:
+          # TODO: Check for the latest version available at Firebase Functions
+          - 10
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+        working-directory: functions
+      - run: npm run lint
+        working-directory: functions
+      - run: npm run typecheck
+        working-directory: functions
+      - run: npm test
+        working-directory: functions
+      - run: npm run build
+        working-directory: functions
