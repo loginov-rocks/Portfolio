@@ -18,7 +18,7 @@ interface WithProps {
 
 export default compose<Props, EnhancedProps>(
   withProps<EnhancedProps, EnhancedProps>(({ stockPositions }) => ({
-    stockPositions: stockPositions.filter(position => position.closeDate === null),
+    stockPositions: stockPositions.filter((position) => position.closeDate === null),
   })),
   withProps<Partial<Props>, EnhancedProps & WithStockPositionsProps>(({ stockPositions }) => ({
     summaries: createOpenPositionsSummaries(stockPositions),

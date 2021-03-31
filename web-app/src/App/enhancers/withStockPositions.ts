@@ -30,7 +30,7 @@ export default compose<Props, EnhancedProps>(
     positions, quotesBySymbols, symbols, ...props // eslint-disable-line @typescript-eslint/no-unused-vars
   }) => ({
     positions,
-    stockPositions: positions.map(position => createStockPosition(
+    stockPositions: positions.map((position) => createStockPosition(
       position, quotesBySymbols[position.symbol].quote, quotesBySymbols[position.symbol].progress,
     )),
     ...props,

@@ -34,5 +34,5 @@ export const annualizePercent = (percent: number, fromDate: string, toDate?: str
 };
 
 export const getUniqueSymbolsFromPositions = (positions: Position[]): string[] => Array.from(
-  new Set(positions.map(position => position.symbol)),
+  new Set(positions.map((position) => position.symbol)),
 );

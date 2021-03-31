@@ -2,7 +2,7 @@ import { withStyles } from '@material-ui/core';
 
 import { viewRoot } from 'Styles/mixins';
 
-export default withStyles(theme => ({
+export default withStyles((theme) => ({
   chartWrapper: {
     height: '50%',
     width: '100%',

@@ -44,14 +44,14 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
       price: '',
     },
     {
-      handleCommissionChange: () => event => {
+      handleCommissionChange: () => (event) => {
         const commission = parseFloat(event.target.value);
 
         return {
           commission: commission >= 0 ? commission : '',
         };
       },
-      handleDateChange: () => event => {
+      handleDateChange: () => (event) => {
         let date;
 
         try {
@@ -66,7 +66,7 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
 
         return { date };
       },
-      handlePriceChange: () => event => {
+      handlePriceChange: () => (event) => {
         const price = parseFloat(event.target.value);
 
         return {

@@ -24,8 +24,8 @@ export const fetchVibrantPalette = (
   ({ firebase: { functions: { vibrantPalettes } } }) => vibrantPalettes,
   (dispatchReceived, dispatchFailed) => {
     functions.getVibrantPalette(img)
-      .then(data => dispatchReceived(data))
-      .catch(error => dispatchFailed(error.toString()));
+      .then((data) => dispatchReceived(data))
+      .catch((error) => dispatchFailed(error.toString()));
   },
   { silentAlready: true, ttl: C.FIREBASE_FUNCTIONS_VIBRANT_PALETTES_TTL },
 );

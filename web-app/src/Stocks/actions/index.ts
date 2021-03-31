@@ -32,8 +32,8 @@ export const fetchLogo = (
   ({ stocks: { logos } }) => logos,
   (dispatchReceived, dispatchFailed) => {
     iex.getStockLogo(symbol)
-      .then(data => dispatchReceived(data))
-      .catch(error => dispatchFailed(error.toString()));
+      .then((data) => dispatchReceived(data))
+      .catch((error) => dispatchFailed(error.toString()));
   },
   { silentAlready: true, ttl: C.STOCKS_LOGOS_TTL },
 );
@@ -50,8 +50,8 @@ export const fetchQuote = (
   ({ stocks: { quotes } }) => quotes,
   (dispatchReceived, dispatchFailed) => {
     iex.getStockQuote(symbol)
-      .then(data => dispatchReceived(data))
-      .catch(error => dispatchFailed(error.toString()));
+      .then((data) => dispatchReceived(data))
+      .catch((error) => dispatchFailed(error.toString()));
   },
   { silentAlready: true, ttl: C.STOCKS_QUOTES_TTL },
 );

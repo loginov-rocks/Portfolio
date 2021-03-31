@@ -22,7 +22,7 @@ const Sorter: React.FunctionComponent<Props> = ({
   <>
 
     <ButtonGroup className={className}>
-      <Button onClick={event => updateAnchor(event.currentTarget)}>
+      <Button onClick={(event) => updateAnchor(event.currentTarget)}>
         {keyLabel}
       </Button>
       <Button onClick={() => onOrderChange(sorterOrder === 'asc' ? 'desc' : 'asc')} size="small">

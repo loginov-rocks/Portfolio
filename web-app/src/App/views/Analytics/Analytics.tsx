@@ -33,7 +33,7 @@ const Analytics: React.FunctionComponent<Props> = ({
   const maxShare = summaries[0].marketSum / totalMarketSum;
   const data: { value: number }[] = [];
 
-  summaries.forEach(summary => {
+  summaries.forEach((summary) => {
     if (summary.marketSum === null) {
       return;
     }
@@ -68,7 +68,7 @@ const Analytics: React.FunctionComponent<Props> = ({
       </div>
 
       <div className={classes.rowsWrapper}>
-        {summaries.map(summary => {
+        {summaries.map((summary) => {
           if (summary.marketSum === null) {
             return null;
           }

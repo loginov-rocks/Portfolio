@@ -46,14 +46,14 @@ export default compose<Props, EnhancedProps>(
     componentDidMount() {
       const { fetchQuote, symbols } = this.props;
 
-      symbols.forEach(symbol => fetchQuote(symbol));
+      symbols.forEach((symbol) => fetchQuote(symbol));
     },
 
     componentDidUpdate(prevProps) {
       const { fetchQuote, symbols } = this.props;
 
       if (!areArraysEqual(symbols, prevProps.symbols)) {
-        symbols.forEach(symbol => fetchQuote(symbol));
+        symbols.forEach((symbol) => fetchQuote(symbol));
       }
     },
 
@@ -63,7 +63,7 @@ export default compose<Props, EnhancedProps>(
   }) => {
     const quotesBySymbols: QuotesBySymbols = {};
 
-    symbols.forEach(symbol => {
+    symbols.forEach((symbol) => {
       const resource = getResourceById(quotes, symbol);
 
       quotesBySymbols[symbol] = {

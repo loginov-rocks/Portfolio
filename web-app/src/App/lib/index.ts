@@ -117,7 +117,7 @@ export const createStockPosition = (position: Position, quote: Quote | null, quo
 export const createOpenPositionsSummaries = (stockPositions: StockPosition[]): OpenPositionsSummary[] => {
   const bySymbols: { [key: string]: StockPosition[] } = {};
 
-  stockPositions.forEach(position => {
+  stockPositions.forEach((position) => {
     if (!bySymbols[position.symbol]) {
       bySymbols[position.symbol] = [];
     }
@@ -125,7 +125,7 @@ export const createOpenPositionsSummaries = (stockPositions: StockPosition[]): O
     bySymbols[position.symbol].push(position);
   });
 
-  return Object.keys(bySymbols).map(symbol => {
+  return Object.keys(bySymbols).map((symbol) => {
     let amount = 0;
     let openPrice = 0;
     let openSum = 0;
@@ -134,7 +134,7 @@ export const createOpenPositionsSummaries = (stockPositions: StockPosition[]): O
     let marketPL: number | null = null;
     let marketPLPercent: number | null = null;
 
-    bySymbols[symbol].forEach(stockPosition => {
+    bySymbols[symbol].forEach((stockPosition) => {
       amount += stockPosition.amount;
       openPrice += stockPosition.amount * stockPosition.openPrice;
       openSum += stockPosition.openSum;
@@ -198,7 +198,7 @@ export const calculateTotals = (stockPositions: StockPosition[]): Totals => {
   let totalPreviousCloseSum = 0;
   let totalMarketSum = 0;
 
-  stockPositions.forEach(position => {
+  stockPositions.forEach((position) => {
     if (position.closeSum !== null) {
       totalCloseOpenSum += position.openSum;
       totalCloseSum += position.closeSum;

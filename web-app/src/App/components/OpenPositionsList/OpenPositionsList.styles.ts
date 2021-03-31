@@ -1,6 +1,6 @@
 import { withStyles } from '@material-ui/core';
 
-export default withStyles(theme => ({
+export default withStyles((theme) => ({
   list: {
     width: '100%',
   },

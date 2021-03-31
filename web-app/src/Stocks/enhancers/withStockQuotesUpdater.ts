@@ -35,7 +35,7 @@ export default compose(
         const { fetchQuote, quotes } = this.props;
         const expired: string[] = [];
 
-        quotes.allIds.forEach(symbol => {
+        quotes.allIds.forEach((symbol) => {
           const quote = getResourceById(quotes, symbol);
 
           if (isExpired(quote, C.STOCKS_QUOTES_TTL)) {

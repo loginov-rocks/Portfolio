@@ -50,7 +50,7 @@ export default <OwnProps>(
       const { fetchLogo } = this.props;
       const symbols = symbolsExtractor(this.props);
 
-      symbols.forEach(symbol => fetchLogo(symbol));
+      symbols.forEach((symbol) => fetchLogo(symbol));
     },
 
     componentDidUpdate(prevProps) {
@@ -58,17 +58,17 @@ export default <OwnProps>(
       const symbols = symbolsExtractor(this.props);
 
       if (!areArraysEqual(symbols, symbolsExtractor(prevProps))) {
-        symbols.forEach(symbol => fetchLogo(symbol));
+        symbols.forEach((symbol) => fetchLogo(symbol));
       }
     },
 
   }),
-  mapProps<Props, OwnProps & StateProps & DispatchProps>(props => {
+  mapProps<Props, OwnProps & StateProps & DispatchProps>((props) => {
     const { fetchLogo, logos, ...returnedProps } = props; // eslint-disable-line @typescript-eslint/no-unused-vars
     const logosBySymbols: LogosBySymbols = {};
     const symbols = symbolsExtractor(props);
 
-    symbols.forEach(symbol => {
+    symbols.forEach((symbol) => {
       const resource = getResourceById(logos, symbol);
 
       logosBySymbols[symbol] = {

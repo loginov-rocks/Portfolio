@@ -11,8 +11,9 @@ describe('getStockLogo', () => {
       data: vibrantPaletteFixture,
     }));
 
-    return instance.getVibrantPalette('https://storage.googleapis.com/iex/api/logos/AAPL.png').then(vibrantPalette => {
-      expect(vibrantPalette).toStrictEqual(vibrantPaletteFixture);
-    });
+    return instance.getVibrantPalette('https://storage.googleapis.com/iex/api/logos/AAPL.png')
+      .then((vibrantPalette) => {
+        expect(vibrantPalette).toStrictEqual(vibrantPaletteFixture);
+      });
   });
 });

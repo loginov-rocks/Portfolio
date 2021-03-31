@@ -52,7 +52,7 @@ exports[`matches snapshot 1`] = `
     className="currencyButton"
     onClick={[Function]}
   >
-    <Memo([object Object]) />
+    <Memo(ForwardRef(AccountBalanceWalletOutlinedIcon)) />
   </WithStyles(ForwardRef(IconButton))>
   <WithStyles(ForwardRef(Menu))
     anchorEl={null}
@@ -135,7 +135,7 @@ exports[`matches snapshot when showing closed 1`] = `
     className="currencyButton"
     onClick={[Function]}
   >
-    <Memo([object Object]) />
+    <Memo(ForwardRef(AccountBalanceWalletOutlinedIcon)) />
   </WithStyles(ForwardRef(IconButton))>
   <WithStyles(ForwardRef(Menu))
     anchorEl={null}

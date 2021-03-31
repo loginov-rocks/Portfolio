@@ -11,7 +11,7 @@ describe('getLatest', () => {
       data: latestFixture,
     }));
 
-    return instance.getLatest().then(latest => {
+    return instance.getLatest().then((latest) => {
       expect(latest).toStrictEqual(latestFixture);
     });
   });

@@ -51,7 +51,7 @@ export default <OwnProps>(
       const { fetchVibrantPalette } = this.props;
       const images = imagesExtractor(this.props);
 
-      images.forEach(image => fetchVibrantPalette(image));
+      images.forEach((image) => fetchVibrantPalette(image));
     },
 
     componentDidUpdate(prevProps) {
@@ -59,18 +59,18 @@ export default <OwnProps>(
       const images = imagesExtractor(this.props);
 
       if (!areArraysEqual(images, imagesExtractor(prevProps))) {
-        images.forEach(image => fetchVibrantPalette(image));
+        images.forEach((image) => fetchVibrantPalette(image));
       }
     },
 
   }),
-  mapProps<Props, OwnProps & StateProps & DispatchProps>(props => {
+  mapProps<Props, OwnProps & StateProps & DispatchProps>((props) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { fetchVibrantPalette, vibrantPalettes, ...returnedProps } = props;
     const vibrantPalettesByImages: VibrantPalettesByImages = {};
     const images = imagesExtractor(props);
 
-    images.forEach(image => {
+    images.forEach((image) => {
       const resource = getResourceById(vibrantPalettes, image);
 
       vibrantPalettesByImages[image] = {

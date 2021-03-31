@@ -58,21 +58,21 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
       symbol: position.symbol,
     }),
     {
-      handleAmountChange: () => event => {
+      handleAmountChange: () => (event) => {
         const amount = parseInt(event.target.value, 10);
 
         return {
           amount: amount > 0 ? amount : '',
         };
       },
-      handleCloseCommissionChange: () => event => {
+      handleCloseCommissionChange: () => (event) => {
         const commission = parseFloat(event.target.value);
 
         return {
           closeCommission: commission >= 0 ? commission : '',
         };
       },
-      handleCloseDateChange: () => event => {
+      handleCloseDateChange: () => (event) => {
         let date;
 
         try {
@@ -87,21 +87,21 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
 
         return { closeDate: date };
       },
-      handleClosePriceChange: () => event => {
+      handleClosePriceChange: () => (event) => {
         const price = parseFloat(event.target.value);
 
         return {
           closePrice: price >= 0 ? price : '',
         };
       },
-      handleOpenCommissionChange: () => event => {
+      handleOpenCommissionChange: () => (event) => {
         const commission = parseFloat(event.target.value);
 
         return {
           openCommission: commission >= 0 ? commission : '',
         };
       },
-      handleOpenDateChange: () => event => {
+      handleOpenDateChange: () => (event) => {
         let date;
 
         try {
@@ -116,14 +116,14 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
 
         return { openDate: date };
       },
-      handleOpenPriceChange: () => event => {
+      handleOpenPriceChange: () => (event) => {
         const price = parseFloat(event.target.value);
 
         return {
           openPrice: price >= 0 ? price : '',
         };
       },
-      handleSymbolChange: () => event => ({
+      handleSymbolChange: () => (event) => ({
         symbol: event.target.value.toUpperCase(),
       }),
     },

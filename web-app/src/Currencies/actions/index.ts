@@ -17,7 +17,7 @@ export interface FetchRatesAction {
   (): void;
 }
 
-export const changeCurrency = (currency: string): ThunkAction<void, State, null, Action> => dispatch => {
+export const changeCurrency = (currency: string): ThunkAction<void, State, null, Action> => (dispatch) => {
   dispatch(currencyChanged(currency));
 };
 
@@ -31,10 +31,10 @@ export const fetchRates = (): ThunkAction<void, State, null, Action> => (dispatc
   dispatch(ratesRequested());
 
   ratesApi.getLatest()
-    .then(data => {
+    .then((data) => {
       dispatch(ratesReceived(data.rates, data.date));
     })
-    .catch(error => {
+    .catch((error) => {
       dispatch(ratesFailed(error.toString()));
     });
 };

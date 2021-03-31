@@ -1,6 +1,6 @@
 import { withStyles } from '@material-ui/core';
 
-export default withStyles(theme => ({
+export default withStyles((theme) => ({
   currencyButton: {
     position: 'absolute',
     right: theme.spacing(0.5),

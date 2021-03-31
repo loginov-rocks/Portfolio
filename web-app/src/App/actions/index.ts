@@ -19,18 +19,18 @@ export interface ChangeSorterOrderAction {
 
 export const changeHomeTab = (
   tab: 'closed' | 'open' | 'summary',
-): ThunkAction<void, State, null, Action> => dispatch => {
+): ThunkAction<void, State, null, Action> => (dispatch) => {
   dispatch(homeTabChanged(tab));
 };
 
 export const changeSorterKeyCurried = (name: string) => (
   key: string,
-): ThunkAction<void, State, null, Action> => dispatch => {
+): ThunkAction<void, State, null, Action> => (dispatch) => {
   dispatch(sorterKeyChanged(name, key));
 };
 
 export const changeSorterOrderCurried = (name: string) => (
   order: 'asc' | 'desc',
-): ThunkAction<void, State, null, Action> => dispatch => {
+): ThunkAction<void, State, null, Action> => (dispatch) => {
   dispatch(sorterOrderChanged(name, order));
 };

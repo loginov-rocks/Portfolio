@@ -2,7 +2,7 @@ import { withStyles } from '@material-ui/core';
 
 import { viewHeadline, viewRoot } from 'Styles/mixins';
 
-export default withStyles(theme => ({
+export default withStyles((theme) => ({
   avatar: {
     height: 128,
     marginBottom: theme.spacing(3),

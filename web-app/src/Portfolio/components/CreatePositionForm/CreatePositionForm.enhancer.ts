@@ -47,21 +47,21 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
       symbol: '',
     },
     {
-      handleAmountChange: () => event => {
+      handleAmountChange: () => (event) => {
         const amount = parseInt(event.target.value, 10);
 
         return {
           amount: amount > 0 ? amount : '',
         };
       },
-      handleCommissionChange: () => event => {
+      handleCommissionChange: () => (event) => {
         const commission = parseFloat(event.target.value);
 
         return {
           commission: commission >= 0 ? commission : '',
         };
       },
-      handleDateChange: () => event => {
+      handleDateChange: () => (event) => {
         let date;
 
         try {
@@ -76,14 +76,14 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
 
         return { date };
       },
-      handlePriceChange: () => event => {
+      handlePriceChange: () => (event) => {
         const price = parseFloat(event.target.value);
 
         return {
           price: price >= 0 ? price : '',
         };
       },
-      handleSymbolChange: () => event => ({
+      handleSymbolChange: () => (event) => ({
         symbol: event.target.value.toUpperCase(),
       }),
     },
@@ -101,7 +101,7 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
       }
 
       createPosition(symbol, amount, price, commission, date)
-        .then(position => {
+        .then((position) => {
           if (onCreate) {
             onCreate(position);
           }

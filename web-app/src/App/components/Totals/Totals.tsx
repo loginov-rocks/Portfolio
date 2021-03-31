@@ -58,7 +58,7 @@ const Totals: React.FunctionComponent<Props> = ({
 
       <div className={classes.secondary}>{groups}</div>
 
-      <IconButton className={classes.currencyButton} onClick={event => updateAnchor(event.currentTarget)}>
+      <IconButton className={classes.currencyButton} onClick={(event) => updateAnchor(event.currentTarget)}>
         <AccountBalanceWalletOutlined />
       </IconButton>
 

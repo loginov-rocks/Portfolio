@@ -15,7 +15,7 @@ interface EnhancedProps {
 
 export default compose<Props, EnhancedProps>(
   withProps<EnhancedProps, EnhancedProps>(({ stockPositions }) => ({
-    stockPositions: stockPositions.filter(position => position.closeDate !== null),
+    stockPositions: stockPositions.filter((position) => position.closeDate !== null),
   })),
   withSorter(
     C.CLOSED_POSITIONS_LIST_SORTER_NAME,

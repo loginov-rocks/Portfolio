@@ -11,7 +11,7 @@ describe('getStockLogo', () => {
       data: { url: 'logoUrl' },
     }));
 
-    return instance.getStockLogo('AAPL').then(url => {
+    return instance.getStockLogo('AAPL').then((url) => {
       expect(url).toBe('logoUrl');
     });
   });
@@ -23,7 +23,7 @@ describe('getStockQuote', () => {
       data: quoteFixture,
     }));
 
-    return instance.getStockQuote('AAPL').then(quote => {
+    return instance.getStockQuote('AAPL').then((quote) => {
       expect(quote).toStrictEqual(quoteFixture);
     });
   });

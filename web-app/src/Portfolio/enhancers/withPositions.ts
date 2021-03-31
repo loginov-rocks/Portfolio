@@ -23,13 +23,13 @@ const mapStateToProps = ({ firebase: { firestore: { data } } }: State, { auth }:
   let positions: Position[] = [];
 
   if (rawPositions) {
-    positions = Object.keys(rawPositions).map(positionId => {
+    positions = Object.keys(rawPositions).map((positionId) => {
       if (!rawPositions || rawPositions[positionId] === null) {
         return null;
       }
 
       return { id: positionId, ...rawPositions[positionId] };
-    }).filter(position => position !== null) as Position[];
+    }).filter((position) => position !== null) as Position[];
   }
 
   return {

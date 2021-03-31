@@ -59,7 +59,7 @@ export default <OwnProps>(
     },
 
   }),
-  mapProps<Props, OwnProps & StateProps & DispatchProps>(props => {
+  mapProps<Props, OwnProps & StateProps & DispatchProps>((props) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { fetchVibrantPalette, vibrantPalettes, ...returnedProps } = props;
     const image = imageExtractor(props);
