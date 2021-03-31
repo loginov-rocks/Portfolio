@@ -5,13 +5,12 @@ import admin from 'firebase-admin';
 // Import the firebase-functions package for deployment.
 import * as functions from 'firebase-functions';
 
-import * as C from './constants';
-import { AggregateStocksSymbols } from './aggregateStocksSymbols/AggregateStocksSymbols';
-import { GetOutdated } from './getOutdated/GetOutdated';
-import { UpdateLogos } from './updateLogos/UpdateLogos';
-import { UpdateQuotes } from './updateQuotes/UpdateQuotes';
-
-import vibrantPaletteHandler from './handlers/vibrantPalette';
+import * as C from 'Constants';
+import { AggregateStocksSymbols } from 'AggregateStocksSymbols/AggregateStocksSymbols';
+import { GetOutdated } from 'GetOutdated/GetOutdated';
+import vibrantPaletteHandler from 'Handlers/vibrantPalette';
+import { UpdateLogos } from 'UpdateLogos/UpdateLogos';
+import { UpdateQuotes } from 'UpdateQuotes/UpdateQuotes';
 
 admin.initializeApp(functions.config().firebase);
 const firestore = admin.firestore();
@@ -64,7 +63,7 @@ const getOutdated = functions.https.onRequest((req, res) => corsHandler(req, res
     return res.status(405).send();
   }
 
-  return getOutdatedFunction.get().then(response => {
+  return getOutdatedFunction.get().then((response) => {
     res.send(response);
   });
 }));
@@ -75,7 +74,7 @@ const updateLogos = functions.https.onRequest((req, res) => corsHandler(req, res
     return res.status(405).send();
   }
 
-  return updateLogosFunction.patch(req.headers, req.rawBody).then(response => {
+  return updateLogosFunction.patch(req.headers, req.rawBody).then((response) => {
     // TODO: Send 204 No Content instead of response.
     res.send(response);
   });
@@ -93,7 +92,7 @@ const updateQuotes = functions.https.onRequest((req, res) => corsHandler(req, re
 }));
 
 const vibrantPalette = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
-  vibrantPaletteHandler(req).then(palette => {
+  vibrantPaletteHandler(req).then((palette) => {
     res.send(palette);
   });
 }));

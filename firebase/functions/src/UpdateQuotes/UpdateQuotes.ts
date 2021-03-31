@@ -1,6 +1,7 @@
 import admin from 'firebase-admin';
 
-import { StockQuotePartialDocument } from '../firestore/Stocks';
+import { StockQuotePartialDocument } from 'Firestore/Stocks';
+
 import { UpdateQuotesRequest } from './UpdateQuotesRequest';
 
 interface UpdateQuotesOptions {
@@ -17,7 +18,7 @@ export class UpdateQuotes {
   public patch(request: UpdateQuotesRequest): Promise<void> {
     const batch = this.firestore.batch();
 
-    Object.values(request).forEach(quote => {
+    Object.values(request).forEach((quote) => {
       const millis = Date.now();
       const {
         change, changePercent, close, companyName, iexRealtimePrice, latestPrice, previousClose, symbol,

@@ -33,13 +33,13 @@ export class GetOutdated {
         const quotes: Array<string> = [];
 
         if (!logosSnapshot.empty) {
-          logosSnapshot.forEach(stockDoc => {
+          logosSnapshot.forEach((stockDoc) => {
             logos.push(stockDoc.id);
           });
         }
 
         if (!quotesSnapshot.empty) {
-          quotesSnapshot.forEach(stockDoc => {
+          quotesSnapshot.forEach((stockDoc) => {
             quotes.push(stockDoc.id);
           });
         }

@@ -2,8 +2,8 @@ import admin from 'firebase-admin';
 import { Change } from 'firebase-functions/lib/cloud-functions';
 import { DocumentSnapshot } from 'firebase-functions/lib/providers/firestore';
 
-import { PositionDocument } from '../firestore/Positions';
-import { StockDocument } from '../firestore/Stocks';
+import { PositionDocument } from 'Firestore/Positions';
+import { StockDocument } from 'Firestore/Stocks';
 
 interface AggregateStocksSymbolsOptions {
   firestore: admin.firestore.Firestore;
@@ -28,8 +28,8 @@ export class AggregateStocksSymbols {
     const { symbol } = snapshot.data() as PositionDocument;
     const stockRef = this.firestore.collection('stocks').doc(symbol);
 
-    return this.firestore.runTransaction(transaction => (
-      transaction.get(stockRef).then(stockDoc => {
+    return this.firestore.runTransaction((transaction) => (
+      transaction.get(stockRef).then((stockDoc) => {
         if (stockDoc.exists) {
           return;
         }

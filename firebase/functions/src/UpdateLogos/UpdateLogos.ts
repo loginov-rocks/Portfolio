@@ -17,7 +17,7 @@ export class UpdateLogos {
     const symbols: Array<string> = [];
     const tempFilePaths: Array<string> = [];
 
-    return new Promise<Array<Promise<void>>>(resolve => {
+    return new Promise<Array<Promise<void>>>((resolve) => {
       const busboy = new Busboy({ headers });
       const fileWrites: Array<Promise<void>> = [];
       const tmpdir = os.tmpdir();
@@ -65,13 +65,13 @@ export class UpdateLogos {
       busboy.end(rawBody);
     })
       // Wait for the disk writes to complete.
-      .then(fileWrites => Promise.all(fileWrites))
+      .then((fileWrites) => Promise.all(fileWrites))
       .then(() => {
         // TODO: Upload temp files to Storage.
         // TODO: Update stocks collections with uploaded logos URLs.
 
         // Remove temp files.
-        tempFilePaths.forEach(filePath => fs.unlinkSync(filePath));
+        tempFilePaths.forEach((filePath) => fs.unlinkSync(filePath));
 
         return { symbols, tempFilePaths };
       });
