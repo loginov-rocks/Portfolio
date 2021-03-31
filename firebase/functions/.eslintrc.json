@@ -12,26 +12,13 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "@typescript-eslint/ban-ts-ignore": "warn",
+    "@typescript-eslint/ban-ts-comment": "warn",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
         "allowExpressions": true,
         "allowHigherOrderFunctions": true,
         "allowTypedFunctionExpressions": true
-      }
-    ],
-    "@typescript-eslint/indent": [
-      "error",
-      2
-    ],
-    "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/no-unused-vars": "error",
-    "arrow-parens": [
-      "error",
-      "as-needed",
-      {
-        "requireForBlockBody": false
       }
     ],
     "import/extensions": [
@@ -41,7 +28,7 @@
         "ts": "never"
       }
     ],
-    "import/prefer-default-export": "warn",
+    "import/prefer-default-export": "off",
     "max-len": [
       "error",
       {
@@ -63,6 +50,9 @@
       "node": {
         "extensions": [
           ".ts"
+        ],
+        "paths": [
+          "src"
         ]
       }
     }

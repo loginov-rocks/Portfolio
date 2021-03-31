@@ -25,8 +25,8 @@ jobs:
     strategy:
       matrix:
         node-version:
-          # TODO: Check for the latest version available at Firebase Functions
-          - 10
+          # last version
+          - 14
 
     steps:
       - uses: actions/checkout@v2

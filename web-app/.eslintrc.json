@@ -24,23 +24,15 @@
     ],
     "@typescript-eslint/no-use-before-define": "error",
     "@typescript-eslint/no-unused-vars": "error",
-    "arrow-parens": [
-      "error",
-      "as-needed",
-      {
-        "requireForBlockBody": false
-      }
-    ],
     "import/extensions": [
       "error",
       "ignorePackages",
       {
-        "js": "never",
-        "jsx": "never",
         "ts": "never",
         "tsx": "never"
       }
     ],
+    "import/prefer-default-export": "off",
     "no-use-before-define": "off",
     "max-len": [
       "error",
@@ -53,7 +45,6 @@
       "error",
       {
         "extensions": [
-          ".jsx",
           ".tsx"
         ]
       }
@@ -72,7 +63,6 @@
       "node": {
         "extensions": [
           ".js",
-          ".jsx",
           ".ts",
           ".tsx"
         ],

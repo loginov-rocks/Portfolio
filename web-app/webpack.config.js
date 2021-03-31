@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 const CopyPlugin = require('copy-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const DotenvPlugin = require('dotenv-webpack');
 const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
 
@@ -51,12 +51,13 @@ module.exports = (env, argv) => ({
           globOptions: {
             ignore: [
               '**/index.html',
+              '**/404.html',
             ],
           },
         },
       ],
     }),
-    new Dotenv({
+    new DotenvPlugin({
       safe: false,
       systemvars: true,
     }),
@@ -73,10 +74,6 @@ module.exports = (env, argv) => ({
     }),
   ],
   resolve: {
-    alias: {
-      Constants: path.resolve(__dirname, 'src/Constants.ts'),
-      State: path.resolve(__dirname, 'src/State.ts'),
-    },
     extensions: ['.js', '.ts', '.tsx'],
     modules: [
       'node_modules',
