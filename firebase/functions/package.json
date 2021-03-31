@@ -4,14 +4,13 @@
   "description": "Firebase",
   "main": "lib/index.js",
   "scripts": {
-    "build": "npm run clean:build && npm run build:sources && npm run clean:tests",
-    "build:sources": "babel src -d lib --extensions .ts",
+    "build": "npm run clean:build && webpack --mode production",
+    "build:dev": "npm run clean:build && webpack --mode development",
     "clean:build": "rimraf lib",
     "clean:coverage": "rimraf coverage",
-    "clean:tests": "rimraf lib/**/*.test.js",
     "coverage": "npm run clean:coverage && npm run test:coverage",
     "deploy": "firebase deploy --only functions",
-    "lint": "eslint --ext ts src",
+    "lint": "eslint --ext ts src webpack.config.js",
     "logs": "firebase functions:log",
     "serve": "npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
@@ -44,9 +43,7 @@
     "node-vibrant": "^3.1.5"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.14",
     "@babel/core": "^7.13.14",
-    "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-typescript": "^7.13.0",
     "@types/busboy": "^0.2.3",
@@ -54,13 +51,17 @@
     "@types/jest": "^26.0.22",
     "@typescript-eslint/eslint-plugin": "^4.20.0",
     "@typescript-eslint/parser": "^4.20.0",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.23.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "jest": "^26.6.3",
     "jest-express": "^1.12.0",
     "rimraf": "^3.0.2",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.6.0"
   },
   "jest": {
     "collectCoverageFrom": [
