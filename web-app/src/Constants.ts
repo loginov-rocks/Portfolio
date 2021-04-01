@@ -1,5 +1,3 @@
-export const REQUESTED_URL_STORAGE_KEY = 'requestedUrl';
-
 export const AVAILABLE_CURRENCIES = [
   { key: 'USD', label: 'U.S. Dollar' },
   { key: 'EUR', label: 'Euro' },

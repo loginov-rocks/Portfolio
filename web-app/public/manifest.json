@@ -15,8 +15,7 @@
   ],
   "lang": "en",
   "name": "Portfolio",
-  "scope": "./",
   "short_name": "Portfolio",
-  "start_url": "./",
+  "start_url": ".",
   "theme_color": "#03a9f4"
 }

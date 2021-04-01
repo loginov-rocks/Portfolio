@@ -32,7 +32,7 @@ const App: React.FunctionComponent<Props> = ({ isAuthenticated, persistor, progr
     component = <Guest />;
   } else {
     component = (
-      <BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}>
+      <BrowserRouter>
         <Navigation />
       </BrowserRouter>
     );

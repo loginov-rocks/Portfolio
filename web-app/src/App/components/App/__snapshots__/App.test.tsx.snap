@@ -313,9 +313,7 @@ exports[`matches snapshot if authenticated 1`] = `
     loading={<WithStyles(Loading) />}
     persistor={Object {}}
   >
-    <BrowserRouter
-      basename=""
-    >
+    <BrowserRouter>
       <WithStyles(withRouter(withProps(lifecycle(Navigation)))) />
     </BrowserRouter>
   </PersistGate>
