@@ -2,8 +2,6 @@
 
 [WORK IN PROGRESS]
 
-![Solution Architecture Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/main/docs/diagrams/Solution-Architecture.png)
-
 ## 1. Components
 
 | ID | Name | Type | Hosted | Description |
@@ -23,7 +21,8 @@
 * **Portfolio** uses **Firebase SDK** to communicate with Firebase services and implement serverless approach.
 * **Portfolio** send and receive data in an asynchronous manner.
 * All data stored in the **Cloud Firestore**.
-* **Stocks Service** uses **IEX API** to fetch all stocks data and pass it to the **Cloud Firestore** through the **Firebase Functions**.
+* **Stocks Service** uses **IEX API** to fetch all stocks data and pass it to the **Cloud Firestore** through the **
+  Firebase Functions**.
 * **Stocks Service** used to avoid **Firebase Functions** limitation of making external in a Free Tier.
 * **Firebase Functions** use HMAC mechanism to authenticate **Stocks Service** requests.
 
@@ -32,9 +31,11 @@
 | ID | From | To | Description |
 | --- | --- | --- | --- |
 | INT01 | Portfolio | Google Authentication | **Portfolio** authorizes the **User** using **Google Authentication** |
-| INT02 | Portfolio | Cloud Firestore | **Portfolio** publishes user data to the **Cloud Firestore** and subscribes for data |
+| INT02 | Portfolio | Cloud Firestore | **Portfolio** publishes user data to the **Cloud
+Firestore** and subscribes for data |
 | INT03 | Portfolio | Images Bucket | **Portfolio** shows stocks images from the **Images Bucket** |
-| INT04 | Stocks Service | getSymbols | **Stocks Service** gets stocks symbols to fetch stocks quotes from the **getSymbols** function |
+| INT04 | Stocks Service | getSymbols | **Stocks Service** gets stocks symbols to fetch stocks quotes from the **
+getSymbols** function |
 | INT05 | Stocks Service | IEX API | **Stocks Service** fetches stocks quotes and images from the **IEX API** |
 | INT06 | Stocks Service | updateQuotes | **Stocks Service** sends stocks quotes to the **updateQuotes** function |
 | INT07 | Stocks Service | updateImages | **Stocks Service** sends stocks images to the **updateImages** function |
@@ -88,3 +89,18 @@ TODO
 ## 4. Cloud Firestore
 
 ![Cloud Firestore Structure Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/main/docs/diagrams/Cloud-Firestore-Structure.png)
+
+## WIP
+
+- User
+- Portfolio
+- Position: open, closed
+- Asset
+- Yield
+
+Base currency - $
+
+https://hackernoon.com/client-side-encryption-in-firebase-database-60dd55abadb2
+https://developers.google.com/drive/api/v3/appdata
+
+![Solution Architecture Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/main/docs/diagrams/Solution-Architecture.png)

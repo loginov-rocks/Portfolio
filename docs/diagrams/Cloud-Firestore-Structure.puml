@@ -1,18 +1,19 @@
 @startuml
 
-title Cloud Firestore Structure Diagram
-
-object "Cloud Firestore" as CloudFirestore <<Document>> {
-    stocks: StocksCollection
+object Firestore <<Document>> {
+    assets: AssetsCollection
     users: UsersCollection
     usersPortfolios: UsersPortfoliosCollection
 }
 
-object StocksCollection <<Collection>> {
-    [symbol]: StockDocument
+object AssetsCollection <<Collection>> {
+    [assetId]: AssetDocument
 }
 
-object StockDocument <<Document>> {
+object AssetDocument <<Document>> {
+    price: number
+    title: string
+    type: string
 }
 
 object UsersCollection <<Collection>> {
@@ -20,6 +21,9 @@ object UsersCollection <<Collection>> {
 }
 
 object UserDocument <<Document>> {
+    avatarUrl: string
+    displayName: string
+    email: string
 }
 
 object UsersPortfoliosCollection <<Collection>> {
@@ -35,28 +39,75 @@ object PortfoliosCollection <<Collection>> {
 }
 
 object PortfolioDocument <<Document>> {
-    openPositions: PositionsCollection
-    closedPositions: PositionsCollection
+    openPositions: OpenPositionsCollection
+    closedPositions: ClosedPositionsCollection
+    title: string
 }
 
-object PositionsCollection <<Collection>> {
-    [positionId]: PositionDocument
+object OpenPositionsCollection <<Collection>> {
+    [positionId]: OpenPositionDocument
 }
 
-object PositionDocument <<Document>> {
+object OpenPositionDocument <<Document>> {
+    TODO
+    yields: YieldsCollection
 }
 
-CloudFirestore --> StocksCollection
-StocksCollection --> StockDocument
+object ClosedPositionsCollection <<Collection>> {
+    [positionId]: ClosedPositionDocument
+}
 
-CloudFirestore --> UsersCollection
+object ClosedPositionDocument <<Document>> {
+    TODO
+    yields: YieldsCollection
+}
+
+object YieldsCollection <<Collection>> {
+    [yield]: YieldDocument
+}
+
+object YieldDocument <<Document>> {
+    TODO
+}
+
+object UsersForecastsCollection <<Collection>> {
+    [userId]: UserForecastsDocument
+}
+
+object UserForecastsDocument <<Document>> {
+    forecasts: ForecastsCollection
+}
+
+object ForecastsCollection <<Collection>> {
+    [forecastId]: ForecastDocument
+}
+
+object ForecastDocument <<Document>> {
+    assetId: string
+    price: number
+}
+
+Firestore --> AssetsCollection
+AssetsCollection --> AssetDocument
+
+Firestore --> UsersCollection
 UsersCollection --> UserDocument
 
-CloudFirestore --> UsersPortfoliosCollection
+Firestore --> UsersPortfoliosCollection
 UsersPortfoliosCollection --> UserPortfoliosDocument
 UserPortfoliosDocument --> PortfoliosCollection
 PortfoliosCollection --> PortfolioDocument
-PortfolioDocument --> PositionsCollection
-PositionsCollection --> PositionDocument
+PortfolioDocument --> OpenPositionsCollection
+OpenPositionsCollection --> OpenPositionDocument
+PortfolioDocument --> ClosedPositionsCollection
+ClosedPositionsCollection --> ClosedPositionDocument
+OpenPositionDocument --> YieldsCollection
+ClosedPositionDocument --> YieldsCollection
+YieldsCollection --> YieldDocument
+
+Firestore --> UsersForecastsCollection
+UsersForecastsCollection --> UserForecastsDocument
+UserForecastsDocument --> ForecastsCollection
+ForecastsCollection --> ForecastDocument
 
 @enduml
