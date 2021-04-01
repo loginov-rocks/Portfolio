@@ -51,7 +51,7 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: web-app-dist
-          path: dist
+          path: web-app/dist
 
   firebase-cd:
     name: Firebase CD
