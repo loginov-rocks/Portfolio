@@ -84,6 +84,6 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: web-app-dist
-          path: dist
+          path: firebase/dist
       - run: npm install -g firebase-tools
       - run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
