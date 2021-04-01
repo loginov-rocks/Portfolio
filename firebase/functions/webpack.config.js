@@ -1,18 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   devtool: false,
   entry: './src/index.ts',
-  externals: {
-    'actions-on-google': 'commonjs actions-on-google',
-    busboy: 'commonjs busboy',
-    cors: 'commonjs cors',
-    'firebase-admin': 'commonjs actions-on-google',
-    'firebase-functions': 'commonjs firebase-functions',
-    'node-vibrant': 'commonjs node-vibrant',
-  },
+  externals: [nodeExternals()],
   module: {
     rules: [
       {
@@ -24,6 +18,7 @@ module.exports = {
   },
   output: {
     filename: 'index.js',
+    libraryTarget: 'commonjs',
     path: path.resolve(__dirname, 'lib'),
   },
   resolve: {
