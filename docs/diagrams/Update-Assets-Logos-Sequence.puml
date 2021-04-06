@@ -1,0 +1,22 @@
+@startuml
+
+autonumber
+
+box Firebase
+    database Database <<Firestore>>
+    participant "Logos Storage" as LogosStorage <<Storage>>
+    participant "Update Assets Logos" as UpdateAssetsLogos <<Function>>
+end box
+participant "External Service" as ExternalService <<Asset Provider>>
+
+loop per day
+    UpdateAssetsLogos -> Database: query assets with expired logos
+    Database --> UpdateAssetsLogos: return assets collection
+    UpdateAssetsLogos -> ExternalService: get assets logos by external IDs
+    ExternalService --> UpdateAssetsLogos: return assets logos URLs
+    UpdateAssetsLogos -> LogosStorage: store assets logos by URLs
+    LogosStorage --> UpdateAssetsLogos: return new assets logos URLs
+    UpdateAssetsLogos -> Database: update assets logos URLs
+end
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+
+autonumber
+
+box Firebase
+    database Database <<Firestore>>
+    participant "Update Assets Financials" as UpdateAssetsFinancials <<Function>>
+end box
+participant "External Service" as ExternalService <<Asset Provider>>
+
+loop per minute
+    UpdateAssetsFinancials -> Database: query assets with expired financials
+    Database --> UpdateAssetsFinancials: return assets collection
+    UpdateAssetsFinancials -> ExternalService: get assets financials by external IDs
+    ExternalService --> UpdateAssetsFinancials: return assets financials
+    UpdateAssetsFinancials -> Database: update assets financials
+end
+
+@enduml

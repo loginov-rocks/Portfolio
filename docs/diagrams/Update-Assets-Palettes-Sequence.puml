@@ -1,0 +1,18 @@
+@startuml
+
+autonumber
+
+box Firebase
+    database Database <<Firestore>>
+    participant "Logos Storage" as LogosStorage <<Storage>>
+    participant "Palettes Storage" as PalettesStorage <<Storage>>
+    participant "Update Assets Palettes" as UpdateAssetsPalettes <<Function>>
+end box
+
+LogosStorage -> UpdateAssetsPalettes: trigger on asset logo update
+UpdateAssetsPalettes -> UpdateAssetsPalettes: generate palette of updated asset logo
+UpdateAssetsPalettes -> PalettesStorage: store asset palette as JSON
+PalettesStorage --> UpdateAssetsPalettes: return new asset palette URL
+UpdateAssetsPalettes -> Database: update asset palette URL
+
+@enduml

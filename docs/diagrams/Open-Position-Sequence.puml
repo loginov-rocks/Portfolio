@@ -5,7 +5,7 @@ autonumber
 actor User
 box Firebase
     participant "Web App" as WebApp <<Hosting>>
-    database Firestore <<Database>>
+    database Database <<Firestore>>
     participant "Create Asset" as CreateAsset <<Function>>
 end box
 participant "External Service" as ExternalService <<Asset Provider>>
@@ -13,22 +13,22 @@ participant "External Service" as ExternalService <<Asset Provider>>
 User -> WebApp: open new position
 alt if asset ID is unavailable
     WebApp -> CreateAsset: send asset external ID and type
-    CreateAsset -> Firestore: validate whether an asset with such\nexternal ID and type don't exist
+    CreateAsset -> Database: validate whether an asset with such\nexternal ID and type don't exist
     alt if asset ID exists
-        Firestore --> CreateAsset: return asset ID
+        Database --> CreateAsset: return asset ID
     else otherwise
-        Firestore --> CreateAsset: return not exists
+        Database --> CreateAsset: return not exists
         CreateAsset -> CreateAsset: pick asset provider\nbased on asset type
         CreateAsset -> ExternalService: get asset data by external ID
         ExternalService --> CreateAsset: return asset data
-        CreateAsset -> Firestore: publish new asset data
-        Firestore --> CreateAsset: return asset ID
+        CreateAsset -> Database: publish new asset data
+        Database --> CreateAsset: return asset ID
     end
     CreateAsset --> WebApp: return asset ID
 end
-WebApp -> Firestore: publish new position data
+WebApp -> Database: publish new position data
 
-Firestore --> WebApp: update open positions
+Database --> WebApp: update open positions
 WebApp --> User: show new position screen
 
 @enduml

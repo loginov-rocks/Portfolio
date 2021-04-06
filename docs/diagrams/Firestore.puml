@@ -12,9 +12,14 @@ object AssetsCollection <<Collection>> {
 
 object AssetDocument <<Document>> {
     externalId: string
+    logoUrl: string
+    paletteUrl: string
     price: number
     title: string
     type: string
+    financialsUpdatedAt: timestamp
+    logoUpdatedAt: timestamp
+    paletteUpdatedAt: timestamp
 }
 
 object UsersCollection <<Collection>> {
@@ -52,7 +57,7 @@ object OpenPositionsCollection <<Collection>> {
 object OpenPositionDocument <<Document>> {
     assetId: string
     amount: number
-    openDate: string
+    openDate: timestamp
     openPrice: number
     openCommission: number
     yields: YieldsCollection
@@ -65,10 +70,10 @@ object ClosedPositionsCollection <<Collection>> {
 object ClosedPositionDocument <<Document>> {
     assetId: string
     amount: number
-    openDate: string
+    openDate: timestamp
     openPrice: number
     openCommission: number
-    closedDate: string
+    closedDate: timestamp
     closedPrice: number
     closedCommission: number
     yields: YieldsCollection
@@ -79,7 +84,7 @@ object YieldsCollection <<Collection>> {
 }
 
 object YieldDocument <<Document>> {
-    date: string
+    date: timestamp
     sum: number
     commission: number
 }
