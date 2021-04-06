@@ -11,6 +11,7 @@ object AssetsCollection <<Collection>> {
 }
 
 object AssetDocument <<Document>> {
+    externalId: string
     price: number
     title: string
     type: string
@@ -49,7 +50,11 @@ object OpenPositionsCollection <<Collection>> {
 }
 
 object OpenPositionDocument <<Document>> {
-    TODO
+    assetId: string
+    amount: number
+    openDate: string
+    openPrice: number
+    openCommission: number
     yields: YieldsCollection
 }
 
@@ -58,7 +63,14 @@ object ClosedPositionsCollection <<Collection>> {
 }
 
 object ClosedPositionDocument <<Document>> {
-    TODO
+    assetId: string
+    amount: number
+    openDate: string
+    openPrice: number
+    openCommission: number
+    closedDate: string
+    closedPrice: number
+    closedCommission: number
     yields: YieldsCollection
 }
 
@@ -67,7 +79,9 @@ object YieldsCollection <<Collection>> {
 }
 
 object YieldDocument <<Document>> {
-    TODO
+    date: string
+    sum: number
+    commission: number
 }
 
 object UsersForecastsCollection <<Collection>> {
