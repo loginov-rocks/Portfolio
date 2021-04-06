@@ -16,3 +16,11 @@
 10. `IEX_API_URL`
 11. `IEX_PUBLISHABLE_TOKEN`
 12. `RATES_API_URL`
+
+## Firebase
+
+### Functions
+
+```
+firebase functions:config:set iex.secret="${IEX_SECRET_TOKEN}"
+```

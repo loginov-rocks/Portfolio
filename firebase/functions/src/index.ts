@@ -7,8 +7,11 @@ import * as functions from 'firebase-functions';
 
 import * as C from 'Constants';
 import { AggregateStocksSymbols } from 'AggregateStocksSymbols/AggregateStocksSymbols';
+import { AssetType } from 'AssetProvider/AssetType';
+import { IexAssetProvider } from 'AssetProvider/IexAssetProvider/IexAssetProvider';
 import { GetOutdated } from 'GetOutdated/GetOutdated';
 import vibrantPaletteHandler from 'Handlers/vibrantPalette';
+import { UpdateAssetsFinancials } from 'UpdateAssetsFinancials/UpdateAssetsFinancials';
 import { UpdateLogos } from 'UpdateLogos/UpdateLogos';
 import { UpdateQuotes } from 'UpdateQuotes/UpdateQuotes';
 
@@ -24,6 +27,20 @@ const getOutdatedFunction = new GetOutdated({
   firestore,
   logosDelay: C.GET_OUTDATED_LOGOS_DELAY,
   quotesDelay: C.GET_OUTDATED_QUOTES_DELAY,
+});
+
+const iexAssetProvider = new IexAssetProvider({
+  baseUrl: C.IEX_ASSET_PROVIDER_BASE_URL,
+  secretToken: functions.config().iex.secret,
+});
+
+const assetProviders = new Map();
+assetProviders.set(AssetType.stock, iexAssetProvider);
+
+const updateAssetsFinancialsFunction = new UpdateAssetsFinancials({
+  assetProviders,
+  delay: C.GET_OUTDATED_QUOTES_DELAY,
+  firestore,
 });
 
 const updateLogosFunction = new UpdateLogos();
@@ -68,6 +85,10 @@ const getOutdated = functions.https.onRequest((req, res) => corsHandler(req, res
   });
 }));
 
+const updateAssetsFinancials = functions.pubsub
+  .schedule(C.UPDATE_ASSETS_FINANCIALS_SCHEDULE)
+  .onRun(() => updateAssetsFinancialsFunction.onRun());
+
 // TODO: Remove CORS, check auth.
 const updateLogos = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
   if (req.method !== 'PATCH') {
@@ -98,11 +119,12 @@ const vibrantPalette = functions.https.onRequest((req, res) => corsHandler(req, 
 }));
 
 export {
-  aggregateStocksSymbolsOnCreate,
-  aggregateStocksSymbolsOnUpdate,
-  dialogflowFirebaseFulfillment,
-  getOutdated,
-  updateLogos,
-  updateQuotes,
+  // aggregateStocksSymbolsOnCreate,
+  // aggregateStocksSymbolsOnUpdate,
+  // dialogflowFirebaseFulfillment,
+  // getOutdated,
+  updateAssetsFinancials,
+  // updateLogos,
+  // updateQuotes,
   vibrantPalette,
 };
