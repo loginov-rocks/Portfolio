@@ -11,8 +11,11 @@ participant "External Service" as ExternalService <<Asset Provider>>
 loop per minute
     UpdateAssetsFinancials -> Database: query assets with expired financials
     Database --> UpdateAssetsFinancials: return assets collection
-    UpdateAssetsFinancials -> ExternalService: get assets financials by external IDs
-    ExternalService --> UpdateAssetsFinancials: return assets financials
+    loop per asset
+        UpdateAssetsFinancials -> UpdateAssetsFinancials: pick asset provider\nbased on asset type
+        UpdateAssetsFinancials -> ExternalService: get asset financials by external ID
+        ExternalService --> UpdateAssetsFinancials: return asset financials
+    end
     UpdateAssetsFinancials -> Database: update assets financials
 end
 

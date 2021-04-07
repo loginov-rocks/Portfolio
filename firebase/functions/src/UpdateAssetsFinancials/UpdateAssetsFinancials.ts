@@ -7,6 +7,7 @@ interface Options {
   assetProviders: Map<AssetType, AssetProvider>,
   delay: number;
   firestore: admin.firestore.Firestore;
+  limit: number;
 }
 
 interface ExpiredAssetData {
@@ -22,18 +23,27 @@ export class UpdateAssetsFinancials {
 
   private readonly firestore: admin.firestore.Firestore;
 
-  constructor({ assetProviders, delay, firestore }: Options) {
+  private readonly limit: number;
+
+  constructor({
+    assetProviders, delay, firestore, limit,
+  }: Options) {
     this.assetProviders = assetProviders;
     this.delay = delay;
     this.firestore = firestore;
+    this.limit = limit;
   }
 
+  // TODO: Refactor.
   async onRun(): Promise<null> {
     const assetsCollection = this.firestore.collection('assets');
 
-    // Query expired assets.
+    // Query assets with expired financials.
     const notExpiredDate = new Date(Date.now() - this.delay);
-    const expiredAssetsSnapshot = await assetsCollection.where('financialsUpdatedAt', '<', notExpiredDate).get();
+    const expiredAssetsSnapshot = await assetsCollection
+      .where('financialsUpdatedAt', '<', notExpiredDate)
+      .limit(this.limit)
+      .get();
     const expiredAssetsData: ExpiredAssetData[] = [];
 
     expiredAssetsSnapshot.forEach((snapshot) => {
@@ -46,7 +56,7 @@ export class UpdateAssetsFinancials {
 
     console.log('expiredAssetsData', JSON.stringify(expiredAssetsData));
 
-    // Fetch financials.
+    // Get assets financials by external IDs.
     const expiredAssetsDataWithFinancials = await Promise.all(
       expiredAssetsData.map(async ({ assetId, externalId, type }) => {
         const assetProvider = this.assetProviders.get(type);
@@ -78,9 +88,9 @@ export class UpdateAssetsFinancials {
 
     console.log('expiredAssetsDataWithFinancials', JSON.stringify(expiredAssetsDataWithFinancials));
 
+    // Update assets financials.
     const batch = this.firestore.batch();
 
-    // Update Firestore.
     expiredAssetsDataWithFinancials.forEach((expiredAssetDataWithFinancials) => {
       if (!expiredAssetDataWithFinancials) {
         // Skip.
