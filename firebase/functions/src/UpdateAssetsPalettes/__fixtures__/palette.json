@@ -1,0 +1,50 @@
+{
+  "Vibrant": {
+    "rgb": [
+      127.5,
+      127.5,
+      127.5
+    ],
+    "population": 0
+  },
+  "LightVibrant": {
+    "rgb": [
+      188.7,
+      188.7,
+      188.7
+    ],
+    "population": 0
+  },
+  "DarkVibrant": {
+    "rgb": [
+      66.3,
+      66.3,
+      66.3
+    ],
+    "population": 0
+  },
+  "Muted": {
+    "rgb": [
+      124,
+      124,
+      124
+    ],
+    "population": 2
+  },
+  "LightMuted": {
+    "rgb": [
+      188,
+      188,
+      188
+    ],
+    "population": 5
+  },
+  "DarkMuted": {
+    "rgb": [
+      68,
+      68,
+      68
+    ],
+    "population": 1
+  }
+}

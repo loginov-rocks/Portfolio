@@ -10,9 +10,9 @@ box Firebase
 end box
 
 LogosStorage -> UpdateAssetsPalettes: trigger on asset logo update
-UpdateAssetsPalettes -> UpdateAssetsPalettes: generate palette of updated asset logo
-UpdateAssetsPalettes -> PalettesStorage: store asset palette as JSON
-PalettesStorage --> UpdateAssetsPalettes: return new asset palette URL
-UpdateAssetsPalettes -> Database: update asset palette URL
+UpdateAssetsPalettes -> UpdateAssetsPalettes: generate asset palette
+UpdateAssetsPalettes -> PalettesStorage: store asset palette
+PalettesStorage --> UpdateAssetsPalettes: return asset palette URL
+UpdateAssetsPalettes -> Database: update asset palette
 
 @enduml

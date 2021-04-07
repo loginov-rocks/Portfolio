@@ -4,6 +4,7 @@ import fetch, { Response } from 'node-fetch';
 
 import { AssetProvider } from 'AssetProvider/AssetProvider';
 import { AssetType } from 'AssetProvider/AssetType';
+import { Logger } from 'Logger/Logger';
 
 interface Options {
   assetProviders: Map<AssetType, AssetProvider>,
@@ -11,6 +12,7 @@ interface Options {
   delay: number;
   firestore: admin.firestore.Firestore;
   limit: number;
+  logger: Logger;
   storageBaseUrl: string;
   storagePrefix: string;
 }
@@ -32,18 +34,21 @@ export class UpdateAssetsLogos {
 
   private readonly limit: number;
 
+  private readonly logger: Logger;
+
   private readonly storageBaseUrl: string;
 
   private readonly storagePrefix: string;
 
   constructor({
-    assetProviders, bucket, delay, firestore, limit, storageBaseUrl, storagePrefix,
+    assetProviders, bucket, delay, firestore, limit, logger, storageBaseUrl, storagePrefix,
   }: Options) {
     this.assetProviders = assetProviders;
     this.bucket = bucket;
     this.delay = delay;
     this.firestore = firestore;
     this.limit = limit;
+    this.logger = logger;
     this.storageBaseUrl = storageBaseUrl;
     this.storagePrefix = storagePrefix;
   }
@@ -68,7 +73,7 @@ export class UpdateAssetsLogos {
       });
     });
 
-    console.log('expiredAssetsData', JSON.stringify(expiredAssetsData));
+    this.logger.log('expiredAssetsData', expiredAssetsData);
 
     // Get assets logos by external IDs.
     const expiredAssetsDataWithExternalLogos = await Promise.all(
@@ -76,7 +81,7 @@ export class UpdateAssetsLogos {
         const assetProvider = this.assetProviders.get(type);
 
         if (!assetProvider) {
-          console.error(`No asset provider for type "${type}" found`);
+          this.logger.error(`No asset provider for type "${type}" found`);
           // Skip.
           return null;
         }
@@ -86,7 +91,7 @@ export class UpdateAssetsLogos {
         try {
           externalLogo = await assetProvider.getAssetLogo(externalId);
         } catch (error) {
-          console.error(error);
+          this.logger.error(error);
           // Skip.
           return null;
         }
@@ -100,7 +105,7 @@ export class UpdateAssetsLogos {
       }),
     );
 
-    console.log('expiredAssetsDataWithExternalLogos', JSON.stringify(expiredAssetsDataWithExternalLogos));
+    this.logger.log('expiredAssetsDataWithExternalLogos', expiredAssetsDataWithExternalLogos);
 
     // Store assets logos.
     const expiredAssetsDataWithLogos = await Promise.all(
@@ -122,7 +127,7 @@ export class UpdateAssetsLogos {
         try {
           response = await fetch(externalLogo);
         } catch (error) {
-          console.error(error);
+          this.logger.error(error);
           // Skip.
           return null;
         }
@@ -155,7 +160,7 @@ export class UpdateAssetsLogos {
       }),
     );
 
-    console.log('expiredAssetsDataWithLogos', JSON.stringify(expiredAssetsDataWithLogos));
+    this.logger.log('expiredAssetsDataWithLogos', expiredAssetsDataWithLogos);
 
     // Update assets logos.
     const batch = this.firestore.batch();

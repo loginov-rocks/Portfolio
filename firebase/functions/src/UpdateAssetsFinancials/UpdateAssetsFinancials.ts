@@ -2,12 +2,14 @@ import admin from 'firebase-admin';
 
 import { AssetProvider } from 'AssetProvider/AssetProvider';
 import { AssetType } from 'AssetProvider/AssetType';
+import { Logger } from 'Logger/Logger';
 
 interface Options {
   assetProviders: Map<AssetType, AssetProvider>,
   delay: number;
   firestore: admin.firestore.Firestore;
   limit: number;
+  logger: Logger;
 }
 
 interface ExpiredAssetData {
@@ -25,13 +27,16 @@ export class UpdateAssetsFinancials {
 
   private readonly limit: number;
 
+  private readonly logger: Logger;
+
   constructor({
-    assetProviders, delay, firestore, limit,
+    assetProviders, delay, firestore, limit, logger,
   }: Options) {
     this.assetProviders = assetProviders;
     this.delay = delay;
     this.firestore = firestore;
     this.limit = limit;
+    this.logger = logger;
   }
 
   // TODO: Refactor.
@@ -54,7 +59,7 @@ export class UpdateAssetsFinancials {
       });
     });
 
-    console.log('expiredAssetsData', JSON.stringify(expiredAssetsData));
+    this.logger.log('expiredAssetsData', expiredAssetsData);
 
     // Get assets financials by external IDs.
     const expiredAssetsDataWithFinancials = await Promise.all(
@@ -62,7 +67,7 @@ export class UpdateAssetsFinancials {
         const assetProvider = this.assetProviders.get(type);
 
         if (!assetProvider) {
-          console.error(`No asset provider for type "${type}" found`);
+          this.logger.error(`No asset provider for type "${type}" found`);
           // Skip.
           return null;
         }
@@ -72,7 +77,7 @@ export class UpdateAssetsFinancials {
         try {
           financials = await assetProvider.getAssetFinancials(externalId);
         } catch (error) {
-          console.error(error);
+          this.logger.error(error);
           // Skip.
           return null;
         }
@@ -86,7 +91,7 @@ export class UpdateAssetsFinancials {
       }),
     );
 
-    console.log('expiredAssetsDataWithFinancials', JSON.stringify(expiredAssetsDataWithFinancials));
+    this.logger.log('expiredAssetsDataWithFinancials', expiredAssetsDataWithFinancials);
 
     // Update assets financials.
     const batch = this.firestore.batch();

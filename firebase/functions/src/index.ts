@@ -5,20 +5,24 @@ import admin from 'firebase-admin';
 // Import the firebase-functions package for deployment.
 import * as functions from 'firebase-functions';
 
-import * as C from 'Constants';
 import { AggregateStocksSymbols } from 'AggregateStocksSymbols/AggregateStocksSymbols';
 import { AssetType } from 'AssetProvider/AssetType';
 import { IexAssetProvider } from 'AssetProvider/IexAssetProvider/IexAssetProvider';
+import * as C from 'Constants';
 import { GetOutdated } from 'GetOutdated/GetOutdated';
 import vibrantPaletteHandler from 'Handlers/vibrantPalette';
 import { UpdateAssetsFinancials } from 'UpdateAssetsFinancials/UpdateAssetsFinancials';
 import { UpdateAssetsLogos } from 'UpdateAssetsLogos/UpdateAssetsLogos';
+import { UpdateAssetsPalettes } from 'UpdateAssetsPalettes/UpdateAssetsPalettes';
 import { UpdateLogos } from 'UpdateLogos/UpdateLogos';
 import { UpdateQuotes } from 'UpdateQuotes/UpdateQuotes';
 
 admin.initializeApp(functions.config().firebase);
+
+const assetsLogosBucket = admin.storage().bucket(C.ASSETS_LOGOS_BUCKET);
+const assetsPalettesBucket = admin.storage().bucket(C.ASSETS_PALETTES_BUCKET);
 const firestore = admin.firestore();
-const logosBucket = admin.storage().bucket(C.LOGOS_BUCKET);
+const { logger } = functions;
 
 const aggregateStocksSymbolsFunction = new AggregateStocksSymbols({
   firestore,
@@ -44,16 +48,27 @@ const updateAssetsFinancialsFunction = new UpdateAssetsFinancials({
   delay: C.GET_OUTDATED_QUOTES_DELAY,
   firestore,
   limit: C.UPDATE_ASSETS_FINANCIALS_LIMIT,
+  logger,
 });
 
 const updateAssetsLogosFunction = new UpdateAssetsLogos({
   assetProviders,
-  bucket: logosBucket,
+  bucket: assetsLogosBucket,
   delay: C.GET_OUTDATED_LOGOS_DELAY,
   firestore,
   limit: C.UPDATE_ASSETS_LOGOS_LIMIT,
+  logger,
   storageBaseUrl: C.STORAGE_BASE_URL,
-  storagePrefix: C.LOGOS_STORAGE_PREFIX,
+  storagePrefix: C.ASSETS_LOGOS_STORAGE_PREFIX,
+});
+
+const updateAssetsPalettesFunction = new UpdateAssetsPalettes({
+  bucket: assetsPalettesBucket,
+  firestore,
+  logger,
+  logosStoragePrefix: C.ASSETS_LOGOS_STORAGE_PREFIX,
+  storageBaseUrl: C.STORAGE_BASE_URL,
+  storagePrefix: C.ASSETS_PALETTES_STORAGE_PREFIX,
 });
 
 const updateLogosFunction = new UpdateLogos();
@@ -106,6 +121,11 @@ const updateAssetsLogos = functions.pubsub
   .schedule(C.UPDATE_ASSETS_LOGOS_SCHEDULE)
   .onRun(() => updateAssetsLogosFunction.onRun());
 
+const updateAssetsPalettes = functions.storage
+  .bucket(C.ASSETS_LOGOS_BUCKET)
+  .object()
+  .onFinalize((object) => updateAssetsPalettesFunction.onFinalize(object));
+
 // TODO: Remove CORS, check auth.
 const updateLogos = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
   if (req.method !== 'PATCH') {
@@ -142,6 +162,7 @@ export {
   // getOutdated,
   updateAssetsFinancials,
   updateAssetsLogos,
+  updateAssetsPalettes,
   // updateLogos,
   // updateQuotes,
   vibrantPalette,
