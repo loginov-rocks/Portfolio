@@ -12,11 +12,13 @@ import { IexAssetProvider } from 'AssetProvider/IexAssetProvider/IexAssetProvide
 import { GetOutdated } from 'GetOutdated/GetOutdated';
 import vibrantPaletteHandler from 'Handlers/vibrantPalette';
 import { UpdateAssetsFinancials } from 'UpdateAssetsFinancials/UpdateAssetsFinancials';
+import { UpdateAssetsLogos } from 'UpdateAssetsLogos/UpdateAssetsLogos';
 import { UpdateLogos } from 'UpdateLogos/UpdateLogos';
 import { UpdateQuotes } from 'UpdateQuotes/UpdateQuotes';
 
 admin.initializeApp(functions.config().firebase);
 const firestore = admin.firestore();
+const logosBucket = admin.storage().bucket(C.LOGOS_BUCKET);
 
 const aggregateStocksSymbolsFunction = new AggregateStocksSymbols({
   firestore,
@@ -41,6 +43,17 @@ const updateAssetsFinancialsFunction = new UpdateAssetsFinancials({
   assetProviders,
   delay: C.GET_OUTDATED_QUOTES_DELAY,
   firestore,
+  limit: C.UPDATE_ASSETS_FINANCIALS_LIMIT,
+});
+
+const updateAssetsLogosFunction = new UpdateAssetsLogos({
+  assetProviders,
+  bucket: logosBucket,
+  delay: C.GET_OUTDATED_LOGOS_DELAY,
+  firestore,
+  limit: C.UPDATE_ASSETS_LOGOS_LIMIT,
+  storageBaseUrl: C.STORAGE_BASE_URL,
+  storagePrefix: C.LOGOS_STORAGE_PREFIX,
 });
 
 const updateLogosFunction = new UpdateLogos();
@@ -89,6 +102,10 @@ const updateAssetsFinancials = functions.pubsub
   .schedule(C.UPDATE_ASSETS_FINANCIALS_SCHEDULE)
   .onRun(() => updateAssetsFinancialsFunction.onRun());
 
+const updateAssetsLogos = functions.pubsub
+  .schedule(C.UPDATE_ASSETS_LOGOS_SCHEDULE)
+  .onRun(() => updateAssetsLogosFunction.onRun());
+
 // TODO: Remove CORS, check auth.
 const updateLogos = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
   if (req.method !== 'PATCH') {
@@ -124,6 +141,7 @@ export {
   // dialogflowFirebaseFulfillment,
   // getOutdated,
   updateAssetsFinancials,
+  updateAssetsLogos,
   // updateLogos,
   // updateQuotes,
   vibrantPalette,

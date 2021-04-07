@@ -35,7 +35,7 @@ export class UpdateAssetsFinancials {
   }
 
   // TODO: Refactor.
-  async onRun(): Promise<null> {
+  async onRun(): Promise<void> {
     const assetsCollection = this.firestore.collection('assets');
 
     // Query assets with expired financials.
@@ -106,7 +106,5 @@ export class UpdateAssetsFinancials {
     });
 
     await batch.commit();
-
-    return null;
   }
 }

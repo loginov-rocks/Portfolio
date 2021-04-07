@@ -12,11 +12,16 @@ participant "External Service" as ExternalService <<Asset Provider>>
 loop per day
     UpdateAssetsLogos -> Database: query assets with expired logos
     Database --> UpdateAssetsLogos: return assets collection
-    UpdateAssetsLogos -> ExternalService: get assets logos by external IDs
-    ExternalService --> UpdateAssetsLogos: return assets logos URLs
-    UpdateAssetsLogos -> LogosStorage: store assets logos by URLs
-    LogosStorage --> UpdateAssetsLogos: return new assets logos URLs
-    UpdateAssetsLogos -> Database: update assets logos URLs
+    loop per asset
+        UpdateAssetsLogos -> UpdateAssetsLogos: pick asset provider\nbased on asset type
+        UpdateAssetsLogos -> ExternalService: get asset logo by external ID
+        ExternalService --> UpdateAssetsLogos: return asset logo
+    end
+    loop per asset
+        UpdateAssetsLogos -> LogosStorage: store asset logo
+        LogosStorage --> UpdateAssetsLogos: return asset logo URL
+    end
+    UpdateAssetsLogos -> Database: update assets logos
 end
 
 @enduml
