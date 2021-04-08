@@ -2,11 +2,11 @@ openapi: 3.0.0
 
 info:
   title: Portfolio Firebase Functions
-  version: 0.2.2
+  version: 1.1.4
 
 externalDocs:
   description: GitHub
-  url: https://github.com/loginov-rocks/Portfolio-Firebase
+  url: https://github.com/loginov-rocks/Portfolio
 
 servers:
   - url: https://us-central1-loginov-rocks-portfolio.cloudfunctions.net
@@ -15,13 +15,46 @@ servers:
     description: Development
 
 security:
-  - ApiKey: []
-    Signature: []
+  - ApiKey: [ ]
+    Signature: [ ]
 
 tags:
+  - name: Assets
   - name: Stocks
 
 paths:
+
+  /createAsset:
+    post:
+      summary: Create Asset
+      tags:
+        - Assets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAssetRequest'
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAssetResponse'
+        303:
+          description: See Other
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAssetResponse'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        405:
+          $ref: '#/components/responses/MethodNotAllowed'
+        500:
+          $ref: '#/components/responses/InternalServerError'
 
   /getOutdated:
     get:
@@ -84,6 +117,30 @@ paths:
 components:
 
   schemas:
+
+    AssetType:
+      type: string
+      enum:
+        - stock
+
+    CreateAssetRequest:
+      type: object
+      properties:
+        externalId:
+          type: string
+        type:
+          $ref: '#/components/schemas/AssetType'
+      required:
+        - externalId
+        - type
+
+    CreateAssetResponse:
+      type: object
+      properties:
+        assetId:
+          type: string
+      required:
+        - assetId
 
     GetOutdatedResponse:
       type: object
@@ -165,14 +222,20 @@ components:
 
   responses:
 
-    NoContent:
-      description: No Content
-
     BadRequest:
       description: Bad Request
 
-    Unauthorized:
-      description: Unauthorized
-
     InternalServerError:
       description: Internal Server Error
+
+    MethodNotAllowed:
+      description: Method Not Allowed
+
+    NoContent:
+      description: No Content
+
+    NotFound:
+      description: Not Found
+
+    Unauthorized:
+      description: Unauthorized
