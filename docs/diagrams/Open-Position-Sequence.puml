@@ -11,24 +11,33 @@ end box
 participant "External Service" as ExternalService <<Asset Provider>>
 
 User -> WebApp: open new position
-alt if asset ID is unavailable
-    WebApp -> CreateAsset: send asset external ID and type
-    CreateAsset -> Database: validate whether an asset with such\nexternal ID and type don't exist
-    alt if asset ID exists
-        Database --> CreateAsset: return asset ID
-    else otherwise
-        Database --> CreateAsset: return not exists
+alt asset ID unavailable
+    WebApp -> CreateAsset: post asset external ID and type
+    note right
+        POST /createAsset
+    end note
+    CreateAsset -> Database: query assets with requested\nexternal ID and type
+    alt
+        Database --> CreateAsset: return assets collection
+        CreateAsset --> WebApp: return first asset ID
+        note right
+            HTTP 303 See Other
+        end note
+    else
+        Database --> CreateAsset: return empty collection
         CreateAsset -> CreateAsset: pick asset provider\nbased on asset type
-        CreateAsset -> ExternalService: get asset data by external ID
-        ExternalService --> CreateAsset: return asset data
-        CreateAsset -> Database: publish new asset data
+        CreateAsset -> ExternalService: get asset financials by external ID
+        ExternalService --> CreateAsset: return asset financials
+        CreateAsset -> Database: store asset
         Database --> CreateAsset: return asset ID
+        CreateAsset --> WebApp: return asset ID
+        note right
+            HTTP 201 Created
+        end note
     end
-    CreateAsset --> WebApp: return asset ID
 end
-WebApp -> Database: publish new position data
-
-Database --> WebApp: update open positions
-WebApp --> User: show new position screen
+WebApp -> Database: store new position
+Database --> WebApp: update positions
+WebApp --> User: show new position
 
 @enduml

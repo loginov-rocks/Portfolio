@@ -9,8 +9,12 @@ import { AggregateStocksSymbols } from 'AggregateStocksSymbols/AggregateStocksSy
 import { AssetType } from 'AssetProvider/AssetType';
 import { IexAssetProvider } from 'AssetProvider/IexAssetProvider/IexAssetProvider';
 import * as C from 'Constants';
+import { CreateAsset } from 'CreateAsset/CreateAsset';
+import { CreateAssetRequest } from 'CreateAsset/CreateAssetRequest';
+import { CreateAssetResponse } from 'CreateAsset/CreateAssetResponse';
 import { GetOutdated } from 'GetOutdated/GetOutdated';
 import vibrantPaletteHandler from 'Handlers/vibrantPalette';
+import { wrapHttpFunction } from 'Http/wrapHttpFunction';
 import { UpdateAssetsFinancials } from 'UpdateAssetsFinancials/UpdateAssetsFinancials';
 import { UpdateAssetsLogos } from 'UpdateAssetsLogos/UpdateAssetsLogos';
 import { UpdateAssetsPalettes } from 'UpdateAssetsPalettes/UpdateAssetsPalettes';
@@ -42,6 +46,11 @@ const iexAssetProvider = new IexAssetProvider({
 
 const assetProviders = new Map();
 assetProviders.set(AssetType.stock, iexAssetProvider);
+
+const createAssetFunction = new CreateAsset({
+  assetProviders,
+  firestore,
+});
 
 const updateAssetsFinancialsFunction = new UpdateAssetsFinancials({
   assetProviders,
@@ -102,6 +111,15 @@ const aggregateStocksSymbolsOnUpdate = functions.firestore
   .document(aggregateStocksSymbolsFunction.getPattern())
   .onUpdate(aggregateStocksSymbolsFunction.onUpdate);
 
+const createAsset = functions.https.onRequest((req, res) => (
+  corsHandler(req, res, () => (
+    wrapHttpFunction<CreateAssetRequest, CreateAssetResponse>(
+      (request) => createAssetFunction.onRequest(request),
+      logger,
+    )(req, res)
+  ))
+));
+
 // TODO: Remove CORS, check auth.
 const getOutdated = functions.https.onRequest((req, res) => corsHandler(req, res, () => {
   if (req.method !== 'GET') {
@@ -158,6 +176,7 @@ const vibrantPalette = functions.https.onRequest((req, res) => corsHandler(req, 
 export {
   // aggregateStocksSymbolsOnCreate,
   // aggregateStocksSymbolsOnUpdate,
+  createAsset,
   // dialogflowFirebaseFulfillment,
   // getOutdated,
   updateAssetsFinancials,
