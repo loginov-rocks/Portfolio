@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 
 import { AssetFinancials } from '../AssetFinancials';
+import { AssetNotFound } from '../AssetNotFound';
 import { AssetProvider } from '../AssetProvider';
 
 import { IexLogo } from './IexLogo';
@@ -21,18 +22,38 @@ export class IexAssetProvider implements AssetProvider {
     this.secretToken = secretToken;
   }
 
-  getAssetFinancials(id: string): Promise<AssetFinancials> {
-    return fetch(`${this.baseUrl}/stock/${id.toLowerCase()}/quote?token=${this.secretToken}`)
-      .then((response) => response.json())
-      .then((data: IexQuote) => ({
-        price: data.latestPrice,
-        title: data.companyName,
-      }));
+  async getAssetFinancials(id: string): Promise<AssetFinancials> {
+    const response = await fetch(`${this.baseUrl}/stock/${id.toLowerCase()}/quote?token=${this.secretToken}`);
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new AssetNotFound();
+      }
+
+      throw new Error(response.statusText);
+    }
+
+    const data: IexQuote = await response.json();
+
+    return {
+      price: data.latestPrice,
+      title: data.companyName,
+    };
   }
 
-  getAssetLogo(id: string): Promise<string> {
-    return fetch(`${this.baseUrl}/stock/${id.toLowerCase()}/logo?token=${this.secretToken}`)
-      .then((response) => response.json())
-      .then((data: IexLogo) => data.url);
+  async getAssetLogo(id: string): Promise<string> {
+    const response = await fetch(`${this.baseUrl}/stock/${id.toLowerCase()}/logo?token=${this.secretToken}`);
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new AssetNotFound();
+      }
+
+      throw new Error(response.statusText);
+    }
+
+    const data: IexLogo = await response.json();
+
+    return data.url;
   }
 }
