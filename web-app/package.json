@@ -27,6 +27,7 @@
   },
   "homepage": "https://loginov-rocks-portfolio.firebaseapp.com",
   "dependencies": {
+    "@loginov-rocks/portfolio-shared": "file:../shared",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/styles": "^4.11.3",

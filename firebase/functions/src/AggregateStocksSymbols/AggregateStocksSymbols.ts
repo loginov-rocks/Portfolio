@@ -1,9 +1,7 @@
+import { PositionDocument, StockDocument } from '@loginov-rocks/portfolio-shared';
 import admin from 'firebase-admin';
 import { Change } from 'firebase-functions/lib/cloud-functions';
 import { DocumentSnapshot } from 'firebase-functions/lib/providers/firestore';
-
-import { PositionDocument } from 'Firestore/Positions';
-import { StockDocument } from 'Firestore/Stocks';
 
 interface AggregateStocksSymbolsOptions {
   firestore: admin.firestore.Firestore;

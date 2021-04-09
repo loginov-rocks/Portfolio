@@ -1,6 +1,5 @@
+import { StockQuotePartialDocument } from '@loginov-rocks/portfolio-shared';
 import admin from 'firebase-admin';
-
-import { StockQuotePartialDocument } from 'Firestore/Stocks';
 
 import { UpdateQuotesRequest } from './UpdateQuotesRequest';
 

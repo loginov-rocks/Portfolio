@@ -1,0 +1,39 @@
+name: Shared CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - shared/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - shared/**
+
+jobs:
+  ci:
+    name: CI
+
+    defaults:
+      run:
+        working-directory: shared
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version:
+          # last version
+          - 14
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
