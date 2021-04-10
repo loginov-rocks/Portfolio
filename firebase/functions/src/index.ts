@@ -48,7 +48,7 @@ const createAsset = functions.https.onRequest((req, res) => (
 // UpdateAssetsFinancials.
 const updateAssetsFinancialsFunction = new UpdateAssetsFinancials({
   assetProviders,
-  delay: C.GET_OUTDATED_QUOTES_DELAY,
+  delay: C.UPDATE_ASSETS_FINANCIALS_DELAY,
   firestore,
   limit: C.UPDATE_ASSETS_FINANCIALS_LIMIT,
   logger,
@@ -62,7 +62,7 @@ const updateAssetsFinancials = functions.pubsub
 const updateAssetsLogosFunction = new UpdateAssetsLogos({
   assetProviders,
   bucket: assetsLogosBucket,
-  delay: C.GET_OUTDATED_LOGOS_DELAY,
+  delay: C.UPDATE_ASSETS_LOGOS_DELAY,
   firestore,
   limit: C.UPDATE_ASSETS_LOGOS_LIMIT,
   logger,
