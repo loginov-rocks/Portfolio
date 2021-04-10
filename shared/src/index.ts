@@ -1,8 +1,2 @@
-import { PositionDocument } from './Firestore/Positions';
-import { StockDocument, StockQuotePartialDocument } from './Firestore/Stocks';
-
-export {
-  PositionDocument,
-  StockDocument,
-  StockQuotePartialDocument,
-};
+export { AssetType } from './Database/Assets/AssetType';
+export { Firestore } from './Database/Firestore';

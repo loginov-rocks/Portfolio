@@ -12,14 +12,17 @@ object AssetsCollection <<Collection>> {
 
 object AssetDocument <<Document>> {
     externalId: string
-    financialsUpdatedAt: timestamp
-    logoUpdatedAt: timestamp
-    logoUrl: string
-    paletteUpdatedAt: timestamp
-    paletteUrl: string
+    type: AssetType
+    ..
     price: number
     title: string
-    type: string
+    financialsUpdatedAt: timestamp
+    ..
+    logoUrl: string
+    logoUpdatedAt: timestamp
+    ..
+    paletteUrl: string
+    paletteUpdatedAt: timestamp
 }
 
 object UsersCollection <<Collection>> {
@@ -30,6 +33,7 @@ object UserDocument <<Document>> {
     avatarUrl: string
     displayName: string
     email: string
+    ...
 }
 
 object UsersPortfoliosCollection <<Collection>> {
@@ -45,8 +49,9 @@ object PortfoliosCollection <<Collection>> {
 }
 
 object PortfolioDocument <<Document>> {
-    closedPositions: ClosedPositionsCollection
     openPositions: OpenPositionsCollection
+    closedPositions: ClosedPositionsCollection
+    --
     title: string
 }
 
@@ -55,12 +60,14 @@ object OpenPositionsCollection <<Collection>> {
 }
 
 object OpenPositionDocument <<Document>> {
-    amount: number
+    yields: YieldsCollection
+    --
     assetId: string
-    openCommission: number
+    amount: number
+    ..
     openDate: timestamp
     openPrice: number
-    yields: YieldsCollection
+    openCommission: number
 }
 
 object ClosedPositionsCollection <<Collection>> {
@@ -68,40 +75,43 @@ object ClosedPositionsCollection <<Collection>> {
 }
 
 object ClosedPositionDocument <<Document>> {
-    amount: number
+    yields: YieldsCollection
+    --
     assetId: string
-    closedCommission: number
-    closedDate: timestamp
-    closedPrice: number
-    openCommission: number
+    amount: number
+    ..
     openDate: timestamp
     openPrice: number
-    yields: YieldsCollection
+    openCommission: number
+    ..
+    closedDate: timestamp
+    closedPrice: number
+    closedCommission: number
 }
 
-object YieldsCollection <<Collection>> {
-    [yield]: YieldDocument
+object YieldsCollection <<Collection>> #lightgray {
+    [yieldId]: YieldDocument
 }
 
-object YieldDocument <<Document>> {
-    commission: number
+object YieldDocument <<Document>> #lightgray {
     date: timestamp
     sum: number
+    commission: number
 }
 
-object UsersForecastsCollection <<Collection>> {
+object UsersForecastsCollection <<Collection>> #lightgray {
     [userId]: UserForecastsDocument
 }
 
-object UserForecastsDocument <<Document>> {
+object UserForecastsDocument <<Document>> #lightgray {
     forecasts: ForecastsCollection
 }
 
-object ForecastsCollection <<Collection>> {
+object ForecastsCollection <<Collection>> #lightgray {
     [forecastId]: ForecastDocument
 }
 
-object ForecastDocument <<Document>> {
+object ForecastDocument <<Document>> #lightgray {
     assetId: string
     price: number
 }
