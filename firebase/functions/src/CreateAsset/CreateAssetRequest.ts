@@ -1,4 +1,4 @@
-import { AssetType } from 'AssetProvider/AssetType';
+import { AssetType } from '@loginov-rocks/portfolio-shared';
 
 export interface CreateAssetRequest {
   externalId?: string;

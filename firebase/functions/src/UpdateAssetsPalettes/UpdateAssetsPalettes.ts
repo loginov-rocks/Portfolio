@@ -1,5 +1,5 @@
 import { Bucket } from '@google-cloud/storage';
-import admin from 'firebase-admin';
+import * as admin from 'firebase-admin';
 import { ObjectMetadata } from 'firebase-functions/lib/providers/storage';
 import Vibrant from 'node-vibrant';
 

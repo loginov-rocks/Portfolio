@@ -14,13 +14,8 @@ servers:
   - url: http://localhost:5000/loginov-rocks-portfolio/us-central1
     description: Development
 
-security:
-  - ApiKey: [ ]
-    Signature: [ ]
-
 tags:
   - name: Assets
-  - name: Stocks
 
 paths:
 
@@ -56,64 +51,6 @@ paths:
         500:
           $ref: '#/components/responses/InternalServerError'
 
-  /getOutdated:
-    get:
-      summary: Get Outdated
-      tags:
-        - Stocks
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetOutdatedResponse'
-        401:
-          $ref: '#/components/responses/Unauthorized'
-        500:
-          $ref: '#/components/responses/InternalServerError'
-
-  /updateLogos:
-    patch:
-      summary: Update Logos
-      description: 'Accepts an unlimited number of logo & symbol pairs. Max uncompressed HTTP request size: 10 MB.'
-      tags:
-        - Stocks
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/UpdateLogosRequest'
-      responses:
-        204:
-          $ref: '#/components/responses/NoContent'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        401:
-          $ref: '#/components/responses/Unauthorized'
-        500:
-          $ref: '#/components/responses/InternalServerError'
-
-  /updateQuotes:
-    patch:
-      summary: Update Quotes
-      tags:
-        - Stocks
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateQuotesRequest'
-      responses:
-        204:
-          $ref: '#/components/responses/NoContent'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        401:
-          $ref: '#/components/responses/Unauthorized'
-        500:
-          $ref: '#/components/responses/InternalServerError'
-
 components:
 
   schemas:
@@ -142,84 +79,6 @@ components:
       required:
         - assetId
 
-    GetOutdatedResponse:
-      type: object
-      properties:
-        logos:
-          type: array
-          items:
-            type: string
-        quotes:
-          type: array
-          items:
-            type: string
-      required:
-        - logos
-        - quotes
-
-    UpdateLogosRequest:
-      type: object
-      properties:
-        logo:
-          type: string
-          format: binary
-        symbol:
-          type: string
-      required:
-        - logo
-        - symbol
-
-    UpdateQuotesRequest:
-      type: array
-      items:
-        type: object
-        properties:
-          symbol:
-            type: string
-          companyName:
-            type: string
-          close:
-            type: number
-            format: float
-            nullable: true
-          previousClose:
-            type: number
-            format: float
-          latestPrice:
-            type: number
-            format: float
-          iexRealtimePrice:
-            type: number
-            format: float
-            nullable: true
-          change:
-            type: number
-            format: float
-          changePercent:
-            type: number
-            format: float
-        required:
-          - symbol
-          - companyName
-          - close
-          - previousClose
-          - latestPrice
-          - iexRealtimePrice
-          - change
-          - changePercent
-
-  securitySchemes:
-
-    ApiKey:
-      name: x-api-key
-      type: apiKey
-      in: header
-
-    Signature:
-      name: x-signature
-      type: apiKey
-      in: header
-
   responses:
 
     BadRequest:
@@ -231,11 +90,5 @@ components:
     MethodNotAllowed:
       description: Method Not Allowed
 
-    NoContent:
-      description: No Content
-
     NotFound:
       description: Not Found
-
-    Unauthorized:
-      description: Unauthorized

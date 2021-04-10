@@ -1,8 +1,8 @@
-import admin from 'firebase-admin';
+import { AssetType } from '@loginov-rocks/portfolio-shared';
+import * as admin from 'firebase-admin';
 
 import { AssetNotFound } from 'AssetProvider/AssetNotFound';
 import { AssetProvider } from 'AssetProvider/AssetProvider';
-import { AssetType } from 'AssetProvider/AssetType';
 import { BadRequest } from 'Http/BadRequest';
 import { HttpRequest } from 'Http/HttpRequest';
 import { HttpResponse } from 'Http/HttpResponse';

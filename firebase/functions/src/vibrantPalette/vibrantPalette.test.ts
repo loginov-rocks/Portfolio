@@ -3,8 +3,8 @@
 import { Request } from 'jest-express/lib/request';
 import Vibrant from 'node-vibrant';
 
-import googlFixture from './__fixtures__/googl.json';
-import vibrantPalette from './vibrantPalette';
+import * as paletteFixture from './__fixtures__/palette.json';
+import { vibrantPalette } from './vibrantPalette';
 
 jest.mock('node-vibrant');
 
@@ -12,7 +12,7 @@ jest.mock('node-vibrant');
 Vibrant.from = jest.fn((imageUrl: string) => ({
   getPalette: () => {
     if (imageUrl === 'https://storage.googleapis.com/iexcloud-hl37opg/api/logos/GOOGL.png') {
-      return Promise.resolve(googlFixture);
+      return Promise.resolve(paletteFixture);
     }
 
     return Promise.reject();
@@ -24,5 +24,5 @@ it('passes always', () => {
   request.setQuery('img', 'https://storage.googleapis.com/iexcloud-hl37opg/api/logos/GOOGL.png');
 
   // @ts-ignore
-  return expect(vibrantPalette(request)).resolves.toEqual(googlFixture);
+  return expect(vibrantPalette(request)).resolves.toEqual(paletteFixture);
 });

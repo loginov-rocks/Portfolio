@@ -1,9 +1,9 @@
 import { Bucket } from '@google-cloud/storage';
-import admin from 'firebase-admin';
+import { AssetType } from '@loginov-rocks/portfolio-shared';
+import * as admin from 'firebase-admin';
 import fetch, { Response } from 'node-fetch';
 
 import { AssetProvider } from 'AssetProvider/AssetProvider';
-import { AssetType } from 'AssetProvider/AssetType';
 import { Logger } from 'Logger/Logger';
 
 interface Options {
