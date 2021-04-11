@@ -103,4 +103,8 @@ Base currency - $
 https://hackernoon.com/client-side-encryption-in-firebase-database-60dd55abadb2
 https://developers.google.com/drive/api/v3/appdata
 
+The OpenAPI specification available here:
+https://raw.githubusercontent.com/loginov-rocks/Portfolio/main/firebase/functions/openapi.yaml - you can view it online
+at https://petstore.swagger.io
+
 ![Solution Architecture Diagram](https://raw.githubusercontent.com/loginov-rocks/Portfolio/main/docs/diagrams/Solution-Architecture.png)

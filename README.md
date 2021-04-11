@@ -5,10 +5,9 @@
 [![Firebase CI](https://github.com/loginov-rocks/Portfolio/actions/workflows/firebase-ci.yml/badge.svg)](https://github.com/loginov-rocks/Portfolio/actions/workflows/firebase-ci.yml)
 [![CD](https://github.com/loginov-rocks/Portfolio/actions/workflows/cd.yml/badge.svg)](https://github.com/loginov-rocks/Portfolio/actions/workflows/cd.yml)
 
-## Firebase
+## Development Hints
 
-### Functions
-
-The OpenAPI specification available here:
-https://raw.githubusercontent.com/loginov-rocks/Portfolio/main/firebase/functions/openapi.yaml - you can view it online
-at https://petstore.swagger.io
+Due to Firebase Functions
+[limitations in handling local dependencies](https://firebase.google.com/docs/functions/handle-dependencies#including_local_nodejs_modules)
+([GitHub issue](https://github.com/firebase/firebase-tools/issues/968)) the local `@loginov-rocks/portfolio-shared`
+package built, packed to `loginov-rocks-portfolio-shared.tgz` and installed as `tgz` on deploy.
