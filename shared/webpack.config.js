@@ -16,6 +16,7 @@ module.exports = {
   },
   output: {
     filename: 'index.js',
+    libraryTarget: 'commonjs',
     path: path.resolve(__dirname, 'lib'),
   },
   resolve: {
