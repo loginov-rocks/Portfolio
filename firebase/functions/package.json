@@ -12,7 +12,7 @@
     "deploy": "firebase deploy --only functions",
     "lint": "eslint --ext ts src webpack.config.js",
     "logs": "firebase functions:log",
-    "preinstall": "npm pack ../../shared && mv loginov-rocks-portfolio-shared-*.tgz loginov-rocks-portfolio-shared.tgz",
+    "preinstall": "npm pack ../../shared && mv loginov-rocks-portfolio-shared-*.tgz local_modules/loginov-rocks-portfolio-shared.tgz",
     "serve": "npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
