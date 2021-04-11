@@ -27,11 +27,6 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run build
-      - uses: actions/upload-artifact@v2
-        with:
-          name: shared-lib
-          path: shared/lib
-          retention-days: 1
 
   web-app-cd:
     name: Web App CD
@@ -96,10 +91,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
-        with:
-          name: shared-lib
-          path: shared/lib
       - uses: actions/download-artifact@v2
         with:
           name: web-app-dist

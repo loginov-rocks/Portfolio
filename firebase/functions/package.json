@@ -12,6 +12,7 @@
     "deploy": "firebase deploy --only functions",
     "lint": "eslint --ext ts src webpack.config.js",
     "logs": "firebase functions:log",
+    "preinstall": "npm pack ../../shared && mv loginov-rocks-portfolio-shared-*.tgz loginov-rocks-portfolio-shared.tgz",
     "serve": "npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
@@ -35,7 +36,7 @@
     "node": "14"
   },
   "dependencies": {
-    "@loginov-rocks/portfolio-shared": "file:../../shared",
+    "@loginov-rocks/portfolio-shared": "file:loginov-rocks-portfolio-shared.tgz",
     "@google-cloud/storage": "^5.8.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",

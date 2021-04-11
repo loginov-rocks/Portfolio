@@ -35,10 +35,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-        working-directory: shared
-      - run: npm run build
-        working-directory: shared
-      - run: npm ci
         working-directory: firebase/functions
       - run: npm run lint
         working-directory: firebase/functions

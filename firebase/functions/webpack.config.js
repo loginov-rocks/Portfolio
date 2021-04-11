@@ -7,11 +7,7 @@ module.exports = {
   devtool: false,
   entry: './src/index.ts',
   externals: [
-    nodeExternals({
-      allowlist: [
-        '@loginov-rocks/portfolio-shared',
-      ],
-    }),
+    nodeExternals(),
   ],
   module: {
     rules: [
