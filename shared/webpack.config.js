@@ -1,18 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 const path = require('path');
-const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   devtool: false,
   entry: './src/index.ts',
-  externals: [
-    nodeExternals({
-      allowlist: [
-        '@loginov-rocks/portfolio-shared',
-      ],
-    }),
-  ],
   module: {
     rules: [
       {
@@ -24,7 +16,6 @@ module.exports = {
   },
   output: {
     filename: 'index.js',
-    libraryTarget: 'commonjs',
     path: path.resolve(__dirname, 'lib'),
   },
   resolve: {

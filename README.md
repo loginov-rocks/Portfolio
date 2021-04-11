@@ -1,5 +1,6 @@
 # Portfolio
 
+[![Shared CI](https://github.com/loginov-rocks/Portfolio/actions/workflows/shared-ci.yml/badge.svg)](https://github.com/loginov-rocks/Portfolio/actions/workflows/shared-ci.yml)
 [![Web App CI](https://github.com/loginov-rocks/Portfolio/actions/workflows/web-app-ci.yml/badge.svg)](https://github.com/loginov-rocks/Portfolio/actions/workflows/web-app-ci.yml)
 [![Firebase CI](https://github.com/loginov-rocks/Portfolio/actions/workflows/firebase-ci.yml/badge.svg)](https://github.com/loginov-rocks/Portfolio/actions/workflows/firebase-ci.yml)
 [![CD](https://github.com/loginov-rocks/Portfolio/actions/workflows/cd.yml/badge.svg)](https://github.com/loginov-rocks/Portfolio/actions/workflows/cd.yml)
