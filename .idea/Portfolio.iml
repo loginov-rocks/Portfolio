@@ -8,7 +8,6 @@
       <sourceFolder url="file://$MODULE_DIR$/web-app/types" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/firebase/functions/coverage" />
       <excludeFolder url="file://$MODULE_DIR$/firebase/functions/lib" />
-      <excludeFolder url="file://$MODULE_DIR$/firebase/functions/local_modules" />
       <excludeFolder url="file://$MODULE_DIR$/shared/lib" />
       <excludeFolder url="file://$MODULE_DIR$/web-app/coverage" />
       <excludeFolder url="file://$MODULE_DIR$/web-app/dist" />

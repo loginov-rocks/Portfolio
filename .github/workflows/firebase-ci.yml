@@ -34,8 +34,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      # Use "install" instead of "ci" to trigger "preinstall" script.
-      - run: npm install
+      - run: npm ci
         working-directory: firebase/functions
       - run: npm run lint
         working-directory: firebase/functions
