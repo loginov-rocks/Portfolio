@@ -9,5 +9,6 @@
 
 Due to Firebase Functions
 [limitations in handling local dependencies](https://firebase.google.com/docs/functions/handle-dependencies#including_local_nodejs_modules)
-([GitHub issue](https://github.com/firebase/firebase-tools/issues/968)) the local `@loginov-rocks/portfolio-shared`
-package built, packed to `loginov-rocks-portfolio-shared.tgz` and installed as `tgz` on deploy.
+([GitHub issue](https://github.com/firebase/firebase-tools/issues/968#issuecomment-817357125)) the local
+`@loginov-rocks/portfolio-shared` package built, packed to `loginov-rocks-portfolio-shared.tgz` and installed as `tgz`
+on deploy action.
