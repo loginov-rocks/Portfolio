@@ -100,7 +100,8 @@ jobs:
           # last version
           node-version: 14
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
+      # Use "install" instead of "ci" to trigger "preinstall" script.
+      - run: npm install
         working-directory: firebase/functions
       - run: npm run lint
         working-directory: firebase/functions
