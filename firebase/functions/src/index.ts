@@ -2,7 +2,7 @@ import { AssetType } from '@loginov-rocks/portfolio-shared';
 import cors from 'cors';
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
-
+//
 import { IexAssetProvider } from 'AssetProvider/IexAssetProvider/IexAssetProvider';
 import * as C from 'Constants';
 import { CreateAsset } from 'CreateAsset/CreateAsset';

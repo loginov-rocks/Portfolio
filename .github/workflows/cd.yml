@@ -100,6 +100,8 @@ jobs:
           # last version
           node-version: 14
           registry-url: https://registry.npmjs.org/
+      - run: npm pack ../../shared && mv loginov-rocks-portfolio-shared-*.tgz loginov-rocks-portfolio-shared.tgz
+        working-directory: firebase/functions
       - run: npm ci
         working-directory: firebase/functions
       - run: npm run lint
