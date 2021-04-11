@@ -36,7 +36,7 @@
     "node": "14"
   },
   "dependencies": {
-    "@loginov-rocks/portfolio-shared": "file:loginov-rocks-portfolio-shared.tgz",
+    "@loginov-rocks/portfolio-shared": "file:local_modules/loginov-rocks-portfolio-shared.tgz",
     "@google-cloud/storage": "^5.8.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
