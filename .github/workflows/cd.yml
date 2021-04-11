@@ -27,15 +27,6 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run build
-      # Workaround to use local package in Firebase Functions setup.
-      - run: npm pack
-      - run: mv loginov-rocks-portfolio-shared-*.tgz loginov-rocks-portfolio-shared.tgz
-      - uses: actions/upload-artifact@v2
-        with:
-          name: shared-lib
-          path: shared/loginov-rocks-portfolio-shared.tgz
-          retention-days: 1
-      # End of workaround block.
 
   web-app-cd:
     name: Web App CD
@@ -100,12 +91,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      # Workaround to use local package in Firebase Functions setup.
-      - uses: actions/download-artifact@v2
-        with:
-          name: shared-lib
-          path: firebase/functions/loginov-rocks-portfolio-shared.tgz
-      # End of workaround block.
       - uses: actions/download-artifact@v2
         with:
           name: web-app-dist
@@ -115,12 +100,14 @@ jobs:
           # last version
           node-version: 14
           registry-url: https://registry.npmjs.org/
+      # Workaround to use local package in Firebase Functions setup.
+      - run: npm ci
+        working-directory: shared
+      - run: npm run build
+        working-directory: shared
+      # End of workaround block.
       - run: npm ci
         working-directory: firebase/functions
-      # Workaround to use local package in Firebase Functions setup.
-      - run: npm install loginov-rocks-portfolio-shared.tgz
-        working-directory: firebase/functions
-      # End of workaround block.
       - run: npm run lint
         working-directory: firebase/functions
       - run: npm run typecheck
