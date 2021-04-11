@@ -27,6 +27,11 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: shared-lib
+          path: shared/lib
+          retention-days: 1
 
   web-app-cd:
     name: Web App CD
@@ -93,6 +98,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
         with:
+          name: shared-lib
+          path: shared/lib
+      - uses: actions/download-artifact@v2
+        with:
           name: web-app-dist
           path: firebase/dist
       - uses: actions/setup-node@v2
@@ -100,10 +109,6 @@ jobs:
           # last version
           node-version: 14
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
-        working-directory: shared
-      - run: npm run build
-        working-directory: shared
       - run: npm ci
         working-directory: firebase/functions
       - run: npm run lint
