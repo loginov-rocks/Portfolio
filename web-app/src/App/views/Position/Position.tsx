@@ -8,10 +8,10 @@ import * as React from 'react';
 
 import { getVibrantColor } from 'Firebase/lib';
 import VibrantPalette from 'Firebase/lib/Functions/VibrantPalette';
+import { Money } from 'Layers/Presentation/Money';
+import { Percent } from 'Layers/Presentation/Percent';
+import { Progress } from 'Layers/Presentation/Progress';
 import PositionDate from 'Portfolio/components/PositionDate';
-import Money from 'Shared/components/Money';
-import Percent from 'Shared/components/Percent';
-import Progress from 'Shared/components/Progress';
 import StockLogo from 'Stocks/components/StockLogo';
 
 import { StockPosition } from '../../lib';

@@ -6,8 +6,8 @@ import * as React from 'react';
 
 import * as C from 'Constants';
 import { ChangeCurrencyAction } from 'Currencies/actions';
-import Money from 'Shared/components/Money';
-import Percent from 'Shared/components/Percent';
+import { Money } from 'Layers/Presentation/Money';
+import { Percent } from 'Layers/Presentation/Percent';
 
 export interface Props {
   anchor: HTMLElement | null;

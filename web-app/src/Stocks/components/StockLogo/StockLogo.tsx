@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 
-import Progress from 'Shared/components/Progress';
+import { Progress } from 'Layers/Presentation/Progress';
 
 export interface Props {
   classes: { [key: string]: string };

@@ -1,3 +1,5 @@
+// Move to Infrastructure layer.
+
 export const AVAILABLE_CURRENCIES = [
   { key: 'USD', label: 'U.S. Dollar' },
   { key: 'EUR', label: 'Euro' },

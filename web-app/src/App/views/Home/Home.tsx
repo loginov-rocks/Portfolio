@@ -1,7 +1,7 @@
 import { Tab, Tabs } from '@material-ui/core';
 import * as React from 'react';
 
-import Progress from 'Shared/components/Progress';
+import { Progress } from 'Layers/Presentation/Progress';
 
 import ClosedPositionsList from '../../components/ClosedPositionsList';
 import OpenPositionsList from '../../components/OpenPositionsList';

@@ -1,9 +1,9 @@
 import { Button, Typography } from '@material-ui/core';
 import * as React from 'react';
 
+import { Progress } from 'Layers/Presentation/Progress';
 import ClosePositionForm from 'Portfolio/components/ClosePositionForm';
 import { Position } from 'Portfolio/lib';
-import Progress from 'Shared/components/Progress';
 
 export interface Props {
   classes: { [key: string]: string };

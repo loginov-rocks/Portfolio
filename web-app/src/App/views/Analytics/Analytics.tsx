@@ -6,8 +6,8 @@ import {
 
 import { getVibrantColor } from 'Firebase/lib';
 import VibrantPalette from 'Firebase/lib/Functions/VibrantPalette';
-import Percent from 'Shared/components/Percent';
-import Progress from 'Shared/components/Progress';
+import { Percent } from 'Layers/Presentation/Percent';
+import { Progress } from 'Layers/Presentation/Progress';
 
 import { OpenPositionsSummary } from '../../lib';
 
