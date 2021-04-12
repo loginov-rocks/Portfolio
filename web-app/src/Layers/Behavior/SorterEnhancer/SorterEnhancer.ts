@@ -15,7 +15,7 @@ export interface SorterEnhancerProps {
 
 // eslint-disable-next-line max-len
 export const SorterEnhancer = <OwnProps extends SorterEnhancerInputProps>(): ComponentEnhancer<OwnProps & SorterEnhancerProps, OwnProps> => (
-  compose<OwnProps & SorterEnhancerProps, OwnProps>(
+  compose(
     withState<SorterEnhancerProps, HTMLElement | null, 'anchor', 'updateAnchor'>('anchor', 'updateAnchor', null),
     withProps<Partial<SorterEnhancerProps>, SorterEnhancerInputProps>(({ keys, sorterKey }) => {
       const selectedKey = keys.find(({ key }) => key === sorterKey);

@@ -19,6 +19,7 @@ type Props = AppProps & AppEnhancerProps;
 
 const theme = createMuiTheme(themeOptions);
 
+// TODO: Better split architectural layers.
 export const App: React.FunctionComponent<Props> = ({ isAuthenticated, persistor, progress }: Props) => {
   let component;
 

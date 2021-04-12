@@ -12,7 +12,7 @@ export interface AppEnhancerProps {
 }
 
 export const AppEnhancer = <OwnProps>(): ComponentEnhancer<OwnProps & AppEnhancerProps, OwnProps> => (
-  compose<OwnProps & AppEnhancerProps, OwnProps>(
+  compose(
     AppConnector,
     withProps<AppEnhancerProps, AppConnectorProps>(({ auth }) => ({
       isAuthenticated: !isEmpty(auth) && isLoaded(auth),

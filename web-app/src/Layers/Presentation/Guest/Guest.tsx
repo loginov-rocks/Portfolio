@@ -1,7 +1,7 @@
 import * as React from 'react';
 
+import { GoogleLoginButton } from 'Layers/Presentation/GoogleLoginButton';
 import { Logo } from 'Layers/Presentation/Logo';
-import GoogleLoginButton from 'User/components/GoogleLoginButton';
 
 interface Props {
   classes: { [key: string]: string };

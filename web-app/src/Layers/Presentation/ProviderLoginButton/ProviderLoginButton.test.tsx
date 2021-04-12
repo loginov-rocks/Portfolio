@@ -3,10 +3,12 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import GoogleLoginButton from './GoogleLoginButton';
+import { ProviderLoginButton } from './ProviderLoginButton';
 
 it('matches snapshot', () => {
-  const wrapper = shallow(<GoogleLoginButton />);
+  const wrapper = shallow(
+    <ProviderLoginButton handleClick={() => undefined} provider="google">Login</ProviderLoginButton>,
+  );
 
   expect(wrapper).toMatchSnapshot();
 });
