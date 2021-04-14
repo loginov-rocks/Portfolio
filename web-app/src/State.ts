@@ -1,6 +1,6 @@
 import AppState from 'App/State';
-import CurrenciesState from 'Currencies/State';
-import FirebaseState from 'Firebase/State';
+import { CurrenciesState } from 'Layers/Application/States/CurrenciesState/CurrenciesState';
+import { FirebaseState } from 'Layers/Application/States/FirebaseState/FirebaseState';
 import StocksState from 'Stocks/State';
 
 export default interface State {

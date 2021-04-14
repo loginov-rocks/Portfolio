@@ -22,11 +22,11 @@ exports[`matches snapshot 1`] = `
   <WithStyles(ForwardRef(Typography))>
     dolph@example.com
   </WithStyles(ForwardRef(Typography))>
-  <withFirebase(withHandlers(LogoutButton))
+  <Connect(withHandlers(LogoutButton))
     className="signOut"
     onLogout={[Function]}
   >
     Sign Out
-  </withFirebase(withHandlers(LogoutButton))>
+  </Connect(withHandlers(LogoutButton))>
 </div>
 `;

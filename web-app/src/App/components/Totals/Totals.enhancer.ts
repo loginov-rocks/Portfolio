@@ -1,6 +1,10 @@
-import { compose, withProps, withState } from 'recompose';
+import {
+  compose, lifecycle, withProps, withState,
+} from 'recompose';
 
-import withCurrency from 'Currencies/enhancers/withCurrency';
+import {
+  CurrencyConnector, CurrencyConnectorProps,
+} from 'Layers/Adapter/Connectors/CurrencyConnector/CurrencyConnector';
 
 import { calculateTotals, StockPosition } from '../../lib';
 import { Props } from './Totals';
@@ -13,5 +17,12 @@ interface EnhancedProps {
 export default compose<Props, EnhancedProps>(
   withState<EnhancedProps, HTMLElement | null, 'anchor', 'updateAnchor'>('anchor', 'updateAnchor', null),
   withProps<Partial<Props>, EnhancedProps>(({ stockPositions }) => calculateTotals(stockPositions)),
-  withCurrency,
+  CurrencyConnector,
+  lifecycle<CurrencyConnectorProps, Record<string, never>>({
+
+    componentDidMount() {
+      this.props.fetchRates();
+    },
+
+  }),
 );

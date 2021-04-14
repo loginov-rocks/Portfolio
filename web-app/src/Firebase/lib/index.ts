@@ -9,10 +9,6 @@ export interface GetFirebaseExtraArgument {
   (): firebase.app.App;
 }
 
-export interface WithFirebaseHocProps {
-  firebase: firebase.app.App;
-}
-
 export const getAuthProvider = (provider: string): firebase.auth.AuthProvider => {
   switch (provider) {
     case 'google':

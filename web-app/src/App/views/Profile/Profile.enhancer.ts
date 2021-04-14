@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 
-import { resetVibrantPalettes, ResetVibrantPalettesAction } from 'Firebase/actions';
-import { ProfileState } from 'Firebase/State';
+import {
+  resetVibrantPalettes, ResetVibrantPalettesAction,
+} from 'Layers/Application/ActionCreators/FirebaseActionCreators/FirebaseActionCreators';
+import { ProfileState } from 'Layers/Application/States/FirebaseState/FirebaseState';
 import State from 'State';
 import {
   resetLogos, ResetLogosAction, resetQuotes, ResetQuotesAction,

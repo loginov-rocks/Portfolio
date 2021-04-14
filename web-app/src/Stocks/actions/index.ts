@@ -8,6 +8,7 @@ import State from 'State';
 import iex from '../lib/IEX';
 import Quote from '../lib/IEX/Quote';
 
+// TODO: Should be unnecessary.
 export interface FetchLogoAction {
   (symbol: string): void;
 }

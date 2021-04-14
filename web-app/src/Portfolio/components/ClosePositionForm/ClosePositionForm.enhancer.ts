@@ -4,10 +4,12 @@ import {
   compose, StateHandler, withHandlers, withStateHandlers,
 } from 'recompose';
 
+import {
+  closePosition as closePositionAction, ClosePositionAction,
+} from 'Layers/Application/ActionCreators/PortfolioActionCreators/PortfolioActionCreators';
 import { formatDate } from 'Shared/lib';
 
 import { Props } from './ClosePositionForm';
-import { closePosition as closePositionAction, ClosePositionAction } from '../../actions';
 
 const mapDispatchToProps = { closePosition: closePositionAction };
 

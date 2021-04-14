@@ -4,9 +4,11 @@ import {
   compose, StateHandler, withHandlers, withStateHandlers,
 } from 'recompose';
 
+import {
+  updatePosition as updatePositionAction, UpdatePositionAction,
+} from 'Layers/Application/ActionCreators/PortfolioActionCreators/PortfolioActionCreators';
 import { formatDate } from 'Shared/lib';
 
-import { updatePosition as updatePositionAction, UpdatePositionAction } from '../../actions';
 import { Position } from '../../lib';
 import { Props } from './UpdatePositionForm';
 

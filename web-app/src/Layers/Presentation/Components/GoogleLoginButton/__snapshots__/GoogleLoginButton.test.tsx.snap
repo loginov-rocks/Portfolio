@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Connect(withHandlers(ProviderLoginButton))
+  provider="google"
+>
+  Sign in with Google
+</Connect(withHandlers(ProviderLoginButton))>
+`;

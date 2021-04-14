@@ -4,11 +4,11 @@ import {
 import * as React from 'react';
 
 import * as C from 'Constants';
-import { Money } from 'Layers/Presentation/Money';
-import { Percent } from 'Layers/Presentation/Percent';
-import { Sorter } from 'Layers/Presentation/Sorter';
+import { Money } from 'Layers/Presentation/Components/Money';
+import { Percent } from 'Layers/Presentation/Components/Percent';
+import { Sorter } from 'Layers/Presentation/Components/Sorter';
+import { StockLogo } from 'Layers/Presentation/Components/StockLogo';
 import PositionDate from 'Portfolio/components/PositionDate';
-import StockLogo from 'Stocks/components/StockLogo';
 
 import { StockPosition } from '../../lib';
 

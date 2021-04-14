@@ -6,10 +6,12 @@ import { Repository } from 'redux-repository/lib/interfaces';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
 
+import {
+  fetchVibrantPalette as fetchVibrantPaletteAction, FetchVibrantPaletteAction,
+} from 'Layers/Application/ActionCreators/FirebaseActionCreators/FirebaseActionCreators';
 import { areArraysEqual } from 'Shared/lib';
 import State from 'State';
 
-import { fetchVibrantPalette as fetchVibrantPaletteAction, FetchVibrantPaletteAction } from '../actions';
 import VibrantPalette from '../lib/Functions/VibrantPalette';
 
 // TODO: Tests.

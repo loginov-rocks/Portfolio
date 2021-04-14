@@ -1,7 +1,7 @@
 import { Button, Typography } from '@material-ui/core';
 import * as React from 'react';
 
-import { Progress } from 'Layers/Presentation/Progress';
+import { Progress } from 'Layers/Presentation/Components/Progress';
 import ClosePositionForm from 'Portfolio/components/ClosePositionForm';
 import { Position } from 'Portfolio/lib';
 

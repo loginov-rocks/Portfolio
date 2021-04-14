@@ -3,9 +3,13 @@ import { RouteComponentProps as WithRouterProps, withRouter } from 'react-router
 import { compose, withHandlers, withStateHandlers } from 'recompose';
 
 import withVibrantPaletteByImage from 'Firebase/enhancers/withVibrantPaletteByImage';
-import { deletePosition as deletePositionAction, DeletePositionAction } from 'Portfolio/actions';
+import {
+  deletePosition as deletePositionAction, DeletePositionAction,
+} from 'Layers/Application/ActionCreators/PortfolioActionCreators/PortfolioActionCreators';
+import {
+  StockLogoBySymbolEnhancer, StockLogoBySymbolEnhancerProps,
+} from 'Layers/Behavior/Enhancers/StockLogoBySymbolEnhancer/StockLogoBySymbolEnhancer';
 import withPositionById, { Props as WithPositionByIdProps } from 'Portfolio/enhancers/withPositionById';
-import withStockLogoBySymbol, { Props as WithStockLogoBySymbolProps } from 'Stocks/enhancers/withStockLogoBySymbol';
 
 import withStockPosition from '../../enhancers/withStockPosition';
 import { Props } from './Position';
@@ -61,6 +65,6 @@ export default compose<Props, Record<string, never>>(
 
   }),
   withStockPosition,
-  withStockLogoBySymbol,
-  withVibrantPaletteByImage<WithStockLogoBySymbolProps>(({ logo }) => logo),
+  StockLogoBySymbolEnhancer(),
+  withVibrantPaletteByImage<StockLogoBySymbolEnhancerProps>(({ logo }) => logo),
 );

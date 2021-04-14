@@ -1,10 +1,12 @@
 import { Avatar, Typography } from '@material-ui/core';
 import * as React from 'react';
 
-import { ResetVibrantPalettesAction } from 'Firebase/actions';
-import { ProfileState } from 'Firebase/State';
+import {
+  ResetVibrantPalettesAction,
+} from 'Layers/Application/ActionCreators/FirebaseActionCreators/FirebaseActionCreators';
+import { ProfileState } from 'Layers/Application/States/FirebaseState/FirebaseState';
+import { LogoutButton } from 'Layers/Presentation/Components/LogoutButton';
 import { ResetLogosAction, ResetQuotesAction } from 'Stocks/actions';
-import LogoutButton from 'User/components/LogoutButton';
 
 interface Props {
   classes: { [key: string]: string };

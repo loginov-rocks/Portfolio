@@ -4,12 +4,10 @@ import { ComponentEnhancer, compose } from 'recompose';
 
 import * as C from 'Constants';
 import { getPositionsCollectionPath } from 'Firebase/lib';
+import { AuthGate, AuthGateProps } from 'Layers/Behavior/Gates/AuthGate/AuthGate';
 import State from 'State';
-import withAuth, { Props as WithAuthProps } from 'User/enhancers/withAuth';
 
 import { Position } from '../lib';
-
-// TODO: Tests.
 
 export interface Props {
   position: Position | null;
@@ -21,7 +19,7 @@ interface PositionIdExtractor<OwnProps> {
 }
 
 const mapStateToProps = <OwnProps>(positionIdExtractor: PositionIdExtractor<OwnProps>) => (
-  { firebase: { firestore: { data } } }: State, ownProps: OwnProps & WithAuthProps,
+  { firebase: { firestore: { data } } }: State, ownProps: OwnProps & AuthGateProps,
 ): Props => {
   const rawPositions = data[C.STATE_FIREBASE_POSITIONS_KEY];
   // `as string` used here because UID will be present at this point when using `withAuth`.
@@ -43,8 +41,8 @@ const mapStateToProps = <OwnProps>(positionIdExtractor: PositionIdExtractor<OwnP
 export default <OwnProps>(
   positionIdExtractor: PositionIdExtractor<OwnProps>,
 ): ComponentEnhancer<Props, OwnProps> => compose(
-  withAuth,
-  firestoreConnect(({ auth }: WithAuthProps) => [
+  AuthGate(),
+  firestoreConnect(({ auth }: AuthGateProps) => [
     // `getPositionDocumentPath` is not used here, because it leads to listeners switching and DOCUMENT_ADDED events
     // flood. `as string` used here because UID will be present at this point when using `withAuth`.
     {
