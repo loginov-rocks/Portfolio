@@ -1,0 +1,18 @@
+@startuml
+
+autonumber
+
+box Firebase
+    database Database <<Firestore>>
+    participant "Assets Logos Bucket" as AssetsLogosBucket <<Bucket>>
+    participant "Assets Palettes Bucket" as AssetsPalettesBucket <<Bucket>>
+    participant "Update Assets Palettes" as UpdateAssetsPalettes <<Function>>
+end box
+
+AssetsLogosBucket -> UpdateAssetsPalettes: trigger on asset logo update
+UpdateAssetsPalettes -> UpdateAssetsPalettes: generate asset palette
+UpdateAssetsPalettes -> AssetsPalettesBucket: store asset palette
+AssetsPalettesBucket --> UpdateAssetsPalettes: return asset palette URL
+UpdateAssetsPalettes -> Database: update asset palette
+
+@enduml

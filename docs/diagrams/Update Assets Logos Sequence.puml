@@ -4,7 +4,7 @@ autonumber
 
 box Firebase
     database Database <<Firestore>>
-    participant "Logos Storage" as LogosStorage <<Storage>>
+    participant "Assets Logos Bucket" as AssetsLogosBucket <<Bucket>>
     participant "Update Assets Logos" as UpdateAssetsLogos <<Function>>
 end box
 participant "External Service" as ExternalService <<Asset Provider>>
@@ -18,8 +18,8 @@ loop per day
         ExternalService --> UpdateAssetsLogos: return asset logo
     end
     loop per asset
-        UpdateAssetsLogos -> LogosStorage: store asset logo
-        LogosStorage --> UpdateAssetsLogos: return asset logo URL
+        UpdateAssetsLogos -> AssetsLogosBucket: store asset logo
+        AssetsLogosBucket --> UpdateAssetsLogos: return asset logo URL
     end
     UpdateAssetsLogos -> Database: update assets logos
 end

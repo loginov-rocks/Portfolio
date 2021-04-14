@@ -3,7 +3,7 @@
 autonumber
 
 box Firebase
-    participant "Rates Storage" as RatesStorage <<Storage>>
+    participant "Rates Bucket" as RatesBucket <<Bucket>>
     participant "Update Rates" as UpdateRates <<Function>>
 end box
 participant "Rates Provider" as RatesProvider
@@ -11,7 +11,7 @@ participant "Rates Provider" as RatesProvider
 loop twice per day
     UpdateRates -> RatesProvider: get rates
     RatesProvider --> UpdateRates: return rates
-    UpdateRates -> RatesStorage: store rates file
+    UpdateRates -> RatesBucket: store rates file
 end
 
 @enduml
