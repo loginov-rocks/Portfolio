@@ -17,9 +17,9 @@ export const RATES_PROVIDER_BASE_URL = 'https://api.ratesapi.io/api';
 
 export const STORAGE_BASE_URL = 'https://storage.googleapis.com';
 
-export const UPDATE_ASSETS_FINANCIALS_DELAY = 30 * 60 * 1000; // 30 minutes
+export const UPDATE_ASSETS_FINANCIALS_DELAY = 10 * 60 * 1000; // 10 minutes
 export const UPDATE_ASSETS_FINANCIALS_LIMIT = 10;
-export const UPDATE_ASSETS_FINANCIALS_SCHEDULE = 'every 3 minutes';
+export const UPDATE_ASSETS_FINANCIALS_SCHEDULE = 'every 1 minutes';
 
 export const UPDATE_ASSETS_LOGOS_DELAY = 10 * 24 * 60 * 60 * 1000; // 10 days
 export const UPDATE_ASSETS_LOGOS_LIMIT = 10;
