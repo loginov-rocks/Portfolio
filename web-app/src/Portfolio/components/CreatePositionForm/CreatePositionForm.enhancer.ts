@@ -7,10 +7,10 @@ import {
 import {
   createPosition as createPositionAction, CreatePositionAction,
 } from 'Layers/Application/ActionCreators/PortfolioActionCreators/PortfolioActionCreators';
+import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 import { formatDate } from 'Shared/lib';
 
 import { Props } from './CreatePositionForm';
-import { Position } from '../../lib';
 
 const mapDispatchToProps = { createPosition: createPositionAction };
 

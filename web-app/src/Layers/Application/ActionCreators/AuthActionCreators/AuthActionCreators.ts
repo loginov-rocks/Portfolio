@@ -1,10 +1,10 @@
 import { ThunkAction } from 'redux-thunk';
 
-// TODO: Move to Business layer.
-import { getAuthProvider, GetFirebaseExtraArgument } from 'Firebase/lib';
 import {
   logoutTriggered, LogoutTriggeredAction, signInTriggered, SignInTriggeredAction,
 } from 'Layers/Application/Actions/AuthActions/AuthActions';
+import { GetFirebaseExtraArgument } from 'Layers/Application/Middlewares/FirebaseMiddleware/FirebaseMiddleware';
+import { getAuthProvider } from 'Layers/Business/Services/FirebaseService/FirebaseService';
 import State from 'State';
 
 export const triggerSignIn = (

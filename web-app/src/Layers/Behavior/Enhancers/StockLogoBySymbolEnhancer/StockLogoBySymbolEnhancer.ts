@@ -5,8 +5,8 @@ import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
 
 import {
-  StockLogosConnector, StockLogosConnectorProps,
-} from 'Layers/Adapter/Connectors/StockLogosConnector/StockLogosConnector';
+  StocksLogosConnector, StocksLogosConnectorProps,
+} from 'Layers/Adapter/Connectors/StocksLogosConnector/StocksLogosConnector';
 
 export interface StockLogoBySymbolEnhancerInputProps {
   symbol: string;
@@ -20,8 +20,8 @@ export interface StockLogoBySymbolEnhancerProps {
 // eslint-disable-next-line max-len
 export const StockLogoBySymbolEnhancer = <OwnProps extends StockLogoBySymbolEnhancerInputProps>(): ComponentEnhancer<OwnProps & StockLogoBySymbolEnhancerProps, OwnProps> => (
   compose(
-    StockLogosConnector,
-    lifecycle<OwnProps & StockLogosConnectorProps, Record<string, never>>({
+    StocksLogosConnector,
+    lifecycle<OwnProps & StocksLogosConnectorProps, Record<string, never>>({
 
       componentDidMount() {
         const { fetchLogo, symbol } = this.props;
@@ -40,7 +40,7 @@ export const StockLogoBySymbolEnhancer = <OwnProps extends StockLogoBySymbolEnha
       },
 
     }),
-    mapProps<StockLogoBySymbolEnhancerProps, OwnProps & StockLogosConnectorProps>(({
+    mapProps<StockLogoBySymbolEnhancerProps, OwnProps & StocksLogosConnectorProps>(({
       fetchLogo, logos, symbol, ...props // eslint-disable-line @typescript-eslint/no-unused-vars
     }) => {
       const logo = getResourceById(logos, symbol);

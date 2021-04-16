@@ -2,9 +2,8 @@ import { Repository } from 'redux-repository/lib/interfaces';
 
 // TODO: Move to Infrastructure layer.
 import * as C from 'Constants';
-// TODO: Move to Business layer.
-import VibrantPalette from 'Firebase/lib/Functions/VibrantPalette';
-import { Position } from 'Portfolio/lib';
+import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
+import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 
 export interface AuthState {
   isEmpty: boolean;

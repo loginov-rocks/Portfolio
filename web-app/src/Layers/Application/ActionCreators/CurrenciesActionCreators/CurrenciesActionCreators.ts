@@ -4,8 +4,7 @@ import {
   currencyChanged, CurrencyChangedAction, ratesFailed, RatesFailedAction, ratesReceived, RatesReceivedAction,
   ratesRequested, RatesRequestedAction,
 } from 'Layers/Application/Actions/CurrenciesActions/CurrenciesActions';
-// TODO: Move to Business layer.
-import ratesApi from 'Currencies/lib/RatesApi';
+import { RatesService } from 'Layers/Business/Services/RatesService/RatesService';
 // TODO: Move to Infrastructure layer.
 import { formatDate } from 'Shared/lib';
 import State from 'State';
@@ -34,7 +33,7 @@ export const fetchRates = (
 
   dispatch(ratesRequested());
 
-  ratesApi.getLatest()
+  RatesService.getLatest()
     .then((data) => {
       dispatch(ratesReceived(data.rates, data.date));
     })

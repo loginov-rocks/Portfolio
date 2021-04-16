@@ -4,10 +4,8 @@ import { ThunkAction } from 'redux-thunk';
 
 // TODO: Move to Infrastructure layer.
 import * as C from 'Constants';
-// TODO: Move to Business layer.
-import functions from 'Firebase/lib/Functions';
-// TODO: Move to Business layer.
-import VibrantPalette from 'Firebase/lib/Functions/VibrantPalette';
+import { FirebaseFunctionsService } from 'Layers/Business/Services/FirebaseFunctionsService';
+import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
 import State from 'State';
 
 // TODO: Should be unnecessary.
@@ -26,7 +24,7 @@ export const fetchVibrantPalette = (
   img,
   ({ firebase: { functions: { vibrantPalettes } } }) => vibrantPalettes,
   (dispatchReceived, dispatchFailed) => {
-    functions.getVibrantPalette(img)
+    FirebaseFunctionsService.getVibrantPalette(img)
       .then((data) => dispatchReceived(data))
       .catch((error) => dispatchFailed(error.toString()));
   },

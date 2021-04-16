@@ -1,5 +1,4 @@
-// TODO: Move to Business layer.
-import { Position } from 'Portfolio/lib';
+import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 
 export const POSITION_CREATED = 'portfolio/POSITION_CREATED';
 export const POSITION_CLOSED = 'portfolio/POSITION_CLOSED';

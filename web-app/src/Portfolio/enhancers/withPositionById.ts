@@ -3,11 +3,10 @@ import { firestoreConnect, isLoaded } from 'react-redux-firebase';
 import { ComponentEnhancer, compose } from 'recompose';
 
 import * as C from 'Constants';
-import { getPositionsCollectionPath } from 'Firebase/lib';
 import { AuthGate, AuthGateProps } from 'Layers/Behavior/Gates/AuthGate/AuthGate';
+import { getPositionsCollectionPath } from 'Layers/Business/Services/FirebaseService/FirebaseService';
+import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 import State from 'State';
-
-import { Position } from '../lib';
 
 export interface Props {
   position: Position | null;

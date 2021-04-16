@@ -1,11 +1,11 @@
-import AppState from 'App/State';
 import { CurrenciesState } from 'Layers/Application/States/CurrenciesState/CurrenciesState';
 import { FirebaseState } from 'Layers/Application/States/FirebaseState/FirebaseState';
-import StocksState from 'Stocks/State';
+import { HomeState } from 'Layers/Application/States/HomeState/HomeState';
+import { StocksState } from 'Layers/Application/States/StocksState/StocksState';
 
 export default interface State {
-  app: AppState;
   currencies: CurrenciesState;
   firebase: FirebaseState;
+  home: HomeState;
   stocks: StocksState;
 } // eslint-disable-line semi

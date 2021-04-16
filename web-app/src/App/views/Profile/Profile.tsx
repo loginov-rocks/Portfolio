@@ -4,9 +4,11 @@ import * as React from 'react';
 import {
   ResetVibrantPalettesAction,
 } from 'Layers/Application/ActionCreators/FirebaseActionCreators/FirebaseActionCreators';
+import {
+  ResetLogosAction, ResetQuotesAction,
+} from 'Layers/Application/ActionCreators/StocksActionCreators/StocksActionCreators';
 import { ProfileState } from 'Layers/Application/States/FirebaseState/FirebaseState';
 import { LogoutButton } from 'Layers/Presentation/Components/LogoutButton';
-import { ResetLogosAction, ResetQuotesAction } from 'Stocks/actions';
 
 interface Props {
   classes: { [key: string]: string };

@@ -6,8 +6,8 @@ import {
 } from '@material-ui/icons';
 import * as React from 'react';
 
-import { getVibrantColor } from 'Firebase/lib';
-import VibrantPalette from 'Firebase/lib/Functions/VibrantPalette';
+import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
+import { getVibrantColor } from 'Layers/Business/Services/FirebaseService/FirebaseService';
 import { Money } from 'Layers/Presentation/Components/Money';
 import { Percent } from 'Layers/Presentation/Components/Percent';
 import { Progress } from 'Layers/Presentation/Components/Progress';

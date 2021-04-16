@@ -1,6 +1,6 @@
 import { compose, mapProps, withProps } from 'recompose';
 
-import { getUniqueSymbolsFromPositions, Position } from 'Portfolio/lib';
+import { getUniqueSymbolsFromPositions, Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 import withStockQuotesBySymbols, {
   Props as WithStockQuotesBySymbolsProps,
 } from 'Stocks/enhancers/withStockQuotesBySymbols';

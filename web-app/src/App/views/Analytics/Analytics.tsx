@@ -4,8 +4,8 @@ import {
   Cell, Pie, PieChart, ResponsiveContainer,
 } from 'recharts';
 
-import { getVibrantColor } from 'Firebase/lib';
-import VibrantPalette from 'Firebase/lib/Functions/VibrantPalette';
+import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
+import { getVibrantColor } from 'Layers/Business/Services/FirebaseService/FirebaseService';
 import { Percent } from 'Layers/Presentation/Components/Percent';
 import { Progress } from 'Layers/Presentation/Components/Progress';
 

@@ -7,9 +7,9 @@ import {
 import {
   updatePosition as updatePositionAction, UpdatePositionAction,
 } from 'Layers/Application/ActionCreators/PortfolioActionCreators/PortfolioActionCreators';
+import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 import { formatDate } from 'Shared/lib';
 
-import { Position } from '../../lib';
 import { Props } from './UpdatePositionForm';
 
 const mapDispatchToProps = { updatePosition: updatePositionAction };

@@ -1,5 +1,4 @@
-// TODO: Move to Business layer.
-import { RatesObject } from 'Currencies/lib/RatesApi/Rates';
+import { RatesObject } from 'Layers/Business/Services/RatesService/Rates';
 
 export const CURRENCY_CHANGED = 'currencies/CURRENCY_CHANGED';
 export const RATES_REQUESTED = 'currencies/RATES_REQUESTED';

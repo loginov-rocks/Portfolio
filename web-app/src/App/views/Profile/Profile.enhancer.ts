@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import {
   resetVibrantPalettes, ResetVibrantPalettesAction,
 } from 'Layers/Application/ActionCreators/FirebaseActionCreators/FirebaseActionCreators';
-import { ProfileState } from 'Layers/Application/States/FirebaseState/FirebaseState';
-import State from 'State';
 import {
   resetLogos, ResetLogosAction, resetQuotes, ResetQuotesAction,
-} from 'Stocks/actions';
+} from 'Layers/Application/ActionCreators/StocksActionCreators/StocksActionCreators';
+import { ProfileState } from 'Layers/Application/States/FirebaseState/FirebaseState';
+import State from 'State';
 
 interface StateProps {
   profile: ProfileState;

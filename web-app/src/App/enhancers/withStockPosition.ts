@@ -1,6 +1,6 @@
 import { compose, mapProps, withProps } from 'recompose';
 
-import { Position } from 'Portfolio/lib';
+import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 import withStockQuoteBySymbol, { Props as WithStockQuoteBySymbolProps } from 'Stocks/enhancers/withStockQuoteBySymbol';
 
 import { createStockPosition, StockPosition } from '../lib';

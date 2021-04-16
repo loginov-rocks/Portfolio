@@ -5,8 +5,8 @@ import {
 
 import { AuthConnector, AuthConnectorProps } from 'Layers/Adapter/Connectors/AuthConnector/AuthConnector';
 import {
-  StockQuotesUpdateMiddleware,
-} from 'Layers/Behavior/Middlewares/StockQuotesUpdateMiddleware/StockQuotesUpdateMiddleware';
+  StocksQuotesUpdateMiddleware,
+} from 'Layers/Behavior/Middlewares/StocksQuotesUpdateMiddleware/StocksQuotesUpdateMiddleware';
 
 export interface AppEnhancerProps {
   isAuthenticated: boolean;
@@ -22,7 +22,7 @@ export const AppEnhancer = <OwnProps>(): ComponentEnhancer<OwnProps & AppEnhance
     })),
     branch<AppEnhancerProps>(
       ({ isAuthenticated }) => isAuthenticated,
-      StockQuotesUpdateMiddleware(),
+      StocksQuotesUpdateMiddleware(),
     ),
   )
 );

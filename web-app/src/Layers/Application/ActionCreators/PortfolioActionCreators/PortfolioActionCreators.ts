@@ -1,13 +1,12 @@
 import { ThunkAction } from 'redux-thunk';
 
-// TODO: Move to Business layer.
-import { GetFirebaseExtraArgument, getPositionDocument, getPositionsCollection } from 'Firebase/lib';
 import {
   positionCreated, PositionCreatedAction, positionClosed, PositionClosedAction, positionDeleted, PositionDeletedAction,
   positionUpdated, PositionUpdatedAction,
 } from 'Layers/Application/Actions/PortfolioActions/PortfolioActions';
-// TODO: Move to Business layer.
-import { Position } from 'Portfolio/lib';
+import { GetFirebaseExtraArgument } from 'Layers/Application/Middlewares/FirebaseMiddleware/FirebaseMiddleware';
+import { getPositionDocument, getPositionsCollection } from 'Layers/Business/Services/FirebaseService/FirebaseService';
+import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 import State from 'State';
 
 // TODO: Should be unnecessary.

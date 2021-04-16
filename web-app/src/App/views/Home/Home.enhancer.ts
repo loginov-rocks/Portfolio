@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 import { RouteComponentProps as WithRouterProps, withRouter } from 'react-router-dom';
 import { compose, withHandlers } from 'recompose';
 
+import { changeHomeTab } from 'Layers/Application/ActionCreators/HomeActionCreators/HomeActionCreators';
 import withPositions from 'Portfolio/enhancers/withPositions';
 import State from 'State';
 
-import { changeHomeTab } from '../../actions';
 import withStockPositions from '../../enhancers/withStockPositions';
 import { Props } from './Home';
 import * as R from '../../routes';
@@ -18,7 +18,7 @@ interface WithHandlersProps {
   handlePositionClick: (positionId: string) => void;
 }
 
-const mapStateToProps = ({ app: { homeTab } }: State): StateProps => ({ tab: homeTab });
+const mapStateToProps = ({ home: { homeTab } }: State): StateProps => ({ tab: homeTab });
 
 const mapDispatchToProps = { handleTabChange: changeHomeTab };
 

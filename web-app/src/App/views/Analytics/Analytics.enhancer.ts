@@ -3,7 +3,7 @@ import { compose, withProps } from 'recompose';
 import withVibrantPalettesByImages, {
   Props as WithVibrantPalettesByImagesProps,
 } from 'Firebase/enhancers/withVibrantPalettesByImages';
-import VibrantPalette from 'Firebase/lib/Functions/VibrantPalette';
+import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
 import withPositions from 'Portfolio/enhancers/withPositions';
 import { sortCollection } from 'Shared/lib';
 import withStockLogosBySymbols, {

@@ -4,11 +4,12 @@ import { Repository } from 'redux-repository/lib/interfaces';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
 
+import {
+  fetchQuote as fetchQuoteAction, FetchQuoteAction,
+} from 'Layers/Application/ActionCreators/StocksActionCreators/StocksActionCreators';
+import { Quote } from 'Layers/Business/Services/StocksService/IexService/Quote';
 import { areArraysEqual } from 'Shared/lib';
 import State from 'State';
-
-import { fetchQuote as fetchQuoteAction, FetchQuoteAction } from '../actions';
-import Quote from '../lib/IEX/Quote';
 
 // TODO: Tests.
 

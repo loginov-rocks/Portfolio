@@ -48,7 +48,7 @@ export default (reducer: Reducer): {
   const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['app', 'currencies', 'firebase', 'stocks'],
+    whitelist: ['currencies', 'firebase', 'home', 'stocks'],
   };
 
   const persistedReducer = persistReducer(persistConfig, reducer);

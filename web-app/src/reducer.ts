@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
 
-import app from 'App/reducer';
 import { CurrenciesReducer } from 'Layers/Application/Reducers/CurrenciesReducer/CurrenciesReducer';
 import { FirebaseReducer } from 'Layers/Application/Reducers/FirebaseReducer/FirebaseReducer';
-import stocks from 'Stocks/reducer';
+import { HomeReducer } from 'Layers/Application/Reducers/HomeReducer/HomeReducer';
+import { StocksReducer } from 'Layers/Application/Reducers/StocksReducer/StocksReducer';
 
 export default combineReducers({
-  app,
   currencies: CurrenciesReducer,
   firebase: FirebaseReducer,
-  stocks,
+  home: HomeReducer,
+  stocks: StocksReducer,
 });

@@ -9,9 +9,8 @@ import { extractData, isRequested } from 'redux-repository/lib/resource';
 import {
   fetchVibrantPalette as fetchVibrantPaletteAction, FetchVibrantPaletteAction,
 } from 'Layers/Application/ActionCreators/FirebaseActionCreators/FirebaseActionCreators';
+import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
 import State from 'State';
-
-import VibrantPalette from '../lib/Functions/VibrantPalette';
 
 // TODO: Tests.
 

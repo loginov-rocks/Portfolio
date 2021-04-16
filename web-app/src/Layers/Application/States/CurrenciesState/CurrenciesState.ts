@@ -1,5 +1,4 @@
-// TODO: Move to Business layer.
-import { RatesObject } from 'Currencies/lib/RatesApi/Rates';
+import { RatesObject } from 'Layers/Business/Services/RatesService/Rates';
 
 export interface CurrenciesState {
   currency: string;

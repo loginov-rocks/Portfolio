@@ -6,7 +6,7 @@ import State from 'State';
 
 import {
   changeSorterKeyCurried, ChangeSorterKeyAction, changeSorterOrderCurried, ChangeSorterOrderAction,
-} from '../actions';
+} from 'Layers/Application/ActionCreators/HomeActionCreators/HomeActionCreators';
 
 // TODO: Tests.
 
@@ -25,7 +25,7 @@ export interface Props extends StateProps, DispatchProps {
 }
 
 const mapStateToProps = (name: string, initialKey: string, initialOrder: 'asc' | 'desc') => ({
-  app: { sorters: { [name]: sorter } },
+  home: { sorters: { [name]: sorter } },
 }: State): StateProps => {
   let sorterKey = initialKey;
   let sorterOrder = initialOrder;

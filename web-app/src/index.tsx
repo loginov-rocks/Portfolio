@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import 'typeface-roboto';
 
-import { App } from 'Layers/Presentation/Components/App';
+import { App } from 'App/components/App';
 import 'Styles/index.css';
 
 import createStore from './createStore';
