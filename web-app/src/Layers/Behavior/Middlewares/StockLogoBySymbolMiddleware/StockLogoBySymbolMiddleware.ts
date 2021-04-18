@@ -5,20 +5,20 @@ import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData, isRequested } from 'redux-repository/lib/resource';
 
 import {
-  StocksLogosConnector, StocksLogosConnectorProps,
+  StockLogoData, StocksLogosConnector, StocksLogosConnectorProps,
 } from 'Layers/Adapter/Connectors/StocksLogosConnector/StocksLogosConnector';
 
-export interface StockLogoBySymbolEnhancerInputProps {
+export interface StockLogoBySymbolMiddlewareInputProps {
   symbol: string;
 }
 
-export interface StockLogoBySymbolEnhancerProps {
-  logo: string | null;
+export interface StockLogoBySymbolMiddlewareProps {
+  logo: StockLogoData;
   logoProgress: boolean;
 }
 
 // eslint-disable-next-line max-len
-export const StockLogoBySymbolEnhancer = <OwnProps extends StockLogoBySymbolEnhancerInputProps>(): ComponentEnhancer<OwnProps & StockLogoBySymbolEnhancerProps, OwnProps> => (
+export const StockLogoBySymbolMiddleware = <OwnProps extends StockLogoBySymbolMiddlewareInputProps>(): ComponentEnhancer<OwnProps & StockLogoBySymbolMiddlewareProps, OwnProps> => (
   compose(
     StocksLogosConnector,
     lifecycle<OwnProps & StocksLogosConnectorProps, Record<string, never>>({
@@ -40,8 +40,9 @@ export const StockLogoBySymbolEnhancer = <OwnProps extends StockLogoBySymbolEnha
       },
 
     }),
-    mapProps<StockLogoBySymbolEnhancerProps, OwnProps & StocksLogosConnectorProps>(({
-      fetchLogo, logos, symbol, ...props // eslint-disable-line @typescript-eslint/no-unused-vars
+    mapProps<StockLogoBySymbolMiddlewareProps, OwnProps & StocksLogosConnectorProps>(({
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      fetchLogo, logos, symbol, ...returnedProps
     }) => {
       const logo = getResourceById(logos, symbol);
 
@@ -49,7 +50,7 @@ export const StockLogoBySymbolEnhancer = <OwnProps extends StockLogoBySymbolEnha
         logo: extractData(logo),
         logoProgress: isRequested(logo),
         symbol,
-        ...props,
+        ...returnedProps,
       };
     }),
   )

@@ -1,4 +1,4 @@
-// TODO: Move to Infrastructure layer.
+// TODO: Consider removing link to the Infrastructure layer as it's the only usage within the Reducers components.
 import * as C from 'Constants';
 import {
   CURRENCY_CHANGED, CurrencyChangedAction, RATES_FAILED, RatesFailedAction, RATES_RECEIVED, RatesReceivedAction,

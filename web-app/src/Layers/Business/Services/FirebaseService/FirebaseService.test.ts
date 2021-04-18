@@ -1,4 +1,4 @@
-import { getAuthProvider, getPositionsCollectionPath, getPositionDocumentPath } from './FirebaseService';
+import { getAuthProvider, getPositionsCollectionPath } from './FirebaseService';
 
 describe('getAuthProvider', () => {
   it('returns Google auth provider if "google" passed', () => {
@@ -13,11 +13,5 @@ describe('getAuthProvider', () => {
 describe('getPositionsCollectionPath', () => {
   it('matches snapshot', () => {
     expect(getPositionsCollectionPath('userId')).toMatchSnapshot();
-  });
-});
-
-describe('getPositionDocumentPath', () => {
-  it('matches snapshot', () => {
-    expect(getPositionDocumentPath('userId', 'positionId')).toMatchSnapshot();
   });
 });

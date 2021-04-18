@@ -1,13 +1,11 @@
 import { compose, mapProps, withProps } from 'recompose';
 
+import {
+  StocksQuotesBySymbolsMiddleware, StocksQuotesBySymbolsMiddlewareProps,
+} from 'Layers/Behavior/Middlewares/StocksQuotesBySymbolsMiddleware/StocksQuotesBySymbolsMiddleware';
 import { getUniqueSymbolsFromPositions, Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
-import withStockQuotesBySymbols, {
-  Props as WithStockQuotesBySymbolsProps,
-} from 'Stocks/enhancers/withStockQuotesBySymbols';
 
 import { createStockPosition, StockPosition } from '../lib';
-
-// TODO: Tests.
 
 interface EnhancedProps {
   positions: Position[];
@@ -25,8 +23,8 @@ export default compose<Props, EnhancedProps>(
   withProps<WithProps, EnhancedProps>(({ positions }) => ({
     symbols: getUniqueSymbolsFromPositions(positions),
   })),
-  withStockQuotesBySymbols,
-  mapProps<Props, EnhancedProps & WithProps & WithStockQuotesBySymbolsProps>(({
+  StocksQuotesBySymbolsMiddleware(),
+  mapProps<Props, EnhancedProps & WithProps & StocksQuotesBySymbolsMiddlewareProps>(({
     positions, quotesBySymbols, symbols, ...props // eslint-disable-line @typescript-eslint/no-unused-vars
   }) => ({
     positions,

@@ -2,8 +2,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect, isLoaded } from 'react-redux-firebase';
 import { ComponentEnhancer, compose } from 'recompose';
 
-import * as C from 'Constants';
-import { AuthGate, AuthGateProps } from 'Layers/Behavior/Gates/AuthGate/AuthGate';
+import { AuthConnector, AuthConnectorProps } from 'Layers/Adapter/Connectors/AuthConnector/AuthConnector';
 import { getPositionsCollectionPath } from 'Layers/Business/Services/FirebaseService/FirebaseService';
 import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 import State from 'State';
@@ -18,9 +17,9 @@ interface PositionIdExtractor<OwnProps> {
 }
 
 const mapStateToProps = <OwnProps>(positionIdExtractor: PositionIdExtractor<OwnProps>) => (
-  { firebase: { firestore: { data } } }: State, ownProps: OwnProps & AuthGateProps,
+  { firebase: { firestore: { data } } }: State, ownProps: OwnProps & AuthConnectorProps,
 ): Props => {
-  const rawPositions = data[C.STATE_FIREBASE_POSITIONS_KEY];
+  const rawPositions = data.positions;
   // `as string` used here because UID will be present at this point when using `withAuth`.
   const userId = ownProps.auth.uid as string;
 
@@ -40,13 +39,13 @@ const mapStateToProps = <OwnProps>(positionIdExtractor: PositionIdExtractor<OwnP
 export default <OwnProps>(
   positionIdExtractor: PositionIdExtractor<OwnProps>,
 ): ComponentEnhancer<Props, OwnProps> => compose(
-  AuthGate(),
-  firestoreConnect(({ auth }: AuthGateProps) => [
+  AuthConnector,
+  firestoreConnect(({ auth }: AuthConnectorProps) => [
     // `getPositionDocumentPath` is not used here, because it leads to listeners switching and DOCUMENT_ADDED events
     // flood. `as string` used here because UID will be present at this point when using `withAuth`.
     {
       collection: getPositionsCollectionPath(auth.uid as string),
-      storeAs: C.STATE_FIREBASE_POSITIONS_KEY,
+      storeAs: 'positions',
     },
   ]),
   connect(mapStateToProps(positionIdExtractor)),

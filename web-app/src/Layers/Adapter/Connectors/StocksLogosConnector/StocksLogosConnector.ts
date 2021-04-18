@@ -1,8 +1,8 @@
 import { connect, ConnectedProps } from 'react-redux';
 
-import State from 'State';
 import { fetchLogo } from 'Layers/Application/ActionCreators/StocksActionCreators/StocksActionCreators';
-import { LogosState } from 'Layers/Application/States/StocksState/StocksState';
+import { LogoData, LogosState } from 'Layers/Application/States/StocksState/StocksState';
+import State from 'State';
 
 interface StateProps {
   logos: LogosState;
@@ -11,6 +11,8 @@ interface StateProps {
 const mapStateToProps = ({ stocks: { logos } }: State): StateProps => ({ logos });
 
 const mapDispatchToProps = { fetchLogo };
+
+export type StockLogoData = LogoData;
 
 export const StocksLogosConnector = connect(mapStateToProps, mapDispatchToProps);
 

@@ -2,13 +2,15 @@ import { connect } from 'react-redux';
 import { RouteComponentProps as WithRouterProps, withRouter } from 'react-router-dom';
 import { compose, withHandlers, withStateHandlers } from 'recompose';
 
-import withVibrantPaletteByImage from 'Firebase/enhancers/withVibrantPaletteByImage';
 import {
   deletePosition as deletePositionAction, DeletePositionAction,
 } from 'Layers/Application/ActionCreators/PortfolioActionCreators/PortfolioActionCreators';
 import {
-  StockLogoBySymbolEnhancer, StockLogoBySymbolEnhancerProps,
-} from 'Layers/Behavior/Enhancers/StockLogoBySymbolEnhancer/StockLogoBySymbolEnhancer';
+  StockLogoBySymbolMiddleware, StockLogoBySymbolMiddlewareProps,
+} from 'Layers/Behavior/Middlewares/StockLogoBySymbolMiddleware/StockLogoBySymbolMiddleware';
+import {
+  VibrantPaletteByImageMiddleware,
+} from 'Layers/Behavior/Middlewares/VibrantPaletteByImageMiddleware/VibrantPaletteByImageMiddleware';
 import withPositionById, { Props as WithPositionByIdProps } from 'Portfolio/enhancers/withPositionById';
 
 import withStockPosition from '../../enhancers/withStockPosition';
@@ -65,6 +67,6 @@ export default compose<Props, Record<string, never>>(
 
   }),
   withStockPosition,
-  StockLogoBySymbolEnhancer(),
-  withVibrantPaletteByImage<StockLogoBySymbolEnhancerProps>(({ logo }) => logo),
+  StockLogoBySymbolMiddleware(),
+  VibrantPaletteByImageMiddleware<StockLogoBySymbolMiddlewareProps>(({ logo }) => logo),
 );

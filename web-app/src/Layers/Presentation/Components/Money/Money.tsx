@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-// TODO: Move to Infrastructure layer.
+// TODO: Consider removing link to the Infrastructure layer as it's the only usage within the Presentation layer.
 import * as C from 'Constants';
 
 interface Props {

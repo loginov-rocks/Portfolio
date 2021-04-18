@@ -3,9 +3,9 @@ import { REHYDRATE, RehydrateAction } from 'redux-persist';
 import { isResourceAction, repositoryReducer } from 'redux-repository/lib/reducer';
 import { createInitialState, mergeRepositories } from 'redux-repository/lib/repository';
 
-// TODO: Move to Infrastructure layer.
-import * as C from 'Constants';
-import { VibrantPaletteAction } from 'Layers/Application/Actions/FirebaseActions/FirebaseActions';
+import {
+  VIBRANT_PALETTES_RESOURCE_ACTION_NAME, VibrantPaletteAction,
+} from 'Layers/Application/Actions/FirebaseActions/FirebaseActions';
 import { FunctionsState as State } from 'Layers/Application/States/FirebaseState/FirebaseState';
 import RootState from 'State';
 
@@ -29,7 +29,7 @@ export const FirebaseFunctionsReducer = (state: State = initialState, action: Ac
     };
   }
 
-  if (isResourceAction(C.FIREBASE_FUNCTIONS_VIBRANT_PALETTES_RESOURCE_NAME, action as VibrantPaletteAction)) {
+  if (isResourceAction(VIBRANT_PALETTES_RESOURCE_ACTION_NAME, action as VibrantPaletteAction)) {
     return {
       ...state,
       vibrantPalettes: repositoryReducer(state.vibrantPalettes, action as VibrantPaletteAction),

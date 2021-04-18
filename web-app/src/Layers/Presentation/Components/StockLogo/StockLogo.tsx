@@ -2,17 +2,17 @@ import classNames from 'classnames';
 import * as React from 'react';
 
 import {
-  StockLogoBySymbolEnhancerInputProps, StockLogoBySymbolEnhancerProps,
-} from 'Layers/Behavior/Enhancers/StockLogoBySymbolEnhancer/StockLogoBySymbolEnhancer';
+  StockLogoEnhancerInputProps, StockLogoEnhancerProps,
+} from 'Layers/Behavior/Enhancers/StockLogoEnhancer/StockLogoEnhancer';
 import { Progress } from 'Layers/Presentation/Components/Progress';
 
-export interface StockLogoProps extends StockLogoBySymbolEnhancerInputProps {
+export interface StockLogoProps extends StockLogoEnhancerInputProps {
   classes: { [key: string]: string };
   className?: string;
   size?: number;
 }
 
-type Props = StockLogoProps & StockLogoBySymbolEnhancerProps;
+type Props = StockLogoProps & StockLogoEnhancerProps;
 
 export const StockLogo: React.FunctionComponent<Props> = ({
   classes, className, logo, logoProgress, size,

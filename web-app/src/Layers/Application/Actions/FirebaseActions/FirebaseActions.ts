@@ -1,5 +1,7 @@
-import { Action as ReduxRepositoryAction } from 'redux-repository/lib/types';
+import { Action } from 'redux-repository/lib/types';
 
 import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
 
-export type VibrantPaletteAction = ReduxRepositoryAction<VibrantPalette, string>;
+export const VIBRANT_PALETTES_RESOURCE_ACTION_NAME = 'firebaseFunctions/vibrantPalettes';
+
+export type VibrantPaletteAction = Action<VibrantPalette, string>;

@@ -1,7 +1,11 @@
-import { Action as ReduxRepositoryAction } from 'redux-repository/lib/types';
+import { Action } from 'redux-repository/lib/types';
 
 import { Quote } from 'Layers/Business/Services/StocksService/IexService/Quote';
 
-export type LogoAction = ReduxRepositoryAction<string, string>;
+export const STOCKS_LOGOS_RESOURCE_ACTION_NAME = 'stocks/logos';
 
-export type QuoteAction = ReduxRepositoryAction<Quote, string>;
+export const STOCKS_QUOTES_RESOURCE_ACTION_NAME = 'stocks/quotes';
+
+export type LogoAction = Action<string, string>;
+
+export type QuoteAction = Action<Quote, string>;

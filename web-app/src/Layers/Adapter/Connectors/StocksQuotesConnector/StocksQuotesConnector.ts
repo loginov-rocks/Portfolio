@@ -1,8 +1,8 @@
 import { connect, ConnectedProps } from 'react-redux';
 
-import State from 'State';
 import { fetchQuote } from 'Layers/Application/ActionCreators/StocksActionCreators/StocksActionCreators';
-import { QuotesState } from 'Layers/Application/States/StocksState/StocksState';
+import { QuoteData, QuotesState } from 'Layers/Application/States/StocksState/StocksState';
+import State from 'State';
 
 interface StateProps {
   quotes: QuotesState;
@@ -11,6 +11,8 @@ interface StateProps {
 const mapStateToProps = ({ stocks: { quotes } }: State): StateProps => ({ quotes });
 
 const mapDispatchToProps = { fetchQuote };
+
+export type StockQuoteData = QuoteData;
 
 export const StocksQuotesConnector = connect(mapStateToProps, mapDispatchToProps);
 

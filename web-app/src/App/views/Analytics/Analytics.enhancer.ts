@@ -1,14 +1,14 @@
 import { compose, withProps } from 'recompose';
 
-import withVibrantPalettesByImages, {
-  Props as WithVibrantPalettesByImagesProps,
-} from 'Firebase/enhancers/withVibrantPalettesByImages';
+import {
+  StocksLogosBySymbolsMiddleware, StocksLogosBySymbolsMiddlewareProps,
+} from 'Layers/Behavior/Middlewares/StocksLogosBySymbolsMiddleware/StocksLogosBySymbolsMiddleware';
+import {
+  VibrantPalettesByImagesMiddleware, VibrantPalettesByImagesMiddlewareProps,
+} from 'Layers/Behavior/Middlewares/VibrantPalettesByImagesMiddleware/VibrantPalettesByImagesMiddleware';
 import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
 import withPositions from 'Portfolio/enhancers/withPositions';
 import { sortCollection } from 'Shared/lib';
-import withStockLogosBySymbols, {
-  Props as WithStockLogosBySymbolsProps,
-} from 'Stocks/enhancers/withStockLogosBySymbols';
 
 import { Props } from './Analytics';
 import withStockPositions, { Props as WithStockPositionsProps } from '../../enhancers/withStockPositions';
@@ -24,13 +24,14 @@ export default compose<Props, Record<string, never>>(
     ...calculateTotals(stockPositions),
     summaries: sortCollection(createOpenPositionsSummaries(stockPositions), 'marketSum', 'desc'),
   })),
-  withStockLogosBySymbols<Props>(({ summaries }) => summaries.map((summary) => summary.symbol)),
-  withVibrantPalettesByImages<WithStockLogosBySymbolsProps>(({ logosBySymbols }) => (
+  StocksLogosBySymbolsMiddleware<Props>(({ summaries }) => summaries.map((summary) => summary.symbol)),
+  VibrantPalettesByImagesMiddleware<StocksLogosBySymbolsMiddlewareProps>(({ logosBySymbols }) => (
     Object.keys(logosBySymbols)
       .map((symbol) => logosBySymbols[symbol].logo)
       .filter((logo) => logo !== null) as string[]
   )),
-  withProps<Partial<Props>, WithStockPositionsProps & WithStockLogosBySymbolsProps & WithVibrantPalettesByImagesProps>(
+  // eslint-disable-next-line max-len
+  withProps<Partial<Props>, WithStockPositionsProps & StocksLogosBySymbolsMiddlewareProps & VibrantPalettesByImagesMiddlewareProps>(
     ({ logosBySymbols, vibrantPalettesByImages }) => {
       const vibrantPalettesBySymbols: { [key: string]: VibrantPalette | null } = {};
 

@@ -1,4 +1,4 @@
-// Move to Infrastructure layer.
+// TODO: Move to Infrastructure layer.
 
 export const AVAILABLE_CURRENCIES = [
   { key: 'USD', label: 'U.S. Dollar' },
@@ -9,16 +9,13 @@ export const AVAILABLE_CURRENCIES = [
 ];
 export const DEFAULT_CURRENCY = 'USD';
 
-export const FIREBASE_FUNCTIONS_VIBRANT_PALETTES_RESOURCE_NAME = 'firebaseFunctions/vibrantPalettes';
 export const FIREBASE_FUNCTIONS_VIBRANT_PALETTES_TTL = 7 * 24 * 60 * 60 * 1000; // 1 week
 
 export const FIRESTORE_POSITIONS_COLLECTION = 'positions';
 export const FIRESTORE_USERS_COLLECTION = 'users';
 
-export const STOCKS_LOGOS_RESOURCE_NAME = 'stocks/logos';
 export const STOCKS_LOGOS_TTL = 7 * 24 * 60 * 60 * 1000; // 1 week
 
-export const STOCKS_QUOTES_RESOURCE_NAME = 'stocks/quotes';
 export const STOCKS_QUOTES_TTL = 60 * 1000; // 1 min
 
 export const STOCKS_QUOTES_UPDATER_INTERVAL = 30 * 1000; // 30 sec
@@ -59,8 +56,6 @@ export const OPEN_POSITIONS_SUMMARIES_LIST_SORTER_KEYS = [
   { key: 'marketPLPercent', label: 'PL%' },
   { key: 'marketSum', label: 'Market Value' },
 ];
-
-export const STATE_FIREBASE_POSITIONS_KEY = 'positions';
 
 // These variables are taken from ENV, so we can't destructure them.
 /* eslint-disable prefer-destructuring */

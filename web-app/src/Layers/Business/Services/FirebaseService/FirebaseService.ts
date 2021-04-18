@@ -19,10 +19,6 @@ export const getPositionsCollectionPath = (userId: string): string => (
   `${C.FIRESTORE_USERS_COLLECTION}/${userId}/${C.FIRESTORE_POSITIONS_COLLECTION}`
 );
 
-export const getPositionDocumentPath = (userId: string, positionId: string): string => (
-  `${C.FIRESTORE_USERS_COLLECTION}/${userId}/${C.FIRESTORE_POSITIONS_COLLECTION}/${positionId}`
-);
-
 export const getPositionsCollection = (
   firebaseInstance: firebase.app.App,
   userId: string,

@@ -1,3 +1,4 @@
+// TODO: Remove binding to Redux as it's the Application layer.
 import { Repository } from 'redux-repository/lib/interfaces';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData } from 'redux-repository/lib/resource';

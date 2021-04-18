@@ -1,11 +1,11 @@
 import { compose, mapProps, withProps } from 'recompose';
 
+import {
+  StockQuoteBySymbolMiddleware, StockQuoteBySymbolMiddlewareProps,
+} from 'Layers/Behavior/Middlewares/StockQuoteBySymbolMiddleware/StockQuoteBySymbolMiddleware';
 import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
-import withStockQuoteBySymbol, { Props as WithStockQuoteBySymbolProps } from 'Stocks/enhancers/withStockQuoteBySymbol';
 
 import { createStockPosition, StockPosition } from '../lib';
-
-// TODO: Tests.
 
 interface EnhancedProps {
   position: Position | null;
@@ -21,8 +21,8 @@ export interface Props extends EnhancedProps {
 
 export default compose<Props, EnhancedProps>(
   withProps<WithProps, EnhancedProps>(({ position }) => ({ symbol: position ? position.symbol : null })),
-  withStockQuoteBySymbol,
-  mapProps<Props, EnhancedProps & WithProps & WithStockQuoteBySymbolProps>(({
+  StockQuoteBySymbolMiddleware(),
+  mapProps<Props, EnhancedProps & WithProps & StockQuoteBySymbolMiddlewareProps>(({
     position, quote, quoteProgress, ...props
   }) => ({
     position,

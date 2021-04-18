@@ -15,6 +15,12 @@ exports[`matches snapshot if on the close position page 1`] = `
               "WrappedComponent": [Function],
               "compare": null,
               "type": [Function],
+              "wrappedComponent": Object {
+                "$$typeof": Symbol(react.memo),
+                "WrappedComponent": [Function],
+                "compare": null,
+                "type": [Function],
+              },
             },
             "WrappedComponent": [Function],
             "options": Object {
@@ -313,6 +319,12 @@ exports[`matches snapshot if on the close position page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/analytics"
@@ -932,6 +944,12 @@ exports[`matches snapshot if on the close position page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id/close"
@@ -1239,6 +1257,12 @@ exports[`matches snapshot if on the close position page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id/update"
@@ -1546,6 +1570,12 @@ exports[`matches snapshot if on the close position page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id"
@@ -2271,6 +2301,12 @@ exports[`matches snapshot if on the create position page 1`] = `
               "WrappedComponent": [Function],
               "compare": null,
               "type": [Function],
+              "wrappedComponent": Object {
+                "$$typeof": Symbol(react.memo),
+                "WrappedComponent": [Function],
+                "compare": null,
+                "type": [Function],
+              },
             },
             "WrappedComponent": [Function],
             "options": Object {
@@ -2569,6 +2605,12 @@ exports[`matches snapshot if on the create position page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/analytics"
@@ -3188,6 +3230,12 @@ exports[`matches snapshot if on the create position page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id/close"
@@ -3495,6 +3543,12 @@ exports[`matches snapshot if on the create position page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id/update"
@@ -3802,6 +3856,12 @@ exports[`matches snapshot if on the create position page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id"
@@ -4527,6 +4587,12 @@ exports[`matches snapshot if on the home page 1`] = `
               "WrappedComponent": [Function],
               "compare": null,
               "type": [Function],
+              "wrappedComponent": Object {
+                "$$typeof": Symbol(react.memo),
+                "WrappedComponent": [Function],
+                "compare": null,
+                "type": [Function],
+              },
             },
             "WrappedComponent": [Function],
             "options": Object {
@@ -4825,6 +4891,12 @@ exports[`matches snapshot if on the home page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/analytics"
@@ -5444,6 +5516,12 @@ exports[`matches snapshot if on the home page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id/close"
@@ -5751,6 +5829,12 @@ exports[`matches snapshot if on the home page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id/update"
@@ -6058,6 +6142,12 @@ exports[`matches snapshot if on the home page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id"
@@ -6783,6 +6873,12 @@ exports[`matches snapshot if on the position page 1`] = `
               "WrappedComponent": [Function],
               "compare": null,
               "type": [Function],
+              "wrappedComponent": Object {
+                "$$typeof": Symbol(react.memo),
+                "WrappedComponent": [Function],
+                "compare": null,
+                "type": [Function],
+              },
             },
             "WrappedComponent": [Function],
             "options": Object {
@@ -7081,6 +7177,12 @@ exports[`matches snapshot if on the position page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/analytics"
@@ -7700,6 +7802,12 @@ exports[`matches snapshot if on the position page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id/close"
@@ -8007,6 +8115,12 @@ exports[`matches snapshot if on the position page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id/update"
@@ -8314,6 +8428,12 @@ exports[`matches snapshot if on the position page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id"
@@ -9039,6 +9159,12 @@ exports[`matches snapshot if on the profile page 1`] = `
               "WrappedComponent": [Function],
               "compare": null,
               "type": [Function],
+              "wrappedComponent": Object {
+                "$$typeof": Symbol(react.memo),
+                "WrappedComponent": [Function],
+                "compare": null,
+                "type": [Function],
+              },
             },
             "WrappedComponent": [Function],
             "options": Object {
@@ -9337,6 +9463,12 @@ exports[`matches snapshot if on the profile page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/analytics"
@@ -9956,6 +10088,12 @@ exports[`matches snapshot if on the profile page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id/close"
@@ -10263,6 +10401,12 @@ exports[`matches snapshot if on the profile page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id/update"
@@ -10570,6 +10714,12 @@ exports[`matches snapshot if on the profile page 1`] = `
             },
             "render": [Function],
             "useStyles": [Function],
+            "wrappedComponent": Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "type": [Function],
+            },
           }
         }
         key="/position/:id"

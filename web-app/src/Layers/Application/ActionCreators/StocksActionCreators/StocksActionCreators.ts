@@ -1,24 +1,17 @@
 import { createFetchResource, createResetResources } from 'redux-repository/lib/actions';
-import { Action } from 'redux-repository/lib/types';
 import { ThunkAction } from 'redux-thunk';
 
 // TODO: Move to Infrastructure layer.
 import * as C from 'Constants';
+import {
+  LogoAction, QuoteAction, STOCKS_LOGOS_RESOURCE_ACTION_NAME, STOCKS_QUOTES_RESOURCE_ACTION_NAME,
+} from 'Layers/Application/Actions/StocksActions/StocksActions';
 import { IexService } from 'Layers/Business/Services/StocksService/IexService';
-import { Quote } from 'Layers/Business/Services/StocksService/IexService/Quote';
 import State from 'State';
 
 // TODO: Should be unnecessary.
-export interface FetchLogoAction {
-  (symbol: string): void;
-}
-
 export interface ResetLogosAction {
   (): void;
-}
-
-export interface FetchQuoteAction {
-  (symbol: string): void;
 }
 
 export interface ResetQuotesAction {
@@ -27,8 +20,8 @@ export interface ResetQuotesAction {
 
 export const fetchLogo = (
   symbol: string,
-): ThunkAction<void, State, null, Action<string, string>> => createFetchResource(
-  C.STOCKS_LOGOS_RESOURCE_NAME,
+): ThunkAction<void, State, null, LogoAction> => createFetchResource(
+  STOCKS_LOGOS_RESOURCE_ACTION_NAME,
   symbol,
   ({ stocks: { logos } }) => logos,
   (dispatchReceived, dispatchFailed) => {
@@ -39,14 +32,14 @@ export const fetchLogo = (
   { silentAlready: true, ttl: C.STOCKS_LOGOS_TTL },
 );
 
-export const resetLogos = (): ThunkAction<void, State, null, Action<string, string>> => (
-  createResetResources(C.STOCKS_LOGOS_RESOURCE_NAME)
+export const resetLogos = (): ThunkAction<void, State, null, LogoAction> => (
+  createResetResources(STOCKS_LOGOS_RESOURCE_ACTION_NAME)
 );
 
 export const fetchQuote = (
   symbol: string,
-): ThunkAction<void, State, null, Action<Quote, string>> => createFetchResource(
-  C.STOCKS_QUOTES_RESOURCE_NAME,
+): ThunkAction<void, State, null, QuoteAction> => createFetchResource(
+  STOCKS_QUOTES_RESOURCE_ACTION_NAME,
   symbol,
   ({ stocks: { quotes } }) => quotes,
   (dispatchReceived, dispatchFailed) => {
@@ -57,6 +50,6 @@ export const fetchQuote = (
   { silentAlready: true, ttl: C.STOCKS_QUOTES_TTL },
 );
 
-export const resetQuotes = (): ThunkAction<void, State, null, Action<Quote, string>> => (
-  createResetResources(C.STOCKS_QUOTES_RESOURCE_NAME)
+export const resetQuotes = (): ThunkAction<void, State, null, QuoteAction> => (
+  createResetResources(STOCKS_QUOTES_RESOURCE_ACTION_NAME)
 );
