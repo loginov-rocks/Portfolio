@@ -10,9 +10,9 @@ import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsServic
 import { getVibrantColor } from 'Layers/Business/Services/FirebaseService/FirebaseService';
 import { Money } from 'Layers/Presentation/Components/Money';
 import { Percent } from 'Layers/Presentation/Components/Percent';
+import { PositionDate } from 'Layers/Presentation/Components/PositionDate';
 import { Progress } from 'Layers/Presentation/Components/Progress';
 import { StockLogo } from 'Layers/Presentation/Components/StockLogo';
-import PositionDate from 'Portfolio/components/PositionDate';
 
 import { StockPosition } from '../../lib';
 

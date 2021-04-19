@@ -6,9 +6,9 @@ import * as React from 'react';
 import * as C from 'Constants';
 import { Money } from 'Layers/Presentation/Components/Money';
 import { Percent } from 'Layers/Presentation/Components/Percent';
+import { PositionDate } from 'Layers/Presentation/Components/PositionDate';
 import { Sorter } from 'Layers/Presentation/Components/Sorter';
 import { StockLogo } from 'Layers/Presentation/Components/StockLogo';
-import PositionDate from 'Portfolio/components/PositionDate';
 
 import { StockPosition } from '../../lib';
 

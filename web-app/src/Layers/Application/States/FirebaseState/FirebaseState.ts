@@ -3,11 +3,15 @@ import { Repository } from 'redux-repository/lib/interfaces';
 import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
 import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 
+export const FIRESTORE_DATA_POSITIONS_KEY = 'positions';
+
 export interface AuthState {
   isEmpty: boolean;
   isLoaded: boolean;
   uid?: string;
 }
+
+export type PositionData = Position;
 
 export type VibrantPaletteData = VibrantPalette | null;
 
@@ -32,7 +36,7 @@ export interface FirebaseState {
   };
   firestore: {
     data: {
-      positions?: {
+      [FIRESTORE_DATA_POSITIONS_KEY]?: {
         // `null` used by `react-redux-firebase` when document deleted.
         [positionId: string]: Omit<Position, 'id'> | null;
       };

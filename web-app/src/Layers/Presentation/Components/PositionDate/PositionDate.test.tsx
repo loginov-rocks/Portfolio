@@ -3,7 +3,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import PositionDate from './PositionDate';
+import { PositionDate } from './PositionDate';
 
 it('matches snapshot', () => {
   const wrapper = shallow(<PositionDate date="2017-07-14" />);

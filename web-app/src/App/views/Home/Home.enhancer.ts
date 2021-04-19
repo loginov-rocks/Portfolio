@@ -2,8 +2,11 @@ import { connect } from 'react-redux';
 import { RouteComponentProps as WithRouterProps, withRouter } from 'react-router-dom';
 import { compose, withHandlers } from 'recompose';
 
+import { PositionsConnector } from 'Layers/Adapter/Connectors/PositionsConnector/PositionsConnector';
+import {
+  PositionsFirestoreConnector,
+} from 'Layers/Adapter/FirestoreConnectors/PositionsFirestoreConnector/PositionsFirestoreConnector';
 import { changeHomeTab } from 'Layers/Application/ActionCreators/HomeActionCreators/HomeActionCreators';
-import withPositions from 'Portfolio/enhancers/withPositions';
 import State from 'State';
 
 import withStockPositions from '../../enhancers/withStockPositions';
@@ -32,6 +35,7 @@ export default compose<Props, Record<string, never>>(
 
   }),
   connect(mapStateToProps, mapDispatchToProps),
-  withPositions,
+  PositionsFirestoreConnector,
+  PositionsConnector,
   withStockPositions,
 );

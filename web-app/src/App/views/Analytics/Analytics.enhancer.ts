@@ -1,5 +1,9 @@
 import { compose, withProps } from 'recompose';
 
+import { PositionsConnector } from 'Layers/Adapter/Connectors/PositionsConnector/PositionsConnector';
+import {
+  PositionsFirestoreConnector,
+} from 'Layers/Adapter/FirestoreConnectors/PositionsFirestoreConnector/PositionsFirestoreConnector';
 import {
   StocksLogosBySymbolsMiddleware, StocksLogosBySymbolsMiddlewareProps,
 } from 'Layers/Behavior/Middlewares/StocksLogosBySymbolsMiddleware/StocksLogosBySymbolsMiddleware';
@@ -7,7 +11,6 @@ import {
   VibrantPalettesByImagesMiddleware, VibrantPalettesByImagesMiddlewareProps,
 } from 'Layers/Behavior/Middlewares/VibrantPalettesByImagesMiddleware/VibrantPalettesByImagesMiddleware';
 import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
-import withPositions from 'Portfolio/enhancers/withPositions';
 import { sortCollection } from 'Shared/lib';
 
 import { Props } from './Analytics';
@@ -15,7 +18,8 @@ import withStockPositions, { Props as WithStockPositionsProps } from '../../enha
 import { calculateTotals, createOpenPositionsSummaries } from '../../lib';
 
 export default compose<Props, Record<string, never>>(
-  withPositions,
+  PositionsFirestoreConnector,
+  PositionsConnector,
   withStockPositions,
   withProps<Partial<WithStockPositionsProps>, WithStockPositionsProps>(({ stockPositions }) => ({
     stockPositions: stockPositions.filter((position) => position.closeDate === null),

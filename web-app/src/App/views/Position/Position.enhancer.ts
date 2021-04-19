@@ -3,6 +3,12 @@ import { RouteComponentProps as WithRouterProps, withRouter } from 'react-router
 import { compose, withHandlers, withStateHandlers } from 'recompose';
 
 import {
+  PositionByIdConnector, PositionByIdConnectorProps,
+} from 'Layers/Adapter/Connectors/PositionByIdConnector/PositionByIdConnector';
+import {
+  PositionsFirestoreConnector,
+} from 'Layers/Adapter/FirestoreConnectors/PositionsFirestoreConnector/PositionsFirestoreConnector';
+import {
   deletePosition as deletePositionAction, DeletePositionAction,
 } from 'Layers/Application/ActionCreators/PortfolioActionCreators/PortfolioActionCreators';
 import {
@@ -11,7 +17,6 @@ import {
 import {
   VibrantPaletteByImageMiddleware,
 } from 'Layers/Behavior/Middlewares/VibrantPaletteByImageMiddleware/VibrantPaletteByImageMiddleware';
-import withPositionById, { Props as WithPositionByIdProps } from 'Portfolio/enhancers/withPositionById';
 
 import withStockPosition from '../../enhancers/withStockPosition';
 import { Props } from './Position';
@@ -34,15 +39,18 @@ interface WithHandlersProps {
 
 const mapDispatchToProps = { deletePosition: deletePositionAction };
 
+type WithHandlersOutter = WithRouterProps & PositionByIdConnectorProps & DispatchProps & WithStateHandlersProps;
+
 export default compose<Props, Record<string, never>>(
   withRouter,
-  withPositionById<WithRouterProps<{ id: string }>>(({ match: { params: { id } } }) => id),
+  PositionsFirestoreConnector,
+  PositionByIdConnector<WithRouterProps<{ id: string }>>(({ match: { params: { id } } }) => id),
   connect(null, mapDispatchToProps),
   withStateHandlers(
     { wantToDelete: false },
     { handleWantToDelete: () => () => ({ wantToDelete: true }) },
   ),
-  withHandlers<WithRouterProps & WithPositionByIdProps & DispatchProps & WithStateHandlersProps, WithHandlersProps>({
+  withHandlers<WithHandlersOutter, WithHandlersProps>({
 
     handleCloseClick: ({ history, position }) => () => {
       if (position) {

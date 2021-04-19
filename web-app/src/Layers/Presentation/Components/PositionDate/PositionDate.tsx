@@ -5,7 +5,7 @@ interface Props {
   date: string;
 }
 
-const PositionDate: React.FunctionComponent<Props> = ({ highlighted, date }: Props) => {
+export const PositionDate: React.FunctionComponent<Props> = ({ highlighted, date }: Props) => {
   const content = new Date(date).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
 
   if (highlighted) {
@@ -18,5 +18,3 @@ const PositionDate: React.FunctionComponent<Props> = ({ highlighted, date }: Pro
 PositionDate.defaultProps = {
   highlighted: undefined,
 };
-
-export default PositionDate;
