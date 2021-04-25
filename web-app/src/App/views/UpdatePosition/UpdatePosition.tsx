@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 import { Progress } from 'Layers/Presentation/Components/Progress';
-import UpdatePositionForm from 'Portfolio/components/UpdatePositionForm';
+import { UpdatePositionForm } from 'Layers/Presentation/Components/UpdatePositionForm';
 
 export interface Props {
   classes: { [key: string]: string };
@@ -24,7 +24,6 @@ const UpdatePosition: React.FunctionComponent<Props> = ({
       : (
         <UpdatePositionForm
           backButton={<Button color="primary" onClick={handleBackClick}>Cancel</Button>}
-          id={position.id}
           onClose={handleBackClick}
           position={position}
         />

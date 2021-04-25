@@ -2,31 +2,18 @@ import classNames from 'classnames';
 import { Button, TextField } from '@material-ui/core';
 import * as React from 'react';
 
-// TODO: Refactor to universal form for Position control.
+import {
+  PositionFormEnhancerInputProps, PositionFormEnhancerProps,
+} from 'Layers/Behavior/Enhancers/PositionFormEnhancer/PositionFormEnhancer';
 
-export interface Props {
-  amount: number | '';
+export interface PositionFormProps extends PositionFormEnhancerInputProps {
   backButton?: React.ReactNode;
   classes: { [key: string]: string };
-  closeCommission: number | '';
-  closeDate: string;
-  closePrice: number | '';
-  handleAmountChange: (event: React.SyntheticEvent) => void;
-  handleCloseCommissionChange: (event: React.SyntheticEvent) => void;
-  handleCloseDateChange: (event: React.SyntheticEvent) => void;
-  handleClosePriceChange: (event: React.SyntheticEvent) => void;
-  handleOpenCommissionChange: (event: React.SyntheticEvent) => void;
-  handleOpenDateChange: (event: React.SyntheticEvent) => void;
-  handleOpenPriceChange: (event: React.SyntheticEvent) => void;
-  handleSubmit: (event: React.SyntheticEvent) => void;
-  handleSymbolChange: (event: React.SyntheticEvent) => void;
-  openCommission: number | '';
-  openDate: string;
-  openPrice: number | '';
-  symbol: string;
 }
 
-const UpdatePositionForm: React.FunctionComponent<Props> = ({
+type Props = PositionFormProps & PositionFormEnhancerProps;
+
+export const PositionForm: React.FunctionComponent<Props> = ({
   amount, backButton, classes, closeCommission, closeDate, closePrice, handleAmountChange, handleCloseCommissionChange,
   handleCloseDateChange, handleClosePriceChange, handleOpenCommissionChange, handleOpenDateChange,
   handleOpenPriceChange, handleSubmit, handleSymbolChange, openCommission, openDate, openPrice, symbol,
@@ -138,5 +125,3 @@ const UpdatePositionForm: React.FunctionComponent<Props> = ({
 
   </form>
 );
-
-export default UpdatePositionForm;

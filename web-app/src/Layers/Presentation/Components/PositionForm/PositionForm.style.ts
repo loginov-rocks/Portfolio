@@ -1,6 +1,6 @@
 import { withStyles } from '@material-ui/core';
 
-export default withStyles((theme) => ({
+export const style = withStyles((theme) => ({
   buttons: {
     display: 'flex',
     justifyContent: 'space-between',

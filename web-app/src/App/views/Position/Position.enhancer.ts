@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import { RouteComponentProps as WithRouterProps, withRouter } from 'react-router-dom';
 import { compose, withHandlers, withStateHandlers } from 'recompose';
 
@@ -6,11 +5,11 @@ import {
   PositionByIdConnector, PositionByIdConnectorProps,
 } from 'Layers/Adapter/Connectors/PositionByIdConnector/PositionByIdConnector';
 import {
+  PositionsOperationsConnector, PositionsOperationsConnectorProps,
+} from 'Layers/Adapter/Connectors/PositionsOperationsConnector/PositionsOperationsConnector';
+import {
   PositionsFirestoreConnector,
 } from 'Layers/Adapter/FirestoreConnectors/PositionsFirestoreConnector/PositionsFirestoreConnector';
-import {
-  deletePosition as deletePositionAction, DeletePositionAction,
-} from 'Layers/Application/ActionCreators/PortfolioActionCreators/PortfolioActionCreators';
 import {
   StockLogoBySymbolMiddleware, StockLogoBySymbolMiddlewareProps,
 } from 'Layers/Behavior/Middlewares/StockLogoBySymbolMiddleware/StockLogoBySymbolMiddleware';
@@ -21,10 +20,6 @@ import {
 import withStockPosition from '../../enhancers/withStockPosition';
 import { Props } from './Position';
 import * as R from '../../routes';
-
-interface DispatchProps {
-  deletePosition: DeletePositionAction;
-}
 
 interface WithStateHandlersProps {
   handleWantToDelete: () => void;
@@ -37,20 +32,19 @@ interface WithHandlersProps {
   handleUpdateClick: () => void;
 }
 
-const mapDispatchToProps = { deletePosition: deletePositionAction };
-
-type WithHandlersOutter = WithRouterProps & PositionByIdConnectorProps & DispatchProps & WithStateHandlersProps;
+type WithHandlersOutterProps = WithRouterProps & PositionByIdConnectorProps & PositionsOperationsConnectorProps
+  & WithStateHandlersProps;
 
 export default compose<Props, Record<string, never>>(
   withRouter,
   PositionsFirestoreConnector,
   PositionByIdConnector<WithRouterProps<{ id: string }>>(({ match: { params: { id } } }) => id),
-  connect(null, mapDispatchToProps),
+  PositionsOperationsConnector,
   withStateHandlers(
     { wantToDelete: false },
     { handleWantToDelete: () => () => ({ wantToDelete: true }) },
   ),
-  withHandlers<WithHandlersOutter, WithHandlersProps>({
+  withHandlers<WithHandlersOutterProps, WithHandlersProps>({
 
     handleCloseClick: ({ history, position }) => () => {
       if (position) {

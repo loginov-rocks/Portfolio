@@ -1,21 +1,14 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import {
   compose, StateHandler, withHandlers, withStateHandlers,
 } from 'recompose';
 
 import {
-  closePosition as closePositionAction, ClosePositionAction,
-} from 'Layers/Application/ActionCreators/PortfolioActionCreators/PortfolioActionCreators';
+  PositionsOperationsConnector, PositionsOperationsConnectorProps,
+} from 'Layers/Adapter/Connectors/PositionsOperationsConnector/PositionsOperationsConnector';
 import { formatDate } from 'Shared/lib';
 
 import { Props } from './ClosePositionForm';
-
-const mapDispatchToProps = { closePosition: closePositionAction };
-
-interface DispatchProps {
-  closePosition: ClosePositionAction;
-}
 
 interface WithStateHandlersState {
   commission: number | '';
@@ -37,8 +30,11 @@ interface WithHandlersProps {
   handleSubmit: (event: React.SyntheticEvent) => void;
 }
 
-export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedProps>(
-  connect(null, mapDispatchToProps),
+type WithHandlersOutterProps = EnhancedProps & PositionsOperationsConnectorProps & WithStateHandlersState
+  & WithStateHandlersUpdaters;
+
+export default compose<Props & PositionsOperationsConnectorProps & WithStateHandlersState, EnhancedProps>(
+  PositionsOperationsConnector,
   withStateHandlers<WithStateHandlersState, WithStateHandlersUpdaters>(
     {
       commission: '',
@@ -77,7 +73,7 @@ export default compose<Props & DispatchProps & WithStateHandlersState, EnhancedP
       },
     },
   ),
-  withHandlers<EnhancedProps & DispatchProps & WithStateHandlersState & WithStateHandlersUpdaters, WithHandlersProps>({
+  withHandlers<WithHandlersOutterProps, WithHandlersProps>({
 
     handleSubmit: ({
       closePosition, commission, date, id, onClose, price,

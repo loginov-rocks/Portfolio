@@ -10,7 +10,7 @@ exports[`matches snapshot 1`] = `
   >
     Update position
   </WithStyles(ForwardRef(Typography))>
-  <WithStyles(Connect(withStateHandlers(withHandlers(UpdatePositionForm))))
+  <Connect(withHandlers(UpdatePositionForm))
     backButton={
       <WithStyles(ForwardRef(Button))
         color="primary"
@@ -19,7 +19,6 @@ exports[`matches snapshot 1`] = `
         Cancel
       </WithStyles(ForwardRef(Button))>
     }
-    id="id"
     onClose={[Function]}
     position={
       Object {

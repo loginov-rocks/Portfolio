@@ -4,17 +4,15 @@ import { shallow } from 'enzyme';
 import classes from 'identity-obj-proxy';
 import * as React from 'react';
 
-import { formatDate } from 'Shared/lib';
-
-import UpdatePositionForm from './UpdatePositionForm';
+import { PositionForm } from './PositionForm';
 
 it('matches snapshot', () => {
   const wrapper = shallow(
-    <UpdatePositionForm
+    <PositionForm
       amount={1}
       classes={classes}
       closeCommission={1}
-      closeDate={formatDate(new Date('2019-07-25'))}
+      closeDate="2019-07-25"
       closePrice={100}
       handleAmountChange={() => undefined}
       handleCloseCommissionChange={() => undefined}
@@ -25,8 +23,19 @@ it('matches snapshot', () => {
       handleOpenPriceChange={() => undefined}
       handleSubmit={() => undefined}
       handleSymbolChange={() => undefined}
+      initialPositionFormData={{
+        amount: 1,
+        closeCommission: 1,
+        closeDate: '2019-07-25',
+        closePrice: 100,
+        openCommission: 1,
+        openDate: '2019-07-02',
+        openPrice: 100,
+        symbol: 'AAPL',
+      }}
+      onSubmit={() => undefined}
       openCommission={1}
-      openDate={formatDate(new Date('2019-07-02'))}
+      openDate="2019-07-02"
       openPrice={100}
       symbol="AAPL"
     />,

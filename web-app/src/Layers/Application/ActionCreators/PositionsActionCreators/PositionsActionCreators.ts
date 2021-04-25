@@ -3,28 +3,11 @@ import { ThunkAction } from 'redux-thunk';
 import {
   positionCreated, PositionCreatedAction, positionClosed, PositionClosedAction, positionDeleted, PositionDeletedAction,
   positionUpdated, PositionUpdatedAction,
-} from 'Layers/Application/Actions/PortfolioActions/PortfolioActions';
+} from 'Layers/Application/Actions/PositionsActions/PositionsActions';
 import { GetFirebaseExtraArgument } from 'Layers/Application/Middlewares/FirebaseMiddleware/FirebaseMiddleware';
 import { getPositionDocument, getPositionsCollection } from 'Layers/Business/Services/FirebaseService/FirebaseService';
 import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 import State from 'State';
-
-// TODO: Should be unnecessary.
-export interface CreatePositionAction {
-  (symbol: string, amount: number, price: number, commission: number, date: string): Promise<Position>;
-}
-
-export interface ClosePositionAction {
-  (id: string, price: number, commission: number, date: string): Promise<string>;
-}
-
-export interface UpdatePositionAction {
-  (position: Position): Promise<Position>;
-}
-
-export interface DeletePositionAction {
-  (id: string): Promise<string>;
-}
 
 export const createPosition = (
   symbol: string, amount: number, price: number, commission: number, date: string,
