@@ -10,7 +10,7 @@ exports[`matches snapshot 1`] = `
   >
     Open position
   </WithStyles(ForwardRef(Typography))>
-  <WithStyles(Connect(withStateHandlers(withHandlers(CreatePositionForm))))
+  <Connect(withHandlers(CreatePositionForm))
     onCreate={[Function]}
   />
 </div>

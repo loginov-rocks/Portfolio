@@ -1,9 +1,9 @@
-// TODO: Remove binding to Redux as it's the Application layer.
+// TODO: Redux is a part of the Application layer, so should not be in the Business layer.
 import { Repository } from 'redux-repository/lib/interfaces';
 import { getResourceById } from 'redux-repository/lib/repository';
 import { extractData } from 'redux-repository/lib/resource';
 
-import { Quote } from './IexService/Quote';
+import { Quote } from 'Layers/Business/Services/IexService/Quote';
 
 export const findQuoteBySymbol = (quotesRepository: Repository<Quote, string>, symbol: string): Quote | null => (
   extractData(getResourceById(quotesRepository, symbol))

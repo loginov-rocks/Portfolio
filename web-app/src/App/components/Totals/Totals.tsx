@@ -4,50 +4,36 @@ import {
 import { AccountBalanceWalletOutlined } from '@material-ui/icons';
 import * as React from 'react';
 
-import * as C from 'Constants';
-// TODO: Should be unnecessary.
-import {
-  ChangeCurrencyAction,
-} from 'Layers/Application/ActionCreators/CurrenciesActionCreators/CurrenciesActionCreators';
+import { TotalsEnhancerInputProps, TotalsEnhancerProps } from 'App/components/Totals/TotalsEnhancer';
 import { Money } from 'Layers/Presentation/Components/Money';
 import { Percent } from 'Layers/Presentation/Components/Percent';
 
-export interface Props {
-  anchor: HTMLElement | null;
-  changeCurrency: ChangeCurrencyAction;
+export interface TotalsProps extends TotalsEnhancerInputProps {
   classes: { [key: string]: string };
-  currency: string;
-  currencyMultiplier: number | null;
   showClosed?: boolean;
-  totalClosePL: number;
-  totalClosePLPercent: number;
-  totalCloseSum: number;
-  totalDailyPL: number;
-  totalDailyPLPercent: number;
-  totalMarketPL: number;
-  totalMarketPLPercent: number;
-  totalMarketSum: number;
-  updateAnchor: (anchor: HTMLElement | null) => void;
 }
 
-const Totals: React.FunctionComponent<Props> = ({
-  anchor, changeCurrency, classes, currency, currencyMultiplier, showClosed, totalClosePL, totalClosePLPercent,
-  totalCloseSum, totalDailyPL, totalDailyPLPercent, totalMarketPL, totalMarketPLPercent, totalMarketSum, updateAnchor,
+type Props = TotalsProps & TotalsEnhancerProps;
+
+export const Totals: React.FunctionComponent<Props> = ({
+  anchor, availableCurrencies, changeCurrency, classes, currency, showClosed, totalClosePL,
+  totalClosePLPercent, totalCloseSum, totalDailyPL, totalDailyPLPercent, totalMarketPL, totalMarketPLPercent,
+  totalMarketSum, updateAnchor,
 }: Props) => {
   const sum = showClosed ? totalCloseSum : totalMarketSum;
 
   const groups = showClosed ? [
     <div className={classes.group} key="closed">
-      <Money currency={currency} multiplier={currencyMultiplier} pl value={totalClosePL} />
+      <Money pl value={totalClosePL} />
       <Percent pl value={totalClosePLPercent} />
     </div>,
   ] : [
     <div className={classes.group} key="daily">
-      <Money currency={currency} multiplier={currencyMultiplier} pl value={totalDailyPL} />
+      <Money pl value={totalDailyPL} />
       <Percent pl value={totalDailyPLPercent} />
     </div>,
     <div className={classes.group} key="market">
-      <Money currency={currency} multiplier={currencyMultiplier} pl value={totalMarketPL} />
+      <Money pl value={totalMarketPL} />
       <Percent pl value={totalMarketPLPercent} />
     </div>,
   ];
@@ -56,7 +42,7 @@ const Totals: React.FunctionComponent<Props> = ({
     <div className={classes.root}>
 
       <Typography className={classes.sum} variant="h5">
-        <Money currency={currency} multiplier={currencyMultiplier} value={sum} />
+        <Money value={sum} />
       </Typography>
 
       <div className={classes.secondary}>{groups}</div>
@@ -66,7 +52,7 @@ const Totals: React.FunctionComponent<Props> = ({
       </IconButton>
 
       <Menu anchorEl={anchor} onClose={() => updateAnchor(null)} open={Boolean(anchor)}>
-        {C.AVAILABLE_CURRENCIES.map(({ key, label }) => (
+        {availableCurrencies.map(({ key, label }) => (
           <MenuItem
             disabled={key === currency}
             key={key}
@@ -83,5 +69,3 @@ const Totals: React.FunctionComponent<Props> = ({
     </div>
   );
 };
-
-export default Totals;

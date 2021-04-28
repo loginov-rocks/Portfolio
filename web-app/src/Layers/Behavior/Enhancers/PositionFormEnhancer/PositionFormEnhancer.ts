@@ -7,8 +7,8 @@ import { PositionFormData } from './PositionFormData';
 import { parseDateString, parseNonNegativeFloat, parsePositiveInteger } from './PositionFormDataParsers';
 
 export interface PositionFormEnhancerInputProps {
-  initialPositionFormData: PositionFormData;
-  onSubmit: (positionFormData: PositionFormData) => void;
+  initialData: PositionFormData;
+  onSubmit: (data: PositionFormData) => void;
 }
 
 type WithStateHandlersState = PositionFormData;
@@ -38,7 +38,7 @@ export const PositionFormEnhancer = <OwnProps extends PositionFormEnhancerInputP
     // StateHandlerMap<WithStateHandlersState> used here instead of WithStateHandlersUpdaters to comply with the
     // sophisticated withStateHandlers contract that doesn't recognize map in WithStateHandlersUpdaters.
     withStateHandlers<WithStateHandlersState, StateHandlerMap<WithStateHandlersState>, OwnProps>(
-      ({ initialPositionFormData }) => initialPositionFormData,
+      ({ initialData }) => initialData,
       {
         handleAmountChange: () => (event) => ({ amount: parsePositiveInteger(event.target.value) }),
         handleCloseCommissionChange: () => (event) => ({ closeCommission: parseNonNegativeFloat(event.target.value) }),

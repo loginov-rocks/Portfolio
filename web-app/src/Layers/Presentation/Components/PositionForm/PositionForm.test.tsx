@@ -14,6 +14,9 @@ it('matches snapshot', () => {
       closeCommission={1}
       closeDate="2019-07-25"
       closePrice={100}
+      displayedFields={[
+        'symbol', 'amount', 'openPrice', 'openCommission', 'openDate', 'closePrice', 'closeCommission', 'closeDate',
+      ]}
       handleAmountChange={() => undefined}
       handleCloseCommissionChange={() => undefined}
       handleCloseDateChange={() => undefined}
@@ -23,7 +26,7 @@ it('matches snapshot', () => {
       handleOpenPriceChange={() => undefined}
       handleSubmit={() => undefined}
       handleSymbolChange={() => undefined}
-      initialPositionFormData={{
+      initialData={{
         amount: 1,
         closeCommission: 1,
         closeDate: '2019-07-25',
@@ -37,6 +40,10 @@ it('matches snapshot', () => {
       openCommission={1}
       openDate="2019-07-02"
       openPrice={100}
+      requiredFields={[
+        'symbol', 'amount', 'openPrice', 'openCommission', 'openDate',
+      ]}
+      submitButtonTitle="Submit"
       symbol="AAPL"
     />,
   );

@@ -1,5 +1,6 @@
-import Totals from './Totals';
-import enhance from './Totals.enhancer';
-import style from './Totals.styles';
+import { TotalsEnhancer } from 'App/components/Totals/TotalsEnhancer';
 
-export default style(enhance(Totals));
+import { Totals as TotalsComponent, TotalsProps } from './Totals';
+import { style } from './Totals.style';
+
+export const Totals = style(TotalsEnhancer<TotalsProps>()(TotalsComponent));

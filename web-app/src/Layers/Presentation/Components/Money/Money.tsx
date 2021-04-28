@@ -1,19 +1,18 @@
 import * as React from 'react';
 
-// TODO: Consider removing link to the Infrastructure layer as it's the only usage within the Presentation layer.
-import * as C from 'Constants';
+import { MoneyEnhancerProps } from 'Layers/Behavior/Enhancers/MoneyEnhancer/MoneyEnhancer';
 
-interface Props {
+export interface MoneyProps {
   classes: { [key: string]: string };
-  currency?: string;
   highlighted?: boolean;
-  multiplier?: number | null;
   pl?: boolean;
   value: number;
 }
 
+type Props = MoneyProps & MoneyEnhancerProps;
+
 export const Money: React.FunctionComponent<Props> = ({
-  classes, currency, highlighted, multiplier, pl, value,
+  classes, currency, currencyMultiplier, highlighted, pl, value,
 }: Props) => {
   let className;
 
@@ -25,15 +24,10 @@ export const Money: React.FunctionComponent<Props> = ({
     }
   }
 
-  let resultCurrency = C.DEFAULT_CURRENCY;
-  let resultValue = value;
-
-  if (currency && multiplier) {
-    resultCurrency = currency;
-    resultValue = multiplier * value;
-  }
-
-  const content = resultValue.toLocaleString(undefined, { currency: resultCurrency, style: 'currency' });
+  const multipliedValue = currencyMultiplier ? currencyMultiplier * value : value;
+  const content = currency
+    ? multipliedValue.toLocaleString(undefined, { currency, style: 'currency' })
+    : multipliedValue;
 
   if (highlighted) {
     return <strong className={className}>{content}</strong>;
@@ -43,8 +37,6 @@ export const Money: React.FunctionComponent<Props> = ({
 };
 
 Money.defaultProps = {
-  currency: undefined,
   highlighted: undefined,
-  multiplier: undefined,
   pl: undefined,
 };

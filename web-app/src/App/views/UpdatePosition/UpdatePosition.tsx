@@ -1,4 +1,4 @@
-import { Button, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import * as React from 'react';
 
 import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
@@ -23,8 +23,8 @@ const UpdatePosition: React.FunctionComponent<Props> = ({
       ? <Progress />
       : (
         <UpdatePositionForm
-          backButton={<Button color="primary" onClick={handleBackClick}>Cancel</Button>}
-          onClose={handleBackClick}
+          onCancelButtonClick={handleBackClick}
+          onUpdate={handleBackClick}
           position={position}
         />
       )}

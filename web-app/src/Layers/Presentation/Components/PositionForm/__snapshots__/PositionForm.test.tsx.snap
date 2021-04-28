@@ -100,6 +100,7 @@ exports[`matches snapshot 1`] = `
       }
       label="Close Price"
       onChange={[Function]}
+      required={false}
       type="number"
       value={100}
       variant="outlined"
@@ -118,6 +119,7 @@ exports[`matches snapshot 1`] = `
       }
       label="Close Commission"
       onChange={[Function]}
+      required={false}
       type="number"
       value={1}
       variant="outlined"
@@ -130,6 +132,7 @@ exports[`matches snapshot 1`] = `
       fullWidth={true}
       label="Close Date"
       onChange={[Function]}
+      required={false}
       type="date"
       value="2019-07-25"
       variant="outlined"
@@ -143,7 +146,7 @@ exports[`matches snapshot 1`] = `
       type="submit"
       variant="contained"
     >
-      Update
+      Submit
     </WithStyles(ForwardRef(Button))>
   </div>
 </form>

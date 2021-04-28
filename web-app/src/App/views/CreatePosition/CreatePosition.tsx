@@ -1,7 +1,7 @@
 import { Typography } from '@material-ui/core';
 import * as React from 'react';
 
-import CreatePositionForm from 'Portfolio/components/CreatePositionForm';
+import { CreatePositionForm } from 'Layers/Presentation/Components/CreatePositionForm';
 
 export interface Props {
   classes: { [key: string]: string };

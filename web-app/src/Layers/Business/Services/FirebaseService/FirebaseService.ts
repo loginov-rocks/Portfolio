@@ -1,9 +1,10 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-// TODO: Move to Infrastructure layer.
-import * as C from 'Constants';
 import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
+import {
+  FIRESTORE_POSITIONS_COLLECTION, FIRESTORE_USERS_COLLECTION,
+} from 'Layers/Infrastructure/Constants/FirestoreConstants/FirestoreConstants';
 
 export const getAuthProvider = (provider: string): firebase.auth.AuthProvider => {
   switch (provider) {
@@ -16,7 +17,7 @@ export const getAuthProvider = (provider: string): firebase.auth.AuthProvider =>
 };
 
 export const getPositionsCollectionPath = (userId: string): string => (
-  `${C.FIRESTORE_USERS_COLLECTION}/${userId}/${C.FIRESTORE_POSITIONS_COLLECTION}`
+  `${FIRESTORE_USERS_COLLECTION}/${userId}/${FIRESTORE_POSITIONS_COLLECTION}`
 );
 
 export const getPositionsCollection = (
@@ -24,9 +25,9 @@ export const getPositionsCollection = (
   userId: string,
 ): firebase.firestore.CollectionReference => (
   firebaseInstance.firestore()
-    .collection(C.FIRESTORE_USERS_COLLECTION)
+    .collection(FIRESTORE_USERS_COLLECTION)
     .doc(userId)
-    .collection(C.FIRESTORE_POSITIONS_COLLECTION)
+    .collection(FIRESTORE_POSITIONS_COLLECTION)
 );
 
 export const getPositionDocument = (

@@ -8,12 +8,12 @@ import { PositionFormData } from 'Layers/Behavior/Enhancers/PositionFormEnhancer
 import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 
 export interface UpdatePositionFormEnhancerInputProps {
-  onClose?: () => void;
+  onUpdate?: (position: Position) => void;
   position: Position;
 }
 
 interface WithHandlersProps {
-  handleSubmit: (positionFormData: PositionFormData) => void;
+  handleSubmit: (data: PositionFormData) => void;
 }
 
 export type UpdatePositionFormEnhancerProps = PositionsOperationsConnectorProps & WithHandlersProps;
@@ -24,7 +24,7 @@ export const UpdatePositionFormEnhancer = <OwnProps extends UpdatePositionFormEn
     PositionsOperationsConnector,
     withHandlers<OwnProps & PositionsOperationsConnectorProps, WithHandlersProps>({
 
-      handleSubmit: ({ onClose, position, updatePosition }) => ({
+      handleSubmit: ({ onUpdate, position, updatePosition }) => ({
         amount, closeCommission, closeDate, closePrice, openCommission, openDate, openPrice, symbol,
       }) => {
         if (amount === '' || openCommission === '' || openPrice === '' || symbol === '') {
@@ -43,9 +43,9 @@ export const UpdatePositionFormEnhancer = <OwnProps extends UpdatePositionFormEn
           openPrice,
           symbol,
         })
-          .then(() => {
-            if (onClose) {
-              onClose();
+          .then((updatedPosition) => {
+            if (onUpdate) {
+              onUpdate(updatedPosition);
             }
           });
       },

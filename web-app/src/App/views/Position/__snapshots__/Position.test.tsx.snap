@@ -80,7 +80,7 @@ exports[`matches snapshot 1`] = `
           Price
         </WithStyles(ForwardRef(ListItemText))>
         <WithStyles(ForwardRef(ListItemSecondaryAction))>
-          <WithStyles(Money)
+          <WithStyles(Connect(Money))
             value={100}
           />
         </WithStyles(ForwardRef(ListItemSecondaryAction))>
@@ -90,7 +90,7 @@ exports[`matches snapshot 1`] = `
           Commission
         </WithStyles(ForwardRef(ListItemText))>
         <WithStyles(ForwardRef(ListItemSecondaryAction))>
-          <WithStyles(Money)
+          <WithStyles(Connect(Money))
             value={1}
           />
         </WithStyles(ForwardRef(ListItemSecondaryAction))>
@@ -100,7 +100,7 @@ exports[`matches snapshot 1`] = `
           Sum
         </WithStyles(ForwardRef(ListItemText))>
         <WithStyles(ForwardRef(ListItemSecondaryAction))>
-          <WithStyles(Money)
+          <WithStyles(Connect(Money))
             value={101}
           />
         </WithStyles(ForwardRef(ListItemSecondaryAction))>

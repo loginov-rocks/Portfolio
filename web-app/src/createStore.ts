@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 
 import * as C from 'Constants';
+import { FIRESTORE_USERS_COLLECTION } from 'Layers/Infrastructure/Constants/FirestoreConstants/FirestoreConstants';
 
 export default (reducer: Reducer): {
   persistor: Persistor;
@@ -48,7 +49,7 @@ export default (reducer: Reducer): {
   const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['currencies', 'firebase', 'home', 'stocks'],
+    whitelist: ['currencyRates', 'firebase', 'home', 'stocks'],
   };
 
   const persistedReducer = persistReducer(persistConfig, reducer);
@@ -58,7 +59,7 @@ export default (reducer: Reducer): {
   const reactReduxFirebaseProviderProps = {
     config: {
       useFirestoreForProfile: true,
-      userProfile: C.FIRESTORE_USERS_COLLECTION,
+      userProfile: FIRESTORE_USERS_COLLECTION,
     },
     createFirestoreInstance,
     dispatch: store.dispatch,

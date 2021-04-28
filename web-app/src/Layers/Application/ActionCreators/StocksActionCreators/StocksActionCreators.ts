@@ -6,7 +6,7 @@ import * as C from 'Constants';
 import {
   LogoAction, QuoteAction, STOCKS_LOGOS_RESOURCE_ACTION_NAME, STOCKS_QUOTES_RESOURCE_ACTION_NAME,
 } from 'Layers/Application/Actions/StocksActions/StocksActions';
-import { IexService } from 'Layers/Business/Services/StocksService/IexService';
+import { IexService } from 'Layers/Business/Services/IexService/IexService';
 import State from 'State';
 
 // TODO: Should be unnecessary.

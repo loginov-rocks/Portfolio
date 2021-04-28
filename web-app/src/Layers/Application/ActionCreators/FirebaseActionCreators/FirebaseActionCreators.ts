@@ -6,7 +6,7 @@ import * as C from 'Constants';
 import {
   VIBRANT_PALETTES_RESOURCE_ACTION_NAME, VibrantPaletteAction,
 } from 'Layers/Application/Actions/FirebaseActions/FirebaseActions';
-import { FirebaseFunctionsService } from 'Layers/Business/Services/FirebaseFunctionsService';
+import { FirebaseFunctionsService } from 'Layers/Business/Services/FirebaseFunctionsService/FirebaseFunctionsService';
 import State from 'State';
 
 // TODO: Should be unnecessary.

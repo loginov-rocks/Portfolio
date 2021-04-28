@@ -4,16 +4,20 @@ import { shallow } from 'enzyme';
 import classes from 'identity-obj-proxy';
 import * as React from 'react';
 
-import Totals from './Totals';
+import { Totals } from './Totals';
 
 it('matches snapshot', () => {
   const wrapper = shallow(
     <Totals
       anchor={null}
+      availableCurrencies={[]}
       changeCurrency={() => undefined}
       classes={classes}
       currency="USD"
       currencyMultiplier={1}
+      fetchRates={() => undefined}
+      initialize={() => undefined}
+      stockPositions={[]}
       totalClosePL={100}
       totalClosePLPercent={1}
       totalCloseSum={1000}
@@ -33,11 +37,15 @@ it('matches snapshot when showing closed', () => {
   const wrapper = shallow(
     <Totals
       anchor={null}
+      availableCurrencies={[]}
       changeCurrency={() => undefined}
       classes={classes}
       currency="USD"
       currencyMultiplier={1}
+      fetchRates={() => undefined}
+      initialize={() => undefined}
       showClosed
+      stockPositions={[]}
       totalClosePL={100}
       totalClosePLPercent={1}
       totalCloseSum={1000}

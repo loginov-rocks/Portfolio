@@ -1,9 +1,9 @@
-import { Button, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import * as React from 'react';
 
 import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 import { Progress } from 'Layers/Presentation/Components/Progress';
-import ClosePositionForm from 'Portfolio/components/ClosePositionForm';
+import { ClosePositionForm } from 'Layers/Presentation/Components/ClosePositionForm';
 
 export interface Props {
   classes: { [key: string]: string };
@@ -23,9 +23,9 @@ const ClosePosition: React.FunctionComponent<Props> = ({
       ? <Progress />
       : (
         <ClosePositionForm
-          backButton={<Button color="primary" onClick={handleBackClick}>Cancel</Button>}
-          id={position.id}
+          onCancelButtonClick={handleBackClick}
           onClose={handleBackClick}
+          position={position}
         />
       )}
 

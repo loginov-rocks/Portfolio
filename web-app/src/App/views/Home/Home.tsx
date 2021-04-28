@@ -6,7 +6,7 @@ import { Progress } from 'Layers/Presentation/Components/Progress';
 import ClosedPositionsList from '../../components/ClosedPositionsList';
 import OpenPositionsList from '../../components/OpenPositionsList';
 import OpenPositionsSummariesList from '../../components/OpenPositionsSummariesList';
-import Totals from '../../components/Totals';
+import { Totals } from '../../components/Totals';
 import { StockPosition } from '../../lib';
 
 export interface Props {
