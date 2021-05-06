@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { Button, TextField } from '@material-ui/core';
 import * as React from 'react';
 
-import { PositionFormData } from 'Layers/Behavior/Enhancers/PositionFormEnhancer/PositionFormData';
+import { PositionFormData } from 'Layers/Behavior/Enhancers/PositionFormEnhancer/Interfaces/PositionFormData';
 import {
   PositionFormEnhancerInputProps, PositionFormEnhancerProps,
 } from 'Layers/Behavior/Enhancers/PositionFormEnhancer/PositionFormEnhancer';

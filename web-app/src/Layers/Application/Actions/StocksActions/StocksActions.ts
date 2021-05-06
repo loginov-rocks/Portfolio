@@ -1,6 +1,6 @@
 import { Action } from 'redux-repository/lib/types';
 
-import { Quote } from 'Layers/Business/Services/IexService/Quote';
+import { Quote } from 'Layers/Business/Services/IexService/Interfaces/Quote';
 
 export const STOCKS_LOGOS_RESOURCE_ACTION_NAME = 'stocks/logos';
 

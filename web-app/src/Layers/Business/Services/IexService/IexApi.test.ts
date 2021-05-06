@@ -1,9 +1,12 @@
 import axios from 'axios';
 
-import quoteFixture from './__fixtures__/quote';
+import quoteFixture from './__fixtures__/quote.json';
 import { IexApi } from './IexApi';
 
-const instance = new IexApi('https://example.com', 'token');
+const instance = new IexApi({
+  baseUrl: 'https://example.com',
+  token: 'token',
+});
 
 describe('getStockLogo', () => {
   it('makes request to IEX cloud to obtain logo url', () => {

@@ -6,15 +6,17 @@ export interface ProviderLoginButtonEnhancerInputProps {
   provider: string;
 }
 
-export interface ProviderLoginButtonEnhancerProps {
+interface WithHandlersProps {
   handleClick: () => void;
 }
+
+export type ProviderLoginButtonEnhancerProps = WithHandlersProps;
 
 // eslint-disable-next-line max-len
 export const ProviderLoginButtonEnhancer = <OwnProps extends ProviderLoginButtonEnhancerInputProps>(): ComponentEnhancer<OwnProps & ProviderLoginButtonEnhancerProps, OwnProps> => (
   compose(
     AuthConnector,
-    withHandlers<OwnProps & AuthConnectorProps, ProviderLoginButtonEnhancerProps>({
+    withHandlers<OwnProps & AuthConnectorProps, WithHandlersProps>({
 
       handleClick: ({ triggerSignIn, provider }) => () => {
         triggerSignIn(provider);

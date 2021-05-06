@@ -4,4 +4,6 @@ import {
 
 import { FirebaseFunctionsApi } from './FirebaseFunctionsApi';
 
-export const FirebaseFunctionsService = new FirebaseFunctionsApi(FIREBASE_FUNCTIONS_URL);
+export const FirebaseFunctionsService = new FirebaseFunctionsApi({
+  baseUrl: FIREBASE_FUNCTIONS_URL,
+});

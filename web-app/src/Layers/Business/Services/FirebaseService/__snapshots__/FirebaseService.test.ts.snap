@@ -1,5 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getAuthProvider throws error matching snapshot if unknown provider passed 1`] = `"Unknown auth provider"`;
-
-exports[`getPositionsCollectionPath matches snapshot 1`] = `"users/userId/positions"`;

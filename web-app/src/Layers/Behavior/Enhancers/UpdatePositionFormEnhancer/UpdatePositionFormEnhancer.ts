@@ -3,9 +3,9 @@ import { ComponentEnhancer, compose, withHandlers } from 'recompose';
 import {
   PositionsOperationsConnector, PositionsOperationsConnectorProps,
 } from 'Layers/Adapter/Connectors/PositionsOperationsConnector/PositionsOperationsConnector';
-import { PositionFormData } from 'Layers/Behavior/Enhancers/PositionFormEnhancer/PositionFormData';
+import { PositionFormData } from 'Layers/Behavior/Enhancers/PositionFormEnhancer/Interfaces/PositionFormData';
 // TODO: Remove link to Business layer!
-import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
+import { Position } from 'Layers/Business/Services/PortfolioService/Interfaces/Position';
 
 export interface UpdatePositionFormEnhancerInputProps {
   onUpdate?: (position: Position) => void;

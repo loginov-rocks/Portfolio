@@ -1,8 +1,8 @@
 import { createInitialState, pushResource } from 'redux-repository/lib/repository';
 import { createReceived } from 'redux-repository/lib/resource';
 
-import quoteFixture from 'Layers/Business/Services/IexService/__fixtures__/quote';
-import { Quote } from 'Layers/Business/Services/IexService/Quote';
+import quoteFixture from 'Layers/Business/Services/IexService/__fixtures__/quote.json';
+import { Quote } from 'Layers/Business/Services/IexService/Interfaces/Quote';
 import { findQuoteBySymbol, getQuotePrice } from './StocksService';
 
 const quotesRepository = pushResource<Quote, string>(createInitialState(), createReceived('AAPL', quoteFixture));

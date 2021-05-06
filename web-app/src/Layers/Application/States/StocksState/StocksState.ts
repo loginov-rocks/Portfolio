@@ -1,6 +1,6 @@
 import { Repository } from 'redux-repository/lib/interfaces';
 
-import { Quote } from 'Layers/Business/Services/IexService/Quote';
+import { Quote } from 'Layers/Business/Services/IexService/Interfaces/Quote';
 
 export type LogoData = string | null;
 

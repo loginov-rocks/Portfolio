@@ -3,7 +3,7 @@ import { compose } from 'recompose';
 
 import { AuthConnector, AuthConnectorProps } from 'Layers/Adapter/Connectors/AuthConnector/AuthConnector';
 import { FIRESTORE_DATA_POSITIONS_KEY } from 'Layers/Application/States/FirebaseState/FirebaseState';
-import { getPositionsCollectionPath } from 'Layers/Business/Services/FirebaseService/FirebaseService';
+import { getPositionsCollectionPath } from 'Layers/Business/Services/FirestoreService/FirestoreService';
 
 export type PositionsFirestoreConnectorProps = AuthConnectorProps;
 

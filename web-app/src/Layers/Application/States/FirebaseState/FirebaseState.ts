@@ -1,7 +1,7 @@
 import { Repository } from 'redux-repository/lib/interfaces';
 
-import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
-import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
+import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/Interfaces/VibrantPalette';
+import { Position } from 'Layers/Business/Services/PortfolioService/Interfaces/Position';
 
 export const FIRESTORE_DATA_POSITIONS_KEY = 'positions';
 

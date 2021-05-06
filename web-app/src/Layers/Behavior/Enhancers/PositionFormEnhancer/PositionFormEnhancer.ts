@@ -3,7 +3,7 @@ import {
   ComponentEnhancer, compose, StateHandler, StateHandlerMap, withHandlers, withStateHandlers,
 } from 'recompose';
 
-import { PositionFormData } from './PositionFormData';
+import { PositionFormData } from './Interfaces/PositionFormData';
 import { parseDateString, parseNonNegativeFloat, parsePositiveInteger } from './PositionFormDataParsers';
 
 export interface PositionFormEnhancerInputProps {

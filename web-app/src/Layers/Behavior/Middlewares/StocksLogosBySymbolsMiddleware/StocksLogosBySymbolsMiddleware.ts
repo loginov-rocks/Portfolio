@@ -17,9 +17,11 @@ interface LogosBySymbols {
   };
 }
 
-export interface StocksLogosBySymbolsMiddlewareProps {
+interface MapProps {
   logosBySymbols: LogosBySymbols;
 }
+
+export type StocksLogosBySymbolsMiddlewareProps = MapProps;
 
 interface SymbolsExtractor<OwnProps> {
   (ownProps: OwnProps): string[];
@@ -48,7 +50,7 @@ export const StocksLogosBySymbolsMiddleware = <OwnProps>(symbolsExtractor: Symbo
       },
 
     }),
-    mapProps<StocksLogosBySymbolsMiddlewareProps, OwnProps & StocksLogosConnectorProps>((props) => {
+    mapProps<MapProps, OwnProps & StocksLogosConnectorProps>((props) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { fetchLogo, logos, ...returnedProps } = props;
       const logosBySymbols: LogosBySymbols = {};

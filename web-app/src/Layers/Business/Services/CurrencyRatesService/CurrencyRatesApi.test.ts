@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import latestFixture from './__fixtures__/latest';
+import latestFixture from './__fixtures__/latest.json';
 import { CurrencyRatesApi } from './CurrencyRatesApi';
 
 const currencyRatesApi = new CurrencyRatesApi({

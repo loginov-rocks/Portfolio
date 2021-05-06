@@ -10,7 +10,7 @@ import {
 // TODO: Move to Infrastructure layer.
 import { areArraysEqual } from 'Shared/lib';
 
-interface StocksQuotesBySymbolsMiddlewareInputProps {
+export interface StocksQuotesBySymbolsMiddlewareInputProps {
   symbols: string[];
 }
 
@@ -21,9 +21,11 @@ interface QuotesBySymbols {
   };
 }
 
-export interface StocksQuotesBySymbolsMiddlewareProps {
+interface MapProps {
   quotesBySymbols: QuotesBySymbols;
 }
+
+export type StocksQuotesBySymbolsMiddlewareProps = MapProps;
 
 // eslint-disable-next-line max-len
 export const StocksQuotesBySymbolsMiddleware = <OwnProps extends StocksQuotesBySymbolsMiddlewareInputProps>(): ComponentEnhancer<OwnProps & StocksQuotesBySymbolsMiddlewareProps, OwnProps> => (
@@ -46,7 +48,7 @@ export const StocksQuotesBySymbolsMiddleware = <OwnProps extends StocksQuotesByS
       },
 
     }),
-    mapProps<StocksQuotesBySymbolsMiddlewareProps, OwnProps & StocksQuotesConnectorProps>(({
+    mapProps<MapProps, OwnProps & StocksQuotesConnectorProps>(({
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       fetchQuote, quotes, symbols, ...returnedProps
     }) => {

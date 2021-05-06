@@ -4,8 +4,8 @@ import {
   Cell, Pie, PieChart, ResponsiveContainer,
 } from 'recharts';
 
-import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
-import { getVibrantColor } from 'Layers/Business/Services/FirebaseService/FirebaseService';
+import { FirebaseFunctionsService } from 'Layers/Business/Services/FirebaseFunctionsService/FirebaseFunctionsService';
+import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/Interfaces/VibrantPalette';
 import { Percent } from 'Layers/Presentation/Components/Percent';
 import { Progress } from 'Layers/Presentation/Components/Progress';
 
@@ -58,7 +58,7 @@ const Analytics: React.FunctionComponent<Props> = ({
             >
               {data.map((entry, index) => (
                 <Cell
-                  fill={getVibrantColor(vibrantPalettesBySymbols[summaries[index].symbol])}
+                  fill={FirebaseFunctionsService.getVibrantColor(vibrantPalettesBySymbols[summaries[index].symbol])}
                   key={index} // eslint-disable-line react/no-array-index-key
                 />
               ))}
@@ -73,7 +73,7 @@ const Analytics: React.FunctionComponent<Props> = ({
             return null;
           }
 
-          const color = getVibrantColor(vibrantPalettesBySymbols[summary.symbol]);
+          const color = FirebaseFunctionsService.getVibrantColor(vibrantPalettesBySymbols[summary.symbol]);
           const percent = summary.marketSum / totalMarketSum;
           const share = (percent / maxShare) * 100;
 

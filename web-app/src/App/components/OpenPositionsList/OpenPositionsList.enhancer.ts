@@ -1,7 +1,7 @@
 import { compose, withProps } from 'recompose';
 
 import * as C from 'Constants';
-import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
+import { Position } from 'Layers/Business/Services/PortfolioService/Interfaces/Position';
 import { sortCollection } from 'Shared/lib';
 
 import withSorter, { Props as WithSorterProps } from '../../enhancers/withSorter';

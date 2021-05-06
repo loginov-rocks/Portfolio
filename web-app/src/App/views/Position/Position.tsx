@@ -6,8 +6,8 @@ import {
 } from '@material-ui/icons';
 import * as React from 'react';
 
-import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
-import { getVibrantColor } from 'Layers/Business/Services/FirebaseService/FirebaseService';
+import { FirebaseFunctionsService } from 'Layers/Business/Services/FirebaseFunctionsService/FirebaseFunctionsService';
+import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/Interfaces/VibrantPalette';
 import { Money } from 'Layers/Presentation/Components/Money';
 import { Percent } from 'Layers/Presentation/Components/Percent';
 import { PositionDate } from 'Layers/Presentation/Components/PositionDate';
@@ -35,7 +35,10 @@ const Position: React.FunctionComponent<Props> = ({
   <>
 
     {!positionLoading && stockPosition && (
-      <div className={classes.bar} style={{ backgroundColor: getVibrantColor(vibrantPalette, 'darkMuted') }}>
+      <div
+        className={classes.bar}
+        style={{ backgroundColor: FirebaseFunctionsService.getVibrantColor(vibrantPalette, 'darkMuted') }}
+      >
 
         <StockLogo className={classes.logo} size={48} symbol={stockPosition.symbol} />
 

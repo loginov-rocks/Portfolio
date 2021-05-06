@@ -1,23 +1,28 @@
 import axios from 'axios';
 
-import { Quote } from './Quote';
+import { Quote } from './Interfaces/Quote';
+
+interface IexApiOptions {
+  baseUrl: string;
+  token: string;
+}
 
 export class IexApi {
-  protected baseUrl: string;
+  private readonly baseUrl: string;
 
-  protected token: string;
+  private readonly token: string;
 
-  public constructor(baseUrl: string, token: string) {
+  constructor({ baseUrl, token }: IexApiOptions) {
     this.baseUrl = baseUrl;
     this.token = token;
   }
 
-  public getStockLogo(symbol: string): Promise<string> {
+  getStockLogo(symbol: string): Promise<string> {
     return axios.get(`${this.baseUrl}/stock/${symbol.toLowerCase()}/logo?token=${this.token}`)
       .then(({ data }) => data.url);
   }
 
-  public getStockQuote(symbol: string): Promise<Quote> {
+  getStockQuote(symbol: string): Promise<Quote> {
     return axios.get(`${this.baseUrl}/stock/${symbol.toLowerCase()}/quote?token=${this.token}`)
       .then(({ data }) => data);
   }

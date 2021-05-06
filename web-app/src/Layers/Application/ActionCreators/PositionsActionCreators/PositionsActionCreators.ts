@@ -5,8 +5,10 @@ import {
   positionUpdated, PositionUpdatedAction,
 } from 'Layers/Application/Actions/PositionsActions/PositionsActions';
 import { GetFirebaseExtraArgument } from 'Layers/Application/Middlewares/FirebaseMiddleware/FirebaseMiddleware';
-import { getPositionDocument, getPositionsCollection } from 'Layers/Business/Services/FirebaseService/FirebaseService';
-import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
+import {
+  getPositionDocument, getPositionsCollection,
+} from 'Layers/Business/Services/FirestoreService/FirestoreService';
+import { Position } from 'Layers/Business/Services/PortfolioService/Interfaces/Position';
 import State from 'State';
 
 export const createPosition = (

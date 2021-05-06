@@ -17,9 +17,11 @@ interface VibrantPalettesByImages {
   };
 }
 
-export interface VibrantPalettesByImagesMiddlewareProps {
+interface MapProps {
   vibrantPalettesByImages: VibrantPalettesByImages;
 }
+
+export type VibrantPalettesByImagesMiddlewareProps = MapProps;
 
 interface ImagesExtractor<OwnProps> {
   (ownProps: OwnProps): string[];
@@ -48,7 +50,7 @@ export const VibrantPalettesByImagesMiddleware = <OwnProps>(imagesExtractor: Ima
       },
 
     }),
-    mapProps<VibrantPalettesByImagesMiddlewareProps, OwnProps & VibrantPalettesConnectorProps>((props) => {
+    mapProps<MapProps, OwnProps & VibrantPalettesConnectorProps>((props) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { fetchVibrantPalette, vibrantPalettes, ...returnedProps } = props;
       const vibrantPalettesByImages: VibrantPalettesByImages = {};

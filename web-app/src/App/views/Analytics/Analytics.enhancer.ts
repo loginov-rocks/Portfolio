@@ -10,7 +10,7 @@ import {
 import {
   VibrantPalettesByImagesMiddleware, VibrantPalettesByImagesMiddlewareProps,
 } from 'Layers/Behavior/Middlewares/VibrantPalettesByImagesMiddleware/VibrantPalettesByImagesMiddleware';
-import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/VibrantPalette';
+import { VibrantPalette } from 'Layers/Business/Services/FirebaseFunctionsService/Interfaces/VibrantPalette';
 import { sortCollection } from 'Shared/lib';
 
 import { Props } from './Analytics';

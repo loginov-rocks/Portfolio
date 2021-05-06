@@ -8,10 +8,12 @@ import {
   VibrantPaletteData, VibrantPalettesConnector, VibrantPalettesConnectorProps,
 } from 'Layers/Adapter/Connectors/VibrantPalettesConnector/VibrantPalettesConnector';
 
-export interface VibrantPaletteByImageMiddlewareProps {
+interface MapProps {
   vibrantPalette: VibrantPaletteData;
   vibrantPaletteProgress: boolean;
 }
+
+export type VibrantPaletteByImageMiddlewareProps = MapProps;
 
 interface ImageExtractor<OwnProps> {
   (ownProps: OwnProps): string | null;
@@ -42,7 +44,7 @@ export const VibrantPaletteByImageMiddleware = <OwnProps>(imageExtractor: ImageE
       },
 
     }),
-    mapProps<VibrantPaletteByImageMiddlewareProps, OwnProps & VibrantPalettesConnectorProps>((props) => {
+    mapProps<MapProps, OwnProps & VibrantPalettesConnectorProps>((props) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { fetchVibrantPalette, vibrantPalettes, ...returnedProps } = props;
       const image = imageExtractor(props);

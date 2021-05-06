@@ -3,7 +3,8 @@ import { compose, mapProps, withProps } from 'recompose';
 import {
   StocksQuotesBySymbolsMiddleware, StocksQuotesBySymbolsMiddlewareProps,
 } from 'Layers/Behavior/Middlewares/StocksQuotesBySymbolsMiddleware/StocksQuotesBySymbolsMiddleware';
-import { getUniqueSymbolsFromPositions, Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
+import { Position } from 'Layers/Business/Services/PortfolioService/Interfaces/Position';
+import { getUniqueSymbolsFromPositions } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 
 import { createStockPosition, StockPosition } from '../lib';
 

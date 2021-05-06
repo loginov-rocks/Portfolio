@@ -12,10 +12,12 @@ export interface StockLogoBySymbolMiddlewareInputProps {
   symbol: string;
 }
 
-export interface StockLogoBySymbolMiddlewareProps {
+interface MapProps {
   logo: StockLogoData;
   logoProgress: boolean;
 }
+
+export type StockLogoBySymbolMiddlewareProps = MapProps;
 
 // eslint-disable-next-line max-len
 export const StockLogoBySymbolMiddleware = <OwnProps extends StockLogoBySymbolMiddlewareInputProps>(): ComponentEnhancer<OwnProps & StockLogoBySymbolMiddlewareProps, OwnProps> => (
@@ -40,7 +42,7 @@ export const StockLogoBySymbolMiddleware = <OwnProps extends StockLogoBySymbolMi
       },
 
     }),
-    mapProps<StockLogoBySymbolMiddlewareProps, OwnProps & StocksLogosConnectorProps>(({
+    mapProps<MapProps, OwnProps & StocksLogosConnectorProps>(({
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       fetchLogo, logos, symbol, ...returnedProps
     }) => {

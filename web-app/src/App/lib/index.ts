@@ -1,5 +1,6 @@
-import { Quote } from 'Layers/Business/Services/IexService/Quote';
-import { annualizePercent, Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
+import { Quote } from 'Layers/Business/Services/IexService/Interfaces/Quote';
+import { Position } from 'Layers/Business/Services/PortfolioService/Interfaces/Position';
+import { annualizePercent } from 'Layers/Business/Services/PortfolioService/PortfolioService';
 import { getQuotePrice } from 'Layers/Business/Services/StocksService/StocksService';
 
 // TODO: Tests.

@@ -6,15 +6,17 @@ export interface LogoutButtonEnhancerInputProps {
   onLogout?: () => void;
 }
 
-export interface LogoutButtonEnhancerProps {
+interface WithHandlersProps {
   handleClick: () => void;
 }
+
+export type LogoutButtonEnhancerProps = WithHandlersProps;
 
 // eslint-disable-next-line max-len
 export const LogoutButtonEnhancer = <OwnProps extends LogoutButtonEnhancerInputProps>(): ComponentEnhancer<OwnProps & LogoutButtonEnhancerProps, OwnProps> => (
   compose(
     AuthConnector,
-    withHandlers<OwnProps & AuthConnectorProps, LogoutButtonEnhancerProps>({
+    withHandlers<OwnProps & AuthConnectorProps, WithHandlersProps>({
 
       handleClick: ({ triggerLogout, onLogout }) => () => {
         triggerLogout();

@@ -1,7 +1,7 @@
 import { RouteComponentProps as WithRouterProps, withRouter } from 'react-router-dom';
 import { compose, withHandlers } from 'recompose';
 
-import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
+import { Position } from 'Layers/Business/Services/PortfolioService/Interfaces/Position';
 
 import { Props } from './CreatePosition';
 import * as R from '../../routes';

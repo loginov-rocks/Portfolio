@@ -1,4 +1,4 @@
-import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
+import { Position } from 'Layers/Business/Services/PortfolioService/Interfaces/Position';
 
 export const POSITION_CREATED = 'portfolio/POSITION_CREATED';
 export const POSITION_CLOSED = 'portfolio/POSITION_CLOSED';

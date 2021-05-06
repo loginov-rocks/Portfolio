@@ -1,7 +1,7 @@
 import { Typography } from '@material-ui/core';
 import * as React from 'react';
 
-import { Position } from 'Layers/Business/Services/PortfolioService/PortfolioService';
+import { Position } from 'Layers/Business/Services/PortfolioService/Interfaces/Position';
 import { Progress } from 'Layers/Presentation/Components/Progress';
 import { ClosePositionForm } from 'Layers/Presentation/Components/ClosePositionForm';
 

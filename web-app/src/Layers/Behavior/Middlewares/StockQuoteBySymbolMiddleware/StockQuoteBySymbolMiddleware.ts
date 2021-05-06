@@ -12,10 +12,12 @@ export interface StockQuoteBySymbolMiddlewareInputProps {
   symbol: string | null;
 }
 
-export interface StockQuoteBySymbolMiddlewareProps {
+interface MapProps {
   quote: StockQuoteData;
   quoteProgress: boolean;
 }
+
+export type StockQuoteBySymbolMiddlewareProps = MapProps;
 
 // eslint-disable-next-line max-len
 export const StockQuoteBySymbolMiddleware = <OwnProps extends StockQuoteBySymbolMiddlewareInputProps>(): ComponentEnhancer<OwnProps & StockQuoteBySymbolMiddlewareProps, OwnProps> => (
@@ -40,7 +42,7 @@ export const StockQuoteBySymbolMiddleware = <OwnProps extends StockQuoteBySymbol
       },
 
     }),
-    mapProps<StockQuoteBySymbolMiddlewareProps, OwnProps & StocksQuotesConnectorProps>(({
+    mapProps<MapProps, OwnProps & StocksQuotesConnectorProps>(({
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       fetchQuote, quotes, symbol, ...returnedProps
     }) => {

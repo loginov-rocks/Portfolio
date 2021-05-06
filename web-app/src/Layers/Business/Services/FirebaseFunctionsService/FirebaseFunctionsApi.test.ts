@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-import vibrantPaletteFixture from './__fixtures__/vibrantPalette';
+import vibrantPaletteFixture from './__fixtures__/vibrantPalette.json';
 import { FirebaseFunctionsApi } from './FirebaseFunctionsApi';
 
-const instance = new FirebaseFunctionsApi('https://example.com');
+const instance = new FirebaseFunctionsApi({
+  baseUrl: 'https://example.com',
+});
 
 describe('getStockLogo', () => {
   it('makes request to Firebase Function to obtain vibrant palette', () => {
