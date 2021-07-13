@@ -13,7 +13,7 @@ export const RATES_BUCKET = undefined;
 export const RATES_STORAGE_PATH = 'rates/rates.json';
 
 export const RATES_PROVIDER_BASE_CURRENCY = 'USD';
-export const RATES_PROVIDER_BASE_URL = 'https://api.ratesapi.io/api';
+export const RATES_PROVIDER_BASE_URL = 'https://api.exchangerate.host';
 
 export const STORAGE_BASE_URL = 'https://storage.googleapis.com';
 
