@@ -5,6 +5,8 @@
 [![Firebase CI](https://github.com/loginov-rocks/Portfolio/actions/workflows/firebase-ci.yml/badge.svg)](https://github.com/loginov-rocks/Portfolio/actions/workflows/firebase-ci.yml)
 [![CD](https://github.com/loginov-rocks/Portfolio/actions/workflows/cd.yml/badge.svg)](https://github.com/loginov-rocks/Portfolio/actions/workflows/cd.yml)
 
+**Deprecated due to [IEX Cloud](https://iexcloud.io) closing free requests.**
+
 ## Development Hints
 
 Due to Firebase Functions
